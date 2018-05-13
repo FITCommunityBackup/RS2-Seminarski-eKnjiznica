@@ -1,0 +1,141 @@
+﻿using eKnjiznica.CORE.Model.Admin;
+using eKnjiznica.CORE.Repository;
+using eKnjiznica.CORE.Services.Roles;
+using eKnjiznica.DAL.EF;
+using eKnjiznica.DAL.Model;
+using Microsoft.AspNet.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace eKnjiznica.DAL.Repository
+{
+    public class AdminRepo : IAdminRepo
+    {
+        private EF.EKnjiznicaDB context;
+        private ApplicationUserManager applicationUserManager;
+        private IRoleService roleService;
+
+        public AdminRepo(EKnjiznicaDB context, ApplicationUserManager applicationUserManager,IRoleService roleService)
+        {
+            this.context = context;
+            this.applicationUserManager = applicationUserManager;
+            this.roleService = roleService;
+        }
+
+        public AdminAccount AddAccount(AdminAccount adminAccount,string password)
+        {
+            var user = new ApplicationUser
+            {
+                UserName = adminAccount.Username,
+                Email = adminAccount.Email,
+                IsActive = true,
+                FirstName = adminAccount.FirstName,
+                LastName = adminAccount.LastName,
+                PhoneNumber = adminAccount.PhoneNumber
+            };
+
+
+            var role = roleService.GetRole(EntityRoles.AdminRole);
+
+            applicationUserManager.Create(user, password);
+            applicationUserManager.AddToRole(user.Id, role.Name);
+
+            adminAccount.Id = user.Id;
+            return adminAccount;
+        }
+
+        public AdminAccount FindByEmail(string email)
+        {
+            var user = applicationUserManager.FindByEmail(email);
+            if (user == null)
+                return null;
+
+            return new AdminAccount
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                Username = user.UserName,
+                IsActive = user.IsActive
+            };
+
+        }
+
+        public AdminAccount FindById(string id)
+        {
+            var user = applicationUserManager.FindById(id);
+            if (user == null)
+                return null;
+
+            return new AdminAccount
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                Username = user.UserName,
+                IsActive = user.IsActive
+            };
+        }
+
+        public AdminAccount FindByUsername(string name)
+        {
+            var user = applicationUserManager.FindByName(name);
+            if (user == null)
+                return null;
+
+            return new AdminAccount
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                Username = user.UserName,
+                IsActive = user.IsActive
+            };
+        }
+
+        public void ToggleAccountStatus(string id)
+        {
+            var user = context.Users.Where(x=>x.Id == id).First();
+            user.IsActive = !user.IsActive;
+            context.SaveChanges();
+        }
+
+        public AdminAccount UpdateAdminAccount(AdminAccount adminAccount)
+        {
+            var user  = context.Users.Where(x => x.Id == adminAccount.Id).FirstOrDefault();
+            if (user == null)
+                return null;
+
+            if (adminAccount.FirstName != null)
+                user.FirstName = adminAccount.FirstName;
+
+            if (adminAccount.LastName!= null)
+                user.LastName= adminAccount.LastName;
+
+            if (adminAccount.PhoneNumber!= null)
+                user.PhoneNumber= adminAccount.PhoneNumber;
+
+            context.SaveChanges();
+
+            return new AdminAccount
+            {
+                Id = user.Id,
+                Username = user.UserName,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                IsActive = user.IsActive,
+                PhoneNumber = user.PhoneNumber
+            };
+        }
+    }
+}
