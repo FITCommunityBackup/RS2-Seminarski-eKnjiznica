@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using eKnjiznica.API.Providers;
 using eKnjiznica.API.Models;
+using eKnjiznica.DAL;
 
 namespace eKnjiznica.API
 {

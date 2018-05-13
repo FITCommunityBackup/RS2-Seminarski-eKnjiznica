@@ -1,3 +1,8 @@
+using eKnjiznica.CORE.Repository;
+using eKnjiznica.CORE.Services.Admin;
+using eKnjiznica.CORE.Services.Logger;
+using eKnjiznica.CORE.Services.Roles;
+using eKnjiznica.DAL.Repository;
 using System;
 
 using Unity;
@@ -42,6 +47,13 @@ namespace eKnjiznica.API
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            container.RegisterType<DAL.EF.EKnjiznicaDB>();
+            container.RegisterType<ILoggerService,LoggerService>();
+            container.RegisterType<IAdminService, AdminService>();
+            //container.RegisterType<IRoleRepo, >();
+            container.RegisterType<IAdminRepo, AdminRepo>();
+            container.RegisterType<IRoleService, RoleService>();
         }
     }
 }
