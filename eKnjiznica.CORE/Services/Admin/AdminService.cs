@@ -37,6 +37,11 @@ namespace eKnjiznica.CORE.Services.Admin
             return admin;
         }
 
+        public IList<AdminAccount> GetAdminAccountList(string username)
+        {
+            return adminRepo.GetAdminAccounts(username);
+        }
+
         public void ToggleAdminAccountStatus(string id)
         {
             adminRepo.ToggleAccountStatus(id);

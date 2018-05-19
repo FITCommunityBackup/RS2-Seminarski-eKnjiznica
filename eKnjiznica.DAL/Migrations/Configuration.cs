@@ -14,8 +14,10 @@ namespace eKnjiznica.DAL.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+
         }
 
+        
         protected override void Seed(EKnjiznicaDB context)
         {
 
@@ -38,10 +40,9 @@ namespace eKnjiznica.DAL.Migrations
 
             if (!context.Users.Any(u => u.UserName == "admin"))
             {
-                var user = new ApplicationUser { UserName = "founder",Email="admin@email.com" };
-
-                var userStore = new UserStore<ApplicationUser>();
-                var userManager = new UserManager<ApplicationUser>(userStore);
+                var user = new ApplicationUser { UserName = "admin", Email="admin@email.com",FirstName = "Admin",LastName="Sistema",IsActive=true };
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new ApplicationUserManager(userStore);
 
                 userManager.Create(user, "Password!1");
                 userManager.AddToRole(user.Id, EntityRoles.AdminRole);

@@ -15,5 +15,6 @@ namespace eKnjiznica.CORE.Repository
         AdminAccount AddAccount(AdminAccount adminAccount,string password);
         void ToggleAccountStatus(string id);
         AdminAccount UpdateAdminAccount(AdminAccount adminAccount);
+        IList<AdminAccount> GetAdminAccounts(string username);
     }
 }

@@ -14,5 +14,6 @@ namespace eKnjiznica.CORE.Services.Admin
         void ToggleAdminAccountStatus(string id);
         AdminAccount FindById(string id);
         AdminAccount UpdateAdminAccount(AdminAccount adminAccount);
+        IList<AdminAccount> GetAdminAccountList(string username);
     }
 }

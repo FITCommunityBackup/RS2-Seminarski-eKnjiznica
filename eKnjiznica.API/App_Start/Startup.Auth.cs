@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
+
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using eKnjiznica.API.Providers;
-using eKnjiznica.API.Models;
 using eKnjiznica.DAL;
 
 namespace eKnjiznica.API
@@ -38,8 +37,9 @@ namespace eKnjiznica.API
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(PublicClientId),
+                RefreshTokenProvider = new ApplicationRefreshTokenProvider(),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(14),
+                AccessTokenExpireTimeSpan = TimeSpan.FromSeconds(5),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true
             };

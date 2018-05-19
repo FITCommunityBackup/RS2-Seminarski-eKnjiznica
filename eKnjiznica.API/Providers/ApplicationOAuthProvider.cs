@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
@@ -37,7 +35,12 @@ namespace eKnjiznica.API.Providers
 
             if (user == null)
             {
-                context.SetError("invalid_grant", "The user name or password is incorrect.");
+                context.SetError("login_error", Commons.Resources.USERNAME_OR_PASSWORD_INCORRENT);
+                return;
+            }
+            else if (!user.IsActive)
+            {
+                context.SetError("login_error", Commons.Resources.ACCOUNT_NOT_ACTIVE);
                 return;
             }
 

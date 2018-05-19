@@ -1,4 +1,6 @@
-﻿using System.Security.Claims;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -11,6 +13,8 @@ namespace eKnjiznica.DAL.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsActive { get; set; }
+
+        public ICollection<UserAudit> Audits{ get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

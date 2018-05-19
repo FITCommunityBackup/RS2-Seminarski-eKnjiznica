@@ -77,20 +77,44 @@
     <Compile Include="EF\EKnjiznicaDB.cs" />
     <Compile Include="EF\EntityRoles.cs" />
     <Compile Include="IdentityConfig.cs" />
+    <Compile Include="Migrations\201805131617409_Initial_Migration.cs" />
+    <Compile Include="Migrations\201805131617409_Initial_Migration.Designer.cs">
+      <DependentUpon>201805131617409_Initial_Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805192134087_UserAudit.cs" />
+    <Compile Include="Migrations\201805192134087_UserAudit.Designer.cs">
+      <DependentUpon>201805192134087_UserAudit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
+    <Compile Include="Model\UserAudit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminRepo.cs" />
+    <Compile Include="Repository\LoggerRepo.cs" />
+    <Compile Include="Repository\RoleRepo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805131617409_Initial_Migration.resx">
+      <DependentUpon>201805131617409_Initial_Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805192134087_UserAudit.resx">
+      <DependentUpon>201805192134087_UserAudit.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\eKnjiznica.Commons\eKnjiznica.Commons.csproj">
+      <Project>{2DD83231-71CD-4312-AFCD-3CC53E9A6A0B}</Project>
+      <Name>eKnjiznica.Commons</Name>
+    </ProjectReference>
     <ProjectReference Include="..\eKnjiznica.CORE\eKnjiznica.CORE.csproj">
       <Project>{19443852-6d83-415e-a4dc-144fd3d9b156}</Project>
       <Name>eKnjiznica.CORE</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

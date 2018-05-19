@@ -2,10 +2,16 @@ using eKnjiznica.CORE.Repository;
 using eKnjiznica.CORE.Services.Admin;
 using eKnjiznica.CORE.Services.Logger;
 using eKnjiznica.CORE.Services.Roles;
+using eKnjiznica.DAL;
+using eKnjiznica.DAL.EF;
+using eKnjiznica.DAL.Model;
 using eKnjiznica.DAL.Repository;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
-
+using System.Data.Entity;
 using Unity;
+using Unity.Injection;
 
 namespace eKnjiznica.API
 {
@@ -47,13 +53,24 @@ namespace eKnjiznica.API
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-
-            container.RegisterType<DAL.EF.EKnjiznicaDB>();
+            container.RegisterType<DbContext, EKnjiznicaDB>();
+            container.RegisterType<ILoggerRepo, LoggerRepo>();
             container.RegisterType<ILoggerService,LoggerService>();
-            container.RegisterType<IAdminService, AdminService>();
-            //container.RegisterType<IRoleRepo, >();
-            container.RegisterType<IAdminRepo, AdminRepo>();
+            container.RegisterType<IRoleStore<IdentityRole,string>,RoleStore<IdentityRole,string,IdentityUserRole>>();
+            container.RegisterType<RoleManager<IdentityRole>>();
+            container.RegisterType<IRoleRepo,RoleRepo>();
             container.RegisterType<IRoleService, RoleService>();
+
+            container.RegisterType<IUserStore<ApplicationUser>,UserStore<ApplicationUser>>();
+            container.RegisterType<ApplicationUserManager>();
+            container.RegisterType<IAdminRepo, AdminRepo>();
+            container.RegisterType<IAdminService, AdminService>();
+
+
+            container.RegisterType<IUserStore<ApplicationUser>,
+                UserStore<ApplicationUser>>();
+            container.RegisterType<ApplicationUserManager>();
+
         }
     }
 }

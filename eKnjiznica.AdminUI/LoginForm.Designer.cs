@@ -37,6 +37,7 @@
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.lblError = new MaterialSkin.Controls.MaterialLabel();
+            this.pbLoading = new MetroFramework.Controls.MetroProgressBar();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(382, 126);
+            this.panel1.Size = new System.Drawing.Size(396, 126);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -61,7 +62,7 @@
             this.pictureBox1.InitialImage = global::eKnjiznica.AdminUI.Properties.Resources.avatar;
             this.pictureBox1.Location = new System.Drawing.Point(149, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.Size = new System.Drawing.Size(107, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -166,12 +167,21 @@
             this.lblError.AutoSize = true;
             this.lblError.Depth = 0;
             this.lblError.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblError.ForeColor = System.Drawing.Color.Red;
+            this.lblError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblError.Location = new System.Drawing.Point(12, 327);
             this.lblError.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(0, 24);
             this.lblError.TabIndex = 12;
+            // 
+            // pbLoading
+            // 
+            this.pbLoading.Location = new System.Drawing.Point(0, 306);
+            this.pbLoading.Name = "pbLoading";
+            this.pbLoading.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.pbLoading.Size = new System.Drawing.Size(384, 23);
+            this.pbLoading.TabIndex = 13;
+            this.pbLoading.Visible = false;
             // 
             // LoginForm
             // 
@@ -179,6 +189,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(387, 437);
             this.ControlBox = false;
+            this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.materialLabel2);
@@ -212,6 +223,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MaterialSkin.Controls.MaterialLabel lblError;
+        private MetroFramework.Controls.MetroProgressBar pbLoading;
     }
 }
 

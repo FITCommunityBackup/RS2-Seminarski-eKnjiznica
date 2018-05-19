@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eKnjiznica.Commons.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,6 @@ namespace eKnjiznica.CORE.Services.Logger
     public interface ILoggerService
     {
         void LogAdminAction(string adminId, LogType logType, string description);
-
+        List<LogsVM> GetLogs();
     }
 }

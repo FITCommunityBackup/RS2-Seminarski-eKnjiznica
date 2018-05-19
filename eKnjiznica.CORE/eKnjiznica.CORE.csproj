@@ -54,6 +54,11 @@
     <Compile Include="Services\Roles\IRoleService.cs" />
     <Compile Include="Services\Roles\RoleService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\eKnjiznica.Commons\eKnjiznica.Commons.csproj">
+      <Project>{2DD83231-71CD-4312-AFCD-3CC53E9A6A0B}</Project>
+      <Name>eKnjiznica.Commons</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

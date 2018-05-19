@@ -8,6 +8,8 @@ namespace eKnjiznica.CORE.Services.Logger
 {
     public enum LogType
     {
-        CREATE,UPDATE,DELETE
+        CREATE,
+        UPDATE,
+        DELETE
     }
 }

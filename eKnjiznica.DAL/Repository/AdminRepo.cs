@@ -6,6 +6,7 @@ using eKnjiznica.DAL.Model;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +19,14 @@ namespace eKnjiznica.DAL.Repository
         private ApplicationUserManager applicationUserManager;
         private IRoleService roleService;
 
-        public AdminRepo(EKnjiznicaDB context, ApplicationUserManager applicationUserManager,IRoleService roleService)
+        public AdminRepo(EKnjiznicaDB context, ApplicationUserManager applicationUserManager, IRoleService roleService)
         {
             this.context = context;
             this.applicationUserManager = applicationUserManager;
             this.roleService = roleService;
         }
 
-        public AdminAccount AddAccount(AdminAccount adminAccount,string password)
+        public AdminAccount AddAccount(AdminAccount adminAccount, string password)
         {
             var user = new ApplicationUser
             {
@@ -36,7 +37,6 @@ namespace eKnjiznica.DAL.Repository
                 LastName = adminAccount.LastName,
                 PhoneNumber = adminAccount.PhoneNumber
             };
-
 
             var role = roleService.GetRole(EntityRoles.AdminRole);
 
@@ -102,6 +102,25 @@ namespace eKnjiznica.DAL.Repository
             };
         }
 
+        public IList<AdminAccount> GetAdminAccounts(string username)
+        {
+            var adminRole = roleService.GetRole(EntityRoles.AdminRole);
+            var users = context.Users
+                .Where(x => string.IsNullOrEmpty(username) || x.UserName.Contains(username))
+                .Where(x => x.Roles.Any(y => y.RoleId.Equals(adminRole.Id))).ToList();
+            return users
+                .Select(x=> new AdminAccount
+                {
+                    Id = x.Id,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    PhoneNumber = x.PhoneNumber,
+                    Email = x.Email,
+                    Username = x.UserName,
+                    IsActive = x.IsActive
+                }).ToList();
+        }
+
         public void ToggleAccountStatus(string id)
         {
             var user = context.Users.Where(x=>x.Id == id).First();
@@ -114,15 +133,15 @@ namespace eKnjiznica.DAL.Repository
             var user  = context.Users.Where(x => x.Id == adminAccount.Id).FirstOrDefault();
             if (user == null)
                 return null;
+            user.FirstName = adminAccount.FirstName ?? user.FirstName;
+            user.LastName = adminAccount.LastName?? user.LastName;
+            user.Email = adminAccount.Email?? user.Email;
+            user.PhoneNumber= adminAccount.PhoneNumber ?? user.PhoneNumber;
+            user.PasswordHash = !string.IsNullOrEmpty(adminAccount.Password)?
+                applicationUserManager.PasswordHasher.HashPassword(adminAccount.Password):
+                user.PasswordHash;
 
-            if (adminAccount.FirstName != null)
-                user.FirstName = adminAccount.FirstName;
-
-            if (adminAccount.LastName!= null)
-                user.LastName= adminAccount.LastName;
-
-            if (adminAccount.PhoneNumber!= null)
-                user.PhoneNumber= adminAccount.PhoneNumber;
+            user.IsActive = adminAccount.IsActive;
 
             context.SaveChanges();
 
