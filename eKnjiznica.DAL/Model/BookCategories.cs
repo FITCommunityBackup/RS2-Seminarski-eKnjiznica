@@ -7,18 +7,20 @@ using System.Threading.Tasks;
 
 namespace eKnjiznica.DAL.Model
 {
-   public class UserAudit
+    public class BookCategories
     {
         public int Id { get; set; }
         [Required]
-        public string ActionName { get; set; }
+        public DateTime Created{ get; set; }
         [Required]
-        public string Description { get; set; }
-        [Required]
-        public DateTime Date { get; set; }
+        public bool IsActive { get; set; }
         #region Navigation
         public string UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+        public int BookId { get; set; }
+        public Book Book{ get; set; }
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
         #endregion
 
     }

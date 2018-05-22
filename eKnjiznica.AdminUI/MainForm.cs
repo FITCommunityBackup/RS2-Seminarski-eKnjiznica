@@ -1,6 +1,7 @@
 ﻿using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.AdminUI.Services.User;
 using eKnjiznica.AdminUI.UI.Administrators;
+using eKnjiznica.AdminUI.UI.Categories;
 using eKnjiznica.AdminUI.UI.Logs;
 using MaterialSkin.Controls;
 using System;
@@ -63,7 +64,19 @@ namespace eKnjiznica.AdminUI
 
         private void logoviToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (currentForm != null)
+                currentForm.Close();
             currentForm = unityContainer.Resolve<LogsForm>();
+            currentForm.MdiParent = this;
+            currentForm.Show();
+        }
+
+        private void kategorijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            if (currentForm != null)
+                currentForm.Close();
+            currentForm = unityContainer.Resolve<CategoriesForm>();
             currentForm.MdiParent = this;
             currentForm.Show();
         }

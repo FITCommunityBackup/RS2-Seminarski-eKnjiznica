@@ -8,21 +8,26 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Unity;
 
 namespace eKnjiznica.AdminUI.Services.API
 {
     public class TokenHandler : DelegatingHandler
     {
+        public IUnityContainer Container { get; set; }
         public string RefreshTokenUri { get; set; }
+
         protected async override Task<HttpResponseMessage> SendAsync(
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            // Create the response.
-            string tokenType = Properties.Settings.Default.TokenType;
-            string token= Properties.Settings.Default.Token;
 
+            string tokenType = Properties.Settings.Default.TokenType;
+            string token = Properties.Settings.Default.Token;
             request.AppendToken(token, tokenType);
             var response = await base.SendAsync(request, cancellationToken);
+
+
 
             if (!response.IsSuccessStatusCode && response.StatusCode == HttpStatusCode.Unauthorized)
             {
@@ -30,10 +35,20 @@ namespace eKnjiznica.AdminUI.Services.API
                 AuthenticationResponseVM refreshTokenResponse = await MakeRefreshTokenRequest(cancellationToken);
 
                 if (refreshTokenResponse == null)
-                    throw new ApiUnauthorizedException();
+                {
+                    var form = Container.Resolve<LoginForm>();
+                    if (form.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    {
+                        Properties.Settings.Default.RefreshToken = "";
+                        Properties.Settings.Default.Token = "";
+                        Properties.Settings.Default.TokenType = "";
+                        Properties.Settings.Default.Save();
+                        Application.Exit();
+                    }
+                    return response;
+                }
                 SaveNewAuthorizationData(refreshTokenResponse);
                 request.AppendToken(refreshTokenResponse.AccessToken, refreshTokenResponse.TokenType);
-
                 response = await base.SendAsync(request, cancellationToken);
             }
 
@@ -53,20 +68,22 @@ namespace eKnjiznica.AdminUI.Services.API
         {
             string refresh_token = Properties.Settings.Default.RefreshToken;
 
-            var dict = new Dictionary<string,string>();
-            dict.Add("refresh_token", refresh_token);
-            dict.Add("grant_type", "refresh_token");
+            var dict = new Dictionary<string, string>
+            {
+                { "refresh_token", refresh_token },
+                { "grant_type", "refresh_token" }
+            };
             var refreshTokenRequest = new HttpRequestMessage(HttpMethod.Post, RefreshTokenUri) { Content = new FormUrlEncodedContent(dict) };
-            var response = await base.SendAsync(refreshTokenRequest, cancellationToken);
+            var response = await  base.SendAsync(refreshTokenRequest, cancellationToken);
 
             if (!response.IsSuccessStatusCode)
                 return null;
 
-            return await response.Content.ReadAsAsync<AuthenticationResponseVM>();
+            return  response.Content.ReadAsAsync<AuthenticationResponseVM>().Result;
         }
 
 
-       
+
 
     }
     public static class TokenRequestExtensions

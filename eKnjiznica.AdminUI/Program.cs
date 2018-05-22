@@ -2,6 +2,7 @@
 using eKnjiznica.AdminUI.Services.ErrorHandling;
 using eKnjiznica.AdminUI.Services.User;
 using eKnjiznica.AdminUI.UI.Administrators;
+using eKnjiznica.AdminUI.UI.Categories;
 using eKnjiznica.AdminUI.UI.Logs;
 using System;
 using System.Collections.Generic;
@@ -25,16 +26,13 @@ namespace eKnjiznica.AdminUI
         {
 
             IUnityContainer container = new UnityContainer();
-            container.RegisterType<HttpClient>(new InjectionFactory(x => getHttpClient()));
-
-            container.RegisterType<IApiClient, EKnjiznicaApiClient>();
-
-            var r = container.Resolve<IApiClient>();
-            container.RegisterType<ErrorHandlingUtil>();
-
+            container.RegisterType<HttpClient>(new ContainerControlledLifetimeManager(),new InjectionFactory(x => getHttpClient(container)));
+            container.RegisterType<IApiClient, EKnjiznicaApiClient>(new ContainerControlledLifetimeManager());
+            
+            container.RegisterType<ErrorHandlingUtil>(new ContainerControlledLifetimeManager());
             container.RegisterType<IUserService, UserService>(new ContainerControlledLifetimeManager());
 
-
+            container.RegisterType<CategoriesForm>();
             container.RegisterType<LogsForm>();
             container.RegisterType<AdministratorAddForm>();
             container.RegisterType<AdministratorsForm>();
@@ -43,27 +41,14 @@ namespace eKnjiznica.AdminUI
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            try
-            {
-                Application.Run(container.Resolve<MainForm>());
-            }
-            catch (ApiUnauthorizedException unathorizedException)
-            {
-                Properties.Settings.Default.RefreshToken = "";
-                Properties.Settings.Default.Token="";
-                Properties.Settings.Default.TokenType="";
-                Properties.Settings.Default.Save();
+            Application.Run(container.Resolve<MainForm>());
 
-                Application.Exit();
-                Application.Run(container.Resolve<MainForm>());
-
-            }
         }
 
-        private static HttpClient getHttpClient()
+        private static HttpClient getHttpClient(IUnityContainer container)
         {
             var url = ConfigurationManager.AppSettings["ApiUrl"];
-            var client = HttpClientFactory.Create(new TokenHandler { RefreshTokenUri =url+"token" });
+            var client = HttpClientFactory.Create(new TokenHandler() { RefreshTokenUri = url + "token", Container = container });
             client.BaseAddress = new Uri(url);
             string token = Properties.Settings.Default.Token;
             string tokenType = Properties.Settings.Default.TokenType;

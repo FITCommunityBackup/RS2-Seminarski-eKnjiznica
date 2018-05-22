@@ -5,21 +5,28 @@ using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using eKnjiznica.AdminUI.model;
 using eKnjiznica.Commons.ViewModels;
+using eKnjiznica.Commons.ViewModels.Category;
 
 namespace eKnjiznica.AdminUI.Services.API
 {
     public class EKnjiznicaApiClient : IApiClient
     {
-        HttpClient httpClient;
+        private HttpClient httpClient;
 
         public EKnjiznicaApiClient(HttpClient httpClient)
         {
             this.httpClient = httpClient;
         }
 
+        public Task<HttpResponseMessage> GetCategories(string categoryNameFilter, bool includeInactiveCategories)
+        {
+                return Get($"api/categories?nameFilter={categoryNameFilter}&includeInactive={includeInactiveCategories}");
+        }
+
+
         public Task<HttpResponseMessage> CreateAdminAccount(AdminAddVM adminAdd)
         {
-            return Post<AdminAddVM>(adminAdd, "api/admin");
+            return Post(adminAdd, "api/admin");
         }
 
         public Task<HttpResponseMessage> LoadAminAccounts(string usernameFilter)
@@ -29,20 +36,21 @@ namespace eKnjiznica.AdminUI.Services.API
             return Get($"api/admin?username={usernameFilter}");
         }
 
-        public async Task<HttpResponseMessage> LoginUser(LoginVM loginVM)
+        public Task<HttpResponseMessage> LoginUser(LoginVM loginVM)
         {
-            var dict = new Dictionary<string, string>();
-
-            dict.Add("username", loginVM.Username);
-            dict.Add("password", loginVM.Password);
-            dict.Add("grant_type", "password");
+            var dict = new Dictionary<string, string>
+            {
+                { "username", loginVM.Username },
+                { "password", loginVM.Password },
+                { "grant_type", "password" }
+            };
             var req = new HttpRequestMessage(HttpMethod.Post, "token") { Content = new FormUrlEncodedContent(dict) };
-            return await httpClient.SendAsync(req);
+            return httpClient.SendAsync(req);
         }
 
         public Task<HttpResponseMessage> UpdateAdminAccount(AdminUpdateVM adminUpdateVM)
         {
-            return Patch<AdminUpdateVM>(adminUpdateVM, "api/admin");
+            return Patch(adminUpdateVM, "api/admin");
         }
 
         public Task<HttpResponseMessage> GetAuditLogs()
@@ -53,7 +61,7 @@ namespace eKnjiznica.AdminUI.Services.API
 
         #region Private
 
-        public  Task<HttpResponseMessage> Patch<T>(T value, string requestUri)
+        public Task<HttpResponseMessage> Patch<T>(T value, string requestUri)
         {
 
             var content = new ObjectContent<T>(value, new JsonMediaTypeFormatter());
@@ -67,17 +75,17 @@ namespace eKnjiznica.AdminUI.Services.API
             return httpClient.GetAsync(path);
         }
 
-        private Task<HttpResponseMessage> Post<T>(T body, string path)
+        private  Task<HttpResponseMessage> Post<T>(T body, string path)
         {
-            return httpClient.PostAsJsonAsync(path, body);
+            return  httpClient.PostAsJsonAsync(path, body);
         }
 
-        private Task<HttpResponseMessage> Put<T>(T body, string path)
+        private  Task<HttpResponseMessage> Put<T>(T body, string path)
         {
-            return httpClient.PutAsJsonAsync(path, body);
+            return  httpClient.PutAsJsonAsync(path, body);
         }
 
-     
+
         #endregion
 
     }

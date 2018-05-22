@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +53,9 @@
     <Compile Include="ViewModels\AdministratorProfileVM.cs" />
     <Compile Include="ViewModels\AuthenticationResponseVM.cs" />
     <Compile Include="ViewModels\AdminUpdateVM.cs" />
+    <Compile Include="ViewModels\Category\CategoryAddVm.cs" />
+    <Compile Include="ViewModels\Category\CategoryUpdateVm.cs" />
+    <Compile Include="ViewModels\Category\CategoryVM.cs" />
     <Compile Include="ViewModels\Error\LoginErrorVM.cs" />
     <Compile Include="ViewModels\LogsVM.cs" />
   </ItemGroup>

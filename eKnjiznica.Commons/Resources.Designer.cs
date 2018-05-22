@@ -79,6 +79,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kategorija s tim imenom već postoji..
+        /// </summary>
+        public static string CATEGORY_WITH_THAT_NAME_EXISTS {
+            get {
+                return ResourceManager.GetString("CATEGORY_WITH_THAT_NAME_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unesite pravilan email.
         /// </summary>
         public static string ERR_FIELD_EMAIL_INVALID {

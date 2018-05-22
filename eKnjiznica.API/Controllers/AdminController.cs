@@ -29,7 +29,6 @@ namespace eKnjiznica.API.Controllers
 
         [HttpGet]
         [Route("")]
-        [AllowAnonymous]
         public IHttpActionResult GetAdminAccounts(string username=null)
         {
             var result = adminService.GetAdminAccountList(username)

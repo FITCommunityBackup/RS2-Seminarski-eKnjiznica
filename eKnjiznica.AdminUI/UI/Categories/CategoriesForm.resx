@@ -117,40 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ACCOUNT_NOT_ACTIVE" xml:space="preserve">
-    <value>Korisnički račun je deaktiviran</value>
-  </data>
-  <data name="ACCOUNT_WITH_USERNAME_EXISTS" xml:space="preserve">
-    <value>Korisničko ime je zauzeto</value>
-  </data>
-  <data name="CATEGORY_WITH_THAT_NAME_EXISTS" xml:space="preserve">
-    <value>Kategorija s tim imenom već postoji.</value>
-  </data>
-  <data name="ERR_FIELD_EMAIL_INVALID" xml:space="preserve">
-    <value>Unesite pravilan email</value>
-  </data>
-  <data name="ERR_FIELD_PASSWORD_INVALID" xml:space="preserve">
-    <value>Lozinka se mora sastojati od najmanje 6 karaktera uključujući mala, velika slova i brojeve.</value>
-  </data>
-  <data name="ERR_FIELD_PHONE_INVALID" xml:space="preserve">
-    <value>Unesite ispravan broj telefona</value>
-  </data>
-  <data name="ERR_FIELD_USERNAME_INVALID" xml:space="preserve">
-    <value>Korisničko ime mora biti duže od 5 karaktera</value>
-  </data>
-  <data name="ERR_FIRST_NAME_REQUIRED" xml:space="preserve">
-    <value>Ime je obavezno polje.</value>
-  </data>
-  <data name="ERR_LAST_NAME_REQUIRED" xml:space="preserve">
-    <value>Prezime je obavezno polje.</value>
-  </data>
-  <data name="PLEASE_SELECT_USER" xml:space="preserve">
-    <value>Molimo odaberite korisnika</value>
-  </data>
-  <data name="UNEXPECTED_ERROR_OCURRED" xml:space="preserve">
-    <value>Došlo je do neočekivane greške.</value>
-  </data>
-  <data name="USERNAME_OR_PASSWORD_INCORRENT" xml:space="preserve">
-    <value>Pristupni podaci nisu ispravni</value>
-  </data>
+  <metadata name="Id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="CategoryName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="NumberOfBooks.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Aktivna.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
 </root>

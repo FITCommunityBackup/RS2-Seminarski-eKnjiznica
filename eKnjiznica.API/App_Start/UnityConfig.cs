@@ -1,5 +1,6 @@
 using eKnjiznica.CORE.Repository;
 using eKnjiznica.CORE.Services.Admin;
+using eKnjiznica.CORE.Services.Categories;
 using eKnjiznica.CORE.Services.Logger;
 using eKnjiznica.CORE.Services.Roles;
 using eKnjiznica.DAL;
@@ -66,6 +67,8 @@ namespace eKnjiznica.API
             container.RegisterType<IAdminRepo, AdminRepo>();
             container.RegisterType<IAdminService, AdminService>();
 
+            container.RegisterType<ICategoriesRepo,CategoriesRepo>();
+            container.RegisterType<ICategoriesService, CategoriesService>();
 
             container.RegisterType<IUserStore<ApplicationUser>,
                 UserStore<ApplicationUser>>();
