@@ -57,6 +57,27 @@ namespace eKnjiznica.AdminUI.Services.API
         {
             return Get("api/admin/logs");
         }
+        public Task<HttpResponseMessage> CreateCategory(CategoryAddVM model)
+        {
+            return Post(model,"api/categories");
+        }
+        public Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id)
+        {
+            return Put(categoryUpdateVm,$"api/categories/{id}");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         #region Private
@@ -84,6 +105,8 @@ namespace eKnjiznica.AdminUI.Services.API
         {
             return  httpClient.PutAsJsonAsync(path, body);
         }
+
+    
 
 
         #endregion

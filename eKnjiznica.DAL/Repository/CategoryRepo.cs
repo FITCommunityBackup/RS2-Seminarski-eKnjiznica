@@ -67,5 +67,15 @@ namespace eKnjiznica.DAL.Repository
                  NumberOfBooks = x.Books.Count()
              }).FirstOrDefault();
         }
+
+
+        public void UpdateCategory(CategoryVM category)
+        {
+            var result = context.Categories.Where(x => x.Id == category.Id).First();
+            result.CategoryName = category.CategoryName;
+            result.IsActive= category.IsActive;
+            context.SaveChanges();
+        }
+
     }
 }

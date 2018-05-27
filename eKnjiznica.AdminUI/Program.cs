@@ -32,6 +32,9 @@ namespace eKnjiznica.AdminUI
             container.RegisterType<ErrorHandlingUtil>(new ContainerControlledLifetimeManager());
             container.RegisterType<IUserService, UserService>(new ContainerControlledLifetimeManager());
 
+
+            container.RegisterType<CategoriesEditForm>();
+            container.RegisterType<CategoriesAddForm>();
             container.RegisterType<CategoriesForm>();
             container.RegisterType<LogsForm>();
             container.RegisterType<AdministratorAddForm>();

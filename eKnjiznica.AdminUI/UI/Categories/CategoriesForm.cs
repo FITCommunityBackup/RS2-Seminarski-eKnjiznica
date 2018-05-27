@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace eKnjiznica.AdminUI.UI.Categories
 {
@@ -17,9 +18,11 @@ namespace eKnjiznica.AdminUI.UI.Categories
     {
         private IApiClient apiClient;
         private IList<CategoryVM> categories;
-        public CategoriesForm(IApiClient apiClient)
+        private IUnityContainer unityContainer;
+        public CategoriesForm(IApiClient apiClient,IUnityContainer unityContainer)
         {
             this.apiClient = apiClient;
+            this.unityContainer = unityContainer;
             InitializeComponent();
         }
 
@@ -38,6 +41,7 @@ namespace eKnjiznica.AdminUI.UI.Categories
                 this.categories = re;
                 gvCategories.DataSource = re;
             }
+           
         }
 
         private async void btnFilter_Click(object sender, EventArgs e)
@@ -45,14 +49,27 @@ namespace eKnjiznica.AdminUI.UI.Categories
             await BindCategories();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private async void btnAdd_Click(object sender, EventArgs e)
         {
-
+            var form = this.unityContainer.Resolve<CategoriesAddForm>();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                await BindCategories();
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
+            if (categories== null || gvCategories.CurrentCell == null)
+                return;
+            var selectedRow = gvCategories.CurrentCell.RowIndex;
 
+            var form = unityContainer.Resolve<CategoriesEditForm>();
+            form.Category = categories[selectedRow];
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                await BindCategories();
+            }
         }
     }
 }

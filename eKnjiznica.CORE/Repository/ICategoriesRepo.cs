@@ -12,5 +12,6 @@ namespace eKnjiznica.CORE.Repository
         CategoryVM GetCategory(int id);
         CategoryVM GetCategoryByName(string categoryName);
         void CreateCategory(CategoryAddVM model, string userId);
+        void UpdateCategory(CategoryVM result);
     }
 }

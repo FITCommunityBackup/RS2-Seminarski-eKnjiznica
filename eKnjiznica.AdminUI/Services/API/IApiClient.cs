@@ -1,5 +1,6 @@
 ﻿using eKnjiznica.AdminUI.model;
 using eKnjiznica.Commons.ViewModels;
+using eKnjiznica.Commons.ViewModels.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> UpdateAdminAccount(AdminUpdateVM adminUpdateVM);
         Task<HttpResponseMessage> GetAuditLogs();
         Task<HttpResponseMessage> GetCategories(string categoryNameFilter,bool includeInactiveCategories);
-        Task<HttpResponseMessage> CreateCategory(string v);
+        Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
+        Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
     }
 }

@@ -22,6 +22,8 @@ namespace eKnjiznica.AdminUI.UI.Administrators
             this.apiClient = apiClient;
             this.AutoValidate = AutoValidate.Disable;
             this.myRegex = myRegex;
+
+            this.AutoValidate = AutoValidate.EnablePreventFocusChange;
             InitializeComponent();
 
         }

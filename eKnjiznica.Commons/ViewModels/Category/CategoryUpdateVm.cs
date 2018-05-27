@@ -13,7 +13,8 @@ namespace eKnjiznica.Commons.ViewModels.Category
     public class CategoryUpdateVm
     {
         [DataMember]
-        [Required]
         public string CategoryName { get; set; }
+        [DataMember]
+        public bool? IsActive{ get; set; }
     }
 }

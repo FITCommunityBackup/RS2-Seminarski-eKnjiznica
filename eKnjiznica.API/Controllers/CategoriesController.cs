@@ -47,13 +47,37 @@ namespace eKnjiznica.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var result = categoriesService.GetCategoryByName(model);
+            var result = categoriesService.GetCategoryByName(model.CategoryName);
             if (result != null)
             {
                 ModelState.AddModelError("create_category", Commons.Resources.CATEGORY_WITH_THAT_NAME_EXISTS);
                 return BadRequest(ModelState);
             }
             categoriesService.CreateCategory(model, GetUserId());
+            return Ok();
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IHttpActionResult UpdateCategory([FromBody] CategoryUpdateVm model,[FromUri] int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var result = categoriesService.GetCategoryById(id);
+            if (result == null)
+            {
+                ModelState.AddModelError("update_category", Commons.Resources.CATEGORY_DOES_NOT_EXIST);
+                return BadRequest(ModelState);
+            }
+           
+            if (!string.IsNullOrEmpty(model.CategoryName) && categoriesService.GetCategoryByName(model.CategoryName)!=null)
+            {
+                ModelState.AddModelError("update_category", Commons.Resources.CATEGORY_WITH_THAT_NAME_EXISTS);
+                return BadRequest(ModelState);
+            }
+
+            categoriesService.UpdateCategory(model,id);
             return Ok();
         }
     }

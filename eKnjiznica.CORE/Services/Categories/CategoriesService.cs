@@ -33,10 +33,18 @@ namespace eKnjiznica.CORE.Services.Categories
             return categoriesRepo.GetCategory(id);
         }
 
-        public CategoryVM GetCategoryByName(CategoryAddVM model)
+        public CategoryVM GetCategoryByName(string categoryName)
         {
-            return categoriesRepo.GetCategoryByName(model.CategoryName);
+            return categoriesRepo.GetCategoryByName(categoryName);
 
+        }
+
+        public void UpdateCategory(CategoryUpdateVm model, int id)
+        {
+            var result = categoriesRepo.GetCategory(id);
+            result.CategoryName = model.CategoryName ?? result.CategoryName;
+            result.IsActive= model.IsActive.HasValue?model.IsActive.Value:result.IsActive;
+            categoriesRepo.UpdateCategory(result);
         }
     }
 }

@@ -10,8 +10,29 @@ namespace eKnjiznica.AdminUI.Services.ErrorHandling
 {
     public class ErrorHandlingUtil
     {
-        public string GetErrorMessage(HttpResponseMessage httpResponseMessage)
+        public async Task<string> GetErrorMessageAsync(HttpResponseMessage httpResponseMessage,string key)
         {
+            try
+            {
+                BaseErrorVM baseError = await 
+                    httpResponseMessage.Content.ReadAsAsync<BaseErrorVM>();
+                if (baseError == null)
+                    return Commons.Resources.UNEXPECTED_ERROR_OCURRED;
+
+                var modelState = baseError.ModelState;
+                if (modelState== null)
+                    return Commons.Resources.UNEXPECTED_ERROR_OCURRED;
+
+
+                if (!modelState.ContainsKey(key) ||modelState[key].Count==0)
+                    return Commons.Resources.UNEXPECTED_ERROR_OCURRED;
+
+                return modelState[key][0];
+            }
+            catch(Exception e)
+            {
+
+            }
             return Commons.Resources.UNEXPECTED_ERROR_OCURRED; ;
         }
 

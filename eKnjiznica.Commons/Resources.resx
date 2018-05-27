@@ -123,8 +123,14 @@
   <data name="ACCOUNT_WITH_USERNAME_EXISTS" xml:space="preserve">
     <value>Korisničko ime je zauzeto</value>
   </data>
+  <data name="CATEGORY_DOES_NOT_EXIST" xml:space="preserve">
+    <value>Kategorija ne postoji</value>
+  </data>
   <data name="CATEGORY_WITH_THAT_NAME_EXISTS" xml:space="preserve">
     <value>Kategorija s tim imenom već postoji.</value>
+  </data>
+  <data name="ENTER_VALID_CATEGORY_NAME" xml:space="preserve">
+    <value>Unesite ispravan naziv kategorije</value>
   </data>
   <data name="ERR_FIELD_EMAIL_INVALID" xml:space="preserve">
     <value>Unesite pravilan email</value>
