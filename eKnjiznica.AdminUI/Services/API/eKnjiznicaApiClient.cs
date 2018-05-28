@@ -106,7 +106,12 @@ namespace eKnjiznica.AdminUI.Services.API
             return  httpClient.PutAsJsonAsync(path, body);
         }
 
-    
+        public Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName)
+        {
+            return Get($"api/books?title={bookTitle}&author={authorName}");
+        }
+
+
 
 
         #endregion

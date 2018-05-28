@@ -97,6 +97,7 @@
     <Compile Include="Model\UserAudit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminRepo.cs" />
+    <Compile Include="Repository\BookRepo.cs" />
     <Compile Include="Repository\CategoryRepo.cs" />
     <Compile Include="Repository\LoggerRepo.cs" />
     <Compile Include="Repository\RoleRepo.cs" />

@@ -1,6 +1,7 @@
 ﻿using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.AdminUI.Services.User;
 using eKnjiznica.AdminUI.UI.Administrators;
+using eKnjiznica.AdminUI.UI.Books;
 using eKnjiznica.AdminUI.UI.Categories;
 using eKnjiznica.AdminUI.UI.Logs;
 using MaterialSkin.Controls;
@@ -42,11 +43,6 @@ namespace eKnjiznica.AdminUI
             }
         }
 
-        private void administratoriToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void odjaviSeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             userService.LogoutUser();
@@ -77,6 +73,15 @@ namespace eKnjiznica.AdminUI
             if (currentForm != null)
                 currentForm.Close();
             currentForm = unityContainer.Resolve<CategoriesForm>();
+            currentForm.MdiParent = this;
+            currentForm.Show();
+        }
+
+        private void pregledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentForm != null)
+                currentForm.Close();
+            currentForm = unityContainer.Resolve<BooksForm>();
             currentForm.MdiParent = this;
             currentForm.Show();
         }

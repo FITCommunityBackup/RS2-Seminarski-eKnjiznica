@@ -130,6 +130,12 @@
     <Compile Include="Services\ErrorHandling\ErrorHandlingUtil.cs" />
     <Compile Include="Services\User\IUserService.cs" />
     <Compile Include="Services\User\UserService.cs" />
+    <Compile Include="UI\Books\BooksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Books\BooksForm.Designer.cs">
+      <DependentUpon>BooksForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Categories\CategoriesAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Books\BooksForm.resx">
+      <DependentUpon>BooksForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Categories\CategoriesAddForm.resx">
       <DependentUpon>CategoriesAddForm.cs</DependentUpon>
     </EmbeddedResource>
