@@ -56,10 +56,6 @@ namespace eKnjiznica.AdminUI.UI.Administrators
             }
         }
 
-        private void AdministratorAddForm_Load(object sender, EventArgs e)
-        {
-
-        }
 
         #region Validation
         private void inputName_Validating(object sender, CancelEventArgs e)

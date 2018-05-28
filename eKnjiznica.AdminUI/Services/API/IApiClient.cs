@@ -1,5 +1,6 @@
 ﻿using eKnjiznica.AdminUI.model;
 using eKnjiznica.Commons.ViewModels;
+using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
         Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
         Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName);
+        Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM);
+        Task<HttpResponseMessage> UpdateBook(UpdateBookVM updateBook, int bookId);
     }
 }

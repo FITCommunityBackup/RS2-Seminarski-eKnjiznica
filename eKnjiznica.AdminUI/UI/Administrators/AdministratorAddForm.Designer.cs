@@ -199,7 +199,6 @@
             this.Controls.Add(this.label1);
             this.Name = "AdministratorAddForm";
             this.Text = "AdministratorAddForm";
-            this.Load += new System.EventHandler(this.AdministratorAddForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

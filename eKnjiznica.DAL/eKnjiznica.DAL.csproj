@@ -89,6 +89,10 @@
     <Compile Include="Migrations\201805220921549_BooksAndCategories.Designer.cs">
       <DependentUpon>201805220921549_BooksAndCategories.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805281342531_Books.cs" />
+    <Compile Include="Migrations\201805281342531_Books.Designer.cs">
+      <DependentUpon>201805281342531_Books.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Book.cs" />
@@ -111,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805220921549_BooksAndCategories.resx">
       <DependentUpon>201805220921549_BooksAndCategories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805281342531_Books.resx">
+      <DependentUpon>201805281342531_Books.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

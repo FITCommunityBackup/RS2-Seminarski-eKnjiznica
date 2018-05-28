@@ -96,6 +96,7 @@
             this.btnDetails.TabIndex = 11;
             this.btnDetails.Text = "Detalji";
             this.btnDetails.UseVisualStyleBackColor = true;
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
             // 
             // button2
             // 
@@ -105,6 +106,7 @@
             this.button2.TabIndex = 10;
             this.button2.Text = "Dodaj";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // inputAuthorName
             // 

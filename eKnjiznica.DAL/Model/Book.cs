@@ -16,7 +16,6 @@ namespace eKnjiznica.DAL.Model
         public string Description { get; set; }
         [Required]
         public DateTime ReleaseDate { get; set; }
-        [Required]
         public string FileLocation{ get; set; }
         [Required]
         public string Autor { get; set; }

@@ -17,9 +17,21 @@ namespace eKnjiznica.CORE.Services.Books
             this.bookRepo = bookRepo;
         }
 
+        public void CreateBook(CreateBookVM model, string userId)
+        {
+            bookRepo.CreateBook(model, userId);
+        }
+
         public List<BooksVM> GetBooks(string title, string author)
         {
            return bookRepo.GetBooks(title, author);
+        }
+
+        public void UpdateBook(UpdateBookVM model, int id,string userId)
+        {
+
+            bookRepo.UpdateBook(model, id);
+            bookRepo.UpdateBookCategories(model, id,userId);
         }
     }
 }

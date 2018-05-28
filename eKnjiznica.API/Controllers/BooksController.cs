@@ -1,4 +1,5 @@
-﻿using eKnjiznica.CORE.Services.Books;
+﻿using eKnjiznica.Commons.ViewModels.Books;
+using eKnjiznica.CORE.Services.Books;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,31 @@ namespace eKnjiznica.API.Controllers
             var result = bookService.GetBooks(title, author);
             return Ok(result);
         }
+
+     
+        [HttpPost]
+        [Route("")]
+        public IHttpActionResult CreateBook([FromBody] CreateBookVM model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            bookService.CreateBook(model, GetUserId());
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("{id}")]
+        public IHttpActionResult UpdateBook([FromBody] UpdateBookVM model, [FromUri] int id)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            bookService.UpdateBook(model, id, GetUserId());
+            return Ok();
+        }
+
+
 
     }
 }

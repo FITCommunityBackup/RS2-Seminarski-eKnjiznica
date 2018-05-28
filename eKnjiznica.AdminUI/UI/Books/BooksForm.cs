@@ -10,6 +10,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace eKnjiznica.AdminUI.UI.Books
 {
@@ -17,10 +18,12 @@ namespace eKnjiznica.AdminUI.UI.Books
     {
         private IApiClient apiClient;
         private IList<BooksVM> Books;
-        public BooksForm(IApiClient apiClient)
+        private IUnityContainer UnityContainer;
+        public BooksForm(IApiClient apiClient,IUnityContainer unityContainer)
         {
             this.apiClient = apiClient;
-         
+            this.UnityContainer = unityContainer;
+
             InitializeComponent();
             gvBooks.AutoGenerateColumns = false;
             gvBooks.AutoSize = true;
@@ -50,5 +53,28 @@ namespace eKnjiznica.AdminUI.UI.Books
             }
         }
 
+        private async void button2_Click(object sender, EventArgs e)
+        {
+            var form = UnityContainer.Resolve<BooksEditForm>();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                await BindData();
+            }
+        }
+
+        private async void btnDetails_Click(object sender, EventArgs e)
+        {
+            if (Books == null || gvBooks.CurrentCell == null)
+                return;
+            var selectedRow = gvBooks.CurrentCell.RowIndex;
+
+            var form = UnityContainer.Resolve<BooksEditForm>();
+            form.Book = Books[selectedRow];
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                await BindData();
+            }
+
+        }
     }
 }

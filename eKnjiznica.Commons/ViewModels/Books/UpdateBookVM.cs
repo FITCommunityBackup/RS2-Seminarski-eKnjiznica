@@ -1,6 +1,6 @@
-﻿using eKnjiznica.Commons.ViewModels.Category;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -9,23 +9,23 @@ using System.Threading.Tasks;
 namespace eKnjiznica.Commons.ViewModels.Books
 {
     [DataContract]
-    public class BooksVM
+    public class UpdateBookVM
     {
-        [DataMember]
-        public int Id { get; set; }
-        [DataMember]
-        public List<CategoryVM> Categories{ get; set; }
         [DataMember]
         public string BookTitle { get; set; }
         [DataMember]
-        public string Description { get; set; }
-        [DataMember]
         public string AuthorName { get; set; }
         [DataMember]
-        public bool IsActive { get; set; }
+        public string BookDescription { get; set; }
         [DataMember]
-        public DateTime ReleaseDate { get; set; }
+        [Required]
+        public List<int> CategoriesId { get; set; }
 
-
+        [DataMember]
+        [Required]
+        public DateTime? ReleaseDate { get; set; }
+        [DataMember]
+        [Required]
+        public bool IsActive { get; set; }
     }
 }

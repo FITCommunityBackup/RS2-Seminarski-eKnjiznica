@@ -5,6 +5,7 @@ using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using eKnjiznica.AdminUI.model;
 using eKnjiznica.Commons.ViewModels;
+using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
 
 namespace eKnjiznica.AdminUI.Services.API
@@ -68,6 +69,15 @@ namespace eKnjiznica.AdminUI.Services.API
         }
 
 
+        public Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM)
+        {
+            return Post(createBookVM,"api/books");
+        }
+
+        public Task<HttpResponseMessage> UpdateBook(UpdateBookVM updateBook, int id)
+        {
+            return Post(updateBook, $"api/books/{id}");
+        }
 
 
 
@@ -110,7 +120,6 @@ namespace eKnjiznica.AdminUI.Services.API
         {
             return Get($"api/books?title={bookTitle}&author={authorName}");
         }
-
 
 
 

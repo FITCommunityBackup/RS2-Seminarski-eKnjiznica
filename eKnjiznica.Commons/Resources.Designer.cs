@@ -106,6 +106,24 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upišite ispravno ime za autora.
+        /// </summary>
+        public static string ERR_AUTHOR_NAME_REQUIRED {
+            get {
+                return ResourceManager.GetString("ERR_AUTHOR_NAME_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upišite ispravno ime za knjigu.
+        /// </summary>
+        public static string ERR_BOOK_NAME_REQUIRED {
+            get {
+                return ResourceManager.GetString("ERR_BOOK_NAME_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unesite pravilan email.
         /// </summary>
         public static string ERR_FIELD_EMAIL_INVALID {
@@ -156,6 +174,33 @@ namespace eKnjiznica.Commons {
         public static string ERR_LAST_NAME_REQUIRED {
             get {
                 return ResourceManager.GetString("ERR_LAST_NAME_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odaberite barem jednu kategoriju.
+        /// </summary>
+        public static string ERR_SELECT_ONE_CATEGORY {
+            get {
+                return ResourceManager.GetString("ERR_SELECT_ONE_CATEGORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dodaj.
+        /// </summary>
+        public static string LABEL_ADD {
+            get {
+                return ResourceManager.GetString("LABEL_ADD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Promijeni.
+        /// </summary>
+        public static string LABEL_UPDATE {
+            get {
+                return ResourceManager.GetString("LABEL_UPDATE", resourceCulture);
             }
         }
         

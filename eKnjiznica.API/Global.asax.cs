@@ -18,6 +18,13 @@ namespace eKnjiznica.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            
+        }
+        public void Application_Error(object sender, EventArgs args)
+        {
+            var exception = Server.GetLastError();
+            Exception e = exception;
         }
     }
 }

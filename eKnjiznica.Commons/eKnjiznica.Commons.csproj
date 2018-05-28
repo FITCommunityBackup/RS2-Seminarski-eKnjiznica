@@ -54,6 +54,8 @@
     <Compile Include="ViewModels\AuthenticationResponseVM.cs" />
     <Compile Include="ViewModels\AdminUpdateVM.cs" />
     <Compile Include="ViewModels\Books\BooksVM.cs" />
+    <Compile Include="ViewModels\Books\CreateBookVM.cs" />
+    <Compile Include="ViewModels\Books\UpdateBookVM.cs" />
     <Compile Include="ViewModels\Category\CategoryAddVm.cs" />
     <Compile Include="ViewModels\Category\CategoryUpdateVm.cs" />
     <Compile Include="ViewModels\Category\CategoryVM.cs" />
