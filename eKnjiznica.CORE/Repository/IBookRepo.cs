@@ -14,5 +14,7 @@ namespace eKnjiznica.CORE.Repository
         void UpdateBookCategories(UpdateBookVM model, int id,string userId);
 
         void CreateBook(CreateBookVM model, string userId);
+        BooksVM GetBookById(int bookId);
+        void SaveFilePath(BooksVM book, object relativePath);
     }
 }

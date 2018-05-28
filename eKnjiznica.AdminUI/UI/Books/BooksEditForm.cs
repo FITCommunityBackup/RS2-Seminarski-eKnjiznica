@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -19,7 +20,7 @@ namespace eKnjiznica.AdminUI.UI.Books
 
         public BooksVM Book { get; set; }
         public List<CategoryVM> Categories { get; set; }
-
+        public byte[] bookFile;
         private IApiClient ApiClient;
 
         public BooksEditForm(IApiClient apiClient)
@@ -146,11 +147,15 @@ namespace eKnjiznica.AdminUI.UI.Books
                 }, Book.Id);
             }
 
-            if (result.IsSuccessStatusCode)
+            if (!result.IsSuccessStatusCode)
             {
-                DialogResult = DialogResult.OK;
-                this.Close();
+                return;
             }
+            ApiClient.UploadFile(bookFile,)
+            
+            DialogResult = DialogResult.OK;
+            this.Close();
+
         }
 
         private List<int> GetSelectedCategories()
@@ -162,6 +167,23 @@ namespace eKnjiznica.AdminUI.UI.Books
                     categoriesId.Add(Categories[indexChecked].Id);
             }
             return categoriesId;
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "*.pdf"; // file types, that will be allowed to upload
+            dialog.Multiselect = false; // allow/deny user to upload more than one file at a time
+            if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
+            {
+                String path = dialog.FileName; // get name of file
+                bookFile = File.ReadAllBytes(path);
+            }
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

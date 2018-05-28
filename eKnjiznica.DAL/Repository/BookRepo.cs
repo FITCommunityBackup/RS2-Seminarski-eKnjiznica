@@ -49,6 +49,11 @@ namespace eKnjiznica.DAL.Repository
 
         }
 
+        public BooksVM GetBookById(int bookId)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<BooksVM> GetBooks(string title, string authorName)
         {
             return context
@@ -70,6 +75,13 @@ namespace eKnjiznica.DAL.Repository
                      ReleaseDate = x.ReleaseDate
 
                  }).ToList();
+        }
+
+        public void SaveFilePath(BooksVM book, string relativePath)
+        {
+            var result =context.Books.FirstOrDefault(x => x.Id == book.Id);
+            result.FileLocation = relativePath;
+            context.SaveChanges();
         }
 
         public void UpdateBook(UpdateBookVM model, int id)
