@@ -105,6 +105,10 @@
     <Compile Include="Migrations\201805291012005_BookOfferPriceDataType.Designer.cs">
       <DependentUpon>201805291012005_BookOfferPriceDataType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805291125128_UserFinancialAccount.cs" />
+    <Compile Include="Migrations\201805291125128_UserFinancialAccount.Designer.cs">
+      <DependentUpon>201805291125128_UserFinancialAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Book.cs" />
@@ -112,6 +116,7 @@
     <Compile Include="Model\BookOffer.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\UserAudit.cs" />
+    <Compile Include="Model\UserFinancialAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminRepo.cs" />
     <Compile Include="Repository\BookRepo.cs" />
@@ -140,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805291012005_BookOfferPriceDataType.resx">
       <DependentUpon>201805291012005_BookOfferPriceDataType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291125128_UserFinancialAccount.resx">
+      <DependentUpon>201805291125128_UserFinancialAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

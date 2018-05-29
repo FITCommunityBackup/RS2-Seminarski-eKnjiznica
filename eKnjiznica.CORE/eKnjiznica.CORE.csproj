@@ -56,6 +56,8 @@
     <Compile Include="Services\Books\IBookService.cs" />
     <Compile Include="Services\Categories\CategoriesService.cs" />
     <Compile Include="Services\Categories\ICategoriesService.cs" />
+    <Compile Include="Services\Clients\ClientService.cs" />
+    <Compile Include="Services\Clients\IClientService.cs" />
     <Compile Include="Services\Documents\DocumentService.cs" />
     <Compile Include="Services\Documents\IDocumentService.cs" />
     <Compile Include="Services\Logger\LoggerService.cs" />

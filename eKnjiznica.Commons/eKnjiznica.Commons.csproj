@@ -62,6 +62,8 @@
     <Compile Include="ViewModels\Category\CategoryAddVm.cs" />
     <Compile Include="ViewModels\Category\CategoryUpdateVm.cs" />
     <Compile Include="ViewModels\Category\CategoryVM.cs" />
+    <Compile Include="ViewModels\Clients\ClientAddVM.cs" />
+    <Compile Include="ViewModels\Clients\ClientVM.cs" />
     <Compile Include="ViewModels\Error\BaseErrorVM.cs" />
     <Compile Include="ViewModels\Error\LoginErrorVM.cs" />
     <Compile Include="ViewModels\LogsVM.cs" />

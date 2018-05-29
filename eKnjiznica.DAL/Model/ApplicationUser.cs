@@ -19,6 +19,8 @@ namespace eKnjiznica.DAL.Model
         public ICollection<BookCategories> AddedBooksCategories { get; set; }
         public ICollection<Book> AddedBooks { get; set; }
         public ICollection<Category> AddedCategories{ get; set; }
+
+        public virtual UserFinancialAccount UserFinancialAccount{ get; set; }
         #endregion
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)

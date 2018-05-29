@@ -51,6 +51,9 @@ namespace eKnjiznica.DAL.EF
                 .WithRequired(x => x.AddedBy)
                 .HasForeignKey(x => x.UserId);
 
+            modelBuilder.Entity<ApplicationUser>()
+             .HasOptional(x => x.UserFinancialAccount)
+             .WithRequired(x => x.ApplicationUser);
 
             #endregion
 
@@ -115,6 +118,14 @@ namespace eKnjiznica.DAL.EF
                 .WithMany(x => x.BookOffers)
                 .HasForeignKey(x => x.BookId);
             #endregion
+
+            #region UserFinancialAccount
+            modelBuilder.Entity<UserFinancialAccount>()
+              .HasRequired(x => x.ApplicationUser)
+              .WithOptional(x => x.UserFinancialAccount);
+
+            #endregion
+
         }
         public static EKnjiznicaDB Create()
         {
