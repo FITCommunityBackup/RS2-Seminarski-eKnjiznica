@@ -45,7 +45,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             }
             else
             {
-                btnDownload.Visible = true;
+                btnDownload.Visible = string.IsNullOrEmpty(Book.FileLocation)?false:true;
                 cbIsActive.Visible = true;
                 btnAction.Text = Commons.Resources.LABEL_UPDATE;
 

@@ -21,9 +21,30 @@ namespace eKnjiznica.AdminUI.Services.API
             this.httpClient = httpClient;
         }
 
+      
+        public Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive)
+        {
+            return Get($"api/books/admin/offers?title={bookTitle}&author={authorName}&includeInactive={includeInactive}");
+        }
+
+
+        public Task<HttpResponseMessage> UpdateExistingBookOffer(UpdateBookOfferVM bookOfferUpdate, int id)
+        {
+            return Put(bookOfferUpdate, $"api/books/admin/offers/{id}");
+        }
+
+        public Task<HttpResponseMessage> CreateBookOffer(CreateBookOfferVM bookOfferCreate)
+        {
+            return Post(bookOfferCreate, $"api/books/admin/offers");
+        }
+
         public Task<HttpResponseMessage> GetBookFile(int id)
         {
             return Get($"api/books/{id}/files");
+        }
+        public Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName)
+        {
+            return Get($"api/books?title={bookTitle}&author={authorName}");
         }
 
         public Task<HttpResponseMessage> UploadFile(string fileLocation, string fileName, int id)
@@ -131,11 +152,7 @@ namespace eKnjiznica.AdminUI.Services.API
             return httpClient.PutAsJsonAsync(path, body);
         }
 
-        public Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName)
-        {
-            return Get($"api/books?title={bookTitle}&author={authorName}");
-        }
-
+    
 
         private Task<HttpResponseMessage> PostMultiPart(string path, string fileLocation,string fileName)
         {
@@ -153,6 +170,8 @@ namespace eKnjiznica.AdminUI.Services.API
         }
 
     
+
+
 
         #endregion
 

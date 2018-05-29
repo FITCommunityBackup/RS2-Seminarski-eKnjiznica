@@ -49,7 +49,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(24, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 17);
+            this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Korisničko ime";
             // 
@@ -57,7 +57,7 @@
             // 
             this.txtUserNameFilter.Location = new System.Drawing.Point(129, 27);
             this.txtUserNameFilter.Name = "txtUserNameFilter";
-            this.txtUserNameFilter.Size = new System.Drawing.Size(151, 22);
+            this.txtUserNameFilter.Size = new System.Drawing.Size(151, 20);
             this.txtUserNameFilter.TabIndex = 1;
             // 
             // btnFilter
@@ -176,7 +176,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AdministratorsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AdministratorsForm";
+            this.Text = "Administratori";
             this.Load += new System.EventHandler(this.AdministratorsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvAdministrators)).EndInit();
             this.ResumeLayout(false);

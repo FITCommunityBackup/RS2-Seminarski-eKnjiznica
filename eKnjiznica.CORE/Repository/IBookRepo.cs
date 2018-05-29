@@ -16,5 +16,9 @@ namespace eKnjiznica.CORE.Repository
         BooksVM CreateBook(CreateBookVM model, string userId);
         BooksVM GetBookById(int bookId);
         void SaveFilePath(BooksVM book, string relativePath,string fileName);
+        List<BookOfferVM> GetBookOffers(string title, string author,bool includeInactive);
+        BookOfferVM CreateBookOffer(CreateBookOfferVM model);
+        BookOfferVM GetBookOfferById(int id);
+        void UpdateBookOffer(UpdateBookOfferVM model, int id);
     }
 }

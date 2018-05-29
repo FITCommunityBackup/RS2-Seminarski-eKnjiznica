@@ -48,70 +48,63 @@
             // 
             // inputPhone
             // 
-            this.inputPhone.Location = new System.Drawing.Point(129, 122);
-            this.inputPhone.Margin = new System.Windows.Forms.Padding(4);
+            this.inputPhone.Location = new System.Drawing.Point(97, 99);
             this.inputPhone.Mask = "(999) 000-000";
             this.inputPhone.Name = "inputPhone";
-            this.inputPhone.Size = new System.Drawing.Size(259, 22);
+            this.inputPhone.Size = new System.Drawing.Size(195, 20);
             this.inputPhone.TabIndex = 51;
             this.inputPhone.Validating += new System.ComponentModel.CancelEventHandler(this.inputPhone_Validating);
             // 
             // inputPassword
             // 
-            this.inputPassword.Location = new System.Drawing.Point(129, 207);
-            this.inputPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.inputPassword.Location = new System.Drawing.Point(97, 168);
             this.inputPassword.Name = "inputPassword";
             this.inputPassword.PasswordChar = '*';
-            this.inputPassword.Size = new System.Drawing.Size(259, 22);
+            this.inputPassword.Size = new System.Drawing.Size(195, 20);
             this.inputPassword.TabIndex = 54;
             this.inputPassword.Validating += new System.ComponentModel.CancelEventHandler(this.inputPassword_Validating);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(53, 211);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(40, 171);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 17);
+            this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 59;
             this.label6.Text = "Lozinka:";
             // 
             // inputUserName
             // 
-            this.inputUserName.Location = new System.Drawing.Point(129, 175);
-            this.inputUserName.Margin = new System.Windows.Forms.Padding(4);
+            this.inputUserName.Location = new System.Drawing.Point(97, 142);
             this.inputUserName.Name = "inputUserName";
-            this.inputUserName.Size = new System.Drawing.Size(259, 22);
+            this.inputUserName.Size = new System.Drawing.Size(195, 20);
             this.inputUserName.TabIndex = 53;
             this.inputUserName.Validating += new System.ComponentModel.CancelEventHandler(this.inputUserName_Validating);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(17, 179);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(13, 145);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(103, 17);
+            this.label5.Size = new System.Drawing.Size(78, 13);
             this.label5.TabIndex = 58;
             this.label5.Text = "Korisničko ime:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(53, 122);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(40, 99);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 17);
+            this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 56;
             this.label4.Text = "Telefon:";
             // 
             // btnAdd
             // 
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(257, 237);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAdd.Location = new System.Drawing.Point(193, 193);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(131, 37);
+            this.btnAdd.Size = new System.Drawing.Size(98, 30);
             this.btnAdd.TabIndex = 57;
             this.btnAdd.Text = "Dodaj";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -120,58 +113,52 @@
             // 
             // inputEmail
             // 
-            this.inputEmail.Location = new System.Drawing.Point(129, 87);
-            this.inputEmail.Margin = new System.Windows.Forms.Padding(4);
+            this.inputEmail.Location = new System.Drawing.Point(97, 71);
             this.inputEmail.Name = "inputEmail";
-            this.inputEmail.Size = new System.Drawing.Size(259, 22);
+            this.inputEmail.Size = new System.Drawing.Size(195, 20);
             this.inputEmail.TabIndex = 50;
             this.inputEmail.Validating += new System.ComponentModel.CancelEventHandler(this.inputEmail_Validating);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 90);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(48, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 17);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 52;
             this.label3.Text = "E-mail:";
             // 
             // inputLastName
             // 
-            this.inputLastName.Location = new System.Drawing.Point(129, 55);
-            this.inputLastName.Margin = new System.Windows.Forms.Padding(4);
+            this.inputLastName.Location = new System.Drawing.Point(97, 45);
             this.inputLastName.Name = "inputLastName";
-            this.inputLastName.Size = new System.Drawing.Size(259, 22);
+            this.inputLastName.Size = new System.Drawing.Size(195, 20);
             this.inputLastName.TabIndex = 48;
             this.inputLastName.Validating += new System.ComponentModel.CancelEventHandler(this.inputLastName_Validating);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(53, 58);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(40, 47);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 17);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 49;
             this.label2.Text = "Prezime:";
             // 
             // inputName
             // 
-            this.inputName.Location = new System.Drawing.Point(129, 23);
-            this.inputName.Margin = new System.Windows.Forms.Padding(4);
+            this.inputName.Location = new System.Drawing.Point(97, 19);
             this.inputName.Name = "inputName";
-            this.inputName.Size = new System.Drawing.Size(259, 22);
+            this.inputName.Size = new System.Drawing.Size(195, 20);
             this.inputName.TabIndex = 47;
             this.inputName.Validating += new System.ComponentModel.CancelEventHandler(this.inputName_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(79, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(59, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 17);
+            this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 46;
             this.label1.Text = "Ime:";
             // 
@@ -181,9 +168,9 @@
             // 
             // AdministratorAddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 327);
+            this.ClientSize = new System.Drawing.Size(317, 266);
             this.Controls.Add(this.inputPhone);
             this.Controls.Add(this.inputPassword);
             this.Controls.Add(this.label6);
@@ -197,8 +184,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.inputName);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "AdministratorAddForm";
-            this.Text = "AdministratorAddForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Dodaj administratora";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -22,9 +22,12 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
         Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
         Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName);
+        Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive);
         Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM);
         Task<HttpResponseMessage> UpdateBook(UpdateBookVM updateBook, int bookId);
         Task<HttpResponseMessage> UploadFile(string fileLocation, string fileName, int bookId);
         Task<HttpResponseMessage> GetBookFile(int id);
+        Task<HttpResponseMessage> UpdateExistingBookOffer(UpdateBookOfferVM bookOfferUpdate, int id);
+        Task<HttpResponseMessage> CreateBookOffer(CreateBookOfferVM bookOfferCreate);
     }
 }

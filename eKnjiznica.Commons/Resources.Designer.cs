@@ -133,6 +133,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upišite ispravnu cijenu.
+        /// </summary>
+        public static string ERR_ENTER_VALID_PRICE {
+            get {
+                return ResourceManager.GetString("ERR_ENTER_VALID_PRICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unesite pravilan email.
         /// </summary>
         public static string ERR_FIELD_EMAIL_INVALID {
@@ -183,6 +192,15 @@ namespace eKnjiznica.Commons {
         public static string ERR_LAST_NAME_REQUIRED {
             get {
                 return ResourceManager.GetString("ERR_LAST_NAME_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odaberite jednu knjigu.
+        /// </summary>
+        public static string ERR_SELECT_ONE_BOOK {
+            get {
+                return ResourceManager.GetString("ERR_SELECT_ONE_BOOK", resourceCulture);
             }
         }
         

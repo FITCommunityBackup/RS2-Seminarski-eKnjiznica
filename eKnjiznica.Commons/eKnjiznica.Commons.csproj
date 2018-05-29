@@ -53,7 +53,10 @@
     <Compile Include="ViewModels\AdministratorProfileVM.cs" />
     <Compile Include="ViewModels\AuthenticationResponseVM.cs" />
     <Compile Include="ViewModels\AdminUpdateVM.cs" />
+    <Compile Include="ViewModels\Books\BookOfferVM.cs" />
     <Compile Include="ViewModels\Books\BooksVM.cs" />
+    <Compile Include="ViewModels\Books\CreateBookOfferVM.cs" />
+    <Compile Include="ViewModels\Books\UpdateBookOfferVM.cs" />
     <Compile Include="ViewModels\Books\CreateBookVM.cs" />
     <Compile Include="ViewModels\Books\UpdateBookVM.cs" />
     <Compile Include="ViewModels\Category\CategoryAddVm.cs" />

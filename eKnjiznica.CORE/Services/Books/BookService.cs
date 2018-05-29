@@ -22,6 +22,16 @@ namespace eKnjiznica.CORE.Services.Books
             return bookRepo.CreateBook(model, userId);
         }
 
+        public BookOfferVM CreateBookOffer(CreateBookOfferVM model)
+        {
+            return bookRepo.CreateBookOffer(model);
+        }
+
+        public List<BookOfferVM> GetBookOffers(string title, string author, bool includeInactive)
+        {
+            return bookRepo.GetBookOffers(title, author, includeInactive);
+        }
+
         public List<BooksVM> GetBooks(string title, string author)
         {
            return bookRepo.GetBooks(title, author);
@@ -32,6 +42,12 @@ namespace eKnjiznica.CORE.Services.Books
 
             bookRepo.UpdateBook(model, id);
             bookRepo.UpdateBookCategories(model, id,userId);
+        }
+
+        public void UpdateBookOffer(UpdateBookOfferVM model, int id)
+        {
+            bookRepo.UpdateBookOffer(model, id);
+
         }
     }
 }

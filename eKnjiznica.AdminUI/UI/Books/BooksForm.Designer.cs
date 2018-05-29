@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.gvBooks = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvBookTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvAuthorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvIsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnFilter = new System.Windows.Forms.Button();
             this.inputBookTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,10 +40,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.inputAuthorName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvBookTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvAuthorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gvIsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +61,35 @@
             this.gvBooks.RowTemplate.Height = 24;
             this.gvBooks.Size = new System.Drawing.Size(346, 330);
             this.gvBooks.TabIndex = 9;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // gvBookTitle
+            // 
+            this.gvBookTitle.DataPropertyName = "BookTitle";
+            this.gvBookTitle.HeaderText = "Naslov";
+            this.gvBookTitle.Name = "gvBookTitle";
+            this.gvBookTitle.ReadOnly = true;
+            // 
+            // gvAuthorName
+            // 
+            this.gvAuthorName.DataPropertyName = "AuthorName";
+            this.gvAuthorName.HeaderText = "Ime autora";
+            this.gvAuthorName.Name = "gvAuthorName";
+            this.gvAuthorName.ReadOnly = true;
+            // 
+            // gvIsActive
+            // 
+            this.gvIsActive.DataPropertyName = "IsActive";
+            this.gvIsActive.HeaderText = "Aktivan";
+            this.gvIsActive.Name = "gvIsActive";
+            this.gvIsActive.ReadOnly = true;
             // 
             // btnFilter
             // 
@@ -124,35 +153,6 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Autor";
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // gvBookTitle
-            // 
-            this.gvBookTitle.DataPropertyName = "BookTitle";
-            this.gvBookTitle.HeaderText = "Naslov";
-            this.gvBookTitle.Name = "gvBookTitle";
-            this.gvBookTitle.ReadOnly = true;
-            // 
-            // gvAuthorName
-            // 
-            this.gvAuthorName.DataPropertyName = "AuthorName";
-            this.gvAuthorName.HeaderText = "Ime autora";
-            this.gvAuthorName.Name = "gvAuthorName";
-            this.gvAuthorName.ReadOnly = true;
-            // 
-            // gvIsActive
-            // 
-            this.gvIsActive.DataPropertyName = "IsActive";
-            this.gvIsActive.HeaderText = "Aktivan";
-            this.gvIsActive.Name = "gvIsActive";
-            this.gvIsActive.ReadOnly = true;
-            // 
             // BooksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,7 +167,8 @@
             this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.button2);
             this.Name = "BooksForm";
-            this.Text = "BooksForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Knjige";
             this.Load += new System.EventHandler(this.BooksForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).EndInit();
             this.ResumeLayout(false);

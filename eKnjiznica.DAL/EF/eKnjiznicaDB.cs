@@ -17,6 +17,7 @@ namespace eKnjiznica.DAL.EF
         public DbSet<Category> Categories{ get; set; }
         public DbSet<BookCategories> BookCategories{ get; set; }
         public DbSet<Book> Books{ get; set; }
+        public DbSet<BookOffer> BookOffers { get; set; }
 
         public EKnjiznicaDB()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -70,6 +71,11 @@ namespace eKnjiznica.DAL.EF
                 .HasRequired(x => x.AddedBy)
                 .WithMany(x => x.AddedBooks)
                 .HasForeignKey(x => x.UserId);
+
+            modelBuilder.Entity<Book>()
+                .HasMany(x => x.BookOffers)
+                .WithRequired(x => x.Book)
+                .HasForeignKey(x => x.BookId);
             #endregion
 
             #region Categories
@@ -101,6 +107,13 @@ namespace eKnjiznica.DAL.EF
                     .HasRequired(x => x.ApplicationUser)
                     .WithMany(x => x.AddedBooksCategories)
                     .HasForeignKey(x => x.UserId);
+            #endregion
+
+            #region BookOffers
+            modelBuilder.Entity<BookOffer>()
+                .HasRequired(x => x.Book)
+                .WithMany(x => x.BookOffers)
+                .HasForeignKey(x => x.BookId);
             #endregion
         }
         public static EKnjiznicaDB Create()

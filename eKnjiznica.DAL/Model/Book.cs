@@ -31,6 +31,7 @@ namespace eKnjiznica.DAL.Model
         public ApplicationUser AddedBy { get; set; }
 
         public ICollection<BookCategories> Categories { get; set; }
+        public ICollection<BookOffer> BookOffers { get; internal set; }
         #endregion
 
     }

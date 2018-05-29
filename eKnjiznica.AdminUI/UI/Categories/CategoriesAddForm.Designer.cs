@@ -42,10 +42,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(263, 45);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdd.Location = new System.Drawing.Point(197, 37);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(144, 42);
+            this.btnAdd.Size = new System.Drawing.Size(108, 34);
             this.btnAdd.TabIndex = 70;
             this.btnAdd.Text = "Dodaj";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -57,10 +56,9 @@
             this.inputCategoryName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.inputCategoryName.Location = new System.Drawing.Point(135, 15);
-            this.inputCategoryName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputCategoryName.Location = new System.Drawing.Point(101, 12);
             this.inputCategoryName.Name = "inputCategoryName";
-            this.inputCategoryName.Size = new System.Drawing.Size(272, 22);
+            this.inputCategoryName.Size = new System.Drawing.Size(205, 20);
             this.inputCategoryName.TabIndex = 61;
             this.inputCategoryName.Validating += new System.ComponentModel.CancelEventHandler(this.inputCategoryName_Validating);
             // 
@@ -70,10 +68,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 17);
+            this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 60;
             this.label1.Text = "Naziv kategorije";
             // 
@@ -83,15 +80,15 @@
             // 
             // CategoriesAddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 107);
+            this.ClientSize = new System.Drawing.Size(319, 87);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.inputCategoryName);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "CategoriesAddForm";
-            this.Text = "CategoriesAddForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Dodaj kategoriju";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

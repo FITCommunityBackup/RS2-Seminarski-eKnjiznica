@@ -117,70 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ACCOUNT_NOT_ACTIVE" xml:space="preserve">
-    <value>Korisnički račun je deaktiviran</value>
+  <data name="Target" xml:space="preserve">
+    <value>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</value>
   </data>
-  <data name="ACCOUNT_WITH_USERNAME_EXISTS" xml:space="preserve">
-    <value>Korisničko ime je zauzeto</value>
-  </data>
-  <data name="CATEGORY_DOES_NOT_EXIST" xml:space="preserve">
-    <value>Kategorija ne postoji</value>
-  </data>
-  <data name="CATEGORY_WITH_THAT_NAME_EXISTS" xml:space="preserve">
-    <value>Kategorija s tim imenom već postoji.</value>
-  </data>
-  <data name="ENTER_VALID_CATEGORY_NAME" xml:space="preserve">
-    <value>Unesite ispravan naziv kategorije</value>
-  </data>
-  <data name="ERR_AUTHOR_NAME_REQUIRED" xml:space="preserve">
-    <value>Upišite ispravno ime za autora</value>
-  </data>
-  <data name="ERR_BOOK_NAME_REQUIRED" xml:space="preserve">
-    <value>Upišite ispravno ime za knjigu</value>
-  </data>
-  <data name="ERR_DOWNLOADING_BOOK_FILE" xml:space="preserve">
-    <value>Greška prilikom preuzimanja</value>
-  </data>
-  <data name="ERR_ENTER_VALID_PRICE" xml:space="preserve">
-    <value>Upišite ispravnu cijenu</value>
-  </data>
-  <data name="ERR_FIELD_EMAIL_INVALID" xml:space="preserve">
-    <value>Unesite pravilan email</value>
-  </data>
-  <data name="ERR_FIELD_PASSWORD_INVALID" xml:space="preserve">
-    <value>Lozinka se mora sastojati od najmanje 6 karaktera uključujući mala, velika slova i brojeve.</value>
-  </data>
-  <data name="ERR_FIELD_PHONE_INVALID" xml:space="preserve">
-    <value>Unesite ispravan broj telefona</value>
-  </data>
-  <data name="ERR_FIELD_USERNAME_INVALID" xml:space="preserve">
-    <value>Korisničko ime mora biti duže od 5 karaktera</value>
-  </data>
-  <data name="ERR_FIRST_NAME_REQUIRED" xml:space="preserve">
-    <value>Ime je obavezno polje.</value>
-  </data>
-  <data name="ERR_LAST_NAME_REQUIRED" xml:space="preserve">
-    <value>Prezime je obavezno polje.</value>
-  </data>
-  <data name="ERR_SELECT_ONE_BOOK" xml:space="preserve">
-    <value>Odaberite jednu knjigu</value>
-  </data>
-  <data name="ERR_SELECT_ONE_CATEGORY" xml:space="preserve">
-    <value>Odaberite barem jednu kategoriju</value>
-  </data>
-  <data name="LABEL_ADD" xml:space="preserve">
-    <value>Dodaj</value>
-  </data>
-  <data name="LABEL_UPDATE" xml:space="preserve">
-    <value>Promijeni</value>
-  </data>
-  <data name="PLEASE_SELECT_USER" xml:space="preserve">
-    <value>Molimo odaberite korisnika</value>
-  </data>
-  <data name="UNEXPECTED_ERROR_OCURRED" xml:space="preserve">
-    <value>Došlo je do neočekivane greške.</value>
-  </data>
-  <data name="USERNAME_OR_PASSWORD_INCORRENT" xml:space="preserve">
-    <value>Pristupni podaci nisu ispravni</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

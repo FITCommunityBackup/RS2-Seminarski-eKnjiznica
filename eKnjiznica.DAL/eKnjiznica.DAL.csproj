@@ -97,10 +97,19 @@
     <Compile Include="Migrations\201805290811351_FileNameAdd.Designer.cs">
       <DependentUpon>201805290811351_FileNameAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805290857405_BookOffers.cs" />
+    <Compile Include="Migrations\201805290857405_BookOffers.Designer.cs">
+      <DependentUpon>201805290857405_BookOffers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805291012005_BookOfferPriceDataType.cs" />
+    <Compile Include="Migrations\201805291012005_BookOfferPriceDataType.Designer.cs">
+      <DependentUpon>201805291012005_BookOfferPriceDataType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\BookCategories.cs" />
+    <Compile Include="Model\BookOffer.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\UserAudit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,6 +134,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805290811351_FileNameAdd.resx">
       <DependentUpon>201805290811351_FileNameAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805290857405_BookOffers.resx">
+      <DependentUpon>201805290857405_BookOffers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805291012005_BookOfferPriceDataType.resx">
+      <DependentUpon>201805291012005_BookOfferPriceDataType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

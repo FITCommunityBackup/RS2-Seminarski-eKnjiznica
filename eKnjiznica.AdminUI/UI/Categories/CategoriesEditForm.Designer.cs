@@ -41,10 +41,9 @@
             // 
             this.btnUpdate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(260, 70);
-            this.btnUpdate.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUpdate.Location = new System.Drawing.Point(195, 57);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(199, 54);
+            this.btnUpdate.Size = new System.Drawing.Size(149, 44);
             this.btnUpdate.TabIndex = 73;
             this.btnUpdate.Text = "Izmjeni";
             this.btnUpdate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -54,10 +53,9 @@
             // inputCategoryName
             // 
             this.inputCategoryName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.inputCategoryName.Location = new System.Drawing.Point(154, 13);
-            this.inputCategoryName.Margin = new System.Windows.Forms.Padding(4);
+            this.inputCategoryName.Location = new System.Drawing.Point(116, 11);
             this.inputCategoryName.Name = "inputCategoryName";
-            this.inputCategoryName.Size = new System.Drawing.Size(305, 22);
+            this.inputCategoryName.Size = new System.Drawing.Size(230, 20);
             this.inputCategoryName.TabIndex = 72;
             this.inputCategoryName.Validating += new System.ComponentModel.CancelEventHandler(this.inputCategoryName_Validating);
             // 
@@ -65,10 +63,9 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(28, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 17);
+            this.label1.Size = new System.Drawing.Size(83, 13);
             this.label1.TabIndex = 71;
             this.label1.Text = "Naziv kategorije";
             // 
@@ -79,24 +76,27 @@
             // cbActive
             // 
             this.cbActive.AutoSize = true;
-            this.cbActive.Location = new System.Drawing.Point(383, 42);
+            this.cbActive.Location = new System.Drawing.Point(287, 34);
+            this.cbActive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbActive.Name = "cbActive";
-            this.cbActive.Size = new System.Drawing.Size(76, 21);
+            this.cbActive.Size = new System.Drawing.Size(62, 17);
             this.cbActive.TabIndex = 74;
             this.cbActive.Text = "Aktivan";
             this.cbActive.UseVisualStyleBackColor = true;
             // 
             // CategoriesEditForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 137);
+            this.ClientSize = new System.Drawing.Size(376, 111);
             this.Controls.Add(this.cbActive);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.inputCategoryName);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CategoriesEditForm";
-            this.Text = "CategoriesEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Izmjeni kategoriju";
             this.Load += new System.EventHandler(this.CategoriesEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

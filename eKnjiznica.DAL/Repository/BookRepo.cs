@@ -4,6 +4,7 @@ using eKnjiznica.DAL.EF;
 using eKnjiznica.DAL.Model;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,46 @@ namespace eKnjiznica.DAL.Repository
 
         }
 
+        public BookOfferVM CreateBookOffer(CreateBookOfferVM model)
+        {
+            var bookOffer = new BookOffer
+            {
+                BookId = model.BookId,
+                IsActive = true,
+                OfferCreatedTime = DateTime.UtcNow,
+                Price = model.Price
+            };
+            context.BookOffers.Add(bookOffer);
+            context.SaveChanges();
+
+            return GetBookOfferById(bookOffer.Id);
+        }
+
+        public BookOfferVM GetBookOfferById(int id)
+        {
+            return context.BookOffers
+                .Where(x => x.Id==id)
+                .Include(x => x.Book)
+                .Include(x => x.Book.Categories)
+                .Select(x => new BookOfferVM
+                {
+                    Id = x.Id,
+                    AuthorName = x.Book.Autor,
+                    BookId = x.BookId,
+                    IsActive = x.IsActive,
+                    OfferCreatedDate = x.OfferCreatedTime,
+                    Price = x.Price,
+                    Title = x.Book.Title,
+                    Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
+                    {
+                        Id = y.CategoryId,
+                        CategoryName = y.Category.CategoryName,
+                        IsActive = y.IsActive,
+                    }).ToList(),
+                }).FirstOrDefault();
+
+        }
+
         public BooksVM GetBookById(int bookId)
         {
             return context
@@ -76,6 +117,35 @@ namespace eKnjiznica.DAL.Repository
                   }).FirstOrDefault();
         }
 
+        public List<BookOfferVM> GetBookOffers(string title, string authorName,bool includeInactive)
+        {
+            return context.BookOffers
+                 .Where(x => includeInactive || x.IsActive)
+                 .Include(x => x.Book)
+                 .Include(x => x.Book.Categories)
+                  .Where(x => string.IsNullOrEmpty(title) || x.Book.Title.Contains(title))
+                 .Where(x => string.IsNullOrEmpty(authorName) || x.Book.Autor.Contains(authorName))
+                 .OrderBy(x => x.Book.Title)
+                 .ThenByDescending(x => x.OfferCreatedTime)
+                 .Select(x => new BookOfferVM {
+                     Id=x.Id,
+                     AuthorName =x.Book.Autor,
+                     BookId=x.BookId,
+                     IsActive =x.IsActive,
+                     OfferCreatedDate = x.OfferCreatedTime,
+                     Price = x.Price,
+                     Title = x.Book.Title,
+                     Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
+                     {
+                         Id = y.CategoryId,
+                         CategoryName = y.Category.CategoryName,
+                         IsActive = y.IsActive,
+                     }).ToList(),
+                 }).ToList();
+
+                
+        }
+
         public List<BooksVM> GetBooks(string title, string authorName)
         {
             return context
@@ -98,7 +168,6 @@ namespace eKnjiznica.DAL.Repository
                      ReleaseDate = x.ReleaseDate,
                      FileLocation = x.FileLocation,
                      FileName = x.FileName
-
                  }).ToList();
         }
 
@@ -158,6 +227,18 @@ namespace eKnjiznica.DAL.Repository
                     UserId = adminId
                 });
             }
+
+            context.SaveChanges();
+        }
+
+        public void UpdateBookOffer(UpdateBookOfferVM model, int id)
+        {
+            var result =context.BookOffers.FirstOrDefault(x => x.Id == id);
+            if (result == null)
+                return;
+            result.BookId = model.BookId;
+            result.IsActive = model.IsActive;
+            result.Price = model.Price;
 
             context.SaveChanges();
         }

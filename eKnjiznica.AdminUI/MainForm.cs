@@ -85,5 +85,14 @@ namespace eKnjiznica.AdminUI
             currentForm.MdiParent = this;
             currentForm.Show();
         }
+
+        private void prodajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentForm != null)
+                currentForm.Close();
+            currentForm = unityContainer.Resolve<BooksSellForm>();
+            currentForm.MdiParent = this;
+            currentForm.Show();
+        }
     }
 }

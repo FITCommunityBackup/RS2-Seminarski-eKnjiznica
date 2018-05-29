@@ -144,7 +144,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             // btnUpload
             // 
             this.btnUpload.Location = new System.Drawing.Point(208, 141);
-            this.btnUpload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpload.Name = "btnUpload";
             this.btnUpload.Size = new System.Drawing.Size(86, 41);
             this.btnUpload.TabIndex = 75;
@@ -155,7 +155,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             // btnDownload
             // 
             this.btnDownload.Location = new System.Drawing.Point(117, 141);
-            this.btnDownload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDownload.Margin = new System.Windows.Forms.Padding(2);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(86, 41);
             this.btnDownload.TabIndex = 76;
@@ -192,7 +192,8 @@ namespace eKnjiznica.AdminUI.UI.Books
             this.Controls.Add(this.inputBookName);
             this.Controls.Add(this.label1);
             this.Name = "BooksEditForm";
-            this.Text = "BooksAddForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Dodaj knjigu";
             this.Load += new System.EventHandler(this.BooksEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
