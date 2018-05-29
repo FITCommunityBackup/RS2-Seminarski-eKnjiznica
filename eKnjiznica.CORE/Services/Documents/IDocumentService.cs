@@ -10,5 +10,6 @@ namespace eKnjiznica.CORE.Services.Documents
     public interface IDocumentService
     {
         Task<bool> SaveFile(HttpPostedFile  file, int bookId);
+        string GetFileAbsolutePath(int id);
     }
 }

@@ -22,7 +22,7 @@ namespace eKnjiznica.CORE.Services.Documents
 
         public string GetRelativeDirectoryPath(BooksVM book)
         {
-            return $"uploads/books/{book.BookTitle}_{book.AuthorName}";
+            return $"uploads/books/{book.BookTitle}_{book.AuthorName}/";
         }
         public string GetFullDirectoryPath(BooksVM book)
         {
@@ -62,26 +62,30 @@ namespace eKnjiznica.CORE.Services.Documents
 
             //create file and directory names
             //knjga.pdf
-            var uploadedFileName= postedFile.FileName.Trim('\"')+ Guid.NewGuid().ToString();
+            var uploadedFileName= postedFile.FileName.Trim('\"');
             //c:/users/uploads
             var fullDirectoryPath = GetFullDirectoryPath(book);
             //c:/users/uploads/knjiga.pdf
             var fullFileName = Path.Combine(fullDirectoryPath, uploadedFileName);
             //~/uploads/knjiga.pdf
-            var relativePath = GetRelativeDirectoryPath(book) +uploadedFileName;
+            var relativePath = Path.Combine(GetRelativeDirectoryPath(book) +uploadedFileName);
 
             Directory.CreateDirectory(fullDirectoryPath);
 
             await Task.Run(() =>
             {
                 postedFile.SaveAs(fullFileName);
-                bookRepo.SaveFilePath(book, relativePath);
+                bookRepo.SaveFilePath(book, relativePath,uploadedFileName);
             });
             return true;
 
 
         }
 
-       
+        public string GetFileAbsolutePath(int id)
+        {
+            var book =bookRepo.GetBookById(id);
+            return AppDomain.CurrentDomain.BaseDirectory+"/"+ book.FileLocation;
+        }
     }
 }

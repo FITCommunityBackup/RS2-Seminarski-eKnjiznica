@@ -24,5 +24,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName);
         Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM);
         Task<HttpResponseMessage> UpdateBook(UpdateBookVM updateBook, int bookId);
+        Task<HttpResponseMessage> UploadFile(string fileLocation, string fileName, int bookId);
+        Task<HttpResponseMessage> GetBookFile(int id);
     }
 }

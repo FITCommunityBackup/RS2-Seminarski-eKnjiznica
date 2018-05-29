@@ -35,16 +35,16 @@ namespace eKnjiznica.AdminUI.UI.Books
             this.label4 = new System.Windows.Forms.Label();
             this.btnUpload = new System.Windows.Forms.Button();
             this.btnDownload = new System.Windows.Forms.Button();
+            this.pbLoading = new MetroFramework.Controls.MetroProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAction
             // 
             this.btnAction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAction.Location = new System.Drawing.Point(260, 426);
-            this.btnAction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAction.Location = new System.Drawing.Point(195, 346);
             this.btnAction.Name = "btnAction";
-            this.btnAction.Size = new System.Drawing.Size(131, 37);
+            this.btnAction.Size = new System.Drawing.Size(98, 30);
             this.btnAction.TabIndex = 70;
             this.btnAction.Text = "Dodaj";
             this.btnAction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -53,58 +53,52 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // inputDescription
             // 
-            this.inputDescription.Location = new System.Drawing.Point(132, 85);
-            this.inputDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputDescription.Location = new System.Drawing.Point(99, 69);
             this.inputDescription.Name = "inputDescription";
-            this.inputDescription.Size = new System.Drawing.Size(259, 22);
+            this.inputDescription.Size = new System.Drawing.Size(195, 20);
             this.inputDescription.TabIndex = 64;
             this.inputDescription.Validating += new System.ComponentModel.CancelEventHandler(this.inputDescription_Validating);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(69, 91);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(52, 74);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 17);
+            this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 66;
             this.label3.Text = "Opis:";
             // 
             // inputAuthor
             // 
-            this.inputAuthor.Location = new System.Drawing.Point(132, 53);
-            this.inputAuthor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputAuthor.Location = new System.Drawing.Point(99, 43);
             this.inputAuthor.Name = "inputAuthor";
-            this.inputAuthor.Size = new System.Drawing.Size(259, 22);
+            this.inputAuthor.Size = new System.Drawing.Size(195, 20);
             this.inputAuthor.TabIndex = 62;
             this.inputAuthor.Validating += new System.ComponentModel.CancelEventHandler(this.inputAuthor_Validating);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 59);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(23, 48);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 63;
             this.label2.Text = "Ime autora:";
             // 
             // inputBookName
             // 
-            this.inputBookName.Location = new System.Drawing.Point(132, 21);
-            this.inputBookName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inputBookName.Location = new System.Drawing.Point(99, 17);
             this.inputBookName.Name = "inputBookName";
-            this.inputBookName.Size = new System.Drawing.Size(259, 22);
+            this.inputBookName.Size = new System.Drawing.Size(195, 20);
             this.inputBookName.TabIndex = 61;
             this.inputBookName.Validating += new System.ComponentModel.CancelEventHandler(this.inputBookName_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(9, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(96, 17);
+            this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 60;
             this.label1.Text = "Naslov knjige:";
             // 
@@ -115,47 +109,44 @@ namespace eKnjiznica.AdminUI.UI.Books
             // cbCategories
             // 
             this.cbCategories.FormattingEnabled = true;
-            this.cbCategories.Location = new System.Drawing.Point(132, 256);
-            this.cbCategories.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCategories.Location = new System.Drawing.Point(99, 208);
             this.cbCategories.Name = "cbCategories";
-            this.cbCategories.Size = new System.Drawing.Size(259, 123);
+            this.cbCategories.Size = new System.Drawing.Size(195, 94);
             this.cbCategories.TabIndex = 71;
             this.cbCategories.Validating += new System.ComponentModel.CancelEventHandler(this.cbCategories_Validating);
             // 
             // cbIsActive
             // 
             this.cbIsActive.AutoSize = true;
-            this.cbIsActive.Location = new System.Drawing.Point(307, 397);
-            this.cbIsActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbIsActive.Location = new System.Drawing.Point(230, 323);
             this.cbIsActive.Name = "cbIsActive";
-            this.cbIsActive.Size = new System.Drawing.Size(78, 21);
+            this.cbIsActive.Size = new System.Drawing.Size(64, 17);
             this.cbIsActive.TabIndex = 72;
             this.cbIsActive.Text = "IsActive";
             this.cbIsActive.UseVisualStyleBackColor = true;
             // 
             // dtpReleaseDate
             // 
-            this.dtpReleaseDate.Location = new System.Drawing.Point(132, 119);
-            this.dtpReleaseDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpReleaseDate.Location = new System.Drawing.Point(99, 97);
             this.dtpReleaseDate.Name = "dtpReleaseDate";
-            this.dtpReleaseDate.Size = new System.Drawing.Size(265, 22);
+            this.dtpReleaseDate.Size = new System.Drawing.Size(200, 20);
             this.dtpReleaseDate.TabIndex = 73;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 127);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(7, 103);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 17);
+            this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 74;
             this.label4.Text = "Datum izdavanja";
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(277, 174);
+            this.btnUpload.Location = new System.Drawing.Point(208, 141);
+            this.btnUpload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(114, 51);
+            this.btnUpload.Size = new System.Drawing.Size(86, 41);
             this.btnUpload.TabIndex = 75;
             this.btnUpload.Text = "Upload PDF";
             this.btnUpload.UseVisualStyleBackColor = true;
@@ -163,19 +154,30 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // btnDownload
             // 
-            this.btnDownload.Location = new System.Drawing.Point(156, 174);
+            this.btnDownload.Location = new System.Drawing.Point(117, 141);
+            this.btnDownload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(115, 51);
+            this.btnDownload.Size = new System.Drawing.Size(86, 41);
             this.btnDownload.TabIndex = 76;
             this.btnDownload.Text = "Download";
             this.btnDownload.UseVisualStyleBackColor = true;
             this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
+            // pbLoading
+            // 
+            this.pbLoading.Location = new System.Drawing.Point(0, 391);
+            this.pbLoading.Name = "pbLoading";
+            this.pbLoading.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.pbLoading.Size = new System.Drawing.Size(346, 23);
+            this.pbLoading.TabIndex = 77;
+            this.pbLoading.Visible = false;
+            // 
             // BooksEditForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(464, 476);
+            this.ClientSize = new System.Drawing.Size(348, 417);
+            this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.btnDownload);
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.label4);
@@ -189,7 +191,6 @@ namespace eKnjiznica.AdminUI.UI.Books
             this.Controls.Add(this.label2);
             this.Controls.Add(this.inputBookName);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BooksEditForm";
             this.Text = "BooksAddForm";
             this.Load += new System.EventHandler(this.BooksEditForm_Load);
@@ -227,5 +228,6 @@ namespace eKnjiznica.AdminUI.UI.Books
         private DateTimePicker dtpReleaseDate;
         private Button btnUpload;
         private Button btnDownload;
+        private MetroFramework.Controls.MetroProgressBar pbLoading;
     }
 }

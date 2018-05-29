@@ -13,8 +13,8 @@ namespace eKnjiznica.CORE.Repository
         void UpdateBook(UpdateBookVM model, int id);
         void UpdateBookCategories(UpdateBookVM model, int id,string userId);
 
-        void CreateBook(CreateBookVM model, string userId);
+        BooksVM CreateBook(CreateBookVM model, string userId);
         BooksVM GetBookById(int bookId);
-        void SaveFilePath(BooksVM book, object relativePath);
+        void SaveFilePath(BooksVM book, string relativePath,string fileName);
     }
 }

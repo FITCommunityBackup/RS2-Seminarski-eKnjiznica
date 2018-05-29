@@ -124,6 +124,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greška prilikom preuzimanja.
+        /// </summary>
+        public static string ERR_DOWNLOADING_BOOK_FILE {
+            get {
+                return ResourceManager.GetString("ERR_DOWNLOADING_BOOK_FILE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unesite pravilan email.
         /// </summary>
         public static string ERR_FIELD_EMAIL_INVALID {

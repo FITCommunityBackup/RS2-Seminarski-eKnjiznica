@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,10 @@ namespace eKnjiznica.AdminUI.UI.Books
 
         public BooksVM Book { get; set; }
         public List<CategoryVM> Categories { get; set; }
-        public byte[] bookFile;
         private IApiClient ApiClient;
+
+        private string fileLocation;
+        private string fileName;
 
         public BooksEditForm(IApiClient apiClient)
         {
@@ -32,13 +35,17 @@ namespace eKnjiznica.AdminUI.UI.Books
 
         private void toggleForm()
         {
+            pbLoading.Visible = false;
+
             if (Book == null)
             {
                 btnAction.Text = Commons.Resources.LABEL_ADD;
                 cbIsActive.Visible = false;
+                btnDownload.Visible = false;
             }
             else
             {
+                btnDownload.Visible = true;
                 cbIsActive.Visible = true;
                 btnAction.Text = Commons.Resources.LABEL_UPDATE;
 
@@ -50,6 +57,124 @@ namespace eKnjiznica.AdminUI.UI.Books
             }
         }
 
+
+        private async Task UploadExistingBook()
+        {
+            HttpResponseMessage result = await ApiClient.UpdateBook(new UpdateBookVM
+            {
+
+                AuthorName = inputAuthor.Text.Trim(),
+                BookDescription = inputDescription.Text.Trim(),
+                ReleaseDate = dtpReleaseDate.Value,
+                BookTitle = inputBookName.Text.Trim(),
+                CategoriesId = GetSelectedCategories(),
+                IsActive = cbIsActive.Checked
+            }, Book.Id);
+
+            if (!result.IsSuccessStatusCode)
+            {
+                return;
+            }
+            if (fileLocation == null)
+            {
+                DialogResult = DialogResult.OK;
+                this.Close();
+                return;
+            }
+
+            var uploadResult = await ApiClient.UploadFile(fileLocation, fileName, Book.Id);
+            if (uploadResult.IsSuccessStatusCode)
+            {
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private async Task CreateNewBook()
+        {
+            HttpResponseMessage result = await ApiClient.CreateBook(new CreateBookVM
+            {
+                AuthorName = inputAuthor.Text.Trim(),
+                BookDescription = inputDescription.Text.Trim(),
+                ReleaseDate = dtpReleaseDate.Value,
+                BookTitle = inputBookName.Text.Trim(),
+                CategoriesId = GetSelectedCategories()
+            });
+
+            if (!result.IsSuccessStatusCode)
+            {
+                return;
+            }
+            if (fileLocation == null)
+            {
+                DialogResult = DialogResult.OK;
+                this.Close();
+                return;
+            }
+
+            var createdBook = await result.Content.ReadAsAsync<BooksVM>();
+            var uploadResult = await ApiClient.UploadFile(fileLocation, fileName, createdBook.Id);
+            if (uploadResult.IsSuccessStatusCode)
+            {
+                DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private List<int> GetSelectedCategories()
+        {
+            List<int> categoriesId = new List<int>();
+            foreach (int indexChecked in cbCategories.CheckedIndices)
+            {
+                if (cbCategories.GetItemCheckState(indexChecked) == CheckState.Checked)
+                    categoriesId.Add(Categories[indexChecked].Id);
+            }
+            return categoriesId;
+        }
+
+        private void btnUpload_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "PDF Knjiga |*.pdf"; // file types, that will be allowed to upload
+            dialog.Multiselect = false; // allow/deny user to upload more than one file at a time
+            
+            if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
+            {
+                fileLocation = dialog.FileName; // get name of file
+                fileName = dialog.SafeFileName;
+            }
+        }
+
+        private async void btnDownload_Click(object sender, EventArgs e)
+        {
+            var result = await ApiClient.GetBookFile(Book.Id);
+            if (!result.IsSuccessStatusCode)
+            {
+                MessageBox.Show(Commons.Resources.ERR_DOWNLOADING_BOOK_FILE);
+                return;
+            }
+            var data = await result.Content.ReadAsByteArrayAsync();
+
+            var tempFolder = Path.GetTempPath();
+            var filename = Path.Combine(tempFolder, Book.FileName);
+            File.WriteAllBytes(filename, data);
+            System.Diagnostics.Process.Start(filename);
+        }
+        private async void btnAction_Click(object sender, EventArgs e)
+        {
+            if (!ValidateChildren())
+                return;
+            pbLoading.Visible = true;
+
+            if (Book == null)
+                await CreateNewBook();
+            else
+                await UploadExistingBook();
+            pbLoading.Visible = false;
+
+        }
+
+        #region Validation
         private async void BooksEditForm_Load(object sender, EventArgs e)
         {
             toggleForm();
@@ -98,7 +223,6 @@ namespace eKnjiznica.AdminUI.UI.Books
         private void inputDescription_Validating(object sender, CancelEventArgs e)
         {
 
-
         }
 
         private void cbCategories_Validating(object sender, CancelEventArgs e)
@@ -116,74 +240,6 @@ namespace eKnjiznica.AdminUI.UI.Books
             errorProvider.SetError(cbCategories, Commons.Resources.ERR_SELECT_ONE_CATEGORY);
         }
 
-        private async void btnAction_Click(object sender, EventArgs e)
-        {
-            if (!ValidateChildren())
-                return;
-
-            HttpResponseMessage result;
-            if (Book == null)
-            {
-                result = await ApiClient.CreateBook(new CreateBookVM
-                {
-                    AuthorName = inputAuthor.Text.Trim(),
-                    BookDescription = inputDescription.Text.Trim(),
-                    ReleaseDate = dtpReleaseDate.Value,
-                    BookTitle = inputBookName.Text.Trim(),
-                    CategoriesId = GetSelectedCategories()
-                });
-            }
-            else
-            {
-                result = await ApiClient.UpdateBook(new UpdateBookVM
-                {
-
-                    AuthorName = inputAuthor.Text.Trim(),
-                    BookDescription = inputDescription.Text.Trim(),
-                    ReleaseDate = dtpReleaseDate.Value,
-                    BookTitle = inputBookName.Text.Trim(),
-                    CategoriesId = GetSelectedCategories(),
-                    IsActive = cbIsActive.Checked
-                }, Book.Id);
-            }
-
-            if (!result.IsSuccessStatusCode)
-            {
-                return;
-            }
-            ApiClient.UploadFile(bookFile,)
-            
-            DialogResult = DialogResult.OK;
-            this.Close();
-
-        }
-
-        private List<int> GetSelectedCategories()
-        {
-            List<int> categoriesId = new List<int>();
-            foreach (int indexChecked in cbCategories.CheckedIndices)
-            {
-                if (cbCategories.GetItemCheckState(indexChecked) == CheckState.Checked)
-                    categoriesId.Add(Categories[indexChecked].Id);
-            }
-            return categoriesId;
-        }
-
-        private void btnUpload_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "*.pdf"; // file types, that will be allowed to upload
-            dialog.Multiselect = false; // allow/deny user to upload more than one file at a time
-            if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
-            {
-                String path = dialog.FileName; // get name of file
-                bookFile = File.ReadAllBytes(path);
-            }
-        }
-
-        private void btnDownload_Click(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

@@ -19,7 +19,7 @@ namespace eKnjiznica.DAL.Repository
             this.context = context;
         }
 
-        public void CreateBook(CreateBookVM model, string userId)
+        public BooksVM CreateBook(CreateBookVM model, string userId)
         {
             var book = new Book
             {
@@ -47,11 +47,33 @@ namespace eKnjiznica.DAL.Repository
             }
             context.SaveChanges();
 
+            return GetBookById(book.Id);
+
         }
 
         public BooksVM GetBookById(int bookId)
         {
-            throw new NotImplementedException();
+            return context
+                  .Books
+                  .Where(x => x.Id == bookId)
+                  .Select(x => new BooksVM
+                  {
+                      Id = x.Id,
+                      AuthorName = x.Autor,
+                      BookTitle = x.Title,
+                      Categories = x.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
+                      {
+                          Id = y.CategoryId,
+                          CategoryName = y.Category.CategoryName,
+                          IsActive = y.IsActive,
+                      }).ToList(),
+                      Description = x.Description,
+                      IsActive = x.IsActive,
+                      ReleaseDate = x.ReleaseDate,
+                      FileLocation=  x.FileLocation,
+                      FileName =x.FileName
+
+                  }).FirstOrDefault();
         }
 
         public List<BooksVM> GetBooks(string title, string authorName)
@@ -65,22 +87,26 @@ namespace eKnjiznica.DAL.Repository
                      Id = x.Id,
                      AuthorName = x.Autor,
                      BookTitle = x.Title,
-                     Categories = x.Categories.Where(y=>y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM {
+                     Categories = x.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
+                     {
                          Id = y.CategoryId,
                          CategoryName = y.Category.CategoryName,
                          IsActive = y.IsActive,
                      }).ToList(),
                      Description = x.Description,
                      IsActive = x.IsActive,
-                     ReleaseDate = x.ReleaseDate
+                     ReleaseDate = x.ReleaseDate,
+                     FileLocation = x.FileLocation,
+                     FileName = x.FileName
 
                  }).ToList();
         }
 
-        public void SaveFilePath(BooksVM book, string relativePath)
+        public void SaveFilePath(BooksVM book, string relativePath,string fileName)
         {
-            var result =context.Books.FirstOrDefault(x => x.Id == book.Id);
+            var result = context.Books.FirstOrDefault(x => x.Id == book.Id);
             result.FileLocation = relativePath;
+            result.FileName = fileName;
             context.SaveChanges();
         }
 
@@ -98,13 +124,13 @@ namespace eKnjiznica.DAL.Repository
 
         }
 
-        public void UpdateBookCategories(UpdateBookVM model, int id,string adminId)
+        public void UpdateBookCategories(UpdateBookVM model, int id, string adminId)
         {
             var book = context.Books.FirstOrDefault(x => x.Id == id);
             if (book == null)
                 return;
 
-            var categories= context.BookCategories.Where(x => x.BookId == id).ToList();
+            var categories = context.BookCategories.Where(x => x.BookId == id).ToList();
             var userSelectedCategories = model.CategoriesId;
 
             //update old categories

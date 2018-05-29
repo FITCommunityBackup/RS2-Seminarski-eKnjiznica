@@ -1,5 +1,6 @@
 ﻿using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.CORE.Services.Books;
+using eKnjiznica.DAL.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Http;
 
 namespace eKnjiznica.API.Controllers
 {
+    [Authorize(Roles =EntityRoles.AdminRole)]
     [RoutePrefix("api/books")]
     public class BooksController : BaseController
     {
@@ -35,8 +37,8 @@ namespace eKnjiznica.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            bookService.CreateBook(model, GetUserId());
-            return Ok();
+            var result = bookService.CreateBook(model, GetUserId());
+            return Created($"api/books/{result.Id}",result);
         }
 
         [HttpPost]

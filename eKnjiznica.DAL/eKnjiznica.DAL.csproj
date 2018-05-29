@@ -93,6 +93,10 @@
     <Compile Include="Migrations\201805281342531_Books.Designer.cs">
       <DependentUpon>201805281342531_Books.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805290811351_FileNameAdd.cs" />
+    <Compile Include="Migrations\201805290811351_FileNameAdd.Designer.cs">
+      <DependentUpon>201805290811351_FileNameAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Book.cs" />
@@ -118,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805281342531_Books.resx">
       <DependentUpon>201805281342531_Books.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805290811351_FileNameAdd.resx">
+      <DependentUpon>201805290811351_FileNameAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

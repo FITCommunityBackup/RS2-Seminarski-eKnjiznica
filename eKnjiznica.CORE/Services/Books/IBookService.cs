@@ -11,6 +11,6 @@ namespace eKnjiznica.CORE.Services.Books
     {
         List<BooksVM> GetBooks(string title, string author);
         void UpdateBook(UpdateBookVM model, int id,string userId);
-        void CreateBook(CreateBookVM model, string userId);
+        BooksVM CreateBook(CreateBookVM model, string userId);
     }
 }

@@ -17,9 +17,9 @@ namespace eKnjiznica.CORE.Services.Books
             this.bookRepo = bookRepo;
         }
 
-        public void CreateBook(CreateBookVM model, string userId)
+        public BooksVM CreateBook(CreateBookVM model, string userId)
         {
-            bookRepo.CreateBook(model, userId);
+            return bookRepo.CreateBook(model, userId);
         }
 
         public List<BooksVM> GetBooks(string title, string author)

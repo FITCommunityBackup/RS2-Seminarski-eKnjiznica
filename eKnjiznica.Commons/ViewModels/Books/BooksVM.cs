@@ -26,6 +26,13 @@ namespace eKnjiznica.Commons.ViewModels.Books
         [DataMember]
         public DateTime ReleaseDate { get; set; }
 
+        [DataMember]
+        public string FileLocation { get; set; }
+
+        [DataMember]
+        public string FileName{ get; set; }
+
+
 
     }
 }
