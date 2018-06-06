@@ -9,6 +9,7 @@ using eKnjiznica.AdminUI.model;
 using eKnjiznica.Commons.ViewModels;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
+using eKnjiznica.Commons.ViewModels.Clients;
 
 namespace eKnjiznica.AdminUI.Services.API
 {
@@ -20,6 +21,22 @@ namespace eKnjiznica.AdminUI.Services.API
         {
             this.httpClient = httpClient;
         }
+
+
+
+        public Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM, string id)
+        {
+            return Put(clientUpdateVM,$"api/clients/{id}");
+
+        }
+
+        public Task<HttpResponseMessage> CreateClientAccount(ClientAddVM clientAddVM)
+        {
+            return Post(clientAddVM, $"api/clients");
+
+        }
+
+
 
 
         public Task<HttpResponseMessage> LoadClientAccounts(string username, bool includeInactive)
@@ -176,8 +193,6 @@ namespace eKnjiznica.AdminUI.Services.API
             form.Add(content);
             return httpClient.PostAsync(path,form);
         }
-
-      
 
 
 

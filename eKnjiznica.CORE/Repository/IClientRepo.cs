@@ -15,5 +15,8 @@ namespace eKnjiznica.CORE.Repository
         ClientVM GetClientById(string id);
         string CreateClientFinancialAccount(string id);
         List<ClientVM> GetClients(string username, bool includeInactive);
+        ClientVM FindByEmail(string email);
+        ClientVM FindByUsername(string username);
+        void UpdateClientAccount(ClientUpdateVM model, string id);
     }
 }

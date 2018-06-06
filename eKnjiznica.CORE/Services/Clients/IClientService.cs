@@ -11,5 +11,9 @@ namespace eKnjiznica.CORE.Services.Clients
     {
         ClientVM CreateClientAccount(ClientAddVM model, string v);
         List<ClientVM> GetClientAccount(string username, bool includeInactive);
+        ClientVM FindClientByEmail(string email);
+        ClientVM FindClientByUsername(string username);
+        ClientVM FindClientById(string id);
+        void UpdateClientAccount(ClientUpdateVM model, string id);
     }
 }

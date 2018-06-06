@@ -18,7 +18,7 @@ namespace eKnjiznica.DAL.Repository
         private EKnjiznicaDB context;
         private ApplicationUserManager applicationUserManager;
         private IRoleRepo roleRepo;
-        public ClientRepo(EKnjiznicaDB context, ApplicationUserManager applicationUserManager,IRoleRepo roleRepo)
+        public ClientRepo(EKnjiznicaDB context, ApplicationUserManager applicationUserManager, IRoleRepo roleRepo)
         {
             this.roleRepo = roleRepo;
             this.applicationUserManager = applicationUserManager;
@@ -39,8 +39,8 @@ namespace eKnjiznica.DAL.Repository
                 UserName = model.UserName,
                 PhoneNumber = model.PhoneNumber,
                 Email = model.Email,
-                BirthDate = model.DateOfBirth
-
+                BirthDate = model.DateOfBirth,
+                IsActive = true
             };
             var result = applicationUserManager.Create(client, model.Password);
             if (result.Succeeded)
@@ -48,6 +48,52 @@ namespace eKnjiznica.DAL.Repository
             else
                 throw new Exception("Client not Created");
         }
+
+
+        public ClientVM FindByEmail(string email)
+        {
+            var role = roleRepo.FindRoleByName(EntityRoles.ClientRole);
+            return context
+                .Users
+                .Where(x => x.Email.Equals(email) && x.Roles.Any(y => y.RoleId == role.Id))
+                .Select(x => new ClientVM
+                {
+                    Id = x.Id,
+                    AccountBalance = x.UserFinancialAccount.Balance,
+                    Email = x.Email,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    UserName = x.UserName,
+                    DateOfBirth = x.BirthDate.Value,
+                    IsActive = x.IsActive,
+                    PhoneNumber = x.PhoneNumber
+                })
+                .FirstOrDefault();
+        }
+
+
+
+        public ClientVM FindByUsername(string username)
+        {
+            var role = roleRepo.FindRoleByName(EntityRoles.ClientRole);
+            return context
+                .Users
+                .Where(x => x.UserName.Equals(username) && x.Roles.Any(y => y.RoleId == role.Id))
+                .Select(x => new ClientVM
+                {
+                    Id = x.Id,
+                    AccountBalance = x.UserFinancialAccount.Balance,
+                    Email = x.Email,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    UserName = x.UserName,
+                    DateOfBirth = x.BirthDate.Value,
+                    IsActive = x.IsActive,
+                    PhoneNumber = x.PhoneNumber
+                })
+                .FirstOrDefault();
+        }
+
 
         public string CreateClientFinancialAccount(string id)
         {
@@ -69,7 +115,7 @@ namespace eKnjiznica.DAL.Repository
             var role = roleRepo.FindRoleByName(EntityRoles.ClientRole);
             return context
                 .Users
-                .Where(x => x.Id.Equals(id)&& x.Roles.Any(y=>y.RoleId==role.Id))
+                .Where(x => x.Id.Equals(id) && x.Roles.Any(y => y.RoleId == role.Id))
                 .Select(x => new ClientVM
                 {
                     Id = x.Id,
@@ -78,7 +124,9 @@ namespace eKnjiznica.DAL.Repository
                     FirstName = x.FirstName,
                     LastName = x.LastName,
                     UserName = x.UserName,
-                    DateOfBirth = x.BirthDate.Value
+                    DateOfBirth = x.BirthDate.Value,
+                    PhoneNumber = x.PhoneNumber,
+                    IsActive = x.IsActive
                 })
                 .FirstOrDefault();
         }
@@ -89,8 +137,8 @@ namespace eKnjiznica.DAL.Repository
 
             return context
                 .Users
-                .Where(x => x.UserName.Contains(username) || x.IsActive || includeInactive)
-                .Where(x=>x.Roles.Any(y=>y.RoleId==role.Id))
+                .Where(x => (string.IsNullOrEmpty(username)||  x.UserName.Contains(username)) &&( x.IsActive || includeInactive))
+                .Where(x => x.Roles.Any(y => y.RoleId == role.Id))
                 .Select(x => new ClientVM
                 {
                     Id = x.Id,
@@ -100,9 +148,30 @@ namespace eKnjiznica.DAL.Repository
                     LastName = x.LastName,
                     UserName = x.UserName,
                     DateOfBirth = x.BirthDate.Value,
-                    IsActive=x.IsActive
+                    IsActive = x.IsActive,
+                    PhoneNumber = x.PhoneNumber
                 })
                 .ToList();
+        }
+
+        public void UpdateClientAccount(ClientUpdateVM model, string id)
+        {
+            var role = roleRepo.FindRoleByName(EntityRoles.ClientRole);
+            var user = context.Users
+                .Where(x => x.Id.Equals(id))
+                .Where(x => x.Roles.Any(y => y.RoleId == role.Id)).FirstOrDefault();
+
+            if (user == null)
+                return;
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Email = model.Email;
+            user.BirthDate = model.DateOfBirth;
+            user.IsActive = model.IsActive;
+            if (!string.IsNullOrEmpty(model.Password))
+                user.PasswordHash = applicationUserManager.PasswordHasher.HashPassword(model.Password);
+            context.SaveChanges();
         }
     }
 }

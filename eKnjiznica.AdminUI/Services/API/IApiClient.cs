@@ -2,6 +2,7 @@
 using eKnjiznica.Commons.ViewModels;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
+using eKnjiznica.Commons.ViewModels.Clients;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,5 +31,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> GetBookFile(int id);
         Task<HttpResponseMessage> UpdateExistingBookOffer(UpdateBookOfferVM bookOfferUpdate, int id);
         Task<HttpResponseMessage> CreateBookOffer(CreateBookOfferVM bookOfferCreate);
+        Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM, string id);
+        Task<HttpResponseMessage> CreateClientAccount(ClientAddVM clientAddVM);
     }
 }

@@ -30,9 +30,31 @@ namespace eKnjiznica.CORE.Services.Clients
             return clientRepo.GetClientById(id);
         }
 
+        public ClientVM FindClientByEmail(string email)
+        {
+            return clientRepo.FindByEmail(email);
+        }
+
+        public ClientVM FindClientById(string id)
+        {
+            return clientRepo.GetClientById(id);
+
+        }
+
+        public ClientVM FindClientByUsername(string username)
+        {
+            return clientRepo.FindByUsername(username);
+
+        }
+
         public List<ClientVM> GetClientAccount(string username, bool includeInactive)
         {
             return clientRepo.GetClients(username, includeInactive);
+        }
+
+        public void UpdateClientAccount(ClientUpdateVM model, string id)
+        {
+            clientRepo.UpdateClientAccount(model, id);
         }
     }
 }

@@ -36,7 +36,24 @@ namespace eKnjiznica.API.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            var result = clientService.CreateClientAccount(model,GetUserId());
+
+            if (clientService.FindClientByUsername(model.UserName) != null)
+            {
+                ModelState.AddModelError("create_client", Commons.Resources.ACCOUNT_WITH_USERNAME_EXISTS);
+                return BadRequest(ModelState);
+            }
+
+            var result = clientService.CreateClientAccount(model, GetUserId());
+            return Ok();
+        }
+        [HttpPut]
+        [Route("{id}")]
+        public IHttpActionResult UpdateClientAccount(ClientUpdateVM model, string id)
+        {
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+           clientService.UpdateClientAccount(model,id);
             return Ok();
         }
     }
