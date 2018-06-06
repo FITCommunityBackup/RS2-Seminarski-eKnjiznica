@@ -47,6 +47,7 @@
     <Compile Include="Repository\IAdminRepo.cs" />
     <Compile Include="Repository\IBookRepo.cs" />
     <Compile Include="Repository\ICategoriesRepo.cs" />
+    <Compile Include="Repository\IClientRepo.cs" />
     <Compile Include="Repository\IDocumentRepository.cs" />
     <Compile Include="Repository\ILoggerRepo.cs" />
     <Compile Include="Repository\IRoleRepo.cs" />

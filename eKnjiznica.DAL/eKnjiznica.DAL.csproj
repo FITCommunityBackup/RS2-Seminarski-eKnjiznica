@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201805291125128_UserFinancialAccount.Designer.cs">
       <DependentUpon>201805291125128_UserFinancialAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806061330160_M.cs" />
+    <Compile Include="Migrations\201806061330160_M.Designer.cs">
+      <DependentUpon>201806061330160_M.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Book.cs" />
@@ -121,6 +125,7 @@
     <Compile Include="Repository\AdminRepo.cs" />
     <Compile Include="Repository\BookRepo.cs" />
     <Compile Include="Repository\CategoryRepo.cs" />
+    <Compile Include="Repository\ClientRepo.cs" />
     <Compile Include="Repository\LoggerRepo.cs" />
     <Compile Include="Repository\RoleRepo.cs" />
   </ItemGroup>
@@ -148,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805291125128_UserFinancialAccount.resx">
       <DependentUpon>201805291125128_UserFinancialAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806061330160_M.resx">
+      <DependentUpon>201806061330160_M.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

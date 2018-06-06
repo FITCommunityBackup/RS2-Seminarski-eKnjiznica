@@ -24,5 +24,7 @@ namespace eKnjiznica.Commons.ViewModels.Clients
         public DateTime DateOfBirth { get; set; }
         [DataMember]
         public decimal AccountBalance { get; set; }
+        [DataMember]
+        public bool IsActive { get; set; }
     }
 }

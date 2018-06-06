@@ -19,6 +19,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> UpdateAdminAccount(AdminUpdateVM adminUpdateVM);
         Task<HttpResponseMessage> GetAuditLogs();
         Task<HttpResponseMessage> GetCategories(string categoryNameFilter,bool includeInactiveCategories);
+        Task<HttpResponseMessage> LoadClientAccounts(string v, bool @checked);
         Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
         Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
         Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName);

@@ -47,7 +47,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 26);
+            this.label1.Location = new System.Drawing.Point(24, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 0;
@@ -55,14 +55,14 @@
             // 
             // txtUserNameFilter
             // 
-            this.txtUserNameFilter.Location = new System.Drawing.Point(129, 27);
+            this.txtUserNameFilter.Location = new System.Drawing.Point(105, 28);
             this.txtUserNameFilter.Name = "txtUserNameFilter";
             this.txtUserNameFilter.Size = new System.Drawing.Size(151, 20);
             this.txtUserNameFilter.TabIndex = 1;
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(286, 26);
+            this.btnFilter.Location = new System.Drawing.Point(262, 25);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 2;

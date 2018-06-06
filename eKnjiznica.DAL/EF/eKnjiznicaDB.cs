@@ -18,6 +18,7 @@ namespace eKnjiznica.DAL.EF
         public DbSet<BookCategories> BookCategories{ get; set; }
         public DbSet<Book> Books{ get; set; }
         public DbSet<BookOffer> BookOffers { get; set; }
+        public DbSet<UserFinancialAccount> UserFinancialAccounts{ get; set; }
 
         public EKnjiznicaDB()
             : base("DefaultConnection", throwIfV1Schema: false)

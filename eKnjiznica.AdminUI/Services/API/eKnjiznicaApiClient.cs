@@ -21,7 +21,15 @@ namespace eKnjiznica.AdminUI.Services.API
             this.httpClient = httpClient;
         }
 
-      
+
+        public Task<HttpResponseMessage> LoadClientAccounts(string username, bool includeInactive)
+        {
+            return Get($"api/clients?username={username}&includeInactive={includeInactive}");
+
+        }
+
+
+
         public Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive)
         {
             return Get($"api/books/admin/offers?title={bookTitle}&author={authorName}&includeInactive={includeInactive}");
@@ -169,7 +177,8 @@ namespace eKnjiznica.AdminUI.Services.API
             return httpClient.PostAsync(path,form);
         }
 
-    
+      
+
 
 
 

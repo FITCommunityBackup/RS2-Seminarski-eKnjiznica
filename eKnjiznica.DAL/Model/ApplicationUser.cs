@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace eKnjiznica.DAL.Model
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public bool IsActive { get; set; }
-
+        public DateTime? BirthDate { get; set; }
+        
         #region Navigation
         public ICollection<UserAudit> Audits{ get; set; }
         public ICollection<BookCategories> AddedBooksCategories { get; set; }

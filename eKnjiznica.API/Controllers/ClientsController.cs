@@ -10,7 +10,7 @@ using eKnjiznica.DAL.EF;
 
 namespace eKnjiznica.API.Controllers
 {
-    [Authorize(Roles =EntityRoles.AdminRole)]
+    [Authorize(Roles = EntityRoles.AdminRole)]
     [RoutePrefix("api/clients")]
     public class ClientsController : BaseController
     {
@@ -23,10 +23,12 @@ namespace eKnjiznica.API.Controllers
 
         [HttpGet]
         [Route("")]
-        public IHttpActionResult GetClientAccounts()
+        public IHttpActionResult GetClientAccounts(
+            [FromUri(Name = "username")] string username=null,
+            [FromUri(Name = "includeInactive")] bool includeInactive=false)
         {
-
-            return Ok();
+            var result = clientService.GetClientAccount(username, includeInactive);
+            return Ok(result);
         }
         [HttpPost]
         [Route("")]

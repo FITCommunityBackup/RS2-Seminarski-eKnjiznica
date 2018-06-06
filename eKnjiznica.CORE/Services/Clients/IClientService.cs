@@ -10,5 +10,6 @@ namespace eKnjiznica.CORE.Services.Clients
     public interface IClientService
     {
         ClientVM CreateClientAccount(ClientAddVM model, string v);
+        List<ClientVM> GetClientAccount(string username, bool includeInactive);
     }
 }

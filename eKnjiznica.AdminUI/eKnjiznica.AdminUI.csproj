@@ -173,6 +173,12 @@
     <Compile Include="UI\Categories\CategoriesForm.Designer.cs">
       <DependentUpon>CategoriesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Clients\ClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Clients\ClientsForm.Designer.cs">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Logs\LogsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Categories\CategoriesForm.resx">
       <DependentUpon>CategoriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Clients\ClientsForm.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Logs\LogsForm.resx">
       <DependentUpon>LogsForm.cs</DependentUpon>
