@@ -26,7 +26,11 @@ namespace eKnjiznica.CORE.Services.Admin
         {
             return adminRepo.FindById(id);
         }
-
+        public AdminAccount FindByUsername(string username)
+        {
+            var admin = adminRepo.FindByUsername(username);
+            return admin;
+        }
         public AdminAccount FindByUsernameOrEmail(string username, string email)
         {
             var admin = adminRepo.FindByUsername(username);

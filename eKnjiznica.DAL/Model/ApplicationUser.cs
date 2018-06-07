@@ -21,6 +21,7 @@ namespace eKnjiznica.DAL.Model
         public ICollection<BookCategories> AddedBooksCategories { get; set; }
         public ICollection<Book> AddedBooks { get; set; }
         public ICollection<Category> AddedCategories{ get; set; }
+        public ICollection<Transaction> AddedTransactions{ get; set; }
 
         public virtual UserFinancialAccount UserFinancialAccount{ get; set; }
         #endregion

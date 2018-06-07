@@ -113,12 +113,25 @@
     <Compile Include="Migrations\201806061330160_M.Designer.cs">
       <DependentUpon>201806061330160_M.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806070717497_Transactions.cs" />
+    <Compile Include="Migrations\201806070717497_Transactions.Designer.cs">
+      <DependentUpon>201806070717497_Transactions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806070756049_Transactions_DateAndType.cs" />
+    <Compile Include="Migrations\201806070756049_Transactions_DateAndType.Designer.cs">
+      <DependentUpon>201806070756049_Transactions_DateAndType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806070957578_Transactions_NullableAdmin.cs" />
+    <Compile Include="Migrations\201806070957578_Transactions_NullableAdmin.Designer.cs">
+      <DependentUpon>201806070957578_Transactions_NullableAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\BookCategories.cs" />
     <Compile Include="Model\BookOffer.cs" />
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\UserAudit.cs" />
     <Compile Include="Model\UserFinancialAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,6 +141,7 @@
     <Compile Include="Repository\ClientRepo.cs" />
     <Compile Include="Repository\LoggerRepo.cs" />
     <Compile Include="Repository\RoleRepo.cs" />
+    <Compile Include="Repository\TransactionRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201805131617409_Initial_Migration.resx">
@@ -156,6 +170,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806061330160_M.resx">
       <DependentUpon>201806061330160_M.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806070717497_Transactions.resx">
+      <DependentUpon>201806070717497_Transactions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806070756049_Transactions_DateAndType.resx">
+      <DependentUpon>201806070756049_Transactions_DateAndType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806070957578_Transactions_NullableAdmin.resx">
+      <DependentUpon>201806070957578_Transactions_NullableAdmin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

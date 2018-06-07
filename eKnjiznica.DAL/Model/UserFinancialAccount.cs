@@ -13,6 +13,10 @@ namespace eKnjiznica.DAL.Model
         public string UserFinancialAccountId { get; set; }
         public decimal Balance{ get; set; }
 
+
+        #region Navigation
         public virtual ApplicationUser ApplicationUser { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
+        #endregion
     }
 }

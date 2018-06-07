@@ -22,6 +22,17 @@ namespace eKnjiznica.AdminUI.Services.API
             this.httpClient = httpClient;
         }
 
+        public Task<HttpResponseMessage> GetTransactions(string username, string adminUsername)
+        {
+            return Get($"api/transactions?clientUsername={username}&adminUsername={adminUsername}");
+        }
+
+
+        public Task<HttpResponseMessage> MakePayInRequest(decimal value, string id)
+        {
+
+            return Post(value, $"api/transactions/client/{id}");
+        }
 
 
         public Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM, string id)
@@ -194,6 +205,7 @@ namespace eKnjiznica.AdminUI.Services.API
             return httpClient.PostAsync(path,form);
         }
 
+      
 
 
 

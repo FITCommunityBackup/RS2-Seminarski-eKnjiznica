@@ -97,6 +97,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unesite ispravan novčani iznos.
+        /// </summary>
+        public static string ENTER_VALID_AMOUNT {
+            get {
+                return ResourceManager.GetString("ENTER_VALID_AMOUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unesite ispravan naziv kategorije.
         /// </summary>
         public static string ENTER_VALID_CATEGORY_NAME {
@@ -120,6 +129,15 @@ namespace eKnjiznica.Commons {
         public static string ERR_BOOK_NAME_REQUIRED {
             get {
                 return ResourceManager.GetString("ERR_BOOK_NAME_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Klijentski račun nije aktivan.
+        /// </summary>
+        public static string ERR_CLIENT_NOT_ACTIVE {
+            get {
+                return ResourceManager.GetString("ERR_CLIENT_NOT_ACTIVE", resourceCulture);
             }
         }
         
@@ -237,6 +255,24 @@ namespace eKnjiznica.Commons {
         public static string PLEASE_SELECT_USER {
             get {
                 return ResourceManager.GetString("PLEASE_SELECT_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kupovina.
+        /// </summary>
+        public static string TRANSACTION_TYPE_BUY {
+            get {
+                return ResourceManager.GetString("TRANSACTION_TYPE_BUY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uplata.
+        /// </summary>
+        public static string TRANSACTION_TYPE_PAY_IN {
+            get {
+                return ResourceManager.GetString("TRANSACTION_TYPE_PAY_IN", resourceCulture);
             }
         }
         

@@ -6,6 +6,7 @@ using eKnjiznica.CORE.Services.Clients;
 using eKnjiznica.CORE.Services.Documents;
 using eKnjiznica.CORE.Services.Logger;
 using eKnjiznica.CORE.Services.Roles;
+using eKnjiznica.CORE.Services.Transaction;
 using eKnjiznica.DAL;
 using eKnjiznica.DAL.EF;
 using eKnjiznica.DAL.Model;
@@ -79,6 +80,8 @@ namespace eKnjiznica.API
             container.RegisterType<IDocumentService, DocumentService>();
             container.RegisterType<IClientRepo, ClientRepo>();
             container.RegisterType<IClientService, ClientService>();
+            container.RegisterType<ITransactionsRepo, TransactionRepo>();
+            container.RegisterType<ITransactionService, TransactionService>();
 
 
 

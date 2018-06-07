@@ -19,6 +19,7 @@ namespace eKnjiznica.DAL.EF
         public DbSet<Book> Books{ get; set; }
         public DbSet<BookOffer> BookOffers { get; set; }
         public DbSet<UserFinancialAccount> UserFinancialAccounts{ get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
 
         public EKnjiznicaDB()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -55,6 +56,12 @@ namespace eKnjiznica.DAL.EF
             modelBuilder.Entity<ApplicationUser>()
              .HasOptional(x => x.UserFinancialAccount)
              .WithRequired(x => x.ApplicationUser);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(x => x.AddedTransactions)
+                .WithOptional(x => x.Admin)
+                .HasForeignKey(x => x.AdminId);
+
 
             #endregion
 
@@ -125,8 +132,23 @@ namespace eKnjiznica.DAL.EF
               .HasRequired(x => x.ApplicationUser)
               .WithOptional(x => x.UserFinancialAccount);
 
+            modelBuilder.Entity<UserFinancialAccount>()
+            .HasMany(x => x.Transactions)
+            .WithRequired(x => x.UserFinancialAccount)
+            .HasForeignKey(x=>x.UserFinancialAccountId);
             #endregion
 
+            #region Transaction
+            modelBuilder.Entity<Transaction>()
+                .HasOptional(x => x.Admin)
+                .WithMany(x => x.AddedTransactions)
+                .HasForeignKey(x => x.AdminId);
+
+            modelBuilder.Entity<Transaction>()
+                .HasRequired(x => x.UserFinancialAccount)
+                .WithMany(x => x.Transactions)
+                .HasForeignKey(x => x.UserFinancialAccountId);
+            #endregion
         }
         public static EKnjiznicaDB Create()
         {

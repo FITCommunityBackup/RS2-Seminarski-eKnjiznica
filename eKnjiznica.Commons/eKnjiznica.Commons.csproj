@@ -68,6 +68,8 @@
     <Compile Include="ViewModels\Error\BaseErrorVM.cs" />
     <Compile Include="ViewModels\Error\LoginErrorVM.cs" />
     <Compile Include="ViewModels\LogsVM.cs" />
+    <Compile Include="ViewModels\TransactionType.cs" />
+    <Compile Include="ViewModels\TransactionVM\TransactionVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">

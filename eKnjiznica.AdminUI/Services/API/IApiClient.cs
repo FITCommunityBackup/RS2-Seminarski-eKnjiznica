@@ -23,6 +23,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> LoadClientAccounts(string v, bool @checked);
         Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
         Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
+        Task<HttpResponseMessage> GetTransactions(string username, string adminUsername);
         Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName);
         Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive);
         Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM);
@@ -33,5 +34,6 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> CreateBookOffer(CreateBookOfferVM bookOfferCreate);
         Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM, string id);
         Task<HttpResponseMessage> CreateClientAccount(ClientAddVM clientAddVM);
+        Task<HttpResponseMessage> MakePayInRequest(decimal value, string id);
     }
 }

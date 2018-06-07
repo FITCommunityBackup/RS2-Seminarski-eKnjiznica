@@ -6,6 +6,7 @@ using eKnjiznica.AdminUI.UI.Books;
 using eKnjiznica.AdminUI.UI.Categories;
 using eKnjiznica.AdminUI.UI.Clients;
 using eKnjiznica.AdminUI.UI.Logs;
+using eKnjiznica.AdminUI.UI.Transactions;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -34,6 +35,8 @@ namespace eKnjiznica.AdminUI
             container.RegisterType<ErrorHandlingUtil>(new ContainerControlledLifetimeManager());
             container.RegisterType<IUserService, UserService>(new ContainerControlledLifetimeManager());
 
+
+            container.RegisterType<TransactionsForm>();
             container.RegisterType<ClientEditForm>();
             container.RegisterType<ClientsForm>();
             container.RegisterType<BooksSellForm>();

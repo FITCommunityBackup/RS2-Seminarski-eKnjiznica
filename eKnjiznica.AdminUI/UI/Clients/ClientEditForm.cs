@@ -20,12 +20,13 @@ namespace eKnjiznica.AdminUI.UI.Clients
         private IApiClient apiClient;
         private MyRegex myRegex;
         private ErrorHandlingUtil errorHandlingUtil;
-        public ClientVM Client{ get; set; }
-        public ClientEditForm(IApiClient apiClient,ErrorHandlingUtil errorHandlingUtil,MyRegex myRegex)
+        public ClientVM Client { get; set; }
+        public ClientEditForm(IApiClient apiClient, ErrorHandlingUtil errorHandlingUtil, MyRegex myRegex)
         {
             this.myRegex = myRegex;
             this.errorHandlingUtil = errorHandlingUtil;
             this.apiClient = apiClient;
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
             InitializeComponent();
         }
 
@@ -38,19 +39,32 @@ namespace eKnjiznica.AdminUI.UI.Clients
                 btnAction.Text = Commons.Resources.LABEL_UPDATE;
 
                 inputFirstName.Text = Client.FirstName;
-                inputLastName.Text= Client.LastName;
+                inputLastName.Text = Client.LastName;
                 inputUsername.Text = Client.UserName;
                 inputUsername.Enabled = false;
                 inputEmail.Text = Client.Email;
                 inputPhoneNumber.Text = Client.PhoneNumber;
                 dtpBirthday.Value = Client.DateOfBirth;
                 cbIsActive.Checked = Client.IsActive;
+                labelAccountBalance.Visible = true;
+                inputAccountBalance.Visible = true;
+                inputAccountBalance.Enabled=false;
+                inputAccountBalance.Value= Client.AccountBalance;
+
+                inputPayIn.Visible = true;
+                lblPayIn.Visible = true;
+                btnPayIn.Visible = true;
             }
             else
             {
                 cbIsActive.Visible = false;
                 btnAction.Text = Commons.Resources.LABEL_ADD;
                 inputUsername.Enabled = true;
+                inputAccountBalance.Visible = false;
+                labelAccountBalance.Visible = false;
+                inputPayIn.Visible = false;
+                lblPayIn.Visible = false;
+                btnPayIn.Visible = false;
             }
         }
 
@@ -69,12 +83,13 @@ namespace eKnjiznica.AdminUI.UI.Clients
             if (!ValidateChildren())
                 return;
 
-            HttpResponseMessage result=null;
+            HttpResponseMessage result = null;
             string error_key = null;
             if (Client != null)
             {
                 error_key = "update_client";
-                result = await apiClient.UpdateClientAccount(new ClientUpdateVM {
+                result = await apiClient.UpdateClientAccount(new ClientUpdateVM
+                {
                     FirstName = inputFirstName.Text.Trim(),
                     LastName = inputLastName.Text.Trim(),
                     DateOfBirth = dtpBirthday.Value,
@@ -102,7 +117,7 @@ namespace eKnjiznica.AdminUI.UI.Clients
 
             if (!result.IsSuccessStatusCode)
             {
-                errorLabel.Text =await errorHandlingUtil.GetErrorMessageAsync(result, error_key);
+                errorLabel.Text = await errorHandlingUtil.GetErrorMessageAsync(result, error_key);
             }
             else
             {
@@ -112,6 +127,35 @@ namespace eKnjiznica.AdminUI.UI.Clients
             }
 
         }
+
+        private async void btnPayIn_Click(object sender, EventArgs e)
+        {
+            if (inputPayIn.Value <= 0)
+            {
+                errorProvider.SetError(inputPayIn, Commons.Resources.ENTER_VALID_AMOUNT);
+                return;
+            }
+            else
+            {
+                errorProvider.SetError(inputPayIn,null);
+            }
+            HttpResponseMessage result = null;
+            var error_key = "update_client";
+
+            result = await apiClient.MakePayInRequest(inputPayIn.Value,Client.Id);
+
+            if (!result.IsSuccessStatusCode)
+            {
+                errorLabel.Text = await errorHandlingUtil.GetErrorMessageAsync(result, error_key);
+            }
+            else
+            {
+                errorLabel.Text = "";
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
 
         private void inputFirstName_Validating(object sender, CancelEventArgs e)
         {
@@ -146,7 +190,7 @@ namespace eKnjiznica.AdminUI.UI.Clients
         private void inputUsername_Validating(object sender, CancelEventArgs e)
         {
             var username = inputUsername.Text.Trim();
-            if (string.IsNullOrEmpty(username)|| username.Length<6)
+            if (string.IsNullOrEmpty(username) || username.Length < 6)
             {
                 errorProvider.SetError(inputUsername, Commons.Resources.ERR_FIELD_USERNAME_INVALID);
                 e.Cancel = true;
@@ -207,5 +251,7 @@ namespace eKnjiznica.AdminUI.UI.Clients
                 e.Cancel = true;
             }
         }
+
+
     }
 }

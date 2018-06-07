@@ -51,6 +51,7 @@
     <Compile Include="Repository\IDocumentRepository.cs" />
     <Compile Include="Repository\ILoggerRepo.cs" />
     <Compile Include="Repository\IRoleRepo.cs" />
+    <Compile Include="Repository\ITransactionsRepo.cs" />
     <Compile Include="Services\Admin\AdminService.cs" />
     <Compile Include="Services\Admin\IAdminService.cs" />
     <Compile Include="Services\Books\BookService.cs" />
@@ -66,6 +67,8 @@
     <Compile Include="Services\Logger\ILoggerService.cs" />
     <Compile Include="Services\Roles\IRoleService.cs" />
     <Compile Include="Services\Roles\RoleService.cs" />
+    <Compile Include="Services\Transaction\ITransactionService.cs" />
+    <Compile Include="Services\Transaction\TransactionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eKnjiznica.Commons\eKnjiznica.Commons.csproj">

@@ -5,6 +5,7 @@ using eKnjiznica.AdminUI.UI.Books;
 using eKnjiznica.AdminUI.UI.Categories;
 using eKnjiznica.AdminUI.UI.Clients;
 using eKnjiznica.AdminUI.UI.Logs;
+using eKnjiznica.AdminUI.UI.Transactions;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -101,6 +102,15 @@ namespace eKnjiznica.AdminUI
             if (currentForm != null)
                 currentForm.Close();
             currentForm = unityContainer.Resolve<ClientsForm>();
+            currentForm.MdiParent = this;
+            currentForm.Show();
+        }
+
+        private void transakcijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentForm != null)
+                currentForm.Close();
+            currentForm = unityContainer.Resolve<TransactionsForm>();
             currentForm.MdiParent = this;
             currentForm.Show();
         }
