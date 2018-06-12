@@ -31,6 +31,8 @@ namespace eKnjiznica.AdminUI.UI.Books
             gvBooks.AutoSize = true;
             gvBooks.AutoResizeColumns(
             DataGridViewAutoSizeColumnsMode.AllCells);
+            inputPrice.Minimum = 0;
+            inputPrice.Maximum= Decimal.MaxValue;
         }
 
         private void toggleForm()
