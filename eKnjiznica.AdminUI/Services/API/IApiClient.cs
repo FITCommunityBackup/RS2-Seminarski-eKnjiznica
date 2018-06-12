@@ -1,5 +1,6 @@
 ﻿using eKnjiznica.AdminUI.model;
 using eKnjiznica.Commons.ViewModels;
+using eKnjiznica.Commons.ViewModels.Auctions;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
 using eKnjiznica.Commons.ViewModels.Clients;
@@ -20,6 +21,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> UpdateAdminAccount(AdminUpdateVM adminUpdateVM);
         Task<HttpResponseMessage> GetAuditLogs();
         Task<HttpResponseMessage> GetCategories(string categoryNameFilter,bool includeInactiveCategories);
+        Task<HttpResponseMessage> GetAuctions(DateTime dateFrom, DateTime dateTo,bool includeInactive);
         Task<HttpResponseMessage> LoadClientAccounts(string v, bool @checked);
         Task<HttpResponseMessage> GetPurchaces(string v1, string v2, string v3);
         Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
@@ -38,5 +40,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> CreateClientAccount(ClientAddVM clientAddVM);
         Task<HttpResponseMessage> MakePayInRequest(decimal value, string id);
         Task<HttpResponseMessage> GetClientBooks(string clientId);
+        Task<HttpResponseMessage> UpdateAuction(AuctionUpdateVM auctionUpdateVM, int id);
+        Task<HttpResponseMessage> CreateAuction(AuctionCreateVM auctionCreateVM);
     }
 }

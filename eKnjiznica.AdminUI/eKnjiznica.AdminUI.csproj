@@ -131,6 +131,18 @@
     <Compile Include="Services\ErrorHandling\ErrorHandlingUtil.cs" />
     <Compile Include="Services\User\IUserService.cs" />
     <Compile Include="Services\User\UserService.cs" />
+    <Compile Include="UI\Auctions\AuctionsEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Auctions\AuctionsEditForm.Designer.cs">
+      <DependentUpon>AuctionsEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Auctions\AuctionsForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Auctions\AuctionsForms.Designer.cs">
+      <DependentUpon>AuctionsForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Books\BooksEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,6 +252,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Auctions\AuctionsEditForm.resx">
+      <DependentUpon>AuctionsEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Auctions\AuctionsForms.resx">
+      <DependentUpon>AuctionsForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Books\BooksEditForm.resx">
       <DependentUpon>BooksEditForm.cs</DependentUpon>
     </EmbeddedResource>

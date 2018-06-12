@@ -16,7 +16,7 @@ namespace eKnjiznica.DAL.Model
         public DateTime EndTime { get; set; }
         [Required]
         public decimal StartingPrice { get; set; }
-
+        public bool IsActive { get; set; }
 
         #region Navigation
         public int BookId { get; set; }

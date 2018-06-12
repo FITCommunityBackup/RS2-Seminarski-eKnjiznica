@@ -44,6 +44,7 @@
             this.btnAction = new System.Windows.Forms.Button();
             this.cbIsActive = new System.Windows.Forms.CheckBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -228,5 +229,6 @@
         private System.Windows.Forms.Button btnAction;
         private System.Windows.Forms.CheckBox cbIsActive;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

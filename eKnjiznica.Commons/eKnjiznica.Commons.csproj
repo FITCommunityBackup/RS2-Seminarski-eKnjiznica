@@ -51,6 +51,9 @@
     <Compile Include="Util\MyRegex.cs" />
     <Compile Include="ViewModels\AdminAddVM.cs" />
     <Compile Include="ViewModels\AdministratorProfileVM.cs" />
+    <Compile Include="ViewModels\Auctions\AuctionCreateVM.cs" />
+    <Compile Include="ViewModels\Auctions\AuctionUpdateVM.cs" />
+    <Compile Include="ViewModels\Auctions\AuctionVM.cs" />
     <Compile Include="ViewModels\AuthenticationResponseVM.cs" />
     <Compile Include="ViewModels\AdminUpdateVM.cs" />
     <Compile Include="ViewModels\Books\BookOfferVM.cs" />

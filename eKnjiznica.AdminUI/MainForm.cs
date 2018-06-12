@@ -1,6 +1,7 @@
 ﻿using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.AdminUI.Services.User;
 using eKnjiznica.AdminUI.UI.Administrators;
+using eKnjiznica.AdminUI.UI.Auctions;
 using eKnjiznica.AdminUI.UI.Books;
 using eKnjiznica.AdminUI.UI.Categories;
 using eKnjiznica.AdminUI.UI.Clients;
@@ -121,6 +122,15 @@ namespace eKnjiznica.AdminUI
             if (currentForm != null)
                 currentForm.Close();
             currentForm = unityContainer.Resolve<UserBooksForm>();
+            currentForm.MdiParent = this;
+            currentForm.Show();
+        }
+
+        private void aukcijeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentForm != null)
+                currentForm.Close();
+            currentForm = unityContainer.Resolve<AuctionsForms>();
             currentForm.MdiParent = this;
             currentForm.Show();
         }

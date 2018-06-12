@@ -142,6 +142,24 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Datum od mora biti prije datuma do.
+        /// </summary>
+        public static string ERR_DATE_FROM_MUST_BE_BEFORE_DATE_TO {
+            get {
+                return ResourceManager.GetString("ERR_DATE_FROM_MUST_BE_BEFORE_DATE_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Datum do mora biti poslije datuma od.
+        /// </summary>
+        public static string ERR_DATE_TO_MUST_BE_AFTER_DATE_FROM {
+            get {
+                return ResourceManager.GetString("ERR_DATE_TO_MUST_BE_AFTER_DATE_FROM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Greška prilikom preuzimanja.
         /// </summary>
         public static string ERR_DOWNLOADING_BOOK_FILE {

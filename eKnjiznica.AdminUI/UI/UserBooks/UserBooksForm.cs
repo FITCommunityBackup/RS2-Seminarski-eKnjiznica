@@ -27,6 +27,7 @@ namespace eKnjiznica.AdminUI.UI.UserBooks
             this.unityContainer = unityContainer;
 
             InitializeComponent();
+            gvClientBooks.AutoGenerateColumns = false;
         }
 
         private async void btnFilter_Click(object sender, EventArgs e)

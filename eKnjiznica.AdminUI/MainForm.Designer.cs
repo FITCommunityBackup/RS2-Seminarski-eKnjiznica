@@ -38,8 +38,9 @@
             this.prodajaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transakcijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.odjaviSeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kupovineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odjaviSeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aukcijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             this.korisniciToolStripMenuItem,
             this.transakcijeToolStripMenuItem,
             this.kupovineToolStripMenuItem,
+            this.aukcijeToolStripMenuItem,
             this.odjaviSeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -127,6 +129,13 @@
             this.transakcijeToolStripMenuItem.Text = "Transakcije";
             this.transakcijeToolStripMenuItem.Click += new System.EventHandler(this.transakcijeToolStripMenuItem_Click);
             // 
+            // kupovineToolStripMenuItem
+            // 
+            this.kupovineToolStripMenuItem.Name = "kupovineToolStripMenuItem";
+            this.kupovineToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.kupovineToolStripMenuItem.Text = "Kupovine";
+            this.kupovineToolStripMenuItem.Click += new System.EventHandler(this.kupovineToolStripMenuItem_Click);
+            // 
             // odjaviSeToolStripMenuItem
             // 
             this.odjaviSeToolStripMenuItem.Name = "odjaviSeToolStripMenuItem";
@@ -134,12 +143,12 @@
             this.odjaviSeToolStripMenuItem.Text = "Odjavi se";
             this.odjaviSeToolStripMenuItem.Click += new System.EventHandler(this.odjaviSeToolStripMenuItem_Click);
             // 
-            // kupovineToolStripMenuItem
+            // aukcijeToolStripMenuItem
             // 
-            this.kupovineToolStripMenuItem.Name = "kupovineToolStripMenuItem";
-            this.kupovineToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
-            this.kupovineToolStripMenuItem.Text = "Kupovine";
-            this.kupovineToolStripMenuItem.Click += new System.EventHandler(this.kupovineToolStripMenuItem_Click);
+            this.aukcijeToolStripMenuItem.Name = "aukcijeToolStripMenuItem";
+            this.aukcijeToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.aukcijeToolStripMenuItem.Text = "Aukcije";
+            this.aukcijeToolStripMenuItem.Click += new System.EventHandler(this.aukcijeToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -173,5 +182,6 @@
         private System.Windows.Forms.ToolStripMenuItem korisniciToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transakcijeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kupovineToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aukcijeToolStripMenuItem;
     }
 }

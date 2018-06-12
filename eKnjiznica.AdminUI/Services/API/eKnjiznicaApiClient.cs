@@ -7,6 +7,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using eKnjiznica.AdminUI.model;
 using eKnjiznica.Commons.ViewModels;
+using eKnjiznica.Commons.ViewModels.Auctions;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
 using eKnjiznica.Commons.ViewModels.Clients;
@@ -21,6 +22,23 @@ namespace eKnjiznica.AdminUI.Services.API
         {
             this.httpClient = httpClient;
         }
+
+        public Task<HttpResponseMessage> UpdateAuction(AuctionUpdateVM auctionUpdateVM, int id)
+        {
+            return Put(auctionUpdateVM, $"api/auctions/{id}");
+        }
+
+        public Task<HttpResponseMessage> CreateAuction(AuctionCreateVM auctionCreateVM)
+        {
+            return Post(auctionCreateVM, $"api/auctions");
+        }
+
+
+        public Task<HttpResponseMessage> GetAuctions(DateTime dateFrom, DateTime dateTo,bool includeInactive)
+        {
+            return Get($"api/auctions?dateFrom={dateFrom.ToString()}&dateTo={dateTo.ToString()}&inactive={includeInactive}");
+        }
+
 
 
         public Task<HttpResponseMessage> GetPurchaces(string title, string author, string user)
@@ -228,6 +246,8 @@ namespace eKnjiznica.AdminUI.Services.API
         }
 
      
+
+
 
 
 
