@@ -8,7 +8,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace eKnjiznica.DAL.Model
 {
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
+   
     public class ApplicationUser : IdentityUser
     {
         public string FirstName { get; set; }
@@ -22,6 +22,8 @@ namespace eKnjiznica.DAL.Model
         public ICollection<Book> AddedBooks { get; set; }
         public ICollection<Category> AddedCategories{ get; set; }
         public ICollection<Transaction> AddedTransactions{ get; set; }
+        public ICollection<UserBook> PurchasedBooks{ get; set; }
+        public ICollection<AuctionBid> UserBids{ get; set; }
 
         public virtual UserFinancialAccount UserFinancialAccount{ get; set; }
         #endregion

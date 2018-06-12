@@ -2,6 +2,7 @@ using eKnjiznica.CORE.Repository;
 using eKnjiznica.CORE.Services.Admin;
 using eKnjiznica.CORE.Services.Books;
 using eKnjiznica.CORE.Services.Categories;
+using eKnjiznica.CORE.Services.ClientBooks;
 using eKnjiznica.CORE.Services.Clients;
 using eKnjiznica.CORE.Services.Documents;
 using eKnjiznica.CORE.Services.Logger;
@@ -82,8 +83,8 @@ namespace eKnjiznica.API
             container.RegisterType<IClientService, ClientService>();
             container.RegisterType<ITransactionsRepo, TransactionRepo>();
             container.RegisterType<ITransactionService, TransactionService>();
-
-
+            container.RegisterType<IClientBooksRepo, ClientBooksRepo>();
+            container.RegisterType<IClientBooksService, ClientBooksService>();
 
             container.RegisterType<IUserStore<ApplicationUser>,
                 UserStore<ApplicationUser>>();

@@ -1,6 +1,7 @@
 ﻿using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.AdminUI.Services.ErrorHandling;
 using eKnjiznica.Commons.Util;
+using eKnjiznica.Commons.ViewModels.ClientBook;
 using eKnjiznica.Commons.ViewModels.Clients;
 using System;
 using System.Collections.Generic;
@@ -27,10 +28,20 @@ namespace eKnjiznica.AdminUI.UI.Clients
             this.errorHandlingUtil = errorHandlingUtil;
             this.apiClient = apiClient;
             AutoValidate = AutoValidate.EnableAllowFocusChange;
+
             InitializeComponent();
+
+            gvClientBooks.AutoGenerateColumns = false;
+            gvClientBooks.Visible = false;
+            inputAccountBalance.Maximum = Decimal.MaxValue;
+            inputAccountBalance.Minimum = 0;
+
+            inputPayIn.Maximum = Decimal.MaxValue;
+            inputPayIn.Minimum = 0;
+
         }
 
-        private void ClientEditForm_Load(object sender, EventArgs e)
+        private async void ClientEditForm_Load(object sender, EventArgs e)
         {
             if (Client != null)
             {
@@ -54,6 +65,8 @@ namespace eKnjiznica.AdminUI.UI.Clients
                 inputPayIn.Visible = true;
                 lblPayIn.Visible = true;
                 btnPayIn.Visible = true;
+
+                await BindBookData();
             }
             else
             {
@@ -68,14 +81,14 @@ namespace eKnjiznica.AdminUI.UI.Clients
             }
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private async Task BindBookData()
         {
+            HttpResponseMessage result = await apiClient.GetClientBooks(Client.Id);
+            if (!result.IsSuccessStatusCode)
+                return;
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            gvClientBooks.Visible = true;
+            gvClientBooks.DataSource = await result.Content.ReadAsAsync<List<ClientBookVM>>();
         }
 
         private async void btnAction_Click(object sender, EventArgs e)

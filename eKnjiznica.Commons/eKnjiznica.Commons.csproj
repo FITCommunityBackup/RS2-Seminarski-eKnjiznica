@@ -62,6 +62,7 @@
     <Compile Include="ViewModels\Category\CategoryAddVm.cs" />
     <Compile Include="ViewModels\Category\CategoryUpdateVm.cs" />
     <Compile Include="ViewModels\Category\CategoryVM.cs" />
+    <Compile Include="ViewModels\ClientBook\ClientBookVM.cs" />
     <Compile Include="ViewModels\Clients\ClientAddVM.cs" />
     <Compile Include="ViewModels\Clients\ClientUpdateVM.cs" />
     <Compile Include="ViewModels\Clients\ClientVM.cs" />

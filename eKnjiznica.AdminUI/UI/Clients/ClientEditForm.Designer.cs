@@ -52,9 +52,16 @@
             this.btnPayIn = new System.Windows.Forms.Button();
             this.labelAccountBalance = new System.Windows.Forms.Label();
             this.inputAccountBalance = new System.Windows.Forms.NumericUpDown();
+            this.gvClientBooks = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BookTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AuthorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputPayIn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputAccountBalance)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvClientBooks)).BeginInit();
             this.SuspendLayout();
             // 
             // btnAction
@@ -193,7 +200,6 @@
             this.inputPassword.PasswordChar = '*';
             this.inputPassword.Size = new System.Drawing.Size(195, 20);
             this.inputPassword.TabIndex = 98;
-            this.inputPassword.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.inputPassword.Validating += new System.ComponentModel.CancelEventHandler(this.inputPassword_Validating);
             // 
             // label7
@@ -204,7 +210,6 @@
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 97;
             this.label7.Text = "Lozinka";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // errorLabel
             // 
@@ -217,7 +222,8 @@
             // 
             // inputPayIn
             // 
-            this.inputPayIn.Location = new System.Drawing.Point(474, 73);
+            this.inputPayIn.DecimalPlaces = 2;
+            this.inputPayIn.Location = new System.Drawing.Point(420, 46);
             this.inputPayIn.Name = "inputPayIn";
             this.inputPayIn.Size = new System.Drawing.Size(120, 20);
             this.inputPayIn.TabIndex = 100;
@@ -225,7 +231,7 @@
             // lblPayIn
             // 
             this.lblPayIn.AutoSize = true;
-            this.lblPayIn.Location = new System.Drawing.Point(471, 53);
+            this.lblPayIn.Location = new System.Drawing.Point(417, 26);
             this.lblPayIn.Name = "lblPayIn";
             this.lblPayIn.Size = new System.Drawing.Size(56, 13);
             this.lblPayIn.TabIndex = 101;
@@ -234,7 +240,7 @@
             // btnPayIn
             // 
             this.btnPayIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayIn.Location = new System.Drawing.Point(496, 99);
+            this.btnPayIn.Location = new System.Drawing.Point(442, 72);
             this.btnPayIn.Name = "btnPayIn";
             this.btnPayIn.Size = new System.Drawing.Size(98, 30);
             this.btnPayIn.TabIndex = 102;
@@ -254,16 +260,76 @@
             // 
             // inputAccountBalance
             // 
+            this.inputAccountBalance.DecimalPlaces = 2;
             this.inputAccountBalance.Location = new System.Drawing.Point(254, 257);
             this.inputAccountBalance.Name = "inputAccountBalance";
             this.inputAccountBalance.Size = new System.Drawing.Size(120, 20);
             this.inputAccountBalance.TabIndex = 104;
             // 
+            // gvClientBooks
+            // 
+            this.gvClientBooks.AllowUserToAddRows = false;
+            this.gvClientBooks.AllowUserToDeleteRows = false;
+            this.gvClientBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gvClientBooks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvClientBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvClientBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.BookTitle,
+            this.AuthorName,
+            this.Price,
+            this.Date});
+            this.gvClientBooks.Location = new System.Drawing.Point(420, 116);
+            this.gvClientBooks.Name = "gvClientBooks";
+            this.gvClientBooks.ReadOnly = true;
+            this.gvClientBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvClientBooks.Size = new System.Drawing.Size(479, 215);
+            this.gvClientBooks.TabIndex = 105;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // BookTitle
+            // 
+            this.BookTitle.DataPropertyName = "BookTitle";
+            this.BookTitle.HeaderText = "Naslov knjige";
+            this.BookTitle.Name = "BookTitle";
+            this.BookTitle.ReadOnly = true;
+            // 
+            // AuthorName
+            // 
+            this.AuthorName.DataPropertyName = "AuthorName";
+            this.AuthorName.HeaderText = "Autor";
+            this.AuthorName.Name = "AuthorName";
+            this.AuthorName.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Cijena";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.DataPropertyName = "Date";
+            this.Date.HeaderText = "Datum kupovine";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
             // ClientEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 334);
+            this.ClientSize = new System.Drawing.Size(911, 347);
+            this.Controls.Add(this.gvClientBooks);
             this.Controls.Add(this.inputAccountBalance);
             this.Controls.Add(this.labelAccountBalance);
             this.Controls.Add(this.btnPayIn);
@@ -293,6 +359,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputPayIn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputAccountBalance)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvClientBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -323,5 +390,11 @@
         private System.Windows.Forms.NumericUpDown inputPayIn;
         private System.Windows.Forms.NumericUpDown inputAccountBalance;
         private System.Windows.Forms.Label labelAccountBalance;
+        private System.Windows.Forms.DataGridView gvClientBooks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BookTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AuthorName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
     }
 }

@@ -19,6 +19,8 @@ namespace eKnjiznica.DAL.Model
 
         public int BookId { get; set; }
         public Book Book { get; set; }
+
+        public ICollection<UserBook> PurchasedBooks{ get; set; }
     }
 
 }

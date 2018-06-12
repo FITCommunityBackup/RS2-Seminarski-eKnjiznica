@@ -125,19 +125,35 @@
     <Compile Include="Migrations\201806070957578_Transactions_NullableAdmin.Designer.cs">
       <DependentUpon>201806070957578_Transactions_NullableAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806120657106_UserBooks.cs" />
+    <Compile Include="Migrations\201806120657106_UserBooks.Designer.cs">
+      <DependentUpon>201806120657106_UserBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806120745178_BuyedBooks.cs" />
+    <Compile Include="Migrations\201806120745178_BuyedBooks.Designer.cs">
+      <DependentUpon>201806120745178_BuyedBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806120947391_Auctions.cs" />
+    <Compile Include="Migrations\201806120947391_Auctions.Designer.cs">
+      <DependentUpon>201806120947391_Auctions.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
+    <Compile Include="Model\Auction.cs" />
+    <Compile Include="Model\AuctionBid.cs" />
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\BookCategories.cs" />
     <Compile Include="Model\BookOffer.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\UserAudit.cs" />
+    <Compile Include="Model\UserBook.cs" />
     <Compile Include="Model\UserFinancialAccount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminRepo.cs" />
     <Compile Include="Repository\BookRepo.cs" />
     <Compile Include="Repository\CategoryRepo.cs" />
+    <Compile Include="Repository\ClientBooksRepo.cs" />
     <Compile Include="Repository\ClientRepo.cs" />
     <Compile Include="Repository\LoggerRepo.cs" />
     <Compile Include="Repository\RoleRepo.cs" />
@@ -179,6 +195,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806070957578_Transactions_NullableAdmin.resx">
       <DependentUpon>201806070957578_Transactions_NullableAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120657106_UserBooks.resx">
+      <DependentUpon>201806120657106_UserBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120745178_BuyedBooks.resx">
+      <DependentUpon>201806120745178_BuyedBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806120947391_Auctions.resx">
+      <DependentUpon>201806120947391_Auctions.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

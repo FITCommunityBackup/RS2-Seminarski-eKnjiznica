@@ -11,5 +11,6 @@ namespace eKnjiznica.CORE.Repository
     {
         void MakeNewAmountUpdateTransaction(decimal amount, string clientId, string adminId);
         IList<TransactionVM> GetTransactions(string clientUsername, string adminUsername);
+        TransactionVM GetTransaction(int id);
     }
 }

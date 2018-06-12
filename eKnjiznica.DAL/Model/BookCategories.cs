@@ -14,6 +14,8 @@ namespace eKnjiznica.DAL.Model
         public DateTime Created{ get; set; }
         [Required]
         public bool IsActive { get; set; }
+     
+        
         #region Navigation
         public string UserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

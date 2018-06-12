@@ -89,6 +89,7 @@
             this.gvAdministrators.Name = "gvAdministrators";
             this.gvAdministrators.ReadOnly = true;
             this.gvAdministrators.RowTemplate.Height = 24;
+            this.gvAdministrators.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvAdministrators.Size = new System.Drawing.Size(643, 330);
             this.gvAdministrators.TabIndex = 3;
             // 

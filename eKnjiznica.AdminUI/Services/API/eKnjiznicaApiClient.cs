@@ -22,6 +22,28 @@ namespace eKnjiznica.AdminUI.Services.API
             this.httpClient = httpClient;
         }
 
+
+        public Task<HttpResponseMessage> GetPurchaces(string title, string author, string user)
+        {
+        //   [FromUri(Name = "title")] string title = null,
+        //   [FromUri(Name = "author")] string author = null,
+        //   [FromUri(Name = "user")] string user = null
+            return Get($"api/clients/books/all?title={title}&author={author}&user={user}");
+        }
+
+        public Task<HttpResponseMessage> GetClientBooks(string clientId)
+        {
+            return Get($"api/clients/books/{clientId}");
+        }
+
+
+        public Task<HttpResponseMessage> GetTransaction(int transactionId)
+        {
+            return Get($"api/transactions/{transactionId}");
+
+        }
+
+
         public Task<HttpResponseMessage> GetTransactions(string username, string adminUsername)
         {
             return Get($"api/transactions?clientUsername={username}&adminUsername={adminUsername}");
@@ -205,7 +227,11 @@ namespace eKnjiznica.AdminUI.Services.API
             return httpClient.PostAsync(path,form);
         }
 
-      
+     
+
+
+
+
 
 
 

@@ -24,11 +24,21 @@ namespace eKnjiznica.API.Controllers
         [HttpGet]
         [Route("")]
         public IHttpActionResult GetTransactions(
-            [FromUri(Name = "clientUsername")] string clientUsername=null, 
-            [FromUri(Name = "adminUsername")] string adminUsername=null)
+            [FromUri(Name = "clientUsername")] string clientUsername = null,
+            [FromUri(Name = "adminUsername")] string adminUsername = null)
         {
+            var result = transactionService
+                .GetTransactions(clientUsername, adminUsername)
+                .OrderByDescending(x => x.Date)
+                .ToList();
+            return Ok(result);
+        }
 
-            var result = transactionService.GetTransactions(clientUsername, adminUsername).OrderByDescending(x=>x.Date).ToList();
+        [HttpGet]
+        [Route("{id}")]
+        public IHttpActionResult GetTransactions(int id)
+        {
+            var result = transactionService.GetTransaction(id);
             return Ok(result);
         }
 

@@ -64,6 +64,7 @@
             this.gvBookOffers.Name = "gvBookOffers";
             this.gvBookOffers.ReadOnly = true;
             this.gvBookOffers.RowTemplate.Height = 24;
+            this.gvBookOffers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvBookOffers.Size = new System.Drawing.Size(544, 300);
             this.gvBookOffers.TabIndex = 10;
             // 

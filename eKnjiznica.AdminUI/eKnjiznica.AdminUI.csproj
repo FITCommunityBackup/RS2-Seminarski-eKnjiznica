@@ -191,11 +191,29 @@
     <Compile Include="UI\Logs\LogsForm.Designer.cs">
       <DependentUpon>LogsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Transactions\TransactionBooksPurchaseDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transactions\TransactionBooksPurchaseDetails.Designer.cs">
+      <DependentUpon>TransactionBooksPurchaseDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Transactions\TransactionDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Transactions\TransactionDetailsForm.Designer.cs">
+      <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Transactions\TransactionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Transactions\TransactionsForm.Designer.cs">
       <DependentUpon>TransactionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserBooks\UserBooksForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserBooks\UserBooksForm.Designer.cs">
+      <DependentUpon>UserBooksForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\Administrators\AdministratorAddForm.resx">
       <DependentUpon>AdministratorAddForm.cs</DependentUpon>
@@ -252,8 +270,17 @@
     <EmbeddedResource Include="UI\Logs\LogsForm.resx">
       <DependentUpon>LogsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transactions\TransactionBooksPurchaseDetails.resx">
+      <DependentUpon>TransactionBooksPurchaseDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Transactions\TransactionDetailsForm.resx">
+      <DependentUpon>TransactionDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Transactions\TransactionsForm.resx">
       <DependentUpon>TransactionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserBooks\UserBooksForm.resx">
+      <DependentUpon>UserBooksForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

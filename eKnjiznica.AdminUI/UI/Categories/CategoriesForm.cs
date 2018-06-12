@@ -23,7 +23,11 @@ namespace eKnjiznica.AdminUI.UI.Categories
         {
             this.apiClient = apiClient;
             this.unityContainer = unityContainer;
+           
             InitializeComponent();
+            //gvCategories.AutoGenerateColumns = false;
+            gvCategories.AutoSize = true;
+            gvCategories.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private async void CategoriesForm_Load(object sender, EventArgs e)
@@ -39,6 +43,7 @@ namespace eKnjiznica.AdminUI.UI.Categories
             {
                 var re = await result.Content.ReadAsAsync<IList<CategoryVM>>();
                 this.categories = re;
+                gvCategories.DataSource = re;
                 gvCategories.DataSource = re;
             }
            

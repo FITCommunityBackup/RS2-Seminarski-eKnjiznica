@@ -25,6 +25,12 @@ namespace eKnjiznica.CORE.Services.Transaction
             transactionsRepo.MakeNewAmountUpdateTransaction(amount, clientId, adminId);
         }
 
+        public TransactionVM GetTransaction(int id)
+        {
+            return transactionsRepo.GetTransaction(id);
+
+        }
+
         public IList<TransactionVM> GetTransactions(string clientUsername, string adminUsername)
         {
             return transactionsRepo.GetTransactions(clientUsername,adminUsername);

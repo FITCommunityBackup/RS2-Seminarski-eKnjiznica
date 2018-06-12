@@ -20,6 +20,33 @@ namespace eKnjiznica.DAL.Repository
             this.context = context;
         }
 
+        public TransactionVM GetTransaction(int id)
+        {
+            return context.Transactions
+                           .Include(x => x.UserFinancialAccount.ApplicationUser)
+                           .Include(x => x.Admin)
+                           .Where(x => x.Id == id)
+                           .Select(x => new TransactionVM
+                           {
+                               AdminUsername = x.Admin != null ? x.Admin.UserName : null,
+                               Amount = x.Amount,
+                               ClientUsername = x.UserFinancialAccount.ApplicationUser.UserName,
+                               Date = x.DateUtc,
+                               NewBalance = x.NewAccountBalance,
+                               PreviousBalance = x.PreviousAccountBalance,
+                               Id = x.Id,
+                               TransactionType = x.TransactionType,
+                               BuyedBooks = x.UserBooks.Select(y => new Commons.ViewModels.ClientBook.ClientBookVM
+                               {
+                                   AuthorName = y.BookOffer.Book.Autor,
+                                   BookTitle = y.BookOffer.Book.Title,
+                                   Date = y.DateOfPurchase,
+                                   Id = y.Id,
+                                   Price = y.BookOffer.Price
+                               }).ToList()
+                           }).FirstOrDefault();
+        }
+
         public IList<TransactionVM> GetTransactions(string clientUsername, string adminUsername)
         {
             return context.Transactions
@@ -36,7 +63,14 @@ namespace eKnjiznica.DAL.Repository
                     NewBalance = x.NewAccountBalance,
                     PreviousBalance = x.PreviousAccountBalance,
                     Id = x.Id,
-                    TransactionType = x.TransactionType
+                    TransactionType = x.TransactionType,
+                    BuyedBooks = x.UserBooks.Select(y => new Commons.ViewModels.ClientBook.ClientBookVM {
+                        AuthorName = y.BookOffer.Book.Autor,
+                        BookTitle = y.BookOffer.Book.Title,
+                        Date = y.DateOfPurchase,
+                        Id = y.Id,
+                        Price = y.BookOffer.Price
+                    }).ToList()
                 })
                 .ToList();
 

@@ -22,6 +22,7 @@ namespace eKnjiznica.DAL.Model
         public DateTime DateUtc{ get; set; }
         [Required]
         public TransactionType TransactionType { get; set; }
+    
         #region Navigation
 
         public string UserFinancialAccountId{ get; set; }
@@ -29,6 +30,7 @@ namespace eKnjiznica.DAL.Model
 
         public virtual ApplicationUser Admin { get; set; }
         public string AdminId { get; internal set; }
+        public ICollection<UserBook> UserBooks{ get; set; }
         #endregion
     }
 }

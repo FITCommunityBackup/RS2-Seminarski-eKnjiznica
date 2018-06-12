@@ -32,6 +32,7 @@ namespace eKnjiznica.DAL.Model
 
         public ICollection<BookCategories> Categories { get; set; }
         public ICollection<BookOffer> BookOffers { get; internal set; }
+        public ICollection<Auction> BookAuctions { get; internal set; }
         #endregion
 
     }

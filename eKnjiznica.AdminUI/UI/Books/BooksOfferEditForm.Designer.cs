@@ -80,6 +80,7 @@
             this.gvBooks.Name = "gvBooks";
             this.gvBooks.ReadOnly = true;
             this.gvBooks.RowTemplate.Height = 24;
+            this.gvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvBooks.Size = new System.Drawing.Size(263, 146);
             this.gvBooks.TabIndex = 17;
             this.gvBooks.Validating += new System.ComponentModel.CancelEventHandler(this.gvBooks_Validating);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eKnjiznica.Commons.ViewModels.ClientBook;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -26,6 +27,9 @@ namespace eKnjiznica.Commons.ViewModels.TransactionVM
         public string ClientUsername{ get; set; }
         [DataMember]
         public string AdminUsername { get; set; }
+
+        [DataMember]
+        public List<ClientBookVM> BuyedBooks { get; set; }
 
     }
 }

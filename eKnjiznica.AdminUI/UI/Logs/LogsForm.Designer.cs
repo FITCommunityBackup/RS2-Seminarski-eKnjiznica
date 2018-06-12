@@ -36,9 +36,10 @@
             // 
             this.gvLogs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvLogs.Location = new System.Drawing.Point(10, 10);
-            this.gvLogs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gvLogs.Margin = new System.Windows.Forms.Padding(2);
             this.gvLogs.Name = "gvLogs";
             this.gvLogs.RowTemplate.Height = 24;
+            this.gvLogs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvLogs.Size = new System.Drawing.Size(581, 346);
             this.gvLogs.TabIndex = 0;
             // 
@@ -48,7 +49,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.gvLogs);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LogsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Logovi";

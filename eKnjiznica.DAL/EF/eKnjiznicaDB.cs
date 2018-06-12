@@ -14,12 +14,15 @@ namespace eKnjiznica.DAL.EF
     {
 
         public DbSet<UserAudit> UserAudits { get; set; }
-        public DbSet<Category> Categories{ get; set; }
-        public DbSet<BookCategories> BookCategories{ get; set; }
-        public DbSet<Book> Books{ get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<BookCategories> BookCategories { get; set; }
+        public DbSet<Book> Books { get; set; }
         public DbSet<BookOffer> BookOffers { get; set; }
-        public DbSet<UserFinancialAccount> UserFinancialAccounts{ get; set; }
+        public DbSet<UserFinancialAccount> UserFinancialAccounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<UserBook> UserBooks { get; set; }
+        public DbSet<Auction> Auctions { get; set; }
+        public DbSet<AuctionBid> AuctionBids { get; set; }
 
         public EKnjiznicaDB()
             : base("DefaultConnection", throwIfV1Schema: false)
@@ -62,6 +65,15 @@ namespace eKnjiznica.DAL.EF
                 .WithOptional(x => x.Admin)
                 .HasForeignKey(x => x.AdminId);
 
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(x => x.PurchasedBooks)
+                .WithRequired(x => x.User)
+                .HasForeignKey(x => x.UserId);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(x => x.UserBids)
+                .WithRequired(x => x.User)
+                .HasForeignKey(x => x.UserId);
 
             #endregion
 
@@ -85,6 +97,11 @@ namespace eKnjiznica.DAL.EF
 
             modelBuilder.Entity<Book>()
                 .HasMany(x => x.BookOffers)
+                .WithRequired(x => x.Book)
+                .HasForeignKey(x => x.BookId);
+
+            modelBuilder.Entity<Book>()
+                .HasMany(x => x.BookAuctions)
                 .WithRequired(x => x.Book)
                 .HasForeignKey(x => x.BookId);
             #endregion
@@ -125,6 +142,10 @@ namespace eKnjiznica.DAL.EF
                 .HasRequired(x => x.Book)
                 .WithMany(x => x.BookOffers)
                 .HasForeignKey(x => x.BookId);
+            modelBuilder.Entity<BookOffer>()
+            .HasMany(x => x.PurchasedBooks)
+            .WithRequired(x => x.BookOffer)
+            .HasForeignKey(x => x.BookOfferId);
             #endregion
 
             #region UserFinancialAccount
@@ -135,7 +156,7 @@ namespace eKnjiznica.DAL.EF
             modelBuilder.Entity<UserFinancialAccount>()
             .HasMany(x => x.Transactions)
             .WithRequired(x => x.UserFinancialAccount)
-            .HasForeignKey(x=>x.UserFinancialAccountId);
+            .HasForeignKey(x => x.UserFinancialAccountId);
             #endregion
 
             #region Transaction
@@ -148,8 +169,55 @@ namespace eKnjiznica.DAL.EF
                 .HasRequired(x => x.UserFinancialAccount)
                 .WithMany(x => x.Transactions)
                 .HasForeignKey(x => x.UserFinancialAccountId);
+
+            modelBuilder.Entity<Transaction>()
+                .HasMany(x => x.UserBooks)
+                .WithRequired(x => x.Transaction)
+                .HasForeignKey(x => x.TransactionId);
+            #endregion
+
+            #region UserBook
+            modelBuilder.Entity<UserBook>()
+                .HasRequired(x => x.User)
+                .WithMany(x => x.PurchasedBooks)
+                .HasForeignKey(x => x.UserId);
+
+            modelBuilder.Entity<UserBook>()
+                .HasRequired(x => x.BookOffer)
+                .WithMany(x => x.PurchasedBooks)
+                .HasForeignKey(x => x.BookOfferId);
+
+            modelBuilder.Entity<UserBook>()
+                .HasRequired(x => x.Transaction)
+                .WithMany(x => x.UserBooks)
+                .HasForeignKey(x => x.TransactionId);
+
+            #endregion
+
+            #region Auctions
+            modelBuilder.Entity<Auction>()
+                .HasRequired(x => x.Book)
+                .WithMany(x => x.BookAuctions)
+                .HasForeignKey(x => x.BookId);
+            modelBuilder.Entity<Auction>()
+                 .HasMany(x => x.AuctionBids)
+                 .WithRequired(x => x.Auction)
+                 .HasForeignKey(x => x.AuctionId);
+            #endregion
+
+            #region AuctionBids
+            modelBuilder.Entity<AuctionBid>()
+                .HasRequired(x => x.Auction)
+                .WithMany(x => x.AuctionBids)
+                .HasForeignKey(x => x.AuctionId);
+
+            modelBuilder.Entity<AuctionBid>()
+                .HasRequired(x => x.User)
+                .WithMany(x => x.UserBids)
+                .HasForeignKey(x => x.UserId);
             #endregion
         }
+
         public static EKnjiznicaDB Create()
         {
             return new EKnjiznicaDB();
