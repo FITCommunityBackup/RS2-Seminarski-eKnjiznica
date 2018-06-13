@@ -25,14 +25,11 @@ namespace eKnjiznica.Commons.ViewModels.Books
         public bool IsActive { get; set; }
         [DataMember]
         public DateTime ReleaseDate { get; set; }
-
         [DataMember]
         public string FileLocation { get; set; }
-
         [DataMember]
         public string FileName{ get; set; }
-
-
-
+        [DataMember]
+        public string ImageLocation { get; set; }
     }
 }

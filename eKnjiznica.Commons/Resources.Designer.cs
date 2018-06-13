@@ -250,6 +250,24 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Odaberite knjigu.
+        /// </summary>
+        public static string ERR_UPLOAD_BOOK {
+            get {
+                return ResourceManager.GetString("ERR_UPLOAD_BOOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Odaberite sliku.
+        /// </summary>
+        public static string ERR_UPLOAD_PICTURE {
+            get {
+                return ResourceManager.GetString("ERR_UPLOAD_PICTURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dodaj.
         /// </summary>
         public static string LABEL_ADD {

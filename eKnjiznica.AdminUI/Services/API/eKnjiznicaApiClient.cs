@@ -123,6 +123,14 @@ namespace eKnjiznica.AdminUI.Services.API
             return Get($"api/books?title={bookTitle}&author={authorName}");
         }
 
+
+        public Task<HttpResponseMessage> UploadBookPicture(byte[] uploadImage, string imageName, int id)
+        {
+            return PostMultiPart($"api/books/{id}/picture", uploadImage, imageName);
+
+        }
+
+    
         public Task<HttpResponseMessage> UploadFile(string fileLocation, string fileName, int id)
         {
             return PostMultiPart($"api/books/{id}/files",fileLocation,fileName);
@@ -233,7 +241,6 @@ namespace eKnjiznica.AdminUI.Services.API
         private Task<HttpResponseMessage> PostMultiPart(string path, string fileLocation,string fileName)
         {
             MultipartFormDataContent form = new MultipartFormDataContent();
-
             var stream = new FileStream(fileLocation, FileMode.Open);
             HttpContent content = new StreamContent(stream);
             content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
@@ -245,15 +252,18 @@ namespace eKnjiznica.AdminUI.Services.API
             return httpClient.PostAsync(path,form);
         }
 
-     
-
-
-
-
-
-
-
-
+        private Task<HttpResponseMessage> PostMultiPart(string path, byte[] uploadImage, string imageName)
+        {
+            MultipartFormDataContent form = new MultipartFormDataContent();
+            HttpContent content = new ByteArrayContent(uploadImage);
+            content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
+            {
+                Name = "image_file",
+                FileName = imageName
+            };
+            form.Add(content);
+            return httpClient.PostAsync(path, form);
+        }
 
         #endregion
 

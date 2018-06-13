@@ -180,6 +180,12 @@
   <data name="ERR_SELECT_ONE_CATEGORY" xml:space="preserve">
     <value>Odaberite barem jednu kategoriju</value>
   </data>
+  <data name="ERR_UPLOAD_BOOK" xml:space="preserve">
+    <value>Odaberite knjigu</value>
+  </data>
+  <data name="ERR_UPLOAD_PICTURE" xml:space="preserve">
+    <value>Odaberite sliku</value>
+  </data>
   <data name="LABEL_ADD" xml:space="preserve">
     <value>Dodaj</value>
   </data>

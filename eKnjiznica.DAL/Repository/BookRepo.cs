@@ -112,7 +112,8 @@ namespace eKnjiznica.DAL.Repository
                       IsActive = x.IsActive,
                       ReleaseDate = x.ReleaseDate,
                       FileLocation=  x.FileLocation,
-                      FileName =x.FileName
+                      FileName =x.FileName,
+                      ImageLocation=x.ImageLocation
 
                   }).FirstOrDefault();
         }
@@ -167,7 +168,8 @@ namespace eKnjiznica.DAL.Repository
                      IsActive = x.IsActive,
                      ReleaseDate = x.ReleaseDate,
                      FileLocation = x.FileLocation,
-                     FileName = x.FileName
+                     FileName = x.FileName,
+                     ImageLocation=x.ImageLocation
                  }).ToList();
         }
 
@@ -240,6 +242,14 @@ namespace eKnjiznica.DAL.Repository
             result.IsActive = model.IsActive;
             result.Price = model.Price;
 
+            context.SaveChanges();
+        }
+
+        public void SaveImageFilePath(BooksVM book, string relativePath, string uploadedFileName)
+        {
+            var result = context.Books.FirstOrDefault(x => x.Id == book.Id);
+            result.ImageLocation = relativePath;
+            //result.ImageName = uploadedFileName;
             context.SaveChanges();
         }
     }

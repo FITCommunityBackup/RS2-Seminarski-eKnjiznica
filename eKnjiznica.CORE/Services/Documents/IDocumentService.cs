@@ -11,5 +11,6 @@ namespace eKnjiznica.CORE.Services.Documents
     {
         Task<bool> SaveFile(HttpPostedFile  file, int bookId);
         string GetFileAbsolutePath(int id);
+        Task<bool> SaveImageFile(HttpPostedFile postedFile, int id);
     }
 }
