@@ -12,7 +12,6 @@ using eKnjiznica.DAL.EF;
 namespace eKnjiznica.API.Controllers
 {
     [Authorize(Roles = EntityRoles.AdminRole)]
-    [RoutePrefix("api/books/{id}/files")]
     public class BookFilesController : BaseController
     {
 
@@ -24,7 +23,7 @@ namespace eKnjiznica.API.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("api/books/{id}/files")]
         public HttpResponseMessage GetFile(int id)
         {
             string path = documentService.GetFileAbsolutePath(id);
@@ -38,7 +37,7 @@ namespace eKnjiznica.API.Controllers
             return result;
         }
         [HttpPost]
-        [Route("")]
+        [Route("api/books/{id}/files")]
         public async Task<IHttpActionResult> MediaUpload(int id)
         {
             var httpRequest = HttpContext.Current.Request;
@@ -46,6 +45,23 @@ namespace eKnjiznica.API.Controllers
             {
                 var postedFile = httpRequest.Files[file];
                 var result = await documentService.SaveFile(postedFile, id);
+                if (!result)
+                    return BadRequest();
+
+            }
+            return Ok();
+        }
+
+
+        [HttpPost]
+        [Route("api/books/{id}/picture")]
+        public async Task<IHttpActionResult> PictureUpload(int id)
+        {
+            var httpRequest = HttpContext.Current.Request;
+            foreach (string file in httpRequest.Files)
+            {
+                var postedFile = httpRequest.Files[file];
+                var result = await documentService.SaveImageFile(postedFile, id);
                 if (!result)
                     return BadRequest();
 

@@ -27,10 +27,12 @@ namespace eKnjiznica.AdminUI.UI.Books
         private ImageHelper imageHelper;
         private string fileLocation;
         private string fileName;
-
+        private byte[] uploadImage;
+        private string imageName;
         public BooksEditForm(IApiClient apiClient, ImageHelper imageHelper)
         {
             this.ApiClient = apiClient;
+            this.imageHelper = imageHelper;
             this.AutoValidate = AutoValidate.EnableAllowFocusChange;
             InitializeComponent();
         }
@@ -56,6 +58,10 @@ namespace eKnjiznica.AdminUI.UI.Books
                 inputDescription.Text = Book.Description;
                 cbIsActive.Checked = Book.IsActive;
                 dtpReleaseDate.Value = Book.ReleaseDate;
+                if (Book.ImageLocation != null)
+                {
+                    pictureBox.Load(ConfigurationManager.AppSettings["ApiUrl"] + "/" + Book.ImageLocation);
+                }
             }
         }
 
@@ -77,15 +83,20 @@ namespace eKnjiznica.AdminUI.UI.Books
             {
                 return;
             }
-            if (fileLocation == null)
+            var fileUploadResult = true;
+            if (fileLocation != null)
             {
-                DialogResult = DialogResult.OK;
-                this.Close();
-                return;
+                var uploadResult = await ApiClient.UploadFile(fileLocation, fileName, Book.Id);
+                fileUploadResult = uploadResult.IsSuccessStatusCode;
+            }
+            var imageUplaodResult = true;
+            if (uploadImage != null)
+            {
+                var r = await ApiClient.UploadBookPicture(uploadImage, imageName, Book.Id);
+                imageUplaodResult = r.IsSuccessStatusCode;
             }
 
-            var uploadResult = await ApiClient.UploadFile(fileLocation, fileName, Book.Id);
-            if (uploadResult.IsSuccessStatusCode)
+            if (fileUploadResult && imageUplaodResult)
             {
                 DialogResult = DialogResult.OK;
                 this.Close();
@@ -107,16 +118,11 @@ namespace eKnjiznica.AdminUI.UI.Books
             {
                 return;
             }
-            if (fileLocation == null)
-            {
-                DialogResult = DialogResult.OK;
-                this.Close();
-                return;
-            }
 
             var createdBook = await result.Content.ReadAsAsync<BooksVM>();
+            var uploadPicture = await ApiClient.UploadBookPicture(uploadImage, imageName, createdBook.Id);
             var uploadResult = await ApiClient.UploadFile(fileLocation, fileName, createdBook.Id);
-            if (uploadResult.IsSuccessStatusCode)
+            if (uploadResult.IsSuccessStatusCode && uploadPicture.IsSuccessStatusCode)
             {
                 DialogResult = DialogResult.OK;
                 this.Close();
@@ -246,12 +252,27 @@ namespace eKnjiznica.AdminUI.UI.Books
 
         private void dodajSlikuButton_Click(object sender, EventArgs e)
         {
-            openFileDialog.ShowDialog();
-            inputPicture.Text = openFileDialog.FileName;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                inputPicture.Text = openFileDialog.FileName;
 
-            var picture = File.ReadAllBytes(inputPicture.Text);
-            Image orgImage = Image.FromFile(inputPicture.Text);
+                Image originalImage = Image.FromFile(inputPicture.Text);
+                Image imageForUpload = GetImageForUpload(originalImage);
 
+                MemoryStream ms = new MemoryStream();
+                imageForUpload.Save(ms, originalImage.RawFormat);
+                uploadImage = ms.ToArray();
+
+                imageName = openFileDialog.SafeFileName;
+            }
+            else
+            {
+                uploadImage = null;
+            }
+        }
+
+        private Image GetImageForUpload(Image orgImage)
+        {
             int resizedImgWidth = Convert.ToInt32(ConfigurationManager.AppSettings["resizedImgWidth"]);
             int resizedImgHeight = Convert.ToInt32(ConfigurationManager.AppSettings["resizedImgHeight"]);
             int croppedImgWidth = Convert.ToInt32(ConfigurationManager.AppSettings["croppedImgWidth"]);
@@ -269,12 +290,38 @@ namespace eKnjiznica.AdminUI.UI.Books
                     Image croppedImg = imageHelper.CropImage(resizedImg, new Rectangle(croppedXPosition, croppedYPosition, croppedImgWidth, croppedImgHeight));
                     pictureBox.Image = croppedImg;
 
-                    //MemoryStream ms = new MemoryStream();
-                    //croppedImg.Save(ms, orgImage.RawFormat);
-
-                    //proizvod.SlikaThumb = ms.ToArray();
-
+                    return croppedImg;
                 }
+                return resizedImg;
+            }
+            return orgImage;
+        }
+
+        private void inputPicture_Validating(object sender, CancelEventArgs e)
+        {
+            if (Book == null && uploadImage == null)
+            {
+                errorProvider.SetError(inputPicture, Commons.Resources.ERR_UPLOAD_PICTURE);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(inputPicture, null);
+                e.Cancel = false;
+            }
+        }
+
+        private void btnUpload_Validating(object sender, CancelEventArgs e)
+        {
+            if (Book == null && fileLocation == null)
+            {
+                errorProvider.SetError(btnUpload, Commons.Resources.ERR_UPLOAD_BOOK);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider.SetError(btnUpload, null);
+                e.Cancel = false;
             }
         }
     }

@@ -157,6 +157,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             this.btnUpload.Text = "Upload PDF";
             this.btnUpload.UseVisualStyleBackColor = true;
             this.btnUpload.Click += new System.EventHandler(this.btnUpload_Click);
+            this.btnUpload.Validating += new System.ComponentModel.CancelEventHandler(this.btnUpload_Validating);
             // 
             // btnDownload
             // 
@@ -205,6 +206,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             this.inputPicture.Size = new System.Drawing.Size(194, 20);
             this.inputPicture.TabIndex = 80;
             this.inputPicture.TabStop = false;
+            this.inputPicture.Validating += new System.ComponentModel.CancelEventHandler(this.inputPicture_Validating);
             // 
             // label6
             // 

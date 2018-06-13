@@ -23,7 +23,7 @@ namespace eKnjiznica.DAL.Model
         public string Autor { get; set; }
         [Required]
         public bool IsActive { get; set; }
-
+        public string ImageLocation { get; internal set; }
 
 
         #region Navigation
