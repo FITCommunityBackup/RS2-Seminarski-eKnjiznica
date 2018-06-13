@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -10,6 +11,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using eKnjiznica.AdminUI.Services;
 using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
@@ -22,11 +24,11 @@ namespace eKnjiznica.AdminUI.UI.Books
         public BooksVM Book { get; set; }
         public List<CategoryVM> Categories { get; set; }
         private IApiClient ApiClient;
-
+        private ImageHelper imageHelper;
         private string fileLocation;
         private string fileName;
 
-        public BooksEditForm(IApiClient apiClient)
+        public BooksEditForm(IApiClient apiClient, ImageHelper imageHelper)
         {
             this.ApiClient = apiClient;
             this.AutoValidate = AutoValidate.EnableAllowFocusChange;
@@ -45,7 +47,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             }
             else
             {
-                btnDownload.Visible = string.IsNullOrEmpty(Book.FileLocation)?false:true;
+                btnDownload.Visible = string.IsNullOrEmpty(Book.FileLocation) ? false : true;
                 cbIsActive.Visible = true;
                 btnAction.Text = Commons.Resources.LABEL_UPDATE;
 
@@ -137,7 +139,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "PDF Knjiga |*.pdf"; // file types, that will be allowed to upload
             dialog.Multiselect = false; // allow/deny user to upload more than one file at a time
-            
+
             if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
             {
                 fileLocation = dialog.FileName; // get name of file
@@ -241,5 +243,39 @@ namespace eKnjiznica.AdminUI.UI.Books
         }
 
         #endregion
+
+        private void dodajSlikuButton_Click(object sender, EventArgs e)
+        {
+            openFileDialog.ShowDialog();
+            inputPicture.Text = openFileDialog.FileName;
+
+            var picture = File.ReadAllBytes(inputPicture.Text);
+            Image orgImage = Image.FromFile(inputPicture.Text);
+
+            int resizedImgWidth = Convert.ToInt32(ConfigurationManager.AppSettings["resizedImgWidth"]);
+            int resizedImgHeight = Convert.ToInt32(ConfigurationManager.AppSettings["resizedImgHeight"]);
+            int croppedImgWidth = Convert.ToInt32(ConfigurationManager.AppSettings["croppedImgWidth"]);
+            int croppedImgHeight = Convert.ToInt32(ConfigurationManager.AppSettings["croppedImgHeight"]);
+
+            if (orgImage.Width > resizedImgWidth)
+            {
+                Image resizedImg = imageHelper.ResizeImage(orgImage, new Size(resizedImgWidth, resizedImgHeight));
+
+                if (resizedImg.Width > croppedImgWidth && resizedImg.Height > croppedImgHeight)
+                {
+                    int croppedXPosition = (resizedImg.Width - croppedImgWidth) / 2;
+                    int croppedYPosition = (resizedImg.Height - croppedImgHeight) / 2;
+
+                    Image croppedImg = imageHelper.CropImage(resizedImg, new Rectangle(croppedXPosition, croppedYPosition, croppedImgWidth, croppedImgHeight));
+                    pictureBox.Image = croppedImg;
+
+                    //MemoryStream ms = new MemoryStream();
+                    //croppedImg.Save(ms, orgImage.RawFormat);
+
+                    //proizvod.SlikaThumb = ms.ToArray();
+
+                }
+            }
+        }
     }
 }

@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\ImageHelper.cs" />
     <Compile Include="UI\Administrators\AdministratorAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
