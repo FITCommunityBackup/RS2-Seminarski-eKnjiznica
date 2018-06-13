@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using eKnjiznica.AdminUI.Services;
 using eKnjiznica.AdminUI.Services.API;
+using eKnjiznica.Commons.API;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
 
@@ -86,7 +87,8 @@ namespace eKnjiznica.AdminUI.UI.Books
             var fileUploadResult = true;
             if (fileLocation != null)
             {
-                var uploadResult = await ApiClient.UploadFile(fileLocation, fileName, Book.Id);
+                var stream = new FileStream(fileLocation, FileMode.Open);
+                var uploadResult = await ApiClient.UploadFile(stream, fileName, Book.Id);
                 fileUploadResult = uploadResult.IsSuccessStatusCode;
             }
             var imageUplaodResult = true;
@@ -120,8 +122,11 @@ namespace eKnjiznica.AdminUI.UI.Books
             }
 
             var createdBook = await result.Content.ReadAsAsync<BooksVM>();
+
             var uploadPicture = await ApiClient.UploadBookPicture(uploadImage, imageName, createdBook.Id);
-            var uploadResult = await ApiClient.UploadFile(fileLocation, fileName, createdBook.Id);
+
+            var stream = new FileStream(fileLocation, FileMode.Open);
+            var uploadResult = await ApiClient.UploadFile(stream, fileName, createdBook.Id);
             if (uploadResult.IsSuccessStatusCode && uploadPicture.IsSuccessStatusCode)
             {
                 DialogResult = DialogResult.OK;

@@ -149,6 +149,12 @@
     <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\eKnjiznica.Commons\eKnjiznica.Commons.csproj">
+      <Project>{3BF6C0DE-BF94-41E9-941A-7D70498DCA6C}</Project>
+      <Name>eKnjiznica.Commons</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\eKnjiznica.Mobile\eKnjiznica.Mobile.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -1,11 +1,7 @@
-﻿using eKnjiznica.Commons.ViewModels.Category;
+﻿using eKnjiznica.Commons;
+using eKnjiznica.Commons.ViewModels.Category;
 using eKnjiznica.CORE.Services.Categories;
 using eKnjiznica.DAL.EF;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace eKnjiznica.API.Controllers
@@ -50,7 +46,7 @@ namespace eKnjiznica.API.Controllers
             var result = categoriesService.GetCategoryByName(model.CategoryName);
             if (result != null)
             {
-                ModelState.AddModelError("create_category", Commons.Resources.CATEGORY_WITH_THAT_NAME_EXISTS);
+                ModelState.AddModelError("create_category", Resources.CATEGORY_WITH_THAT_NAME_EXISTS);
                 return BadRequest(ModelState);
             }
             categoriesService.CreateCategory(model, GetUserId());
@@ -67,13 +63,13 @@ namespace eKnjiznica.API.Controllers
             var result = categoriesService.GetCategoryById(id);
             if (result == null)
             {
-                ModelState.AddModelError("update_category", Commons.Resources.CATEGORY_DOES_NOT_EXIST);
+                ModelState.AddModelError("update_category",Resources.CATEGORY_DOES_NOT_EXIST);
                 return BadRequest(ModelState);
             }
            
             if (!string.IsNullOrEmpty(model.CategoryName) && categoriesService.GetCategoryByName(model.CategoryName)!=null)
             {
-                ModelState.AddModelError("update_category", Commons.Resources.CATEGORY_WITH_THAT_NAME_EXISTS);
+                ModelState.AddModelError("update_category", Resources.CATEGORY_WITH_THAT_NAME_EXISTS);
                 return BadRequest(ModelState);
             }
 

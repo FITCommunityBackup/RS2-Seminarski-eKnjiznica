@@ -90,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\API\TokenHandler.cs" />
     <Compile Include="Services\ImageHelper.cs" />
     <Compile Include="UI\Administrators\AdministratorAddForm.cs">
       <SubType>Form</SubType>
@@ -124,10 +125,6 @@
     <Compile Include="model\LoginVM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\API\ApiUnauthorizedException.cs" />
-    <Compile Include="Services\API\eKnjiznicaApiClient.cs" />
-    <Compile Include="Services\API\IApiClient.cs" />
-    <Compile Include="Services\API\TokenHandler.cs" />
     <Compile Include="Services\ErrorHandling\ErrorHandlingUtil.cs" />
     <Compile Include="Services\User\IUserService.cs" />
     <Compile Include="Services\User\UserService.cs" />
@@ -321,7 +318,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eKnjiznica.Commons\eKnjiznica.Commons.csproj">
-      <Project>{2dd83231-71cd-4312-afcd-3cc53e9a6a0b}</Project>
+      <Project>{3bf6c0de-bf94-41e9-941a-7d70498dca6c}</Project>
       <Name>eKnjiznica.Commons</Name>
     </ProjectReference>
   </ItemGroup>

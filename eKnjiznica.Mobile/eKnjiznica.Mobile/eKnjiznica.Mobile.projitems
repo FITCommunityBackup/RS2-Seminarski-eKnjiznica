@@ -19,12 +19,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Services\API\MobileApiClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\API\IApiClient.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\API\TokenHandler.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Services\API\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
 </Project>

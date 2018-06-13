@@ -14,16 +14,13 @@ namespace eKnjiznica.DAL.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-
         }
-
-        
         protected override void Seed(EKnjiznicaDB context)
         {
 
-            var store = new RoleStore<IdentityRole>(context); 
+            var store = new RoleStore<IdentityRole>(context);
             var manager = new RoleManager<IdentityRole>(store);
-          
+
             if (!context.Roles.Any(r => r.Name == EntityRoles.AdminRole))
             {
                 var role = new IdentityRole { Name = EntityRoles.AdminRole };
@@ -32,7 +29,7 @@ namespace eKnjiznica.DAL.Migrations
 
             if (!context.Roles.Any(r => r.Name == EntityRoles.ClientRole))
             {
-                var role = new IdentityRole { Name = EntityRoles.ClientRole};
+                var role = new IdentityRole { Name = EntityRoles.ClientRole };
                 manager.Create(role);
             }
 
@@ -40,7 +37,7 @@ namespace eKnjiznica.DAL.Migrations
 
             if (!context.Users.Any(u => u.UserName == "admin"))
             {
-                var user = new ApplicationUser { UserName = "admin", Email="admin@email.com",FirstName = "Admin",LastName="Sistema",IsActive=true };
+                var user = new ApplicationUser { UserName = "admin", Email = "admin@email.com", FirstName = "Admin", LastName = "Sistema", IsActive = true };
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new ApplicationUserManager(userStore);
 
@@ -48,5 +45,6 @@ namespace eKnjiznica.DAL.Migrations
                 userManager.AddToRole(user.Id, EntityRoles.AdminRole);
             }
         }
+
     }
 }

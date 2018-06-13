@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eKnjiznica.Commons\eKnjiznica.Commons.csproj">
-      <Project>{2DD83231-71CD-4312-AFCD-3CC53E9A6A0B}</Project>
+      <Project>{3bf6c0de-bf94-41e9-941a-7d70498dca6c}</Project>
       <Name>eKnjiznica.Commons</Name>
     </ProjectReference>
   </ItemGroup>

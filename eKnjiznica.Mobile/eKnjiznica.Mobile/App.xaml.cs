@@ -1,7 +1,9 @@
-using eKnjiznica.Mobile.Services.API;
+using eKnjiznica.Commons.API;
 using System;
 using System.Net.Http;
 using Unity;
+using Unity.Injection;
+using Unity.Lifetime;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,26 +17,28 @@ namespace eKnjiznica.Mobile
 			InitializeComponent();
 
 			MainPage = new NavigationPage(new MainPage());
-		}
 
+            IUnityContainer container = new UnityContainer();
+            container.RegisterType<HttpClient>(new ContainerControlledLifetimeManager(), 
+                new InjectionFactory(x => getHttpClient(container)));
+            container.RegisterType<IApiClient, EKnjiznicaApiClient>(new ContainerControlledLifetimeManager());
 
+        }
 
         private HttpClient getHttpClient(IUnityContainer container)
         {
-            var url = Services.Constants.ServiceBaseUrl;
-
-            var client = new HttpClient(new TokenHandler());
-            client.Bas=
-            HttpClientFactory.Create(new TokenHandler() { RefreshTokenUri = url + "token", Container = container });
+            var url = eKnjiznica.Mobile.Services.Constants.ServiceBaseUrl;
+            var client = new HttpClient();
             client.BaseAddress = new Uri(url);
-            string token = Properties.Settings.Default.Token;
-            string tokenType = Properties.Settings.Default.TokenType;
-            if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(tokenType))
-            {
-                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(tokenType, token);
-            }
+            //string token = Properties.Settings.Default.Token;
+            //string tokenType = Properties.Settings.Default.TokenType;
+            //if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(tokenType))
+            //{
+            //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(tokenType, token);
+            //}
             return client;
         }
+
         protected override void OnStart ()
 		{
 			// Handle when your app starts

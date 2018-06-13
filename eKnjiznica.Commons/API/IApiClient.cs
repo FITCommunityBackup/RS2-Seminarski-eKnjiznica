@@ -1,4 +1,4 @@
-﻿using eKnjiznica.AdminUI.model;
+﻿using eKnjiznica.Commons;
 using eKnjiznica.Commons.ViewModels;
 using eKnjiznica.Commons.ViewModels.Auctions;
 using eKnjiznica.Commons.ViewModels.Books;
@@ -6,12 +6,13 @@ using eKnjiznica.Commons.ViewModels.Category;
 using eKnjiznica.Commons.ViewModels.Clients;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eKnjiznica.AdminUI.Services.API
+namespace eKnjiznica.Commons.API
 {
     public interface IApiClient
     {
@@ -31,7 +32,7 @@ namespace eKnjiznica.AdminUI.Services.API
         Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive);
         Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM);
         Task<HttpResponseMessage> UpdateBook(UpdateBookVM updateBook, int bookId);
-        Task<HttpResponseMessage> UploadFile(string fileLocation, string fileName, int bookId);
+        Task<HttpResponseMessage> UploadFile(Stream file, string fileName, int bookId);
         Task<HttpResponseMessage> GetBookFile(int id);
         Task<HttpResponseMessage> UpdateExistingBookOffer(UpdateBookOfferVM bookOfferUpdate, int id);
         Task<HttpResponseMessage> GetTransaction(int transactionId);

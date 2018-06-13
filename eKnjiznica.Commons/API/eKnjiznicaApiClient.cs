@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
-using eKnjiznica.AdminUI.model;
+using eKnjiznica.Commons;
 using eKnjiznica.Commons.ViewModels;
 using eKnjiznica.Commons.ViewModels.Auctions;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
 using eKnjiznica.Commons.ViewModels.Clients;
+using Newtonsoft.Json;
 
-namespace eKnjiznica.AdminUI.Services.API
+namespace eKnjiznica.Commons.API
 {
     public class EKnjiznicaApiClient : IApiClient
     {
@@ -131,9 +132,9 @@ namespace eKnjiznica.AdminUI.Services.API
         }
 
     
-        public Task<HttpResponseMessage> UploadFile(string fileLocation, string fileName, int id)
+        public Task<HttpResponseMessage> UploadFile(Stream fileStream, string fileName, int id)
         {
-            return PostMultiPart($"api/books/{id}/files",fileLocation,fileName);
+            return PostMultiPart($"api/books/{id}/files",fileStream,fileName);
         }
 
 
@@ -214,8 +215,7 @@ namespace eKnjiznica.AdminUI.Services.API
 
         public Task<HttpResponseMessage> Patch<T>(T value, string requestUri)
         {
-
-            var content = new ObjectContent<T>(value, new JsonMediaTypeFormatter());
+            var content = new StringContent(JsonConvert.SerializeObject(value),Encoding.UTF8,"application/json");
             var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUri) { Content = content };
 
             return httpClient.SendAsync(request);
@@ -228,20 +228,23 @@ namespace eKnjiznica.AdminUI.Services.API
 
         private Task<HttpResponseMessage> Post<T>(T body, string path)
         {
-            return httpClient.PostAsJsonAsync(path, body);
+            var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            var request = new HttpRequestMessage(new HttpMethod("POST"), path) { Content = content };
+            return httpClient.SendAsync(request);
         }
 
         private Task<HttpResponseMessage> Put<T>(T body, string path)
         {
-            return httpClient.PutAsJsonAsync(path, body);
+            var content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            var request = new HttpRequestMessage(new HttpMethod("PUT"), path) { Content = content };
+            return httpClient.SendAsync(request);
         }
 
     
 
-        private Task<HttpResponseMessage> PostMultiPart(string path, string fileLocation,string fileName)
+        private Task<HttpResponseMessage> PostMultiPart(string  path, Stream stream,string fileName)
         {
             MultipartFormDataContent form = new MultipartFormDataContent();
-            var stream = new FileStream(fileLocation, FileMode.Open);
             HttpContent content = new StreamContent(stream);
             content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
             {
