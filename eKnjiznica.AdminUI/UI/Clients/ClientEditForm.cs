@@ -1,5 +1,4 @@
 ﻿using eKnjiznica.AdminUI.Services.API;
-using eKnjiznica.AdminUI.Services.ErrorHandling;
 using eKnjiznica.Commons.API;
 using eKnjiznica.Commons.Util;
 using eKnjiznica.Commons.ViewModels.ClientBook;

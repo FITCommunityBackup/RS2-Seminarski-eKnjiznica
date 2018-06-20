@@ -5,8 +5,9 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using eKnjiznica.Commons.ViewModels.Error;
+using Newtonsoft.Json;
 
-namespace eKnjiznica.AdminUI.Services.ErrorHandling
+namespace eKnjiznica.Commons.Util
 {
     public class ErrorHandlingUtil
     {
@@ -14,8 +15,8 @@ namespace eKnjiznica.AdminUI.Services.ErrorHandling
         {
             try
             {
-                BaseErrorVM baseError = await 
-                    httpResponseMessage.Content.ReadAsAsync<BaseErrorVM>();
+                var resultString = await httpResponseMessage.Content.ReadAsStringAsync();
+                BaseErrorVM baseError = JsonConvert.DeserializeObject<BaseErrorVM>(resultString);
                 if (baseError == null)
                     return Commons.Resources.UNEXPECTED_ERROR_OCURRED;
 
@@ -40,7 +41,9 @@ namespace eKnjiznica.AdminUI.Services.ErrorHandling
         {
             try
             {
-                var loginError = await result.Content.ReadAsAsync<LoginErrorVM>();
+                var resultString = await result.Content.ReadAsStringAsync();
+                var loginError = JsonConvert.DeserializeObject<LoginErrorVM>(resultString);
+
                 if (loginError != null && string.IsNullOrEmpty(loginError.ErrorDescription))
                     return Commons.Resources.UNEXPECTED_ERROR_OCURRED;
                 return loginError.ErrorDescription;

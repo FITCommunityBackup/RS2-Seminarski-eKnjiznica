@@ -1,11 +1,15 @@
-using eKnjiznica.Commons.API;
-using System;
 using System.Net.Http;
-using Unity;
-using Unity.Injection;
-using Unity.Lifetime;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Unity;
+using Unity.Lifetime;
+using Unity.Injection;
+using eKnjiznica.Commons.API;
+using System;
+using Plugin.Settings.Abstractions;
+using Plugin.Settings;
+using Unity.ServiceLocation;
+using CommonServiceLocator;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eKnjiznica.Mobile
@@ -16,12 +20,23 @@ namespace eKnjiznica.Mobile
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MainPage());
 
             IUnityContainer container = new UnityContainer();
-            container.RegisterType<HttpClient>(new ContainerControlledLifetimeManager(), 
+            container.RegisterType<ISettings>(new InjectionFactory(x=>CrossSettings.Current));
+            container.RegisterType<SettingsHelper>(new InjectionFactory(x => new SettingsHelper(container.Resolve<ISettings>())));
+
+
+            container.RegisterType<HttpClient>(new ContainerControlledLifetimeManager(),
                 new InjectionFactory(x => getHttpClient(container)));
             container.RegisterType<IApiClient, EKnjiznicaApiClient>(new ContainerControlledLifetimeManager());
+
+
+            var unityServiceLocator = new UnityServiceLocator(container);
+            ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
+
+
+
+            MainPage = new NavigationPage(new MainPage());
 
         }
 
@@ -30,12 +45,15 @@ namespace eKnjiznica.Mobile
             var url = eKnjiznica.Mobile.Services.Constants.ServiceBaseUrl;
             var client = new HttpClient();
             client.BaseAddress = new Uri(url);
-            //string token = Properties.Settings.Default.Token;
-            //string tokenType = Properties.Settings.Default.TokenType;
-            //if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(tokenType))
-            //{
-            //    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(tokenType, token);
-            //}
+            var settings = container.Resolve<SettingsHelper>();
+
+            string token = settings.GetToken();
+            string tokenType = settings.GetTokenType();
+
+            if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(tokenType))
+            {
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(tokenType, token);
+            }
             return client;
         }
 

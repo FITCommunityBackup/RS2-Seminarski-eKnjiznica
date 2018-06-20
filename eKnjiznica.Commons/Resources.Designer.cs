@@ -287,6 +287,24 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string LBL_OK {
+            get {
+                return ResourceManager.GetString("LBL_OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greška prilikom logiranja.
+        /// </summary>
+        public static string LOGIN_ERROR {
+            get {
+                return ResourceManager.GetString("LOGIN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Molimo odaberite korisnika.
         /// </summary>
         public static string PLEASE_SELECT_USER {

@@ -1,11 +1,7 @@
 ﻿using CommonServiceLocator;
 using eKnjiznica.Commons.API;
+using eKnjiznica.Commons.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Unity;
 using Xamarin.Forms;
 
 namespace eKnjiznica.Mobile
@@ -13,9 +9,13 @@ namespace eKnjiznica.Mobile
 	public partial class MainPage : ContentPage
 	{
         private IApiClient apiClient;
-		public MainPage()
+        private ErrorHandlingUtil errorHandlingUtil;
+        public MainPage()
 		{
+            //this.apiClient = ServiceLocator.Current.GetInstance(typeof(IApiClient));
+
             this.apiClient = ServiceLocator.Current.GetInstance<IApiClient>();
+            this.errorHandlingUtil = ServiceLocator.Current.GetInstance<ErrorHandlingUtil>();
             InitializeComponent();
 		}
 
@@ -37,11 +37,15 @@ namespace eKnjiznica.Mobile
 
             if (result.IsSuccessStatusCode)
             {
-                await DisplayAlert("Login result", "Success","");
+                await DisplayAlert("Login result", "Success", "OK", "Otkazi");
             }
             else
             {
-                await DisplayAlert("Login result", "Success", "");
+                string error = await errorHandlingUtil.GetLoginErrorMessage(result);
+                var title = Commons.Resources.LOGIN_ERROR;
+           
+                await DisplayAlert(title, error,"OK");
+
             }
         }
     }
