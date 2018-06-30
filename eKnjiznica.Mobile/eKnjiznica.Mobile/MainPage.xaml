@@ -6,20 +6,10 @@
 
     <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
         <!-- Place new controls here -->
-    	<Label Text="Logirajte se" 
+    	<Label Text="Dobro došli na main page" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        <Entry
-            Placeholder="Korisničko ime"
-            x:Name="username"/>
-        <Entry
-            IsPassword="True"
-            Placeholder="Lozinka"
-            x:Name="password"/>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
-            <Button Text="Registracija" Clicked="Register_Me_EventHandler"></Button>
-            <Button Text="Logiraj me" Clicked="Log_In_Event_Handler"></Button>
-        </StackLayout>
+        <Button x:Name="BtnLogOut"  Text="Odjavi me" Clicked="BtnLogOut_Clicked"></Button>
     </StackLayout>
 
 </ContentPage>

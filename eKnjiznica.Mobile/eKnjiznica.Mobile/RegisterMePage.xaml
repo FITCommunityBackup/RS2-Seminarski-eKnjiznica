@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKnjiznica.Mobile.RegisterMePage"
+            xmlns:validation="clr-namespace:eKnjiznica.Mobile.Validators"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Registriraj se" 
+                HorizontalOptions="CenterAndExpand" />
+            <Grid>
+
+                <!--[DataMember]
+        public string FirstName { get; set; }
+        [DataMember]
+        public string LastName { get; set; }
+        [DataMember]
+        public string UserName { get; set; }
+        [DataMember]
+        public string Password { get; set; }
+        [DataMember]
+        public string PhoneNumber { get; set; }
+        [DataMember]
+        public string Email{ get; set; }
+        [DataMember]
+        public DateTime DateOfBirth { get; set; }-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Margin="5" Text="Ime" Grid.Row="0" Grid.Column="0"></Label>
+                <Entry x:Name="FirstName" Keyboard="Default" Grid.Row="0" Grid.Column="1"></Entry>
+
+                <Label Margin="5" Text="Prezime" Grid.Row="1" Grid.Column="0"></Label>
+                <Entry x:Name="LastName"  Keyboard="Default" Grid.Row="1" Grid.Column="1"></Entry>
+
+                <Label Margin="5" Text="Korisničko ime" Grid.Row="2" Grid.Column="0"></Label>
+                <Entry x:Name="UserName" Keyboard="Default" Grid.Row="2" Grid.Column="1"></Entry>
+
+                <Label Margin="5" Text="Lozinka" Grid.Row="3" Grid.Column="0"></Label>
+                <Entry x:Name="Password" Keyboard="Default" IsPassword="True" Grid.Row="3" Grid.Column="1"></Entry>
+
+                <Label Margin="5" Text="Broj telefona" Grid.Row="4" Grid.Column="0"></Label>
+                <Entry x:Name="PhoneNumber" Keyboard="Telephone" Grid.Row="4" Grid.Column="1">
+                    <Entry.Behaviors>
+                        <validation:PhoneNumberValidator />
+                    </Entry.Behaviors>
+
+                </Entry>
+
+                <Label Margin="5" Text="Email" Grid.Row="5" Grid.Column="0"></Label>
+                <Entry x:Name="Email" Keyboard="Email" Grid.Row="5" Grid.Column="1"></Entry>
+
+                <Label Margin="5"  Text="Datum rođenja" Grid.Row="6" Grid.Column="0"></Label>
+                <DatePicker   Grid.Row="6" Grid.Column="1" x:Name="BirthdayDate"/>
+                
+            </Grid>
+        
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

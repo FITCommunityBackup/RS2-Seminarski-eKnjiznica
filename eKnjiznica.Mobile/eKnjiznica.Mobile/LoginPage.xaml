@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKnjiznica.Mobile.LoginPage">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="20"
+            VerticalOptions="CenterAndExpand"
+            HorizontalOptions="CenterAndExpand">
+            <Label Text="Logirajte se"
+                HorizontalOptions="CenterAndExpand" />
+
+            <Entry x:Name="Username" Placeholder="Korisničko ime"></Entry>
+            <Entry x:Name="Password" IsPassword="True" Placeholder="Lozinka"></Entry>
+            <StackLayout 
+                Orientation="Horizontal" 
+                HorizontalOptions="EndAndExpand">
+                <Button x:Name="RegisterMeBtn"  Clicked="RegisterMeBtn_Clicked" Text="Registracija"></Button>
+                <Button x:Name="LoginBtn" Text="Login" Clicked="LoginBtn_Clicked"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

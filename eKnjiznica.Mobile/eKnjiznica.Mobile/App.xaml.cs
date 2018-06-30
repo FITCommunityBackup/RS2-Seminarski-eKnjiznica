@@ -10,6 +10,7 @@ using Plugin.Settings.Abstractions;
 using Plugin.Settings;
 using Unity.ServiceLocation;
 using CommonServiceLocator;
+using eKnjiznica.Mobile.Services.User;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eKnjiznica.Mobile
@@ -29,15 +30,23 @@ namespace eKnjiznica.Mobile
             container.RegisterType<HttpClient>(new ContainerControlledLifetimeManager(),
                 new InjectionFactory(x => getHttpClient(container)));
             container.RegisterType<IApiClient, EKnjiznicaApiClient>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IUserService, UserService>(new ContainerControlledLifetimeManager());
 
 
             var unityServiceLocator = new UnityServiceLocator(container);
             ServiceLocator.SetLocatorProvider(() => unityServiceLocator);
 
 
+            var userService = container.Resolve<IUserService>();
+            if (userService.IsUserLogged())
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new LoginPage());
 
-            MainPage = new NavigationPage(new MainPage());
-
+            }
         }
 
         private HttpClient getHttpClient(IUnityContainer container)
@@ -47,8 +56,9 @@ namespace eKnjiznica.Mobile
             client.BaseAddress = new Uri(url);
             var settings = container.Resolve<SettingsHelper>();
 
-            string token = settings.GetToken();
-            string tokenType = settings.GetTokenType();
+            var authResponse=settings.GetAuthenticationResponse();
+            string token = authResponse?.AccessToken;
+            string tokenType = authResponse?.TokenType;
 
             if (!string.IsNullOrEmpty(token) && !string.IsNullOrEmpty(tokenType))
             {
@@ -60,6 +70,7 @@ namespace eKnjiznica.Mobile
         protected override void OnStart ()
 		{
 			// Handle when your app starts
+            
 		}
 
 		protected override void OnSleep ()

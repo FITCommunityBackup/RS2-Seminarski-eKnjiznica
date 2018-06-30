@@ -44,6 +44,17 @@ namespace eKnjiznica.DAL.Migrations
                 userManager.Create(user, "Password!1");
                 userManager.AddToRole(user.Id, EntityRoles.AdminRole);
             }
+
+
+            if (!context.Users.Any(u => u.UserName == "client"))
+            {
+                var user = new ApplicationUser { UserName = "client", Email = "client@email.com", FirstName = "Client", LastName = "Sistema", IsActive = true };
+                var userStore = new UserStore<ApplicationUser>(context);
+                var userManager = new ApplicationUserManager(userStore);
+
+                userManager.Create(user, "Password!1");
+                userManager.AddToRole(user.Id, EntityRoles.ClientRole);
+            }
         }
 
     }

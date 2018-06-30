@@ -1,27 +1,36 @@
-﻿using Plugin.Settings.Abstractions;
+﻿using eKnjiznica.Commons.ViewModels;
+using Plugin.Settings.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Text;
-
 namespace eKnjiznica.Mobile
 {
     public class SettingsHelper
     {
         private ISettings settings;
-        private static string TOKEN_KEY = "TOKEN_KEY";
-        private static string TOKEN_KEY_TYPE = "TOKEN_KEY_TYPE";
+        private static string AUTH_KEY = "TOKEN_KEY";
         public SettingsHelper(ISettings settings)
         {
             this.settings = settings;
         }
 
-        public string GetToken()
+   
+
+        public AuthenticationResponseVM GetAuthenticationResponse()
         {
-            return settings.GetValueOrDefault(TOKEN_KEY, null);
+            var jsonString = settings.GetValueOrDefault(AUTH_KEY, null);
+            if (jsonString == null)
+                return null;
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<AuthenticationResponseVM>(jsonString);
         }
-        public string GetTokenType()
+
+        public  void SaveAuthenticationResponse(AuthenticationResponseVM saveAuthenticationResponse)
         {
-            return settings.GetValueOrDefault(TOKEN_KEY_TYPE, null);
+            string json = null;
+            if (saveAuthenticationResponse!=null)
+                json = Newtonsoft.Json.JsonConvert.SerializeObject(saveAuthenticationResponse);
+            settings.AddOrUpdateValue(AUTH_KEY, json);
         }
+
     }
 }

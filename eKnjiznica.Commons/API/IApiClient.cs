@@ -44,5 +44,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> UpdateAuction(AuctionUpdateVM auctionUpdateVM, int id);
         Task<HttpResponseMessage> CreateAuction(AuctionCreateVM auctionCreateVM);
         Task<HttpResponseMessage> UploadBookPicture(byte[] uploadImage, string imageName, int id);
+
+        
     }
 }

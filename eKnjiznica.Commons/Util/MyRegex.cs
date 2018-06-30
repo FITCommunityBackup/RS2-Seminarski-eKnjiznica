@@ -39,8 +39,10 @@ namespace eKnjiznica.Commons.Util
             if (string.IsNullOrEmpty(phone))
                 return false;
             Regex regex = new Regex(@"^((\(\d{3}\) ?)|(\d{3}-))?\d{3}-\d{3}$");
+            Regex regex2 = new Regex(@"^(\+?[0-9]{9,12})$");
             Match match = regex.Match(phone);
-            return (match.Success);
+            Match match2 = regex2.Match(phone);
+            return (match.Success) || match2.Success;
         }
     }
 }
