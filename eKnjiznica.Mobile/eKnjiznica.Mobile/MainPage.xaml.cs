@@ -20,8 +20,7 @@ namespace eKnjiznica.Mobile
         private async void BtnLogOut_Clicked(object sender, EventArgs e)
         {
             userService.LogoutUser();
-            Navigation.InsertPageBefore(new LoginPage(),this);
-            await Navigation.PopAsync();
+            App.Current.MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnAppearing()

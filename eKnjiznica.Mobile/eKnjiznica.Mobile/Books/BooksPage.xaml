@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKnjiznica.Mobile.Books.BooksPage">
+    <ContentPage.Content>
+        <StackLayout Padding="30">
+            <Picker x:Name="bookCategories" Title="Odaberite kategoriju" SelectedIndexChanged="bookCategories_SelectedIndexChanged"></Picker>
+            <ListView x:Name="booksList" RowHeight="100" ItemTapped="booksList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image x:Name="image" Grid.Column="0" 
+                                       Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}" Margin="5"></Image>
+                                <StackLayout Grid.Column="1" Padding="10">
+                                    <Label Text="{Binding Naziv}" FontAttributes="Bold" />
+                                    <Label Text="{Binding Sifra}"  />
+                                    <Label Text="{Binding Cijena}" />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

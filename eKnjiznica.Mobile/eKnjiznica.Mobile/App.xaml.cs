@@ -11,6 +11,7 @@ using Plugin.Settings;
 using Unity.ServiceLocation;
 using CommonServiceLocator;
 using eKnjiznica.Mobile.Services.User;
+using eKnjiznica.Mobile.Navigation;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace eKnjiznica.Mobile
@@ -40,7 +41,7 @@ namespace eKnjiznica.Mobile
             var userService = container.Resolve<IUserService>();
             if (userService.IsUserLogged())
             {
-                MainPage = new NavigationPage(new MainPage());
+                MainPage = new MyMasterDetailPage();
             }
             else
             {

@@ -2,6 +2,7 @@
 using eKnjiznica.Commons.API;
 using eKnjiznica.Commons.Util;
 using eKnjiznica.Commons.ViewModels;
+using eKnjiznica.Mobile.Navigation;
 using eKnjiznica.Mobile.Services.User;
 using Newtonsoft.Json;
 using System;
@@ -37,12 +38,16 @@ namespace eKnjiznica.Mobile
         {
             var uname =Username.Text;
             var password = Password.Text;
-
+            if(string.IsNullOrEmpty(uname) || string.IsNullOrEmpty(password))
+            {
+                await DisplayAlert(Commons.Resources.ERROR, Commons.Resources.PLEASE_FILL_IN_FIELDS, "OK");
+                return;
+            }
             var result = await apiClient.LoginUser(new Commons.LoginVM
             {
                 Password = password,
                 Username = uname
-            });
+            },"mobile");
 
 
             if (result.IsSuccessStatusCode)
@@ -50,8 +55,9 @@ namespace eKnjiznica.Mobile
                 var json = await result.Content.ReadAsStringAsync();
                 var authResponse = JsonConvert.DeserializeObject<AuthenticationResponseVM>(json);
                 userService.SaveAuthenticationResponse(authResponse);
-                Navigation.InsertPageBefore(new MainPage(), this);
-                await Navigation.PopAsync();
+
+                await Navigation.PopToRootAsync();
+                App.Current.MainPage = new MyMasterDetailPage();
             }
             else
             {

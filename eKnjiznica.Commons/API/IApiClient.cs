@@ -16,7 +16,7 @@ namespace eKnjiznica.Commons.API
 {
     public interface IApiClient
     {
-        Task<HttpResponseMessage> LoginUser(LoginVM loginVM);
+        Task<HttpResponseMessage> LoginUser(LoginVM loginVM,string clientId);
         Task<HttpResponseMessage> LoadAminAccounts(string usernameFilter);
         Task<HttpResponseMessage> CreateAdminAccount(AdminAddVM adminAdd);
         Task<HttpResponseMessage> UpdateAdminAccount(AdminUpdateVM adminUpdateVM);

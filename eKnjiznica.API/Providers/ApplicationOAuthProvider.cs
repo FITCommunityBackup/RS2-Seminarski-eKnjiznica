@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using eKnjiznica.API.Models;
 using eKnjiznica.DAL.Model;
 using eKnjiznica.DAL;
+using eKnjiznica.DAL.EF;
 
 namespace eKnjiznica.API.Providers
 {
@@ -32,7 +33,7 @@ namespace eKnjiznica.API.Providers
             var userManager = context.OwinContext.GetUserManager<ApplicationUserManager>();
 
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
-
+            
             if (user == null)
             {
                 context.SetError("login_error", Commons.Resources.USERNAME_OR_PASSWORD_INCORRENT);
@@ -41,6 +42,11 @@ namespace eKnjiznica.API.Providers
             else if (!user.IsActive)
             {
                 context.SetError("login_error", Commons.Resources.ACCOUNT_NOT_ACTIVE);
+                return;
+            }
+            if (context.ClientId.Equals("mobile") &&!await userManager.IsInRoleAsync(user.Id,EntityRoles.ClientRole))
+            {
+                context.SetError("login_error", Commons.Resources.ACCOUNT_HAS_NO_PRIVILEGES_TO_ACCESS_APP);
                 return;
             }
 
@@ -67,12 +73,10 @@ namespace eKnjiznica.API.Providers
 
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            // Resource owner password credentials does not provide a client ID.
-            if (context.ClientId == null)
-            {
-                context.Validated();
-            }
-
+            string clientId;
+            string clientSecret;
+            context.TryGetFormCredentials(out clientId, out clientSecret);
+            context.Validated();
             return Task.FromResult<object>(null);
         }
 

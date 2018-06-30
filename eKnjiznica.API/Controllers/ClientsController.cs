@@ -35,9 +35,10 @@ namespace eKnjiznica.API.Controllers
         }
         [HttpPost]
         [Route("")]
+        [AllowAnonymous]
         public IHttpActionResult CreateClientAccount(ClientAddVM model)
         {
-            if (!ModelState.IsValid)
+            if ( model==null || !ModelState.IsValid)
                 return BadRequest(ModelState);
 
             if (clientService.FindClientByUsername(model.UserName) != null || adminService.FindByUsername(model.UserName)!=null)

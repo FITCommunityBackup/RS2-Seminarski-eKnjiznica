@@ -32,6 +32,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
@@ -52,10 +53,6 @@
 
                 <Label Margin="5" Text="Broj telefona" Grid.Row="4" Grid.Column="0"></Label>
                 <Entry x:Name="PhoneNumber" Keyboard="Telephone" Grid.Row="4" Grid.Column="1">
-                    <Entry.Behaviors>
-                        <validation:PhoneNumberValidator />
-                    </Entry.Behaviors>
-
                 </Entry>
 
                 <Label Margin="5" Text="Email" Grid.Row="5" Grid.Column="0"></Label>
@@ -64,6 +61,8 @@
                 <Label Margin="5"  Text="Datum rođenja" Grid.Row="6" Grid.Column="0"></Label>
                 <DatePicker   Grid.Row="6" Grid.Column="1" x:Name="BirthdayDate"/>
                 
+                <Button Grid.Row="7" Grid.Column="1" Text="Registriraj se" x:Name="RegisterMe" Clicked="RegisterMe_Clicked"></Button>
+            
             </Grid>
         
         </StackLayout>

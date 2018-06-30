@@ -62,6 +62,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nemate privilegije za pristup aplikaciji..
+        /// </summary>
+        public static string ACCOUNT_HAS_NO_PRIVILEGES_TO_ACCESS_APP {
+            get {
+                return ResourceManager.GetString("ACCOUNT_HAS_NO_PRIVILEGES_TO_ACCESS_APP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Korisnički račun je deaktiviran.
         /// </summary>
         public static string ACCOUNT_NOT_ACTIVE {
@@ -94,6 +103,24 @@ namespace eKnjiznica.Commons {
         public static string CATEGORY_WITH_THAT_NAME_EXISTS {
             get {
                 return ResourceManager.GetString("CATEGORY_WITH_THAT_NAME_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registracija je uspješna.
+        /// </summary>
+        public static string CLIENT_ADD_SUCCESS_MESSAGE {
+            get {
+                return ResourceManager.GetString("CLIENT_ADD_SUCCESS_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspješno.
+        /// </summary>
+        public static string CLIENT_ADD_SUCCESS_TITLE {
+            get {
+                return ResourceManager.GetString("CLIENT_ADD_SUCCESS_TITLE", resourceCulture);
             }
         }
         
@@ -215,6 +242,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ime i prezime su obavezna polja.
+        /// </summary>
+        public static string ERR_FIRST_AND_LAST_NAME_REQUIRED {
+            get {
+                return ResourceManager.GetString("ERR_FIRST_AND_LAST_NAME_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ime je obavezno polje..
         /// </summary>
         public static string ERR_FIRST_NAME_REQUIRED {
@@ -269,6 +305,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Greška.
+        /// </summary>
+        public static string ERROR {
+            get {
+                return ResourceManager.GetString("ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dodaj.
         /// </summary>
         public static string LABEL_ADD {
@@ -305,11 +350,29 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Molimo popunite polja.
+        /// </summary>
+        public static string PLEASE_FILL_IN_FIELDS {
+            get {
+                return ResourceManager.GetString("PLEASE_FILL_IN_FIELDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Molimo odaberite korisnika.
         /// </summary>
         public static string PLEASE_SELECT_USER {
             get {
                 return ResourceManager.GetString("PLEASE_SELECT_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Greška prilikom registracije.
+        /// </summary>
+        public static string REGISTRATION_ERROR {
+            get {
+                return ResourceManager.GetString("REGISTRATION_ERROR", resourceCulture);
             }
         }
         

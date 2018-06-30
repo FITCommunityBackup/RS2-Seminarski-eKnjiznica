@@ -1,5 +1,5 @@
 ﻿using eKnjiznica.AdminUI.Services.API;
-using eKnjiznica.AdminUI.Services.ErrorHandling;
+using eKnjiznica.Commons.Util;
 using eKnjiznica.AdminUI.Services.User;
 using eKnjiznica.Commons;
 using eKnjiznica.Commons.API;
@@ -58,7 +58,7 @@ namespace eKnjiznica.AdminUI
                 Password = txtPassword.Text,
                 Username = txtUsername.Text
             };
-            var result = await this.ApiClient.LoginUser(loginVM);
+            var result = await this.ApiClient.LoginUser(loginVM,"wfa");
 
             if (result.IsSuccessStatusCode)
             {

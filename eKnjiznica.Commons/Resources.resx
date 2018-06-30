@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ACCOUNT_HAS_NO_PRIVILEGES_TO_ACCESS_APP" xml:space="preserve">
+    <value>Nemate privilegije za pristup aplikaciji.</value>
+  </data>
   <data name="ACCOUNT_NOT_ACTIVE" xml:space="preserve">
     <value>Korisnički račun je deaktiviran</value>
   </data>
@@ -129,11 +132,20 @@
   <data name="CATEGORY_WITH_THAT_NAME_EXISTS" xml:space="preserve">
     <value>Kategorija s tim imenom već postoji.</value>
   </data>
+  <data name="CLIENT_ADD_SUCCESS_MESSAGE" xml:space="preserve">
+    <value>Registracija je uspješna</value>
+  </data>
+  <data name="CLIENT_ADD_SUCCESS_TITLE" xml:space="preserve">
+    <value>Uspješno</value>
+  </data>
   <data name="ENTER_VALID_AMOUNT" xml:space="preserve">
     <value>Unesite ispravan novčani iznos</value>
   </data>
   <data name="ENTER_VALID_CATEGORY_NAME" xml:space="preserve">
     <value>Unesite ispravan naziv kategorije</value>
+  </data>
+  <data name="ERROR" xml:space="preserve">
+    <value>Greška</value>
   </data>
   <data name="ERR_AUTHOR_NAME_REQUIRED" xml:space="preserve">
     <value>Upišite ispravno ime za autora</value>
@@ -168,6 +180,9 @@
   <data name="ERR_FIELD_USERNAME_INVALID" xml:space="preserve">
     <value>Korisničko ime mora biti duže od 5 karaktera</value>
   </data>
+  <data name="ERR_FIRST_AND_LAST_NAME_REQUIRED" xml:space="preserve">
+    <value>Ime i prezime su obavezna polja</value>
+  </data>
   <data name="ERR_FIRST_NAME_REQUIRED" xml:space="preserve">
     <value>Ime je obavezno polje.</value>
   </data>
@@ -198,8 +213,14 @@
   <data name="LOGIN_ERROR" xml:space="preserve">
     <value>Greška prilikom logiranja</value>
   </data>
+  <data name="PLEASE_FILL_IN_FIELDS" xml:space="preserve">
+    <value>Molimo popunite polja</value>
+  </data>
   <data name="PLEASE_SELECT_USER" xml:space="preserve">
     <value>Molimo odaberite korisnika</value>
+  </data>
+  <data name="REGISTRATION_ERROR" xml:space="preserve">
+    <value>Greška prilikom registracije</value>
   </data>
   <data name="TRANSACTION_TYPE_BUY" xml:space="preserve">
     <value>Kupovina</value>

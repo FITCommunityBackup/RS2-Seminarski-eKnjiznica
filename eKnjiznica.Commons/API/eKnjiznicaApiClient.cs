@@ -156,13 +156,14 @@ namespace eKnjiznica.Commons.API
             return Get($"api/admin?username={usernameFilter}");
         }
 
-        public Task<HttpResponseMessage> LoginUser(LoginVM loginVM)
+        public Task<HttpResponseMessage> LoginUser(LoginVM loginVM,string clientId)
         {
             var dict = new Dictionary<string, string>
             {
                 { "username", loginVM.Username },
                 { "password", loginVM.Password },
-                { "grant_type", "password" }
+                { "grant_type", "password" },
+                { "client_id", clientId}
             };
             var req = new HttpRequestMessage(HttpMethod.Post, "token") { Content = new FormUrlEncodedContent(dict) };
             return httpClient.SendAsync(req);
