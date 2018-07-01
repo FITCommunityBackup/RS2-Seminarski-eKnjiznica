@@ -44,7 +44,7 @@ namespace eKnjiznica.API.Providers
                 context.SetError("login_error", Commons.Resources.ACCOUNT_NOT_ACTIVE);
                 return;
             }
-            if (context.ClientId.Equals("mobile") &&!await userManager.IsInRoleAsync(user.Id,EntityRoles.ClientRole))
+            if (context.ClientId!=null && context.ClientId.Equals("mobile") &&!await userManager.IsInRoleAsync(user.Id,EntityRoles.ClientRole))
             {
                 context.SetError("login_error", Commons.Resources.ACCOUNT_HAS_NO_PRIVILEGES_TO_ACCESS_APP);
                 return;

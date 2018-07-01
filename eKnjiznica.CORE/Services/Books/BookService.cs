@@ -27,6 +27,12 @@ namespace eKnjiznica.CORE.Services.Books
             return bookRepo.CreateBookOffer(model);
         }
 
+        public List<BookOfferVM> GetBookOfferByCategory(int categoryId)
+        {
+            return bookRepo.GetBookOffersByCategory(categoryId);
+
+        }
+
         public List<BookOfferVM> GetBookOffers(string title, string author, bool includeInactive)
         {
             return bookRepo.GetBookOffers(title, author, includeInactive);

@@ -20,6 +20,7 @@ namespace eKnjiznica.CORE.Repository
         BookOfferVM CreateBookOffer(CreateBookOfferVM model);
         BookOfferVM GetBookOfferById(int id);
         void UpdateBookOffer(UpdateBookOfferVM model, int id);
+        List<BookOfferVM> GetBookOffersByCategory(int categoryId);
         void SaveImageFilePath(BooksVM book, string relativePath, string uploadedFileName);
     }
 }

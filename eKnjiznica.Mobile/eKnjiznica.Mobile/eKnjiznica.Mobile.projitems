@@ -20,6 +20,7 @@
       <DependentUpon>BooksPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ImageConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -42,6 +43,7 @@
       <DependentUpon>RegisterMePage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\API\TokenRefresh.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\User\IUserService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\User\UserService.cs" />
@@ -50,7 +52,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Validators\PhoneNumberValidator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Services\API\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>
   <ItemGroup>

@@ -39,7 +39,7 @@ namespace eKnjiznica.API
                 Provider = new ApplicationOAuthProvider(PublicClientId),
                 RefreshTokenProvider = new ApplicationRefreshTokenProvider(),
                 AuthorizeEndpointPath = new PathString("/api/Account/ExternalLogin"),
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(15),
+                AccessTokenExpireTimeSpan = TimeSpan.FromDays(20),
                 // In production mode set AllowInsecureHttp = false
                 AllowInsecureHttp = true
             };

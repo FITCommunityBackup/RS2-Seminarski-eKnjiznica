@@ -99,6 +99,11 @@ namespace eKnjiznica.Commons.API
 
 
 
+        public Task<HttpResponseMessage> GetBookOffersByCategory(int categoryId)
+        {
+            return Get($"api/books/category/{categoryId}");
+        }
+
         public Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive)
         {
             return Get($"api/books/admin/offers?title={bookTitle}&author={authorName}&includeInactive={includeInactive}");
@@ -156,7 +161,7 @@ namespace eKnjiznica.Commons.API
             return Get($"api/admin?username={usernameFilter}");
         }
 
-        public Task<HttpResponseMessage> LoginUser(LoginVM loginVM,string clientId)
+        public Task<HttpResponseMessage> LoginUser(LoginVM loginVM, string clientId)
         {
             var dict = new Dictionary<string, string>
             {
@@ -164,6 +169,16 @@ namespace eKnjiznica.Commons.API
                 { "password", loginVM.Password },
                 { "grant_type", "password" },
                 { "client_id", clientId}
+            };
+            var req = new HttpRequestMessage(HttpMethod.Post, "token") { Content = new FormUrlEncodedContent(dict) };
+            return httpClient.SendAsync(req);
+        }
+        public Task<HttpResponseMessage> RefreshToken(string refreshToken)
+        {
+            var dict = new Dictionary<string, string>
+            {
+                { "grant_type", "refresh_token" },
+                { "refresh_token", refreshToken}
             };
             var req = new HttpRequestMessage(HttpMethod.Post, "token") { Content = new FormUrlEncodedContent(dict) };
             return httpClient.SendAsync(req);
@@ -267,6 +282,13 @@ namespace eKnjiznica.Commons.API
             };
             form.Add(content);
             return httpClient.PostAsync(path, form);
+        }
+
+        public void AppendToken(AuthenticationResponseVM newAuth)
+        {
+            if (string.IsNullOrEmpty(newAuth.AccessToken) || string.IsNullOrEmpty(newAuth.TokenType))
+                return;
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(newAuth.TokenType, newAuth.AccessToken);
         }
 
         #endregion

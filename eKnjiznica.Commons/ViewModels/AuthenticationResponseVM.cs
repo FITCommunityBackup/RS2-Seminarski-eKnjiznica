@@ -18,6 +18,8 @@ namespace eKnjiznica.Commons.ViewModels
         public string TokenType { get; set; }
         [DataMember(Name = "expires_in")]
         public string ExpiresIn{ get; set; }
+        [DataMember(Name = ".expires")]
+        public DateTime Expires { get; set; }
 
     }
 }

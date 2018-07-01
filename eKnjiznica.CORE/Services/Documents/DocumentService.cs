@@ -23,7 +23,7 @@ namespace eKnjiznica.CORE.Services.Documents
 
         public string GetRelativeDirectoryPath(BooksVM book)
         {
-            return $"uploads/books/{book.BookTitle}_{book.AuthorName}/";
+            return $"uploads/books/{book.Id}/";
         }
         public string GetFullDirectoryPath(BooksVM book)
         {

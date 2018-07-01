@@ -19,6 +19,15 @@ namespace eKnjiznica.Mobile.Services.User
             return settingsHelper.GetAuthenticationResponse();
         }
 
+        public bool HasUserTokenExpired()
+        {
+            var auth = GetAuthenticationResponse();
+            if (auth == null||auth.Expires==null)
+                return true;
+            bool result = auth.Expires < DateTime.Now.AddHours(2);
+            return result;
+        }
+
         public bool IsUserLogged()
         {
             var response = GetAuthenticationResponse();

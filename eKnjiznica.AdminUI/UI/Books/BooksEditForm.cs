@@ -257,9 +257,14 @@ namespace eKnjiznica.AdminUI.UI.Books
 
         private void dodajSlikuButton_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "Slika |*.BMP;*.JPG;*.JPEG;*.PNG;*img"; // file types, that will be allowed to upload
+            dialog.Multiselect = false; // allow/deny user to upload more than one file at a time
+
+            if (dialog.ShowDialog() == DialogResult.OK) // if user clicked OK
             {
-                inputPicture.Text = openFileDialog.FileName;
+                inputPicture.Text = dialog.FileName;
 
                 Image originalImage = Image.FromFile(inputPicture.Text);
                 Image imageForUpload = GetImageForUpload(originalImage);
@@ -268,7 +273,7 @@ namespace eKnjiznica.AdminUI.UI.Books
                 imageForUpload.Save(ms, originalImage.RawFormat);
                 uploadImage = ms.ToArray();
 
-                imageName = openFileDialog.SafeFileName;
+                imageName = dialog.SafeFileName;
             }
             else
             {

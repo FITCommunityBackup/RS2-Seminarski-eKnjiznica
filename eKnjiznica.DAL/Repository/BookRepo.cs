@@ -88,6 +88,7 @@ namespace eKnjiznica.DAL.Repository
                         CategoryName = y.Category.CategoryName,
                         IsActive = y.IsActive,
                     }).ToList(),
+                    ImageUrl=x.Book.ImageLocation
                 }).FirstOrDefault();
 
         }
@@ -142,11 +143,40 @@ namespace eKnjiznica.DAL.Repository
                          CategoryName = y.Category.CategoryName,
                          IsActive = y.IsActive,
                      }).ToList(),
+                     ImageUrl = x.Book.ImageLocation
+
                  }).ToList();
 
                 
         }
+        public List<BookOfferVM> GetBookOffersByCategory(int categoryId)
+        {
+            return context.BookOffers
+                     .Where(x => x.IsActive)
+                     .Include(x => x.Book)
+                     .Include(x => x.Book.Categories)
+                     .Where(x => x.Book.Categories.Any(y => y.CategoryId == categoryId))
+                     .OrderBy(x => x.Book.Title)
+                     .ThenByDescending(x => x.OfferCreatedTime)
+                     .Select(x => new BookOfferVM
+                     {
+                         Id = x.Id,
+                         AuthorName = x.Book.Autor,
+                         BookId = x.BookId,
+                         IsActive = x.IsActive,
+                         OfferCreatedDate = x.OfferCreatedTime,
+                         Price = x.Price,
+                         Title = x.Book.Title,
+                         Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
+                         {
+                             Id = y.CategoryId,
+                             CategoryName = y.Category.CategoryName,
+                             IsActive = y.IsActive,
+                         }).ToList(),
+                         ImageUrl = x.Book.ImageLocation
 
+                     }).ToList();
+        }
         public List<BooksVM> GetBooks(string title, string authorName)
         {
             return context
@@ -252,5 +282,7 @@ namespace eKnjiznica.DAL.Repository
             //result.ImageName = uploadedFileName;
             context.SaveChanges();
         }
+
+       
     }
 }

@@ -17,6 +17,8 @@ namespace eKnjiznica.Commons.API
     public interface IApiClient
     {
         Task<HttpResponseMessage> LoginUser(LoginVM loginVM,string clientId);
+        Task<HttpResponseMessage> RefreshToken(string refreshToken);
+
         Task<HttpResponseMessage> LoadAminAccounts(string usernameFilter);
         Task<HttpResponseMessage> CreateAdminAccount(AdminAddVM adminAdd);
         Task<HttpResponseMessage> UpdateAdminAccount(AdminUpdateVM adminUpdateVM);
@@ -29,6 +31,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
         Task<HttpResponseMessage> GetTransactions(string username, string adminUsername);
         Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName);
+        Task<HttpResponseMessage> GetBookOffersByCategory(int categoryId);
         Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive);
         Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM);
         Task<HttpResponseMessage> UpdateBook(UpdateBookVM updateBook, int bookId);
@@ -42,6 +45,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> MakePayInRequest(decimal value, string id);
         Task<HttpResponseMessage> GetClientBooks(string clientId);
         Task<HttpResponseMessage> UpdateAuction(AuctionUpdateVM auctionUpdateVM, int id);
+        void AppendToken(AuthenticationResponseVM newAuth);
         Task<HttpResponseMessage> CreateAuction(AuctionCreateVM auctionCreateVM);
         Task<HttpResponseMessage> UploadBookPicture(byte[] uploadImage, string imageName, int id);
 

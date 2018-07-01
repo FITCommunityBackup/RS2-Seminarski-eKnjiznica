@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eKnjiznica.Mobile.Books;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -34,7 +35,7 @@ namespace eKnjiznica.Mobile.Navigation
                 MenuItems = new ObservableCollection<MasterDetailPageMenuItem>(new[]
                 {
                     new MasterDetailPageMenuItem { Id = 0, Title = "Preporučeno",TargetType=typeof(MainPage) },
-                    new MasterDetailPageMenuItem { Id = 1, Title = "Knjige" ,TargetType=typeof(MainPage)},
+                    new MasterDetailPageMenuItem { Id = 1, Title = "Knjige" ,TargetType=typeof(BooksPage)},
                     new MasterDetailPageMenuItem { Id = 2, Title = "Kupljene knjige" ,TargetType=typeof(MainPage)},
                     new MasterDetailPageMenuItem { Id = 3, Title = "Moja košarica" ,TargetType=typeof(MainPage)},
                     new MasterDetailPageMenuItem { Id = 4, Title = "Moje transakcije" ,TargetType=typeof(MainPage)},

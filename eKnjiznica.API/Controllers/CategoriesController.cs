@@ -19,6 +19,7 @@ namespace eKnjiznica.API.Controllers
         }
         [HttpGet]
         [Route("")]
+        [AllowAnonymous]
         public IHttpActionResult GetCategories(
             [FromUri(Name = "nameFilter")] string nameFilter = null,
             [FromUri(Name = "includeInactive")] bool includeInactive = false)

@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="eKnjiznica.Mobile.Books.BooksPage">
+
+    
     <ContentPage.Content>
         <StackLayout Padding="30">
             <Picker x:Name="bookCategories" Title="Odaberite kategoriju" SelectedIndexChanged="bookCategories_SelectedIndexChanged"></Picker>
@@ -14,12 +17,19 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Image x:Name="image" Grid.Column="0" 
-                                       Source="{Binding SlikaThumb, Converter={StaticResource imgConv}}" Margin="5"></Image>
+                                <ff:CachedImage
+                                    Grid.Column="0"  HorizontalOptions="Center" VerticalOptions="Center"
+		                            WidthRequest="300" HeightRequest="300"
+			                        DownsampleToViewSize="true"
+			                        Source = "http://loremflickr.com/600/600/nature?filename=simple.jpg">
+                                </ff:CachedImage>
+                                
+                                <Image x:Name="image"
+                                       Source="{Binding ImageUrl, Converter={StaticResource imgConv}}" Margin="5"></Image>
                                 <StackLayout Grid.Column="1" Padding="10">
-                                    <Label Text="{Binding Naziv}" FontAttributes="Bold" />
-                                    <Label Text="{Binding Sifra}"  />
-                                    <Label Text="{Binding Cijena}" />
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" />
+                                    <Label Text="{Binding AuthorName}"  />
+                                    <Label Text="{Binding Price}" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

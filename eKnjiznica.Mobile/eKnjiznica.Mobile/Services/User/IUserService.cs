@@ -10,5 +10,6 @@ namespace eKnjiznica.Mobile.Services.User
         void SaveAuthenticationResponse(AuthenticationResponseVM  saveAuthenticationResponse);
         bool IsUserLogged();
         void LogoutUser();
+        bool HasUserTokenExpired();
     }
 }

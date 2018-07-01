@@ -27,5 +27,9 @@ namespace eKnjiznica.Commons.ViewModels.Books
         public DateTime OfferCreatedDate { get; set; }
         [DataMember]
         public bool IsActive { get; set; }
+        [DataMember]
+        public string ImageUrl { get; set; }
+        [DataMember]
+        public Uri ImageUri { get; set; }
     }
 }

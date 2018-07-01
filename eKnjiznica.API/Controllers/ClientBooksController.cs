@@ -39,5 +39,14 @@ namespace eKnjiznica.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("")]
+        public IHttpActionResult GetClientsBooks()
+        {
+            var clientId = GetUserId();
+            var result = clientBooksService.GetClientBooks(clientId);
+            return Ok(result);
+        }
+
     }
 }
