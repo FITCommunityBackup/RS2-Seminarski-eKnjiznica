@@ -20,6 +20,12 @@ namespace eKnjiznica.Commons.ViewModels.Books
         [DataMember]
         public string Title { get; set; }
         [DataMember]
+        public string Description { get; set; }
+        [DataMember]
+        public DateTime BookReleaseDate { get; set; }
+
+
+        [DataMember]
         public string AuthorName { get; set; }
         [DataMember]
         public decimal Price { get; set; }

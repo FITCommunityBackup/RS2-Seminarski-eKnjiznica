@@ -49,8 +49,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Util\ErrorHandlingUtil.cs" />
-    <Compile Include="Util\MyRegex.cs" />
+    <Compile Include="ViewModels\Util\ErrorHandlingUtil.cs" />
+    <Compile Include="ViewModels\Util\MyRegex.cs" />
     <Compile Include="ViewModels\AdminAddVM.cs" />
     <Compile Include="ViewModels\AdministratorProfileVM.cs" />
     <Compile Include="ViewModels\AdminUpdateVM.cs" />

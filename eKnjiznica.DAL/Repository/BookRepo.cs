@@ -82,6 +82,8 @@ namespace eKnjiznica.DAL.Repository
                     OfferCreatedDate = x.OfferCreatedTime,
                     Price = x.Price,
                     Title = x.Book.Title,
+                    BookReleaseDate=x.Book.ReleaseDate,
+                    Description=x.Book.Description,
                     Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
                     {
                         Id = y.CategoryId,
@@ -103,6 +105,7 @@ namespace eKnjiznica.DAL.Repository
                       Id = x.Id,
                       AuthorName = x.Autor,
                       BookTitle = x.Title,
+
                       Categories = x.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
                       {
                           Id = y.CategoryId,
@@ -137,6 +140,8 @@ namespace eKnjiznica.DAL.Repository
                      OfferCreatedDate = x.OfferCreatedTime,
                      Price = x.Price,
                      Title = x.Book.Title,
+                     BookReleaseDate = x.Book.ReleaseDate,
+                     Description = x.Book.Description,
                      Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
                      {
                          Id = y.CategoryId,
@@ -167,6 +172,8 @@ namespace eKnjiznica.DAL.Repository
                          OfferCreatedDate = x.OfferCreatedTime,
                          Price = x.Price,
                          Title = x.Book.Title,
+                         BookReleaseDate = x.Book.ReleaseDate,
+                         Description = x.Book.Description,
                          Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
                          {
                              Id = y.CategoryId,

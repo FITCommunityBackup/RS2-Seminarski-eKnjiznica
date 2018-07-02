@@ -16,6 +16,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Books\BookOfferDetails.xaml.cs">
+      <DependentUpon>BookOfferDetails.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Books\BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -45,6 +49,8 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\API\TokenRefresh.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UserBasket\IUserBasket.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UserBasket\UserBasket.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\User\IUserService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\User\UserService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SettingsHelper.cs" />
@@ -80,6 +86,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Books\BooksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Books\BookOfferDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

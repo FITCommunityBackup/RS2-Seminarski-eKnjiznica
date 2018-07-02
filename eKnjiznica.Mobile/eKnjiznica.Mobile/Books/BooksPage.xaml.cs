@@ -7,6 +7,7 @@ using CommonServiceLocator;
 using eKnjiznica.Commons.API;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
+using eKnjiznica.Mobile.Navigation;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -38,7 +39,10 @@ namespace eKnjiznica.Mobile.Books
                 bookCategories.ItemsSource = Categories;
                 bookCategories.ItemDisplayBinding = new Binding("CategoryName");
                 if (Categories.Count > 0)
+                {
                     await BindList(Categories[0].Id);
+                    bookCategories.SelectedIndex = 0;
+                }
             }
 
         }
@@ -54,7 +58,16 @@ namespace eKnjiznica.Mobile.Books
 
         private void booksList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            if (booksList.SelectedItem!=null)
+            {
+                BookOfferVM offerVM = (booksList.SelectedItem as BookOfferVM);
 
+                var masterDetailsPage = (MyMasterDetailPage)App.Current.MainPage;
+                var page = (BookOfferDetails)Activator.CreateInstance(typeof(BookOfferDetails));
+                page.Offer = offerVM;
+                masterDetailsPage.Detail = new NavigationPage(page);
+                masterDetailsPage.IsPresented = false;
+            }
         }
 
         private async Task BindList(int categoryId)

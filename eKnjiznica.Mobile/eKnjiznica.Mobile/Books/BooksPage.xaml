@@ -17,15 +17,7 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <ff:CachedImage
-                                    Grid.Column="0"  HorizontalOptions="Center" VerticalOptions="Center"
-		                            WidthRequest="300" HeightRequest="300"
-			                        DownsampleToViewSize="true"
-			                        Source = "http://loremflickr.com/600/600/nature?filename=simple.jpg">
-                                </ff:CachedImage>
-                                
-                                <Image x:Name="image"
-                                       Source="{Binding ImageUrl, Converter={StaticResource imgConv}}" Margin="5"></Image>
+                                <Label Text="SLIKA" Grid.Column="0"></Label>
                                 <StackLayout Grid.Column="1" Padding="10">
                                     <Label Text="{Binding Title}" FontAttributes="Bold" />
                                     <Label Text="{Binding AuthorName}"  />
