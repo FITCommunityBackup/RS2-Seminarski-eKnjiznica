@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eKnjiznica.Common.ViewModels.FinancialAccount;
 using eKnjiznica.Commons.ViewModels.Clients;
 using eKnjiznica.CORE.Model.Roles;
 
@@ -18,5 +19,6 @@ namespace eKnjiznica.CORE.Repository
         ClientVM FindByEmail(string email);
         ClientVM FindByUsername(string username);
         void UpdateClientAccount(ClientUpdateVM model, string id);
+        UserFinancialAccountVM GetUserFinancialAccount(string userId);
     }
 }

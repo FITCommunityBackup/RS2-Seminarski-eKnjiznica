@@ -52,6 +52,15 @@ namespace eKnjiznica.CORE.Services.Clients
             return clientRepo.GetClients(username, includeInactive);
         }
 
+        public bool HasMoneyOnAccount(string userId, decimal amount)
+        {
+            var account = clientRepo.GetUserFinancialAccount(userId);
+            if (account == null)
+                return false;
+
+            return account.Balance >= amount;
+        }
+
         public void UpdateClientAccount(ClientUpdateVM model, string id)
         {
             clientRepo.UpdateClientAccount(model, id);

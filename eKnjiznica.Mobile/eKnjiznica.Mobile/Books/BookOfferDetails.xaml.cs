@@ -17,24 +17,31 @@ namespace eKnjiznica.Mobile.Books
 	{
         public BookOfferVM Offer { get; set; }
 
-        private IUserBasket userBasket;
+        private IUserBasketService userBasket;
         public BookOfferDetails ()
 		{
             InitializeComponent();
-            userBasket = ServiceLocator.Current.GetInstance<IUserBasket>();
+            userBasket = ServiceLocator.Current.GetInstance<IUserBasketService>();
         }
 
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (userBasket.ContainsBookOffer(Offer.Id))
+            if (Offer.UserHasBook)
+            {
+                action.IsVisible = false;
+            }
+            else if (userBasket.ContainsBookOffer(Offer.Id))
             {
                 action.Text = "Ukloni";
+                action.IsVisible = true;
             }
             else
             {
                 action.Text = "Dodaj u košaricu";
+                action.IsVisible = true;
+
             }
 
             title.Text = Offer.Title;

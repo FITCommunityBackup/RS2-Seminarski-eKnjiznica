@@ -24,6 +24,9 @@ namespace eKnjiznica.Commons.ViewModels.Books
         [DataMember]
         public DateTime BookReleaseDate { get; set; }
 
+        [DataMember]
+        public bool UserHasBook { get; set; }
+
 
         [DataMember]
         public string AuthorName { get; set; }
@@ -35,7 +38,7 @@ namespace eKnjiznica.Commons.ViewModels.Books
         public bool IsActive { get; set; }
         [DataMember]
         public string ImageUrl { get; set; }
-        [DataMember]
-        public Uri ImageUri { get; set; }
+
+        public string BookState { get; set; }
     }
 }

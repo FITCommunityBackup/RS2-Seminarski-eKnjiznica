@@ -34,7 +34,7 @@ namespace eKnjiznica.API.Controllers
         public IHttpActionResult GetBooksByCategory(
             int categoryId)
         {
-            var result = bookService.GetBookOfferByCategory(categoryId);
+            var result = bookService.GetBookOfferByCategory(categoryId,GetUserId());
             return Ok(result);
         }
         [Authorize(Roles = EntityRoles.AdminRole)]

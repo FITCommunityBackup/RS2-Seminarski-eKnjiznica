@@ -89,6 +89,42 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Knjiga je kupljena..
+        /// </summary>
+        public static string BOOK_ALREADY_BUYED {
+            get {
+                return ResourceManager.GetString("BOOK_ALREADY_BUYED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Čestitamo, transakcija je uspješno prošla. Knjige su dostupne na Vašem mailu..
+        /// </summary>
+        public static string BOOK_BUY_SUCCESS_MESSAGE {
+            get {
+                return ResourceManager.GetString("BOOK_BUY_SUCCESS_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transakcija uspješna.
+        /// </summary>
+        public static string BOOK_BUY_SUCCESS_TITLE {
+            get {
+                return ResourceManager.GetString("BOOK_BUY_SUCCESS_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Knjiga je u košarici.
+        /// </summary>
+        public static string BOOK_IN_BASKET {
+            get {
+                return ResourceManager.GetString("BOOK_IN_BASKET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kategorija ne postoji.
         /// </summary>
         public static string CATEGORY_DOES_NOT_EXIST {
@@ -346,6 +382,15 @@ namespace eKnjiznica.Commons {
         public static string LOGIN_ERROR {
             get {
                 return ResourceManager.GetString("LOGIN_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nemate dovoljno novca na računu..
+        /// </summary>
+        public static string NOT_ENOUGH_MONEY_ON_ACCOUNT {
+            get {
+                return ResourceManager.GetString("NOT_ENOUGH_MONEY_ON_ACCOUNT", resourceCulture);
             }
         }
         

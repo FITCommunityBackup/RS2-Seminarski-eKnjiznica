@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.ClientBook;
 using eKnjiznica.CORE.Repository;
 
@@ -15,6 +16,11 @@ namespace eKnjiznica.CORE.Services.ClientBooks
         public ClientBooksService(IClientBooksRepo clientBooksRepo)
         {
             this.clientBooksRepo = clientBooksRepo;
+        }
+
+        public async Task BuyBook(string userId, IList<BookOfferVM> books)
+        {
+            clientBooksRepo.AddBooksToUser(userId, books);
         }
 
         public List<ClientBookVM> GetClientBooks(string userId)

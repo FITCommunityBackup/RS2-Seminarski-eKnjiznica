@@ -126,6 +126,18 @@
   <data name="ACCOUNT_WITH_USERNAME_EXISTS" xml:space="preserve">
     <value>Korisničko ime je zauzeto</value>
   </data>
+  <data name="BOOK_ALREADY_BUYED" xml:space="preserve">
+    <value>Knjiga je kupljena.</value>
+  </data>
+  <data name="BOOK_BUY_SUCCESS_MESSAGE" xml:space="preserve">
+    <value>Čestitamo, transakcija je uspješno prošla. Knjige su dostupne na Vašem mailu.</value>
+  </data>
+  <data name="BOOK_BUY_SUCCESS_TITLE" xml:space="preserve">
+    <value>Transakcija uspješna</value>
+  </data>
+  <data name="BOOK_IN_BASKET" xml:space="preserve">
+    <value>Knjiga je u košarici</value>
+  </data>
   <data name="CATEGORY_DOES_NOT_EXIST" xml:space="preserve">
     <value>Kategorija ne postoji</value>
   </data>
@@ -212,6 +224,9 @@
   </data>
   <data name="LOGIN_ERROR" xml:space="preserve">
     <value>Greška prilikom logiranja</value>
+  </data>
+  <data name="NOT_ENOUGH_MONEY_ON_ACCOUNT" xml:space="preserve">
+    <value>Nemate dovoljno novca na računu.</value>
   </data>
   <data name="PLEASE_FILL_IN_FIELDS" xml:space="preserve">
     <value>Molimo popunite polja</value>

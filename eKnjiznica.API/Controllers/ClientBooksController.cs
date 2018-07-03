@@ -1,4 +1,6 @@
-﻿using eKnjiznica.CORE.Services.ClientBooks;
+﻿using eKnjiznica.Commons.ViewModels.Books;
+using eKnjiznica.CORE.Services.ClientBooks;
+using eKnjiznica.CORE.Services.Clients;
 using eKnjiznica.DAL.EF;
 using System;
 using System.Collections.Generic;
@@ -14,10 +16,11 @@ namespace eKnjiznica.API.Controllers
     public class ClientBooksController : BaseController
     {
         private IClientBooksService clientBooksService;
-
-        public ClientBooksController(IClientBooksService clientBooksService)
+        private IClientService clientService;
+        public ClientBooksController(IClientBooksService clientBooksService,IClientService clientService)
         {
             this.clientBooksService = clientBooksService;
+            this.clientService = clientService;
         }
         [HttpGet]
         [Route("all")]
@@ -46,6 +49,21 @@ namespace eKnjiznica.API.Controllers
             var clientId = GetUserId();
             var result = clientBooksService.GetClientBooks(clientId);
             return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("buy")]
+        public IHttpActionResult BuyBook([FromBody] IList<BookOfferVM> books) 
+        {
+            var amount = books.Sum(x => x.Price);
+            if (!clientService.HasMoneyOnAccount(GetUserId(), amount))
+            {
+                ModelState.AddModelError("buy_book", Commons.Resources.NOT_ENOUGH_MONEY_ON_ACCOUNT);
+                return BadRequest(ModelState);
+            }
+
+            clientBooksService.BuyBook(GetUserId(), books);
+            return Ok();
         }
 
     }

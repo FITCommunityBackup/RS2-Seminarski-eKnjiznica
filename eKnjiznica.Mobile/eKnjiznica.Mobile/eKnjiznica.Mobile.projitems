@@ -16,6 +16,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Base\ViewModelBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Books\BookOfferDetails.xaml.cs">
       <DependentUpon>BookOfferDetails.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -49,12 +50,18 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\API\TokenRefresh.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Constants.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\UserBasket\IUserBasket.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\UserBasket\UserBasket.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UserBasket\IUserBasketService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UserBasket\UserBasketService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\User\IUserService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\User\UserService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SettingsHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UnauthorizedException.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBasket\UserBasketPage.xaml.cs">
+      <DependentUpon>UserBasketPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)UserBasket\UserBasketViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UserBasket\UserItemsListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\PhoneNumberValidator.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +99,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Books\BookOfferDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)UserBasket\UserBasketPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

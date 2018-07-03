@@ -1,4 +1,5 @@
-﻿using eKnjiznica.Commons.ViewModels.Clients;
+﻿using eKnjiznica.Common.ViewModels.FinancialAccount;
+using eKnjiznica.Commons.ViewModels.Clients;
 using eKnjiznica.CORE.Model.Roles;
 using eKnjiznica.CORE.Repository;
 using eKnjiznica.DAL.EF;
@@ -172,6 +173,16 @@ namespace eKnjiznica.DAL.Repository
             if (!string.IsNullOrEmpty(model.Password))
                 user.PasswordHash = applicationUserManager.PasswordHasher.HashPassword(model.Password);
             context.SaveChanges();
+        }
+
+        public UserFinancialAccountVM GetUserFinancialAccount(string userId)
+        {
+            return context.UserFinancialAccounts.Where(x => x.UserFinancialAccountId == userId)
+                 .Select(x => new UserFinancialAccountVM
+                 {
+                     Balance = x.Balance,
+                     Id = x.UserFinancialAccountId
+                 }).FirstOrDefault();
         }
     }
 }

@@ -8,6 +8,7 @@ using eKnjiznica.Commons.API;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Category;
 using eKnjiznica.Mobile.Navigation;
+using eKnjiznica.Mobile.Services.UserBasket;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,12 +19,13 @@ namespace eKnjiznica.Mobile.Books
     public partial class BooksPage : ContentPage
     {
         private IApiClient apiClient;
-
+        private IUserBasketService userBasketService;
         private List<CategoryVM> Categories;
         public BooksPage()
         {
 
             this.apiClient = ServiceLocator.Current.GetInstance<IApiClient>();
+            this.userBasketService= ServiceLocator.Current.GetInstance<IUserBasketService>();
             InitializeComponent();
         }
 
@@ -79,8 +81,21 @@ namespace eKnjiznica.Mobile.Books
                 List<BookOfferVM> bookOffers = JsonConvert.DeserializeObject<List<BookOfferVM>>(jsonObject);
                 bookOffers.ForEach(x => {
                     x.ImageUrl = Services.Constants.ServiceBaseUrl + "/" + x.ImageUrl;
-                    x.ImageUri = new Uri(x.ImageUrl);
-                    });
+                    if (x.UserHasBook)
+                    {
+                        var state = Commons.Resources.BOOK_ALREADY_BUYED;
+                        x.BookState = state;
+                            
+                    }
+                    else if (userBasketService.ContainsBookOffer(x.Id))
+                    {
+                        x.BookState = Commons.Resources.BOOK_IN_BASKET;
+                    }
+                    else
+                    {
+                        x.BookState = null;
+                    }
+                });
 
             
                 booksList.ItemsSource = bookOffers;

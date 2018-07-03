@@ -27,9 +27,9 @@ namespace eKnjiznica.CORE.Services.Books
             return bookRepo.CreateBookOffer(model);
         }
 
-        public List<BookOfferVM> GetBookOfferByCategory(int categoryId)
+        public List<BookOfferVM> GetBookOfferByCategory(int categoryId,string userId)
         {
-            return bookRepo.GetBookOffersByCategory(categoryId);
+            return bookRepo.GetBookOffersByCategory(categoryId, userId);
 
         }
 

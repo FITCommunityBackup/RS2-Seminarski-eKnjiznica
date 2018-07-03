@@ -24,6 +24,13 @@ namespace eKnjiznica.Commons.API
             this.httpClient = httpClient;
         }
 
+        public Task<HttpResponseMessage> BuyBook(IList<BookOfferVM> books)
+        {
+
+            return Post(books, "api/clients/books/buy");
+        }
+
+
         public Task<HttpResponseMessage> UpdateAuction(AuctionUpdateVM auctionUpdateVM, int id)
         {
             return Put(auctionUpdateVM, $"api/auctions/{id}");
@@ -35,7 +42,7 @@ namespace eKnjiznica.Commons.API
         }
 
 
-        public Task<HttpResponseMessage> GetAuctions(DateTime dateFrom, DateTime dateTo,bool includeInactive)
+        public Task<HttpResponseMessage> GetAuctions(DateTime dateFrom, DateTime dateTo, bool includeInactive)
         {
             return Get($"api/auctions?dateFrom={dateFrom.ToString()}&dateTo={dateTo.ToString()}&inactive={includeInactive}");
         }
@@ -44,9 +51,9 @@ namespace eKnjiznica.Commons.API
 
         public Task<HttpResponseMessage> GetPurchaces(string title, string author, string user)
         {
-        //   [FromUri(Name = "title")] string title = null,
-        //   [FromUri(Name = "author")] string author = null,
-        //   [FromUri(Name = "user")] string user = null
+            //   [FromUri(Name = "title")] string title = null,
+            //   [FromUri(Name = "author")] string author = null,
+            //   [FromUri(Name = "user")] string user = null
             return Get($"api/clients/books/all?title={title}&author={author}&user={user}");
         }
 
@@ -78,7 +85,7 @@ namespace eKnjiznica.Commons.API
 
         public Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM, string id)
         {
-            return Put(clientUpdateVM,$"api/clients/{id}");
+            return Put(clientUpdateVM, $"api/clients/{id}");
 
         }
 
@@ -104,7 +111,7 @@ namespace eKnjiznica.Commons.API
             return Get($"api/books/category/{categoryId}");
         }
 
-        public Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive)
+        public Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName, bool includeInactive)
         {
             return Get($"api/books/admin/offers?title={bookTitle}&author={authorName}&includeInactive={includeInactive}");
         }
@@ -136,10 +143,10 @@ namespace eKnjiznica.Commons.API
 
         }
 
-    
+
         public Task<HttpResponseMessage> UploadFile(Stream fileStream, string fileName, int id)
         {
-            return PostMultiPart($"api/books/{id}/files",fileStream,fileName);
+            return PostMultiPart($"api/books/{id}/files", fileStream, fileName);
         }
 
 
@@ -207,7 +214,7 @@ namespace eKnjiznica.Commons.API
         public Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM)
         {
 
-            
+
             return Post(createBookVM, "api/books");
         }
 
@@ -231,7 +238,7 @@ namespace eKnjiznica.Commons.API
 
         public Task<HttpResponseMessage> Patch<T>(T value, string requestUri)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(value),Encoding.UTF8,"application/json");
+            var content = new StringContent(JsonConvert.SerializeObject(value), Encoding.UTF8, "application/json");
             var request = new HttpRequestMessage(new HttpMethod("PATCH"), requestUri) { Content = content };
 
             return httpClient.SendAsync(request);
@@ -256,9 +263,9 @@ namespace eKnjiznica.Commons.API
             return httpClient.SendAsync(request);
         }
 
-    
 
-        private Task<HttpResponseMessage> PostMultiPart(string  path, Stream stream,string fileName)
+
+        private Task<HttpResponseMessage> PostMultiPart(string path, Stream stream, string fileName)
         {
             MultipartFormDataContent form = new MultipartFormDataContent();
             HttpContent content = new StreamContent(stream);
@@ -268,7 +275,7 @@ namespace eKnjiznica.Commons.API
                 FileName = fileName
             };
             form.Add(content);
-            return httpClient.PostAsync(path,form);
+            return httpClient.PostAsync(path, form);
         }
 
         private Task<HttpResponseMessage> PostMultiPart(string path, byte[] uploadImage, string imageName)
@@ -290,6 +297,7 @@ namespace eKnjiznica.Commons.API
                 return;
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(newAuth.TokenType, newAuth.AccessToken);
         }
+
 
         #endregion
 

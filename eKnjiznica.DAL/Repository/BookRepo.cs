@@ -73,25 +73,9 @@ namespace eKnjiznica.DAL.Repository
                 .Where(x => x.Id==id)
                 .Include(x => x.Book)
                 .Include(x => x.Book.Categories)
-                .Select(x => new BookOfferVM
-                {
-                    Id = x.Id,
-                    AuthorName = x.Book.Autor,
-                    BookId = x.BookId,
-                    IsActive = x.IsActive,
-                    OfferCreatedDate = x.OfferCreatedTime,
-                    Price = x.Price,
-                    Title = x.Book.Title,
-                    BookReleaseDate=x.Book.ReleaseDate,
-                    Description=x.Book.Description,
-                    Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
-                    {
-                        Id = y.CategoryId,
-                        CategoryName = y.Category.CategoryName,
-                        IsActive = y.IsActive,
-                    }).ToList(),
-                    ImageUrl=x.Book.ImageLocation
-                }).FirstOrDefault();
+                .Include(x=>x.PurchasedBooks)
+                .Select(bookOffermaper(null))
+                .FirstOrDefault();
 
         }
 
@@ -128,61 +112,52 @@ namespace eKnjiznica.DAL.Repository
                  .Where(x => includeInactive || x.IsActive)
                  .Include(x => x.Book)
                  .Include(x => x.Book.Categories)
+                 .Include(x=>x.PurchasedBooks)
                   .Where(x => string.IsNullOrEmpty(title) || x.Book.Title.Contains(title))
                  .Where(x => string.IsNullOrEmpty(authorName) || x.Book.Autor.Contains(authorName))
                  .OrderBy(x => x.Book.Title)
                  .ThenByDescending(x => x.OfferCreatedTime)
-                 .Select(x => new BookOfferVM {
-                     Id=x.Id,
-                     AuthorName =x.Book.Autor,
-                     BookId=x.BookId,
-                     IsActive =x.IsActive,
-                     OfferCreatedDate = x.OfferCreatedTime,
-                     Price = x.Price,
-                     Title = x.Book.Title,
-                     BookReleaseDate = x.Book.ReleaseDate,
-                     Description = x.Book.Description,
-                     Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
-                     {
-                         Id = y.CategoryId,
-                         CategoryName = y.Category.CategoryName,
-                         IsActive = y.IsActive,
-                     }).ToList(),
-                     ImageUrl = x.Book.ImageLocation
+                 .Select(bookOffermaper(null)).ToList();
 
-                 }).ToList();
 
-                
         }
-        public List<BookOfferVM> GetBookOffersByCategory(int categoryId)
+
+        private static System.Linq.Expressions.Expression<Func<BookOffer, BookOfferVM>> bookOffermaper(string userId)
+        {
+            return x => new BookOfferVM
+            {
+                Id = x.Id,
+                AuthorName = x.Book.Autor,
+                BookId = x.BookId,
+                IsActive = x.IsActive,
+                OfferCreatedDate = x.OfferCreatedTime,
+                Price = x.Price,
+                Title = x.Book.Title,
+                BookReleaseDate = x.Book.ReleaseDate,
+                Description = x.Book.Description,
+                Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
+                {
+                    Id = y.CategoryId,
+                    CategoryName = y.Category.CategoryName,
+                    IsActive = y.IsActive,
+                }).ToList(),
+                ImageUrl = x.Book.ImageLocation,
+                UserHasBook = userId==null?false:x.PurchasedBooks.Any(y => y.UserId == userId)
+            };
+        }
+
+        public List<BookOfferVM> GetBookOffersByCategory(int categoryId,string userId)
         {
             return context.BookOffers
                      .Where(x => x.IsActive)
                      .Include(x => x.Book)
                      .Include(x => x.Book.Categories)
+                     .Include(x => x.PurchasedBooks)
                      .Where(x => x.Book.Categories.Any(y => y.CategoryId == categoryId))
                      .OrderBy(x => x.Book.Title)
                      .ThenByDescending(x => x.OfferCreatedTime)
-                     .Select(x => new BookOfferVM
-                     {
-                         Id = x.Id,
-                         AuthorName = x.Book.Autor,
-                         BookId = x.BookId,
-                         IsActive = x.IsActive,
-                         OfferCreatedDate = x.OfferCreatedTime,
-                         Price = x.Price,
-                         Title = x.Book.Title,
-                         BookReleaseDate = x.Book.ReleaseDate,
-                         Description = x.Book.Description,
-                         Categories = x.Book.Categories.Where(y => y.IsActive).Select(y => new Commons.ViewModels.Category.CategoryVM
-                         {
-                             Id = y.CategoryId,
-                             CategoryName = y.Category.CategoryName,
-                             IsActive = y.IsActive,
-                         }).ToList(),
-                         ImageUrl = x.Book.ImageLocation
-
-                     }).ToList();
+                     .Select(bookOffermaper(userId))
+                     .ToList();
         }
         public List<BooksVM> GetBooks(string title, string authorName)
         {

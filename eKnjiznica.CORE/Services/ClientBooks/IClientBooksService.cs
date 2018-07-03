@@ -1,4 +1,5 @@
-﻿using eKnjiznica.Commons.ViewModels.ClientBook;
+﻿using eKnjiznica.Commons.ViewModels.Books;
+using eKnjiznica.Commons.ViewModels.ClientBook;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace eKnjiznica.CORE.Services.ClientBooks
     {
         List<ClientBookVM> GetClientBooks(string userId);
         List<ClientBookVM> GetClientBooks(string title,string author,string user);
+        Task BuyBook(string v, IList<BookOfferVM> books);
     }
 }

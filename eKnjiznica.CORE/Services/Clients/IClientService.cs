@@ -15,5 +15,7 @@ namespace eKnjiznica.CORE.Services.Clients
         ClientVM FindClientByUsername(string username);
         ClientVM FindClientById(string id);
         void UpdateClientAccount(ClientUpdateVM model, string id);
+
+        bool HasMoneyOnAccount(string userId,decimal amount);
     }
 }

@@ -35,7 +35,7 @@ namespace eKnjiznica.Mobile
                 new InjectionFactory(x => getHttpClient(container)));
             container.RegisterType<IApiClient, EKnjiznicaApiClient>(new ContainerControlledLifetimeManager());
             container.RegisterType<IUserService, UserService>(new ContainerControlledLifetimeManager());
-            container.RegisterType<IUserBasket, UserBasket>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IUserBasketService, UserBasketService>(new ContainerControlledLifetimeManager());
 
 
             var unityServiceLocator = new UnityServiceLocator(container);
