@@ -25,7 +25,6 @@ namespace eKnjiznica.Mobile
         {
             InitializeComponent();
 
-
             IUnityContainer container = new UnityContainer();
             container.RegisterType<ISettings>(new InjectionFactory(x => CrossSettings.Current));
             container.RegisterType<SettingsHelper>(new InjectionFactory(x => new SettingsHelper(container.Resolve<ISettings>())));

@@ -13,12 +13,14 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Margin="10" Text="Ukupno" Grid.Row="0" FontAttributes="Bold"></Label>
-            <Label Margin="10" x:Name="lblTotalPrice" Grid.Row="1"></Label>
-            <Button  x:Name="btnCompleteOrder" Grid.Row="2" Text="Naruči" Clicked="btnCompleteOrder_Clicked" HorizontalOptions="Start"
-                     Margin="10"
-                     
-                     ></Button>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="StartAndExpand">
+                <Label Text="Ukupno: " VerticalOptions="Center"  FontAttributes="Bold"></Label>
+                <Label x:Name="lblTotalPrice" VerticalOptions="Center" ></Label>
+                <Button Margin="10,0,10,0" x:Name="btnCompleteOrder" VerticalOptions="Center"  Text="Naruči" Clicked="btnCompleteOrder_Clicked" ></Button>
+            </StackLayout>
+
+
+
             <ListView ItemsSource="{Binding Items}" Grid.Row="3"  RowHeight="150" x:Name="lvUserItems">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -28,7 +30,7 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label Margin="10" Text="SLIKA" Grid.Column="0"></Label>
+                                <Image Margin="10" Source="{Binding ImageUri}" Grid.Column="0"></Image>
                                 <StackLayout  Margin="10" Grid.Column="1" Padding="10">
                                     <Label Text="{Binding Title}" FontAttributes="Bold" />
                                     <Label Text="{Binding AuthorName}"  />

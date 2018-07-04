@@ -39,6 +39,9 @@ namespace eKnjiznica.Commons.ViewModels.Books
         [DataMember]
         public string ImageUrl { get; set; }
 
+        [IgnoreDataMember]
         public string BookState { get; set; }
+        [IgnoreDataMember]
+        public Uri ImageUri { get; set; }
     }
 }

@@ -59,9 +59,16 @@ namespace eKnjiznica.AdminUI.UI.Books
                 inputDescription.Text = Book.Description;
                 cbIsActive.Checked = Book.IsActive;
                 dtpReleaseDate.Value = Book.ReleaseDate;
-                if (Book.ImageLocation != null)
+                if (!string.IsNullOrEmpty(Book.ImageLocation))
                 {
-                    pictureBox.Load(ConfigurationManager.AppSettings["ApiUrl"] + "/" + Book.ImageLocation);
+                    try
+                    {
+                        pictureBox.Load(ConfigurationManager.AppSettings["ApiUrl"] + "/" + Book.ImageLocation);
+                    }
+                    catch (Exception e)
+                    {
+
+                    }
                 }
             }
         }

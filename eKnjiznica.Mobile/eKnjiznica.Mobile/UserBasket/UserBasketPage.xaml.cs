@@ -59,7 +59,8 @@ namespace eKnjiznica.Mobile.UserBasket
                     Id = x.Id,
                     AuthorName = x.AuthorName,
                     Price = x.Price,
-                    Title = x.Title
+                    Title = x.Title,
+                    ImageUri = x.ImageUri
                 });
                 tPrice += x.Price;
             }

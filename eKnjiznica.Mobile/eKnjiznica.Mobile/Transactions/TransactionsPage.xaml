@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKnjiznica.Mobile.Transactions.TransactionsPage">
+    <ContentPage.Content>
+
+        <ListView x:Name="lvTransactions" RowHeight="150">
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <ViewCell >
+                        <Grid Margin="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Text="Datum" Grid.Column="0" Grid.Row="0" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding Date, StringFormat='{0:dd.MM.yyyy}'}" Grid.Column="1" Grid.Row="0"></Label>
+
+                            <Label Text="Prethodno stanje" Grid.Column="0" Grid.Row="1" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding PreviousBalance,StringFormat='{0:N} KM'}" Grid.Column="1" Grid.Row="1"></Label>
+
+                            <Label Text="Novo stanje" Grid.Column="0" Grid.Row="2" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding NewBalance,StringFormat='{0:N} KM'}}" Grid.Column="1" Grid.Row="2"></Label>
+
+                            <Label Text="Tip transakcije" Grid.Column="0" Grid.Row="3" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding TransactionTypeString}" Grid.Column="1" Grid.Row="3"></Label>
+
+                            <Label Text="Količina" Grid.Column="0" Grid.Row="4" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding Amount,StringFormat='{0:N} KM'}}" Grid.Column="1" Grid.Row="4"></Label>
+                        </Grid>
+
+
+                    </ViewCell>
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

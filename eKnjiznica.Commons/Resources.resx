@@ -126,6 +126,9 @@
   <data name="ACCOUNT_WITH_USERNAME_EXISTS" xml:space="preserve">
     <value>Korisničko ime je zauzeto</value>
   </data>
+  <data name="AT_LEAST_ONE_BOOK_REQUIRED" xml:space="preserve">
+    <value>Kako bi ste završili transakciju potrebno je dodati najmanje jednu knjigu u košaricu.</value>
+  </data>
   <data name="BOOK_ALREADY_BUYED" xml:space="preserve">
     <value>Knjiga je kupljena.</value>
   </data>
@@ -137,6 +140,12 @@
   </data>
   <data name="BOOK_IN_BASKET" xml:space="preserve">
     <value>Knjiga je u košarici</value>
+  </data>
+  <data name="BOOK_RESEND_SUCCESS_MESSAGE" xml:space="preserve">
+    <value>Knjiga je poslana na mail.</value>
+  </data>
+  <data name="BOOK_RESEND_SUCCESS_TITLE" xml:space="preserve">
+    <value>Uspješno</value>
   </data>
   <data name="CATEGORY_DOES_NOT_EXIST" xml:space="preserve">
     <value>Kategorija ne postoji</value>

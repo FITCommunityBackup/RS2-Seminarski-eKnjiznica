@@ -6,6 +6,7 @@ using eKnjiznica.CORE.Services.Categories;
 using eKnjiznica.CORE.Services.ClientBooks;
 using eKnjiznica.CORE.Services.Clients;
 using eKnjiznica.CORE.Services.Documents;
+using eKnjiznica.CORE.Services.EmailService;
 using eKnjiznica.CORE.Services.Logger;
 using eKnjiznica.CORE.Services.Roles;
 using eKnjiznica.CORE.Services.Transaction;
@@ -16,7 +17,9 @@ using eKnjiznica.DAL.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Configuration;
 using System.Data.Entity;
+using System.Net;
 using Unity;
 using Unity.Injection;
 
@@ -60,6 +63,29 @@ namespace eKnjiznica.API
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+
+            var emailService = new EmailService
+            {
+                EmailFrom = ConfigurationManager.AppSettings["EmailAddress"],
+                SmtpClient = new System.Net.Mail.SmtpClient
+                {
+                    Host = ConfigurationManager.AppSettings["EmailHost"],
+                    EnableSsl = bool.Parse(ConfigurationManager.AppSettings["EmailEnableSsl"]),
+                    UseDefaultCredentials = true,
+                    Credentials = new NetworkCredential
+                    {
+                        UserName = ConfigurationManager.AppSettings["EmailUsername"],
+                        Password = ConfigurationManager.AppSettings["EmailPassword"]
+                    },
+                    Port = int.Parse(ConfigurationManager.AppSettings["EmailPort"])
+                }
+            };
+
+            container.RegisterType<EmailService>(new InjectionFactory(x => emailService));
+            container.RegisterType<IEmailService, EmailService>();
+
+
+
             container.RegisterType<DbContext, EKnjiznicaDB>();
             container.RegisterType<ILoggerRepo, LoggerRepo>();
             container.RegisterType<ILoggerService,LoggerService>();
@@ -92,6 +118,9 @@ namespace eKnjiznica.API
             container.RegisterType<IUserStore<ApplicationUser>,
                 UserStore<ApplicationUser>>();
             container.RegisterType<ApplicationUserManager>();
+
+
+        
 
         }
     }

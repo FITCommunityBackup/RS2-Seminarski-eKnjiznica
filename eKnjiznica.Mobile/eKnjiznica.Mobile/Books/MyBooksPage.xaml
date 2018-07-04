@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eKnjiznica.Mobile.Books.BooksPage">
+             xmlns:converters="clr-namespace:eKnjiznica.Mobile.Converters"
+             x:Class="eKnjiznica.Mobile.Books.MyBooksPage">
 
-    
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter xl+></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
     <ContentPage.Content>
+    
         <StackLayout Padding="30">
-            <Picker x:Name="bookCategories" Title="Odaberite kategoriju" SelectedIndexChanged="bookCategories_SelectedIndexChanged"></Picker>
-            <ListView x:Name="booksList" RowHeight="120" ItemTapped="booksList_ItemTapped">
-                <ListView.ItemTemplate>
+            <ListView x:Name="booksList" RowHeight="120" ItemTapped="booksList_ItemTapped" >
+                <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
                             <Grid>
@@ -23,11 +28,11 @@
                                     </Image.Source>
                                 </Image>
 
-                                <StackLayout Grid.Column="1" Padding="10">
-                                    <Label Text="{Binding Title}" FontAttributes="Bold" />
-                                    <Label Text="{Binding AuthorName}"  />
-                                    <Label Text="{Binding Price}" />
-                                    <Label Text="{Binding BookState}"></Label>
+                                <StackLayout Grid.Column="1" Margin="10">
+                                    <Label Text="{Binding BookTitle}" FontAttributes="Bold" />
+                                    <Label Text="{Binding AuthorName,StringFormat='Autor: {0:S}'}"  />
+                                    <Label Text="{Binding Price, StringFormat='Cijena: {0:N} KM'}" />
+                                    <Label Text="{Binding Date, StringFormat='Datum kupovine: {0:dd.MM.yyyy}'}" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

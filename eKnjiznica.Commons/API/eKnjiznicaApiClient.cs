@@ -30,6 +30,11 @@ namespace eKnjiznica.Commons.API
             return Post(books, "api/clients/books/buy");
         }
 
+        public Task<HttpResponseMessage> ResendBookToEmail(int bookId)
+        {
+            return Get($"api/clients/books/{bookId}/resend");
+        }
+
 
         public Task<HttpResponseMessage> UpdateAuction(AuctionUpdateVM auctionUpdateVM, int id)
         {
@@ -61,7 +66,17 @@ namespace eKnjiznica.Commons.API
         {
             return Get($"api/clients/books/{clientId}");
         }
+        public Task<HttpResponseMessage> GetClientBooks()
+        {
+            return Get($"api/clients/books/my");
+        }
 
+
+        public Task<HttpResponseMessage> GetMyTransactions()
+        {
+            return Get($"api/transactions/my");
+
+        }
 
         public Task<HttpResponseMessage> GetTransaction(int transactionId)
         {
@@ -297,6 +312,8 @@ namespace eKnjiznica.Commons.API
                 return;
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(newAuth.TokenType, newAuth.AccessToken);
         }
+
+  
 
 
         #endregion

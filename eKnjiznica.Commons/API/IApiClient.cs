@@ -23,6 +23,8 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> CreateAdminAccount(AdminAddVM adminAdd);
         Task<HttpResponseMessage> UpdateAdminAccount(AdminUpdateVM adminUpdateVM);
         Task<HttpResponseMessage> GetAuditLogs();
+        Task<HttpResponseMessage> GetMyTransactions();
+        Task<HttpResponseMessage> GetClientBooks();
         Task<HttpResponseMessage> GetCategories(string categoryNameFilter,bool includeInactiveCategories);
         Task<HttpResponseMessage> GetAuctions(DateTime dateFrom, DateTime dateTo,bool includeInactive);
         Task<HttpResponseMessage> LoadClientAccounts(string v, bool @checked);
@@ -38,6 +40,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> UploadFile(Stream file, string fileName, int bookId);
         Task<HttpResponseMessage> GetBookFile(int id);
         Task<HttpResponseMessage> UpdateExistingBookOffer(UpdateBookOfferVM bookOfferUpdate, int id);
+        Task<HttpResponseMessage> ResendBookToEmail(int bookId);
         Task<HttpResponseMessage> GetTransaction(int transactionId);
         Task<HttpResponseMessage> CreateBookOffer(CreateBookOfferVM bookOfferCreate);
         Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM, string id);

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace eKnjiznica.API.Controllers
@@ -43,7 +44,7 @@ namespace eKnjiznica.API.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("my")]
         public IHttpActionResult GetClientsBooks()
         {
             var clientId = GetUserId();
@@ -53,16 +54,35 @@ namespace eKnjiznica.API.Controllers
 
         [HttpPost]
         [Route("buy")]
-        public IHttpActionResult BuyBook([FromBody] IList<BookOfferVM> books) 
+        public async Task<IHttpActionResult> BuyBook([FromBody] List<BookOfferVM> books)
         {
+            if(books.Count==0)
+            {
+                ModelState.AddModelError("buy_book", Commons.Resources.AT_LEAST_ONE_BOOK_REQUIRED);
+                return BadRequest(ModelState);
+            }
             var amount = books.Sum(x => x.Price);
             if (!clientService.HasMoneyOnAccount(GetUserId(), amount))
             {
                 ModelState.AddModelError("buy_book", Commons.Resources.NOT_ENOUGH_MONEY_ON_ACCOUNT);
                 return BadRequest(ModelState);
             }
+            try
+            {
+                await clientBooksService.BuyBook(GetUserId(), books);
+            }
+            catch (Exception e)
+            {
+                return InternalServerError();
+            }
+            return Ok();
+        }
 
-            clientBooksService.BuyBook(GetUserId(), books);
+        [Route("{bookId}/resend")]
+        [HttpGet]
+        public async Task<IHttpActionResult> ResendToEmail([FromUri]int bookId)
+        {
+           await clientBooksService.ResendBookToEmail(bookId,GetUserId());
             return Ok();
         }
 

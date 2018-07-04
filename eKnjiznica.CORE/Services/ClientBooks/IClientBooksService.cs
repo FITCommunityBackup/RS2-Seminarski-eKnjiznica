@@ -12,6 +12,7 @@ namespace eKnjiznica.CORE.Services.ClientBooks
     {
         List<ClientBookVM> GetClientBooks(string userId);
         List<ClientBookVM> GetClientBooks(string title,string author,string user);
-        Task BuyBook(string v, IList<BookOfferVM> books);
+        Task BuyBook(string v, List<BookOfferVM> books);
+        Task ResendBookToEmail(int bookOfferId, string userId);
     }
 }

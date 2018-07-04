@@ -1,9 +1,12 @@
 ﻿using CommonServiceLocator;
+using eKnjiznica.Commons.API;
+using eKnjiznica.Commons.Util;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Mobile.Services.UserBasket;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,12 +19,16 @@ namespace eKnjiznica.Mobile.Books
 	public partial class BookOfferDetails : ContentPage
 	{
         public BookOfferVM Offer { get; set; }
-
+        private IApiClient apiClient;
         private IUserBasketService userBasket;
+        private ErrorHandlingUtil errorHandlingUtil;
+
         public BookOfferDetails ()
 		{
             InitializeComponent();
             userBasket = ServiceLocator.Current.GetInstance<IUserBasketService>();
+            errorHandlingUtil = ServiceLocator.Current.GetInstance<ErrorHandlingUtil>();
+            apiClient= ServiceLocator.Current.GetInstance<IApiClient>();
         }
 
 
@@ -30,20 +37,19 @@ namespace eKnjiznica.Mobile.Books
             base.OnAppearing();
             if (Offer.UserHasBook)
             {
-                action.IsVisible = false;
+                action.Text = "Pošalji na mail";
             }
             else if (userBasket.ContainsBookOffer(Offer.Id))
             {
                 action.Text = "Ukloni";
-                action.IsVisible = true;
             }
             else
             {
                 action.Text = "Dodaj u košaricu";
-                action.IsVisible = true;
 
             }
 
+            image.Source = ImageSource.FromUri(new Uri(Offer.ImageUrl));
             title.Text = Offer.Title;
             author.Text = Offer.AuthorName;
             description.Text = Offer.Description;
@@ -61,9 +67,21 @@ namespace eKnjiznica.Mobile.Books
 
     }
 
-        private void action_Clicked(object sender, EventArgs e)
+        private async void action_Clicked(object sender, EventArgs e)
         {
-            if (userBasket.ContainsBookOffer(Offer.Id))
+            if (Offer.UserHasBook)
+            {
+                HttpResponseMessage result = await apiClient.ResendBookToEmail(Offer.BookId);
+                if (result.IsSuccessStatusCode)
+                {
+                    await DisplayAlert(Commons.Resources.BOOK_RESEND_SUCCESS_TITLE, Commons.Resources.BOOK_RESEND_SUCCESS_MESSAGE, "OK");
+                }
+                else
+                {
+                    await DisplayAlert(Commons.Resources.ERROR, Commons.Resources.UNEXPECTED_ERROR_OCURRED, "OK");
+                }
+            }
+            else if (userBasket.ContainsBookOffer(Offer.Id))
             {
                 userBasket.RemoveBookOffer(Offer);
                 action.Text = "Dodaj u košaricu";

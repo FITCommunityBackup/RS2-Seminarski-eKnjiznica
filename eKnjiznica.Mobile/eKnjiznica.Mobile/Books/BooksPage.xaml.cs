@@ -81,6 +81,7 @@ namespace eKnjiznica.Mobile.Books
                 List<BookOfferVM> bookOffers = JsonConvert.DeserializeObject<List<BookOfferVM>>(jsonObject);
                 bookOffers.ForEach(x => {
                     x.ImageUrl = Services.Constants.ServiceBaseUrl + "/" + x.ImageUrl;
+                    x.ImageUri = new Uri(x.ImageUrl);
                     if (x.UserHasBook)
                     {
                         var state = Commons.Resources.BOOK_ALREADY_BUYED;

@@ -35,5 +35,11 @@ namespace eKnjiznica.CORE.Services.Transaction
         {
             return transactionsRepo.GetTransactions(clientUsername,adminUsername);
         }
+
+        public IList<TransactionVM> GetTransactionsByClientId(string clientId)
+        {
+            return transactionsRepo.GetTransactionsByClientId(clientId);
+
+        }
     }
 }

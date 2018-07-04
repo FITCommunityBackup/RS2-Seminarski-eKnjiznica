@@ -68,6 +68,8 @@
     <Compile Include="Services\Clients\IClientService.cs" />
     <Compile Include="Services\Documents\DocumentService.cs" />
     <Compile Include="Services\Documents\IDocumentService.cs" />
+    <Compile Include="Services\EmailService\EmailService.cs" />
+    <Compile Include="Services\EmailService\IEmailService.cs" />
     <Compile Include="Services\Logger\LoggerService.cs" />
     <Compile Include="Services\Logger\LogType.cs" />
     <Compile Include="Services\Logger\ILoggerService.cs" />

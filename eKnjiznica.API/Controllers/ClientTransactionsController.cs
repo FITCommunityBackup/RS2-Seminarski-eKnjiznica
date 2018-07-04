@@ -35,6 +35,17 @@ namespace eKnjiznica.API.Controllers
         }
 
         [HttpGet]
+        [Route("my")]
+        public IHttpActionResult GetMyTransactions()
+        {
+            var result = transactionService
+                .GetTransactionsByClientId(GetUserId())
+                .OrderByDescending(x => x.Date)
+                .ToList();
+            return Ok(result);
+        }
+
+        [HttpGet]
         [Route("{id}")]
         public IHttpActionResult GetTransactions(int id)
         {

@@ -15,6 +15,7 @@ namespace eKnjiznica.Mobile.UserBasket
         public string Title { get; set; }
         public string AuthorName { get; set; }
         public decimal Price { get; set; }
+        public Uri ImageUri{ get; set; }
 
         private Command removeCommand;
         private IUserBasketService userBasket;

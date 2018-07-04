@@ -55,7 +55,7 @@ namespace eKnjiznica.Mobile
                 var json = await result.Content.ReadAsStringAsync();
                 var authResponse = JsonConvert.DeserializeObject<AuthenticationResponseVM>(json);
                 userService.SaveAuthenticationResponse(authResponse);
-
+                apiClient.AppendToken(authResponse);
                 await Navigation.PopToRootAsync();
                 App.Current.MainPage = new MyMasterDetailPage();
             }

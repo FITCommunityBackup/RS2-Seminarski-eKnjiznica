@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eKnjiznica.Commons.ViewModels.Category;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -17,12 +18,25 @@ namespace eKnjiznica.Commons.ViewModels.ClientBook
         [DataMember]
         public string AuthorName { get; set; }
         [DataMember]
-        public string ClientName{ get; set; }
+        public string ClientName { get; set; }
+        [DataMember]
+        public string BookDescription { get; set; }
         [DataMember]
         public decimal Price { get; set; }
         [DataMember]
-        public DateTime Date { get; set; }
+        public DateTime BuyDate { get; set; }
+        [DataMember]
+        public DateTime BookReleaseDate { get; set; }
+        [DataMember]
+        public List<CategoryVM> Categories{ get; set; }
+        [DataMember]
+        public string ImageUrl{ get; set; }
         [DataMember]
         public int TransactionId { get; set; }
+        [DataMember]
+        public int OfferId { get; set; }
+
+        [IgnoreDataMember]
+        public Uri ImageUri { get; set; }
     }
 }

@@ -89,6 +89,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kako bi ste završili transakciju potrebno je dodati najmanje jednu knjigu u košaricu..
+        /// </summary>
+        public static string AT_LEAST_ONE_BOOK_REQUIRED {
+            get {
+                return ResourceManager.GetString("AT_LEAST_ONE_BOOK_REQUIRED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Knjiga je kupljena..
         /// </summary>
         public static string BOOK_ALREADY_BUYED {
@@ -121,6 +130,24 @@ namespace eKnjiznica.Commons {
         public static string BOOK_IN_BASKET {
             get {
                 return ResourceManager.GetString("BOOK_IN_BASKET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Knjiga je poslana na mail..
+        /// </summary>
+        public static string BOOK_RESEND_SUCCESS_MESSAGE {
+            get {
+                return ResourceManager.GetString("BOOK_RESEND_SUCCESS_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspješno.
+        /// </summary>
+        public static string BOOK_RESEND_SUCCESS_TITLE {
+            get {
+                return ResourceManager.GetString("BOOK_RESEND_SUCCESS_TITLE", resourceCulture);
             }
         }
         

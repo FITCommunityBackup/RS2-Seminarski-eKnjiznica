@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="eKnjiznica.Mobile.Books.BookOfferDetails">
+             x:Class="eKnjiznica.Mobile.Books.ClientBookDetailsPage">
     <ContentPage.Content>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -13,9 +13,9 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <StackLayout Margin="10" Grid.Column="0" Grid.Row="0">            
+            <StackLayout Margin="10" Grid.Column="0" Grid.Row="0">
                 <Image   x:Name="image" ></Image>
-                <Button x:Name="action" Clicked="action_Clicked"></Button>
+                <Button x:Name="action" Text="Pošalji na mail" Clicked="action_Clicked"></Button>
             </StackLayout>
 
             <StackLayout  Margin="10" Grid.Column="1" Grid.Row="0">
@@ -27,6 +27,9 @@
             </StackLayout>
 
             <StackLayout Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
+                <Label Text="Datum kupovine: " FontAttributes="Bold" ></Label>
+                <Label x:Name="buyDate" ></Label>
+                
                 <Label Text="Opis: " FontAttributes="Bold" ></Label>
                 <Label x:Name="description" ></Label>
             </StackLayout>

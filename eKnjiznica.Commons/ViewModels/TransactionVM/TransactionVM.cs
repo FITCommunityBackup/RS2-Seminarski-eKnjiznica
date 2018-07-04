@@ -31,5 +31,8 @@ namespace eKnjiznica.Commons.ViewModels.TransactionVM
         [DataMember]
         public List<ClientBookVM> BuyedBooks { get; set; }
 
+        [IgnoreDataMember]
+        public string TransactionTypeString { get; set; }
+
     }
 }

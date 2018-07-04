@@ -1,6 +1,7 @@
 ﻿using CommonServiceLocator;
 using eKnjiznica.Mobile.Books;
 using eKnjiznica.Mobile.Services.UserBasket;
+using eKnjiznica.Mobile.Transactions;
 using eKnjiznica.Mobile.UserBasket;
 using System;
 using System.Collections.Generic;
@@ -44,9 +45,9 @@ namespace eKnjiznica.Mobile.Navigation
                 {
                     new MasterDetailPageMenuItem { Id = 0, Title = "Preporučeno",TargetType=typeof(MainPage) },
                     new MasterDetailPageMenuItem { Id = 1, Title = "Knjige" ,TargetType=typeof(BooksPage)},
-                    new MasterDetailPageMenuItem { Id = 2, Title = "Kupljene knjige" ,TargetType=typeof(MainPage)},
+                    new MasterDetailPageMenuItem { Id = 2, Title = "Kupljene knjige" ,TargetType=typeof(MyBooksPage)},
                     myBasketItem,
-                    new MasterDetailPageMenuItem { Id = 4, Title = "Moje transakcije" ,TargetType=typeof(MainPage)},
+                    new MasterDetailPageMenuItem { Id = 4, Title = "Moje transakcije" ,TargetType=typeof(TransactionsPage)},
                     new MasterDetailPageMenuItem { Id = 4, Title = "Profil" ,TargetType=typeof(MainPage)},
                     new MasterDetailPageMenuItem { Id = 4, Title = "Odjava" ,TargetType=typeof(LoginPage)},
                 });
