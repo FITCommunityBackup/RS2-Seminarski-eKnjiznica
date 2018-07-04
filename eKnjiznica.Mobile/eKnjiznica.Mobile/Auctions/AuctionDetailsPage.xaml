@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKnjiznica.Mobile.Auctions.AuctionDetailsPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+                <Image  Margin="10" Grid.Column="0" Grid.Row="0"  x:Name="image" ></Image>
+
+            <StackLayout  Margin="10" Grid.Column="1" Grid.Row="0">
+                <Label x:Name="title" FontAttributes="Bold" ></Label>
+                <Label x:Name="author"></Label>
+                <Label x:Name="currentPrice" FontAttributes="Bold" ></Label>
+                <Label x:Name="startingPrice" FontAttributes="Bold" ></Label>
+                <Label  x:Name="dateFrom"></Label>
+                <Label  x:Name="dateTo"></Label>
+            </StackLayout>
+
+            <StackLayout Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
+                <Label Text="Trenutni pobjednik: " FontAttributes="Bold" ></Label>
+                <Label x:Name="lblCurrentWinner" ></Label>
+            </StackLayout>
+
+            <Button x:Name="BtnBid"  Clicked="BtnBid_Clicked" Margin="10" Text="Ponudi" Grid.Row="2" Grid.Column="0"></Button>
+            <Entry  Margin="10" x:Name="entryBidOffer" Keyboard="Numeric" Grid.Row="2"  Placeholder="Vaša ponuda.." Grid.Column="1"></Entry>
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

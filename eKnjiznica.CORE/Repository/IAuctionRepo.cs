@@ -14,5 +14,9 @@ namespace eKnjiznica.CORE.Repository
         int CreateAuction(AuctionCreateVM auctionCreateVM);
         void UpdateAuction(AuctionUpdateVM vm, int id);
         string GetAuctionWinnerName(int id);
+        List<AuctionVM> GetActiveAuctions();
+        AuctionVM GetAuctionById(int auctionId);
+        string GetLatestBidderId(int auctionId);
+        void CreateAuctionBid(decimal amount, int auctionId, string userId);
     }
 }

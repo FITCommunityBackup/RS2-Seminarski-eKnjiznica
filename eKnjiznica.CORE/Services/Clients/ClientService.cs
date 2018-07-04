@@ -13,11 +13,15 @@ namespace eKnjiznica.CORE.Services.Clients
     {
         private IClientRepo clientRepo;
         private IRoleService roleService;
-
         public ClientService(IClientRepo clientRepo, IRoleService roleService)
         {
             this.clientRepo = clientRepo;
             this.roleService = roleService;
+        }
+
+        public bool ChangeClientPassword(string userId, ClientUpdateVM vm)
+        {
+            return clientRepo.TryChangeUserPassword(userId, vm);
         }
 
         public ClientVM CreateClientAccount(ClientAddVM model, string v)
@@ -47,7 +51,12 @@ namespace eKnjiznica.CORE.Services.Clients
 
         }
 
-        public List<ClientVM> GetClientAccount(string username, bool includeInactive)
+        public ClientVM GetClientAccount(string userId)
+        {
+            return clientRepo.GetClientById(userId);
+        }
+
+        public List<ClientVM> GetClientAccounts(string username, bool includeInactive)
         {
             return clientRepo.GetClients(username, includeInactive);
         }
@@ -65,5 +74,7 @@ namespace eKnjiznica.CORE.Services.Clients
         {
             clientRepo.UpdateClientAccount(model, id);
         }
+
+     
     }
 }

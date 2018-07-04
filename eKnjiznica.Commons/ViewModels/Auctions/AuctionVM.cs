@@ -25,6 +25,12 @@ namespace eKnjiznica.Commons.ViewModels.Auctions
         public string WinnerBidderUsername { get; set; }
 
         [DataMember]
+        public string ImageUrl { get; set; }
+
+        [DataMember]
         public bool IsActive { get; set; }
+
+        [IgnoreDataMember]
+        public Uri ImageUri{ get; set; }
     }
 }

@@ -89,6 +89,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Akcija uspješna.
+        /// </summary>
+        public static string ACTION_SUCCESS {
+            get {
+                return ResourceManager.GetString("ACTION_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kako bi ste završili transakciju potrebno je dodati najmanje jednu knjigu u košaricu..
         /// </summary>
         public static string AT_LEAST_ONE_BOOK_REQUIRED {
@@ -323,6 +332,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nova i stara lozinka se mora sastojati od najmanje 6 karaktera uključujući mala, velika slova i brojeve..
+        /// </summary>
+        public static string ERR_INVALID_PASSWORD_FIELDS {
+            get {
+                return ResourceManager.GetString("ERR_INVALID_PASSWORD_FIELDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Prezime je obavezno polje..
         /// </summary>
         public static string ERR_LAST_NAME_REQUIRED {
@@ -422,6 +440,15 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Promjena lozinke nije uspjela.
+        /// </summary>
+        public static string PASSWORD_CHANGE_FAILED {
+            get {
+                return ResourceManager.GetString("PASSWORD_CHANGE_FAILED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Molimo popunite polja.
         /// </summary>
         public static string PLEASE_FILL_IN_FIELDS {
@@ -436,6 +463,15 @@ namespace eKnjiznica.Commons {
         public static string PLEASE_SELECT_USER {
             get {
                 return ResourceManager.GetString("PLEASE_SELECT_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profil je uspješno izmjenjen..
+        /// </summary>
+        public static string PROFILE_UPDATE_SUCCESS_MESSAGE {
+            get {
+                return ResourceManager.GetString("PROFILE_UPDATE_SUCCESS_MESSAGE", resourceCulture);
             }
         }
         

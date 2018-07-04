@@ -1,5 +1,7 @@
 ﻿using CommonServiceLocator;
+using eKnjiznica.Mobile.Auctions;
 using eKnjiznica.Mobile.Books;
+using eKnjiznica.Mobile.Profile;
 using eKnjiznica.Mobile.Services.UserBasket;
 using eKnjiznica.Mobile.Transactions;
 using eKnjiznica.Mobile.UserBasket;
@@ -43,13 +45,14 @@ namespace eKnjiznica.Mobile.Navigation
                 userBasketService.GetUserItems().CollectionChanged += BasketItemChanged;
                 MenuItems = new ObservableCollection<MasterDetailPageMenuItem>(new[]
                 {
-                    new MasterDetailPageMenuItem { Id = 0, Title = "Preporučeno",TargetType=typeof(MainPage) },
-                    new MasterDetailPageMenuItem { Id = 1, Title = "Knjige" ,TargetType=typeof(BooksPage)},
-                    new MasterDetailPageMenuItem { Id = 2, Title = "Kupljene knjige" ,TargetType=typeof(MyBooksPage)},
+                    new MasterDetailPageMenuItem {  Title = "Preporučeno",TargetType=typeof(MainPage) },
+                    new MasterDetailPageMenuItem {  Title = "Knjige" ,TargetType=typeof(BooksPage)},
+                    new MasterDetailPageMenuItem {  Title = "Kupljene knjige" ,TargetType=typeof(MyBooksPage)},
                     myBasketItem,
-                    new MasterDetailPageMenuItem { Id = 4, Title = "Moje transakcije" ,TargetType=typeof(TransactionsPage)},
-                    new MasterDetailPageMenuItem { Id = 4, Title = "Profil" ,TargetType=typeof(MainPage)},
-                    new MasterDetailPageMenuItem { Id = 4, Title = "Odjava" ,TargetType=typeof(LoginPage)},
+                    new MasterDetailPageMenuItem {  Title = "Aukcije" ,TargetType=typeof(AuctionsPage)},
+                    new MasterDetailPageMenuItem { Title = "Moje transakcije" ,TargetType=typeof(TransactionsPage)},
+                    new MasterDetailPageMenuItem { Title = "Profil" ,TargetType=typeof(ProfilePage)},
+                    new MasterDetailPageMenuItem { Title = "Odjava" ,TargetType=typeof(LoginPage)},
                 });
 
                 UpdateMyBasketItem();

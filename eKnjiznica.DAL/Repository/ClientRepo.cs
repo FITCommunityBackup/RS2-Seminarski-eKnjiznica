@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,23 +57,29 @@ namespace eKnjiznica.DAL.Repository
             var role = roleRepo.FindRoleByName(EntityRoles.ClientRole);
             return context
                 .Users
+                .Include(x=>x.PurchasedBooks)
+                .Include(x=>x.UserFinancialAccount)
                 .Where(x => x.Email.Equals(email) && x.Roles.Any(y => y.RoleId == role.Id))
-                .Select(x => new ClientVM
-                {
-                    Id = x.Id,
-                    AccountBalance = x.UserFinancialAccount.Balance,
-                    Email = x.Email,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    UserName = x.UserName,
-                    DateOfBirth = x.BirthDate.Value,
-                    IsActive = x.IsActive,
-                    PhoneNumber = x.PhoneNumber
-                })
+                .Select(ClientMapper())
                 .FirstOrDefault();
         }
 
-
+        private static System.Linq.Expressions.Expression<Func<ApplicationUser, ClientVM>> ClientMapper()
+        {
+            return x => new ClientVM
+            {
+                Id = x.Id,
+                AccountBalance = x.UserFinancialAccount.Balance,
+                Email = x.Email,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                UserName = x.UserName,
+                DateOfBirth = x.BirthDate.Value,
+                IsActive = x.IsActive,
+                PhoneNumber = x.PhoneNumber,
+                BookNumber = x.PurchasedBooks.Count
+            };
+        }
 
         public ClientVM FindByUsername(string username)
         {
@@ -80,18 +87,9 @@ namespace eKnjiznica.DAL.Repository
             return context
                 .Users
                 .Where(x => x.UserName.Equals(username) && x.Roles.Any(y => y.RoleId == role.Id))
-                .Select(x => new ClientVM
-                {
-                    Id = x.Id,
-                    AccountBalance = x.UserFinancialAccount.Balance,
-                    Email = x.Email,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    UserName = x.UserName,
-                    DateOfBirth = x.BirthDate.Value,
-                    IsActive = x.IsActive,
-                    PhoneNumber = x.PhoneNumber
-                })
+                .Include(x => x.PurchasedBooks)
+                .Include(x => x.UserFinancialAccount)
+                .Select(ClientMapper())
                 .FirstOrDefault();
         }
 
@@ -117,18 +115,9 @@ namespace eKnjiznica.DAL.Repository
             return context
                 .Users
                 .Where(x => x.Id.Equals(id) && x.Roles.Any(y => y.RoleId == role.Id))
-                .Select(x => new ClientVM
-                {
-                    Id = x.Id,
-                    AccountBalance = x.UserFinancialAccount.Balance,
-                    Email = x.Email,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    UserName = x.UserName,
-                    DateOfBirth = x.BirthDate.Value,
-                    PhoneNumber = x.PhoneNumber,
-                    IsActive = x.IsActive
-                })
+                .Include(x => x.PurchasedBooks)
+                .Include(x => x.UserFinancialAccount)
+                .Select(ClientMapper())
                 .FirstOrDefault();
         }
 
@@ -140,18 +129,9 @@ namespace eKnjiznica.DAL.Repository
                 .Users
                 .Where(x => (string.IsNullOrEmpty(username)||  x.UserName.Contains(username)) &&( x.IsActive || includeInactive))
                 .Where(x => x.Roles.Any(y => y.RoleId == role.Id))
-                .Select(x => new ClientVM
-                {
-                    Id = x.Id,
-                    AccountBalance = x.UserFinancialAccount.Balance,
-                    Email = x.Email,
-                    FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    UserName = x.UserName,
-                    DateOfBirth = x.BirthDate.Value,
-                    IsActive = x.IsActive,
-                    PhoneNumber = x.PhoneNumber
-                })
+                .Include(x => x.PurchasedBooks)
+                .Include(x => x.UserFinancialAccount)
+                .Select(ClientMapper())
                 .ToList();
         }
 
@@ -183,6 +163,11 @@ namespace eKnjiznica.DAL.Repository
                      Balance = x.Balance,
                      Id = x.UserFinancialAccountId
                  }).FirstOrDefault();
+        }
+
+        public bool TryChangeUserPassword(string userId, ClientUpdateVM vm)
+        {
+            return applicationUserManager.ChangePassword(userId, vm.OldPassword, vm.Password).Succeeded;
         }
     }
 }

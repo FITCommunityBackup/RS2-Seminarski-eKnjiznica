@@ -17,6 +17,17 @@ namespace eKnjiznica.CORE.Services.Auctions
             this.auctionRepo = auctionRepo;
         }
 
+        public List<AuctionVM> GetActiveAuctions()
+        {
+            List<AuctionVM> auctions = auctionRepo.GetActiveAuctions();
+            auctions.ForEach(a =>
+            {
+                a.WinnerBidderUsername = GetAuctionWinner(a.Id);
+                a.CurrentPrice = GetCurrentPrice(a.Id);
+            });
+
+            return auctions;
+        }
         public List<AuctionVM> GetAuctions(DateTime? dateFrom, DateTime? dateTo, bool includeInactive)
         {
             List<AuctionVM> auctions = auctionRepo.GetAuctions(dateFrom, dateTo, includeInactive);
@@ -48,6 +59,28 @@ namespace eKnjiznica.CORE.Services.Auctions
         {
             auctionRepo.UpdateAuction(vm,id);
 
+        }
+
+        public AuctionVM GetAuctionById(int auctionId)
+        {
+            AuctionVM auction = auctionRepo.GetAuctionById(auctionId);
+            auction.WinnerBidderUsername = GetAuctionWinner(auction.Id);
+            auction.CurrentPrice = GetCurrentPrice(auction.Id);
+            return auction;
+        }
+
+        public bool IsUserLatestBidder(int auctionId, string userId)
+        {
+            var lastBidderId = auctionRepo.GetLatestBidderId(auctionId);
+            if (string.IsNullOrEmpty(lastBidderId))
+                return false;
+
+            return lastBidderId.Equals(userId);
+        }
+
+        public void CreateNewBid(decimal amount, int auctionId, string userId)
+        {
+            auctionRepo.CreateAuctionBid(amount, auctionId, userId);
         }
     }
 }

@@ -11,7 +11,8 @@ using System.Web.Http;
 namespace eKnjiznica.API.Controllers
 {
     [RoutePrefix("api/auctions")]
-    [Authorize(Roles =EntityRoles.AdminRole+","+EntityRoles.ClientRole)]
+    [AllowAnonymous]
+    //[Authorize(Roles =EntityRoles.AdminRole+","+EntityRoles.ClientRole)]
     public class AuctionsController : ApiController
     {
 
@@ -35,6 +36,13 @@ namespace eKnjiznica.API.Controllers
             var result = auctionService.GetAuctions(dateFrom, dateTo, includeInactive);
             return Ok(result);
         }
+        [HttpGet]
+        [Route("active")]
+        public IHttpActionResult GetActiveAuctions()
+        {
+            var result = auctionService.GetActiveAuctions();
+            return Ok(result);
+        }
 
 
         [HttpPost]
@@ -44,6 +52,14 @@ namespace eKnjiznica.API.Controllers
             var result = auctionService.CreateAuction(auctionCreateVM);
             return Ok();
         }
+        [HttpGet]
+        [Route("{id}")]
+        public IHttpActionResult GetAuctionById(int id)
+        {
+            var auction = auctionService.GetAuctionById(id);
+            return Ok(auction);
+        }
+
         [HttpPut]
         [Route("{id}")]
         public IHttpActionResult UpdateAuction(AuctionUpdateVM vm,int id)

@@ -28,5 +28,7 @@ namespace eKnjiznica.Commons.ViewModels.Clients
         public decimal AccountBalance { get; set; }
         [DataMember]
         public bool IsActive { get; set; }
+        [DataMember]
+        public int BookNumber { get; set; }
     }
 }

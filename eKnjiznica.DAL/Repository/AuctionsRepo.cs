@@ -53,22 +53,34 @@ namespace eKnjiznica.DAL.Repository
                 .Where(x => x.IsActive || includeInactive)
                 .Where(x => dateFrom == null || x.StartTime >= dateFrom)
                 .Where(x => dateTo == null || x.EndTime <= dateTo)
-                .Select(x=>new AuctionVM
-                {
-                     Id=x.Id,
-                     StartPrice=x.StartingPrice,
-                     StartDate=x.StartTime,
-                     EndDate=x.EndTime,
-                     AuthorName=x.Book.Autor,
-                     BookTitle=x.Book.Title,
-                     IsActive=x.IsActive
-                }).ToList();
+                .Select(AuctionMapper()).ToList();
+        }
+        public List<AuctionVM> GetActiveAuctions()
+        {
+            return context.Auctions
+              .Where(x => x.IsActive )
+              .Where(x => x.EndTime > DateTime.UtcNow)
+              .Select(AuctionMapper()).ToList();
+        }
+        private static System.Linq.Expressions.Expression<Func<Auction, AuctionVM>> AuctionMapper()
+        {
+            return x => new AuctionVM
+            {
+                Id = x.Id,
+                StartPrice = x.StartingPrice,
+                StartDate = x.StartTime,
+                EndDate = x.EndTime,
+                AuthorName = x.Book.Autor,
+                ImageUrl = x.Book.ImageLocation,
+                BookTitle = x.Book.Title,
+                IsActive = x.IsActive
+            };
         }
 
         public decimal? GetCurrentPriceForAuction(int id)
         {
             return context.AuctionBids.Where(x => x.AuctionId == id)
-                .OrderBy(x => x.Amount)
+                .OrderByDescending(x => x.Amount)
                 .Select(x => x.Amount)
                 .Take(1).FirstOrDefault();
         }
@@ -79,6 +91,36 @@ namespace eKnjiznica.DAL.Repository
                 .OrderBy(x => x.Amount)
                 .Select(x => x.User.UserName)
                 .Take(1).FirstOrDefault();
+        }
+
+        public AuctionVM GetAuctionById(int auctionId)
+        {
+            return context.Auctions
+                .Where(x => x.IsActive)
+                .Where(x => x.EndTime > DateTime.UtcNow)
+                .Where(x=>x.Id==auctionId)
+                .Select(AuctionMapper()).FirstOrDefault();
+        }
+
+        public string GetLatestBidderId(int auctionId)
+        {
+            return context.AuctionBids
+                .Where(x => x.AuctionId == auctionId)
+                 .OrderBy(x => x.Amount)
+                 .Select(x => x.User.Id)
+                 .Take(1).FirstOrDefault();
+        }
+
+        public void CreateAuctionBid(decimal amount, int auctionId, string userId)
+        {
+            context.AuctionBids
+                .Add(new AuctionBid
+                {
+                    Amount = amount,
+                    AuctionId = auctionId,
+                    UserId = userId
+                });
+            context.SaveChanges();
         }
     }
 }

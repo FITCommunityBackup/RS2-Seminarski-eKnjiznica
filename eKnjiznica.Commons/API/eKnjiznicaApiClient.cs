@@ -51,6 +51,10 @@ namespace eKnjiznica.Commons.API
         {
             return Get($"api/auctions?dateFrom={dateFrom.ToString()}&dateTo={dateTo.ToString()}&inactive={includeInactive}");
         }
+        public Task<HttpResponseMessage> GetAuctionDetail(int auctionId)
+        {
+            return Get($"api/auctions/{auctionId}");
+        }
 
 
 
@@ -102,6 +106,10 @@ namespace eKnjiznica.Commons.API
         {
             return Put(clientUpdateVM, $"api/clients/{id}");
 
+        }
+        public Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM)
+        {
+            return Put(clientUpdateVM, $"api/clients/profile");
         }
 
         public Task<HttpResponseMessage> CreateClientAccount(ClientAddVM clientAddVM)
@@ -240,7 +248,24 @@ namespace eKnjiznica.Commons.API
 
 
 
+        public Task<HttpResponseMessage> GetClientAccount()
+        {
+            return Get("api/clients/profile");
+        }
 
+        public Task<HttpResponseMessage> GetActiveAuctions()
+        {
+            return Get("api/auctions/active");
+
+        }
+
+
+
+        public Task<HttpResponseMessage> MakeBid(decimal amount, int auctionId)
+        {
+            return Post(amount, $"api/auctions/{auctionId}/bids");
+
+        }
 
 
 
@@ -313,7 +338,11 @@ namespace eKnjiznica.Commons.API
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(newAuth.TokenType, newAuth.AccessToken);
         }
 
-  
+    
+
+
+
+
 
 
         #endregion

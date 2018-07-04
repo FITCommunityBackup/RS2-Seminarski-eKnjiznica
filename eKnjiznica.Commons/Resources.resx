@@ -126,6 +126,9 @@
   <data name="ACCOUNT_WITH_USERNAME_EXISTS" xml:space="preserve">
     <value>Korisničko ime je zauzeto</value>
   </data>
+  <data name="ACTION_SUCCESS" xml:space="preserve">
+    <value>Akcija uspješna</value>
+  </data>
   <data name="AT_LEAST_ONE_BOOK_REQUIRED" xml:space="preserve">
     <value>Kako bi ste završili transakciju potrebno je dodati najmanje jednu knjigu u košaricu.</value>
   </data>
@@ -207,6 +210,9 @@
   <data name="ERR_FIRST_NAME_REQUIRED" xml:space="preserve">
     <value>Ime je obavezno polje.</value>
   </data>
+  <data name="ERR_INVALID_PASSWORD_FIELDS" xml:space="preserve">
+    <value>Nova i stara lozinka se mora sastojati od najmanje 6 karaktera uključujući mala, velika slova i brojeve.</value>
+  </data>
   <data name="ERR_LAST_NAME_REQUIRED" xml:space="preserve">
     <value>Prezime je obavezno polje.</value>
   </data>
@@ -237,11 +243,17 @@
   <data name="NOT_ENOUGH_MONEY_ON_ACCOUNT" xml:space="preserve">
     <value>Nemate dovoljno novca na računu.</value>
   </data>
+  <data name="PASSWORD_CHANGE_FAILED" xml:space="preserve">
+    <value>Promjena lozinke nije uspjela</value>
+  </data>
   <data name="PLEASE_FILL_IN_FIELDS" xml:space="preserve">
     <value>Molimo popunite polja</value>
   </data>
   <data name="PLEASE_SELECT_USER" xml:space="preserve">
     <value>Molimo odaberite korisnika</value>
+  </data>
+  <data name="PROFILE_UPDATE_SUCCESS_MESSAGE" xml:space="preserve">
+    <value>Profil je uspješno izmjenjen.</value>
   </data>
   <data name="REGISTRATION_ERROR" xml:space="preserve">
     <value>Greška prilikom registracije</value>

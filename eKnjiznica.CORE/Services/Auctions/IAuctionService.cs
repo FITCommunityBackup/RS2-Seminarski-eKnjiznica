@@ -12,5 +12,9 @@ namespace eKnjiznica.CORE.Services.Auctions
         List<AuctionVM> GetAuctions(DateTime? dateFrom, DateTime? dateTo,bool includeInactive);
         int CreateAuction(AuctionCreateVM auctionCreateVM);
         void UpdateAuction(AuctionUpdateVM vm, int id);
+        List<AuctionVM> GetActiveAuctions();
+        AuctionVM GetAuctionById(int auctionId);
+        bool IsUserLatestBidder(int auctionId, string userId);
+        void CreateNewBid(decimal amount, int auctionId, string userId);
     }
 }

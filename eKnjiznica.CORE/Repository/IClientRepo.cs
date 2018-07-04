@@ -19,6 +19,7 @@ namespace eKnjiznica.CORE.Repository
         ClientVM FindByEmail(string email);
         ClientVM FindByUsername(string username);
         void UpdateClientAccount(ClientUpdateVM model, string id);
+        bool TryChangeUserPassword(string userId, ClientUpdateVM vm);
         UserFinancialAccountVM GetUserFinancialAccount(string userId);
     }
 }

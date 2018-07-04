@@ -1,13 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:converters="clr-namespace:eKnjiznica.Mobile.Converters"
-             x:Class="eKnjiznica.Mobile.Books.MyBooksPage">
-
+             x:Class="eKnjiznica.Mobile.Auctions.AuctionsPage">
     <ContentPage.Content>
-    
         <StackLayout Padding="30">
-            <ListView x:Name="booksList" RowHeight="120" ItemTapped="booksList_ItemTapped" >
+            <ListView x:Name="auctionList" RowHeight="200" ItemTapped="auctionList_ItemTapped" >
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
@@ -23,11 +20,14 @@
                                     </Image.Source>
                                 </Image>
 
+
                                 <StackLayout Grid.Column="1" Margin="10">
                                     <Label Text="{Binding BookTitle}" FontAttributes="Bold" />
                                     <Label Text="{Binding AuthorName,StringFormat='Autor: {0:S}'}"  />
-                                    <Label Text="{Binding Price, StringFormat='Cijena: {0:N} KM'}" />
-                                    <Label Text="{Binding Date, StringFormat='Datum kupovine: {0:dd.MM.yyyy}'}" />
+                                    <Label Text="{Binding StartPrice, StringFormat='Početna cijena: {0:N} KM'}" />
+                                    <Label Text="{Binding CurrentPrice, StringFormat='Trenutna cijena: {0:N} KM'}" />
+                                    <Label Text="{Binding StartDate, StringFormat='Početak : {0:dd.MM.yyyy hh:mm}'}" />
+                                    <Label Text="{Binding EndDate, StringFormat='Kraj : {0:dd.MM.yyyy hh:mm}'}" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

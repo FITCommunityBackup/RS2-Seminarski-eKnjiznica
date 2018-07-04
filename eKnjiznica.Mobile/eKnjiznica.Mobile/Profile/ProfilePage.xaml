@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eKnjiznica.Mobile.Profile.ProfilePage">
+    <ContentPage.Content>
+        <Grid  Margin="10" VerticalOptions="Fill" HorizontalOptions="Fill">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label x:Name="FullName" FontAttributes="Bold" Grid.ColumnSpan="2" HorizontalOptions="Center"></Label>
+
+            <Label x:Name="BookNumber"  Grid.Row="1" Grid.Column="0" HorizontalOptions="End"></Label>
+            <Label x:Name="AccountBalance"  Grid.Row="1" Grid.Column="1" HorizontalOptions="Start"></Label>
+
+            <Label x:Name="Birthdate"  Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="Center"></Label>
+
+            <Grid Grid.ColumnSpan="2" Grid.Row="3" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition  Height="Auto"></RowDefinition>
+                    <RowDefinition  Height="Auto"></RowDefinition>
+                    <RowDefinition  Height="Auto"></RowDefinition>
+                    <RowDefinition  Height="Auto"></RowDefinition>
+                    <RowDefinition  Height="Auto"></RowDefinition>
+                    <RowDefinition  Height="Auto"></RowDefinition>
+                    <RowDefinition  Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Text="Ime"></Label>
+                <Entry x:Name="FirstName" Grid.Row="0" Grid.Column="1"  ></Entry>
+
+                <Label Grid.Row="1" Grid.Column="0" Text="Prezime"></Label>
+                <Entry x:Name="LastName" Grid.Row="1" Grid.Column="1"  ></Entry>
+
+                <Label Grid.Row="2" Grid.Column="0" Text="Email"></Label>
+                <Entry x:Name="Email" Grid.Row="2" Grid.Column="1" Keyboard="Email"  ></Entry>
+
+                <Label Grid.Row="3" Grid.Column="0" Text="Stara lozinka"></Label>
+                <Entry x:Name="OldPassword" Grid.Row="3" Grid.Column="1"  IsPassword="true"  ></Entry>
+
+                <Label Grid.Row="4" Grid.Column="0" Text="Nova lozinka"></Label>
+                <Entry x:Name="NewPassword" Grid.Row="4" Grid.Column="1"   IsPassword="True"></Entry>
+
+                <Label Grid.Row="5" Grid.Column="0" Text="Broj telefona"></Label>
+                <Entry x:Name="PhoneNumber" Grid.Row="5" Grid.Column="1"  ></Entry>
+
+                <Label Grid.Row="6" Grid.Column="0" Text="Datum rođenja"></Label>
+                <DatePicker x:Name="BirthdateDtp" Grid.Row="6" Grid.Column="1"  ></DatePicker>
+
+                <Button x:Name="BtnUpdate"  Grid.Row="7" Grid.Column="0" Text="Ažuriraj" Clicked="BtnUpdate_Clicked"></Button>
+
+            </Grid>
+          
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

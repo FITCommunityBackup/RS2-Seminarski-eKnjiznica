@@ -27,12 +27,15 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> GetClientBooks();
         Task<HttpResponseMessage> GetCategories(string categoryNameFilter,bool includeInactiveCategories);
         Task<HttpResponseMessage> GetAuctions(DateTime dateFrom, DateTime dateTo,bool includeInactive);
+        Task<HttpResponseMessage> GetActiveAuctions();
         Task<HttpResponseMessage> LoadClientAccounts(string v, bool @checked);
+        Task<HttpResponseMessage> GetClientAccount();
         Task<HttpResponseMessage> GetPurchaces(string v1, string v2, string v3);
         Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
         Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
         Task<HttpResponseMessage> GetTransactions(string username, string adminUsername);
         Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName);
+        Task<HttpResponseMessage> MakeBid(decimal amount, int id);
         Task<HttpResponseMessage> GetBookOffersByCategory(int categoryId);
         Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive);
         Task<HttpResponseMessage> CreateBook(CreateBookVM createBookVM);
@@ -41,8 +44,10 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> GetBookFile(int id);
         Task<HttpResponseMessage> UpdateExistingBookOffer(UpdateBookOfferVM bookOfferUpdate, int id);
         Task<HttpResponseMessage> ResendBookToEmail(int bookId);
+        Task<HttpResponseMessage> GetAuctionDetail(int auctionId);
         Task<HttpResponseMessage> GetTransaction(int transactionId);
         Task<HttpResponseMessage> CreateBookOffer(CreateBookOfferVM bookOfferCreate);
+        Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM);
         Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM, string id);
         Task<HttpResponseMessage> CreateClientAccount(ClientAddVM clientAddVM);
         Task<HttpResponseMessage> MakePayInRequest(decimal value, string id);

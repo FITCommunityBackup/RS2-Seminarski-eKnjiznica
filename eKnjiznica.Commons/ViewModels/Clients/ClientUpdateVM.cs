@@ -16,6 +16,9 @@ namespace eKnjiznica.Commons.ViewModels.Clients
         [DataMember]
         public string LastName { get; set; }
         [DataMember]
+        public string OldPassword { get; set; }
+
+        [DataMember]
         public string Password { get; set; }
         [DataMember]
         public string PhoneNumber { get; set; }
