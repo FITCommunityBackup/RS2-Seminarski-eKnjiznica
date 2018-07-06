@@ -51,8 +51,8 @@
     </Compile>
     <Compile Include="ViewModels\Books\CreateAuctionBookOfferVM.cs" />
     <Compile Include="ViewModels\FinancialAccount\UserFinancialAccountVM.cs" />
-    <Compile Include="ViewModels\Util\ErrorHandlingUtil.cs" />
-    <Compile Include="ViewModels\Util\MyRegex.cs" />
+    <Compile Include="Util\ErrorHandlingUtil.cs" />
+    <Compile Include="Util\MyRegex.cs" />
     <Compile Include="ViewModels\AdminAddVM.cs" />
     <Compile Include="ViewModels\AdministratorProfileVM.cs" />
     <Compile Include="ViewModels\AdminUpdateVM.cs" />
