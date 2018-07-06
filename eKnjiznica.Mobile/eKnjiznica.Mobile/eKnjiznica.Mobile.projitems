@@ -69,6 +69,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Services\API\TokenRefresh.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AuctionClient.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\Constants.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\UserBasket\IUserBasketService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\UserBasket\UserBasketService.cs" />

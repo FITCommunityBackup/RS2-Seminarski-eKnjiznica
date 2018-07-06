@@ -13,8 +13,8 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
-
-                <Image  Margin="10" Grid.Column="0" Grid.Row="0"  x:Name="image" ></Image>
+            <Image Source="http://192.168.88.151/eknjiznica//uploads/books/2/harry.jpg" />
+            <Image  Margin="10" Grid.Column="0" Grid.Row="0"  x:Name="image" ></Image>
 
             <StackLayout  Margin="10" Grid.Column="1" Grid.Row="0">
                 <Label x:Name="title" FontAttributes="Bold" ></Label>

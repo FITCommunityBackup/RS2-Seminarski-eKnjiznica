@@ -15,6 +15,7 @@ using eKnjiznica.Mobile.Navigation;
 using Newtonsoft.Json;
 using eKnjiznica.Commons.ViewModels;
 using eKnjiznica.Mobile.Services.UserBasket;
+using eKnjiznica.Mobile.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace eKnjiznica.Mobile
@@ -35,6 +36,7 @@ namespace eKnjiznica.Mobile
             container.RegisterType<IApiClient, EKnjiznicaApiClient>(new ContainerControlledLifetimeManager());
             container.RegisterType<IUserService, UserService>(new ContainerControlledLifetimeManager());
             container.RegisterType<IUserBasketService, UserBasketService>(new ContainerControlledLifetimeManager());
+            container.RegisterType<AuctionClient>();
 
 
             var unityServiceLocator = new UnityServiceLocator(container);
@@ -84,7 +86,7 @@ namespace eKnjiznica.Mobile
             var url = eKnjiznica.Mobile.Services.Constants.ServiceBaseUrl;
             var client = new HttpClient();
             client.BaseAddress = new Uri(url);
-
+            
             var settings = container.Resolve<SettingsHelper>();
 
             var authResponse = settings.GetAuthenticationResponse();

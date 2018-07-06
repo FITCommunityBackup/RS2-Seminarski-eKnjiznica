@@ -34,7 +34,7 @@ namespace eKnjiznica.AdminUI.UI.Clients
             gvClientBooks.AutoGenerateColumns = false;
             gvClientBooks.Visible = false;
             inputAccountBalance.Maximum = Decimal.MaxValue;
-            inputAccountBalance.Minimum = 0;
+            inputAccountBalance.Minimum = Decimal.MinValue;
 
             inputPayIn.Maximum = Decimal.MaxValue;
             inputPayIn.Minimum = 0;

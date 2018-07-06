@@ -7,6 +7,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using eKnjiznica.CORE.Services.Clients;
+using eKnjiznica.API.Signalr;
+
 namespace eKnjiznica.API.Controllers
 {
     [RoutePrefix("api/auction/{auctionId}/bids")]
@@ -61,25 +63,11 @@ namespace eKnjiznica.API.Controllers
             }
             auctionService.CreateNewBid(amount, auctionId, userId);
 
-            //var highestBid = _context.AuctionBids
-            //        .Where(x => x.AuctionId == item.AuctionId)
-            //        .OrderByDescending(x => x.Amount)
-            //        .FirstOrDefault();
-          
-            //AuctionBid auctionBid = new AuctionBid
-            //{
-            //    Amount = item.Amount,
-            //    AuctionId = item.AuctionId,
-            //    BidDate = DateTime.UtcNow,
-            //    UserId = userId
-            //};
-            //int numberOfCurrentOffer = _context.AuctionBids.Where(x => x.AuctionId == item.AuctionId).AsNoTracking().Count();
-            //_context.AuctionBids.Add(auctionBid);
-            //auction.SellPrice = auctionBid.Amount;
-            //_context.SaveChanges();
 
-            //AuctionHub.OnNewBid(new NewBidVM { AuctionId = auction.Id, BidAmount = item.Amount, Id = auction.Id, CurrentOffersCount = numberOfCurrentOffer + 1 });
 
+
+            var newAuctionState = auctionService.GetAuctionById(auctionId);
+            AuctionHub.OnNewBid(newAuctionState);
             return Ok();
         }
     }

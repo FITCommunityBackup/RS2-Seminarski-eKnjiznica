@@ -23,7 +23,7 @@ namespace eKnjiznica.AdminUI.UI.Transactions
         private void TransactionBooksPurchaseDetails_Load(object sender, EventArgs e)
         {
 
-            textAmount.Minimum = 0;
+            textAmount.Minimum = Decimal.MinValue;
             textAmount.Maximum = Decimal.MaxValue;
 
             textAmount.Value = Transaction.Amount;

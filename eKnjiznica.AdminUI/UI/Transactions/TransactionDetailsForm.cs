@@ -27,7 +27,7 @@ namespace eKnjiznica.AdminUI.UI.Transactions
         }
         private void BindData()
         {
-            textAmount.Minimum = 0;
+            textAmount.Minimum = Decimal.MinValue;
             textAmount.Maximum = Decimal.MaxValue;
 
             textAdmin.Text = Transaction.AdminUsername;

@@ -4,8 +4,8 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(eKnjiznica.API.Startup))]
 
+[assembly: OwinStartup(typeof(eKnjiznica.API.Startup))]
 namespace eKnjiznica.API
 {
     public partial class Startup
@@ -13,6 +13,7 @@ namespace eKnjiznica.API
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            app.MapSignalR();
         }
     }
 }

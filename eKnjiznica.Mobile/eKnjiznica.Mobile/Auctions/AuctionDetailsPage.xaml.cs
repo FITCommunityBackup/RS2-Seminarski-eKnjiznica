@@ -4,6 +4,7 @@ using eKnjiznica.Commons.Util;
 using eKnjiznica.Commons.ViewModels.Auctions;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.ClientBook;
+using eKnjiznica.Mobile.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -23,8 +24,10 @@ namespace eKnjiznica.Mobile.Auctions
         private IApiClient apiClient{ get; set; }
         public AuctionVM Auction { get; set; }
         public ErrorHandlingUtil errorHandlingUtil{ get; set; }
+        private AuctionClient auctionClient;
         public AuctionDetailsPage ()
 		{
+            this.auctionClient = ServiceLocator.Current.GetInstance<AuctionClient>();
             this.apiClient = ServiceLocator.Current.GetInstance<IApiClient>();
             this.errorHandlingUtil= ServiceLocator.Current.GetInstance<ErrorHandlingUtil>();
 			InitializeComponent ();
@@ -33,8 +36,20 @@ namespace eKnjiznica.Mobile.Auctions
         {
             base.OnAppearing();
 
-
+            await auctionClient.Connect();
+            auctionClient.OnMessageReceived += AuctionClient_OnMessageReceived;
+      
             PopulateData();
+        }
+
+        private void AuctionClient_OnMessageReceived(object sender, AuctionVM e)
+        {
+            this.Auction = e;
+            Auction.ImageUrl = eKnjiznica.Mobile.Services.Constants.ServiceBaseUrl + "/" + Auction.ImageUrl;
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                PopulateData();
+            });
         }
 
         private void PopulateData()
@@ -58,29 +73,13 @@ namespace eKnjiznica.Mobile.Auctions
 
             var result = await apiClient.MakeBid(amount, Auction.Id);
 
-            if (result.IsSuccessStatusCode)
-            {
-                await RefreshAuctionData();
-            }
-            else
+            if (!result.IsSuccessStatusCode)
             {
                 await DisplayAlert(Commons.Resources.ERROR, await errorHandlingUtil.GetErrorMessageAsync(result, "auction_bid")
                     ,"OK");
             }
         }
-
-        private async Task RefreshAuctionData()
-        {
-            var result = await apiClient.GetAuctionDetail(Auction.Id);
-            if (result.IsSuccessStatusCode)
-            {
-                var json =await result.Content.ReadAsStringAsync();
-                Auction = JsonConvert.DeserializeObject<AuctionVM>(json);
-                Auction.ImageUrl = eKnjiznica.Mobile.Services.Constants.ServiceBaseUrl + "/" + Auction.ImageUrl;
-                PopulateData();
-            }
-        }
-
+     
         private bool Valid()
         {
             decimal result;
