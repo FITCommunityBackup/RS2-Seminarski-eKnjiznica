@@ -118,6 +118,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Quartz, Version=3.0.5.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.0.5\lib\net452\Quartz.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -127,6 +130,7 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -211,6 +215,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\QuartzConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
@@ -261,6 +266,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Jobs\AuctionCrawlerJob.cs" />
+    <Compile Include="Jobs\MyJobsFactory.cs" />
+    <Compile Include="Jobs\UnitySchedulerFactory.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Admin\AdminStatusChangeVM.cs" />
@@ -349,6 +357,15 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="uploads\books\12\harry.jpg" />
+    <Content Include="uploads\books\13\harry.jpg" />
+    <Content Include="uploads\books\1\IMG_1392.jpg" />
+    <Content Include="uploads\books\6\harry.jpg" />
+    <Content Include="uploads\books\Knjiga_Autor\android-desktop-wallpapers-18.jpg" />
+    <Content Include="uploads\books\Naslov knjige_Ime Autora\51HSkTKlauL._SX346_BO1,204,203,200_.jpg" />
+    <Content Include="uploads\books\Naslov knjige_Ime Autora\android-desktop-wallpapers-18.jpg" />
+    <Content Include="uploads\books\Test_Test\android-desktop-wallpapers-18.jpg" />
+    <Content Include="uploads\books\Tvrđava_Meša Selimovič\1058611.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -374,6 +391,15 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="uploads\books\12\DF-Predavanje6- Forenzika Linux OS-a.pdf" />
+    <Content Include="uploads\books\13\DF-Predavanje6- Forenzika Linux OS-a.pdf" />
+    <Content Include="uploads\books\1\cv.pdf" />
+    <Content Include="uploads\books\6\DF-Predavanje6- Forenzika Linux OS-a.pdf" />
+    <Content Include="uploads\books\Knjiga_Autor\zadaci za kvaternione.pdf" />
+    <Content Include="uploads\books\Knjiga_Autor\zadaci za kvaternione.pdf863c6225-ce1f-487a-b845-d86c228cd43b" />
+    <Content Include="uploads\books\Moja nova knjiga_Petar\zadaci za kvaternione.pdf" />
+    <Content Include="uploads\books\Naslov knjige_Ime Autora\DF-Predavanje6- Forenzika Linux OS-a.pdf" />
+    <Content Include="uploads\books\Tvrđava_Meša Selimovič\cv.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

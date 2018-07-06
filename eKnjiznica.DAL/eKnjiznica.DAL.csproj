@@ -145,6 +145,10 @@
     <Compile Include="Migrations\201806130753248_BookImageFile.Designer.cs">
       <DependentUpon>201806130753248_BookImageFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807060656415_AuctionEmailSentFlag.cs" />
+    <Compile Include="Migrations\201807060656415_AuctionEmailSentFlag.Designer.cs">
+      <DependentUpon>201807060656415_AuctionEmailSentFlag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Auction.cs" />
@@ -219,6 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806130753248_BookImageFile.resx">
       <DependentUpon>201806130753248_BookImageFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807060656415_AuctionEmailSentFlag.resx">
+      <DependentUpon>201807060656415_AuctionEmailSentFlag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

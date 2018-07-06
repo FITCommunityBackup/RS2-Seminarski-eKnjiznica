@@ -6,7 +6,7 @@ namespace eKnjiznica.Mobile.Services
 {
     public class Constants
     {
-        public static string ServiceBaseUrl = "http://localhost:61508/";
+        public static string ServiceBaseUrl = "http://localhost/eknjiznica/";
 
         public static string AuthorizationStatus = "AuthorizationStatus";
     }

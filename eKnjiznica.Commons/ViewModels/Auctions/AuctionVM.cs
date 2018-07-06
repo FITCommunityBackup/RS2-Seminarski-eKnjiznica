@@ -8,6 +8,7 @@ namespace eKnjiznica.Commons.ViewModels.Auctions
     {
         [DataMember]
         public int Id { get; set; }
+
         [DataMember]
         public decimal CurrentPrice { get; set; }
         [DataMember]
@@ -25,12 +26,18 @@ namespace eKnjiznica.Commons.ViewModels.Auctions
         public string WinnerBidderUsername { get; set; }
 
         [DataMember]
+        public string WinnerBidderId { get; set; }
+
+        [DataMember]
         public string ImageUrl { get; set; }
 
         [DataMember]
         public bool IsActive { get; set; }
+        [DataMember]
+        public bool IsEmailSent { get; set; }
 
         [IgnoreDataMember]
-        public Uri ImageUri{ get; set; }
+        public Uri ImageUri { get; set; }
+        public int BookId { get; set; }
     }
 }

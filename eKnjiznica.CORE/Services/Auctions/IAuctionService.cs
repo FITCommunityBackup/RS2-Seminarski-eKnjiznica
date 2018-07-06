@@ -14,7 +14,9 @@ namespace eKnjiznica.CORE.Services.Auctions
         void UpdateAuction(AuctionUpdateVM vm, int id);
         List<AuctionVM> GetActiveAuctions();
         AuctionVM GetAuctionById(int auctionId);
+        List<AuctionVM> GetFinishedUnsendAuctions();
         bool IsUserLatestBidder(int auctionId, string userId);
         void CreateNewBid(decimal amount, int auctionId, string userId);
+        void CompleteAuctions(List<int> list);
     }
 }

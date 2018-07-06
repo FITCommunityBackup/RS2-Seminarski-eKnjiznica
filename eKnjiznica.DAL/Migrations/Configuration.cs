@@ -48,12 +48,24 @@ namespace eKnjiznica.DAL.Migrations
 
             if (!context.Users.Any(u => u.UserName == "client"))
             {
-                var user = new ApplicationUser { UserName = "client", Email = "client@email.com", FirstName = "Client", LastName = "Sistema", IsActive = true };
+                var user = new ApplicationUser {
+                    UserName = "client",
+                    Email = "client@email.com",
+                    FirstName = "Client",
+                    LastName = "Sistema",
+                    IsActive = true,
+                BirthDate=DateTime.Now.AddYears(-18)};
                 var userStore = new UserStore<ApplicationUser>(context);
                 var userManager = new ApplicationUserManager(userStore);
 
                 userManager.Create(user, "Password!1");
                 userManager.AddToRole(user.Id, EntityRoles.ClientRole);
+                context.UserFinancialAccounts.Add(new Model.UserFinancialAccount
+                {
+                    ApplicationUser = user,
+                    Balance = 0
+                });
+                context.SaveChanges();
             }
         }
 

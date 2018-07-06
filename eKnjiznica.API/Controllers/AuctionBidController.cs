@@ -1,31 +1,32 @@
 ﻿using eKnjiznica.CORE.Services.Auctions;
+using eKnjiznica.DAL.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using eKnjiznica.CORE.Services.Clients;
 namespace eKnjiznica.API.Controllers
 {
-    [RoutePrefix("api/auctions/{auctionId}/bids")]
+    [RoutePrefix("api/auction/{auctionId}/bids")]
     public class AuctionBidController : BaseController
     {
 
         private IAuctionService auctionService;
-
-        public AuctionBidController(IAuctionService auctionService)
+        private IClientService clientService;
+        public AuctionBidController(IAuctionService auctionService,IClientService clientService)
         {
             this.auctionService = auctionService;
+            this.clientService = clientService;
         }
 
         [HttpPost]
         [Route("")]
-        [Authorize]
+        [Authorize(Roles =EntityRoles.ClientRole)]
         public IHttpActionResult CreateBid([FromUri] int auctionId, [FromBody] decimal amount)
         {
             string userId = GetUserId();
-
 
             var auction = auctionService.GetAuctionById(auctionId);
             if (auction == null)
@@ -52,8 +53,14 @@ namespace eKnjiznica.API.Controllers
                 ModelState.AddModelError("auction_bid", $"Vaša ponuda nije veća od trenutne najveće ponude.");
                 return BadRequest(ModelState);
             }
-
+            var userAccount = clientService.GetUserFinancialAccount(userId);
+            if(userAccount.Balance<amount)
+            {
+                ModelState.AddModelError("auction_bid", $"Nemate dovoljno novca na računu.");
+                return BadRequest(ModelState);
+            }
             auctionService.CreateNewBid(amount, auctionId, userId);
+
             //var highestBid = _context.AuctionBids
             //        .Where(x => x.AuctionId == item.AuctionId)
             //        .OrderByDescending(x => x.Amount)

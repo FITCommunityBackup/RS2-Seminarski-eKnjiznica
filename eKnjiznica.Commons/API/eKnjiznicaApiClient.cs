@@ -263,7 +263,7 @@ namespace eKnjiznica.Commons.API
 
         public Task<HttpResponseMessage> MakeBid(decimal amount, int auctionId)
         {
-            return Post(amount, $"api/auctions/{auctionId}/bids");
+            return Post(amount, $"api/auction/{auctionId}/bids");
 
         }
 

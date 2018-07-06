@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eKnjiznica.Common.ViewModels.FinancialAccount;
 using eKnjiznica.Commons.ViewModels.Clients;
 
 namespace eKnjiznica.CORE.Services.Clients
@@ -16,8 +17,8 @@ namespace eKnjiznica.CORE.Services.Clients
         ClientVM FindClientByUsername(string username);
         ClientVM FindClientById(string id);
         void UpdateClientAccount(ClientUpdateVM model, string id);
-
         bool HasMoneyOnAccount(string userId,decimal amount);
         bool ChangeClientPassword(string v, ClientUpdateVM vm);
+        UserFinancialAccountVM GetUserFinancialAccount(string userId);
     }
 }

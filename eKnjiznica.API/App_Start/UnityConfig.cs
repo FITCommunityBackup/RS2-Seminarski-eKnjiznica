@@ -1,3 +1,5 @@
+using eKnjiznica.API.App_Start;
+using eKnjiznica.API.Jobs;
 using eKnjiznica.CORE.Repository;
 using eKnjiznica.CORE.Services.Admin;
 using eKnjiznica.CORE.Services.Auctions;
@@ -16,6 +18,8 @@ using eKnjiznica.DAL.Model;
 using eKnjiznica.DAL.Repository;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Quartz;
+using Quartz.Spi;
 using System;
 using System.Configuration;
 using System.Data.Entity;
@@ -120,7 +124,12 @@ namespace eKnjiznica.API
             container.RegisterType<ApplicationUserManager>();
 
 
-        
+            container.RegisterType<ISchedulerFactory,UnitySchedulerFactory>();
+            container.RegisterType<IJobFactory,MyJobFactory>();
+            QuartzConfig.Config(container);
+
+
+
 
         }
     }

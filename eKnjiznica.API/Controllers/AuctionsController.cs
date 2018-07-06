@@ -53,10 +53,10 @@ namespace eKnjiznica.API.Controllers
             return Ok();
         }
         [HttpGet]
-        [Route("{id}")]
-        public IHttpActionResult GetAuctionById(int id)
+        [Route("{auctionId}")]
+        public IHttpActionResult GetAuctionById(int auctionId)
         {
-            var auction = auctionService.GetAuctionById(id);
+            var auction = auctionService.GetAuctionById(auctionId);
             return Ok(auction);
         }
 

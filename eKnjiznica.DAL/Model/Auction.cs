@@ -17,6 +17,7 @@ namespace eKnjiznica.DAL.Model
         [Required]
         public decimal StartingPrice { get; set; }
         public bool IsActive { get; set; }
+        public bool IsEmailSent { get; set; }
 
         #region Navigation
         public int BookId { get; set; }

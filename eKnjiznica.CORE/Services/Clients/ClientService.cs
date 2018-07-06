@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eKnjiznica.Common.ViewModels.FinancialAccount;
 using eKnjiznica.Commons.ViewModels.Clients;
 using eKnjiznica.CORE.Repository;
 using eKnjiznica.CORE.Services.Roles;
@@ -59,6 +60,11 @@ namespace eKnjiznica.CORE.Services.Clients
         public List<ClientVM> GetClientAccounts(string username, bool includeInactive)
         {
             return clientRepo.GetClients(username, includeInactive);
+        }
+
+        public UserFinancialAccountVM GetUserFinancialAccount(string userId)
+        {
+            return clientRepo.GetUserFinancialAccount(userId);
         }
 
         public bool HasMoneyOnAccount(string userId, decimal amount)

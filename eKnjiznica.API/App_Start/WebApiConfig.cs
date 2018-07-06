@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web.Http;
+using eKnjiznica.API.App_Start;
 using eKnjiznica.Commons.ViewModels;
 using eKnjiznica.CORE.Model.Admin;
 using Microsoft.Owin.Security.OAuth;

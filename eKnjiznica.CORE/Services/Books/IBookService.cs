@@ -1,4 +1,5 @@
-﻿using eKnjiznica.Commons.ViewModels.Books;
+﻿using eKnjiznica.Common.ViewModels.Books;
+using eKnjiznica.Commons.ViewModels.Books;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,6 @@ namespace eKnjiznica.CORE.Services.Books
         BookOfferVM CreateBookOffer(CreateBookOfferVM model);
         void UpdateBookOffer(UpdateBookOfferVM model, int id);
         List<BookOfferVM> GetBookOfferByCategory(int categoryId,string userId);
+        BookOfferVM CreateAuctionBookOffer(CreateAuctionBookOfferVM createAuctionBookOfferVM);
     }
 }

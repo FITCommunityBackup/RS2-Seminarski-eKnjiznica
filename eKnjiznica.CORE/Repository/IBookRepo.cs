@@ -1,4 +1,5 @@
-﻿using eKnjiznica.Commons.ViewModels.Books;
+﻿using eKnjiznica.Common.ViewModels.Books;
+using eKnjiznica.Commons.ViewModels.Books;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace eKnjiznica.CORE.Repository
         BooksVM CreateBook(CreateBookVM model, string userId);
         BooksVM GetBookById(int bookId);
         void SaveFilePath(BooksVM book, string relativePath,string fileName);
+        BookOfferVM CreateAuctionBookOffer(CreateAuctionBookOfferVM createAuctionBookOfferVM);
         List<BookOfferVM> GetBookOffers(string title, string author,bool includeInactive);
         BookOfferVM CreateBookOffer(CreateBookOfferVM model);
         BookOfferVM GetBookOfferById(int id);

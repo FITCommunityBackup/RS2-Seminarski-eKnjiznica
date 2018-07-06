@@ -1,4 +1,5 @@
-﻿using eKnjiznica.Commons.ViewModels.Books;
+﻿using eKnjiznica.Common.ViewModels.Books;
+using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.CORE.Repository;
 using eKnjiznica.DAL.EF;
 using eKnjiznica.DAL.Model;
@@ -265,6 +266,18 @@ namespace eKnjiznica.DAL.Repository
             context.SaveChanges();
         }
 
-       
+        public BookOfferVM CreateAuctionBookOffer(CreateAuctionBookOfferVM vm)
+        {
+            var bookOffer = new BookOffer
+            {
+                BookId = vm.BookId,
+                IsActive = false,
+                OfferCreatedTime = DateTime.UtcNow,
+                Price = vm.Price
+            };
+            context.BookOffers.Add(bookOffer);
+            context.SaveChanges();
+            return GetBookOfferById(bookOffer.Id);
+        }
     }
 }

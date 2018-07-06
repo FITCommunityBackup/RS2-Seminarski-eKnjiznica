@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using eKnjiznica.Common.ViewModels.Books;
 using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.CORE.Repository;
 
@@ -15,6 +16,11 @@ namespace eKnjiznica.CORE.Services.Books
         public BookService(IBookRepo bookRepo)
         {
             this.bookRepo = bookRepo;
+        }
+
+        public BookOfferVM CreateAuctionBookOffer(CreateAuctionBookOfferVM createAuctionBookOfferVM)
+        {
+            return bookRepo.CreateAuctionBookOffer(createAuctionBookOfferVM);
         }
 
         public BooksVM CreateBook(CreateBookVM model, string userId)

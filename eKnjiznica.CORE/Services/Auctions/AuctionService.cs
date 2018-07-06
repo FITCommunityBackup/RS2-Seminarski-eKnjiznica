@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using eKnjiznica.Commons.ViewModels.Auctions;
+using eKnjiznica.Commons.ViewModels.Clients;
 using eKnjiznica.CORE.Repository;
 
 namespace eKnjiznica.CORE.Services.Auctions
@@ -22,7 +23,9 @@ namespace eKnjiznica.CORE.Services.Auctions
             List<AuctionVM> auctions = auctionRepo.GetActiveAuctions();
             auctions.ForEach(a =>
             {
-                a.WinnerBidderUsername = GetAuctionWinner(a.Id);
+                var user = GetAuctionWinner(a.Id);
+                a.WinnerBidderUsername = user?.UserName;
+                a.WinnerBidderId = user?.Id;
                 a.CurrentPrice = GetCurrentPrice(a.Id);
             });
 
@@ -33,7 +36,9 @@ namespace eKnjiznica.CORE.Services.Auctions
             List<AuctionVM> auctions = auctionRepo.GetAuctions(dateFrom, dateTo, includeInactive);
             auctions.ForEach(a =>
             {
-                a.WinnerBidderUsername = GetAuctionWinner(a.Id);
+                var user = GetAuctionWinner(a.Id);
+                a.WinnerBidderUsername = user?.UserName;
+                a.WinnerBidderId= user?.Id;
                 a.CurrentPrice = GetCurrentPrice(a.Id);
             });
 
@@ -45,9 +50,9 @@ namespace eKnjiznica.CORE.Services.Auctions
             return auctionRepo.GetCurrentPriceForAuction(id)??0;
         }
 
-        private string GetAuctionWinner(int id)
+        private ClientVM GetAuctionWinner(int id)
         {
-            return auctionRepo.GetAuctionWinnerName(id);
+            return auctionRepo.GetAuctionWinner(id);
         }
 
         public int CreateAuction(AuctionCreateVM auctionCreateVM)
@@ -64,7 +69,9 @@ namespace eKnjiznica.CORE.Services.Auctions
         public AuctionVM GetAuctionById(int auctionId)
         {
             AuctionVM auction = auctionRepo.GetAuctionById(auctionId);
-            auction.WinnerBidderUsername = GetAuctionWinner(auction.Id);
+            var user = GetAuctionWinner(auction.Id);
+            auction.WinnerBidderUsername = user?.UserName;
+            auction.WinnerBidderId= user?.Id;
             auction.CurrentPrice = GetCurrentPrice(auction.Id);
             return auction;
         }
@@ -81,6 +88,30 @@ namespace eKnjiznica.CORE.Services.Auctions
         public void CreateNewBid(decimal amount, int auctionId, string userId)
         {
             auctionRepo.CreateAuctionBid(amount, auctionId, userId);
+        }
+
+        public List<AuctionVM> GetFinishedUnsendAuctions()
+        {
+            var auctions = auctionRepo.GetFinishedUnsendAuctions();
+            try
+            {
+                auctions.ForEach(a =>
+                {
+                    var user = GetAuctionWinner(a.Id);
+                    a.WinnerBidderUsername = user?.UserName;
+                    a.WinnerBidderId = user?.Id;
+                    a.CurrentPrice = GetCurrentPrice(a.Id);
+                });
+            } catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return auctions;
+        }
+
+        public void CompleteAuctions(List<int> list)
+        {
+            auctionRepo.CompleteAuctions(list);
         }
     }
 }

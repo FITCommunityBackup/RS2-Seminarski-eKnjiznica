@@ -32,8 +32,9 @@ namespace eKnjiznica.Mobile.Auctions
         protected async override void OnAppearing()
         {
             base.OnAppearing();
-            await RefreshAuctionData();
-            //PopulateData();
+
+
+            PopulateData();
         }
 
         private void PopulateData()
@@ -44,7 +45,7 @@ namespace eKnjiznica.Mobile.Auctions
             startingPrice.Text = $"Početna cijena: {Auction.StartPrice} KM";
             dateFrom.Text = $"Početak aukcije {Auction.StartDate.ToString("dd.MM.yyyy hh:mm")}";
             dateTo.Text = $"Kraj aukcije {Auction.EndDate.ToString("dd.MM.yyyy hh:mm")}";
-            image.Source = ImageSource.FromUri(new Uri(Auction.ImageUrl));
+            image.Source = ImageSource.FromUri(new Uri( Auction.ImageUrl));
             lblCurrentWinner.Text = string.IsNullOrEmpty(Auction.WinnerBidderUsername) ? "Nema ponuda." : Auction.WinnerBidderUsername;
         }
 
@@ -75,6 +76,7 @@ namespace eKnjiznica.Mobile.Auctions
             {
                 var json =await result.Content.ReadAsStringAsync();
                 Auction = JsonConvert.DeserializeObject<AuctionVM>(json);
+                Auction.ImageUrl = eKnjiznica.Mobile.Services.Constants.ServiceBaseUrl + "/" + Auction.ImageUrl;
                 PopulateData();
             }
         }

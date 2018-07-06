@@ -49,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Books\CreateAuctionBookOfferVM.cs" />
     <Compile Include="ViewModels\FinancialAccount\UserFinancialAccountVM.cs" />
     <Compile Include="ViewModels\Util\ErrorHandlingUtil.cs" />
     <Compile Include="ViewModels\Util\MyRegex.cs" />
