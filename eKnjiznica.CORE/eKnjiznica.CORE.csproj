@@ -73,6 +73,8 @@
     <Compile Include="Services\Logger\LoggerService.cs" />
     <Compile Include="Services\Logger\LogType.cs" />
     <Compile Include="Services\Logger\ILoggerService.cs" />
+    <Compile Include="Services\Recommender\IRecommenderService.cs" />
+    <Compile Include="Services\Recommender\RecommenderService.cs" />
     <Compile Include="Services\Roles\IRoleService.cs" />
     <Compile Include="Services\Roles\RoleService.cs" />
     <Compile Include="Services\Transaction\ITransactionService.cs" />

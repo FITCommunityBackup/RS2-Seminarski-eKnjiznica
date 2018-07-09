@@ -46,7 +46,7 @@ namespace eKnjiznica.AdminUI.UI.Books
 
         private async Task BindData()
         {
-            var result = await apiClient.GetBooks(inputBookTitle.Text.Trim(),inputAuthorName.Text.Trim());
+            var result = await apiClient.GetBooks(inputBookTitle.Text.Trim(),inputAuthorName.Text.Trim(),cbIncludeInactive.Checked);
             if (result.IsSuccessStatusCode)
             {
                 Books = await result.Content.ReadAsAsync <IList<BooksVM>>();

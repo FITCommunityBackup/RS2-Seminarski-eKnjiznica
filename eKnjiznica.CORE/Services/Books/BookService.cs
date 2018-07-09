@@ -44,9 +44,9 @@ namespace eKnjiznica.CORE.Services.Books
             return bookRepo.GetBookOffers(title, author, includeInactive);
         }
 
-        public List<BooksVM> GetBooks(string title, string author)
+        public List<BooksVM> GetBooks(string title, string author,bool includeInactive)
         {
-           return bookRepo.GetBooks(title, author);
+           return bookRepo.GetBooks(title, author,includeInactive);
         }
 
         public void UpdateBook(UpdateBookVM model, int id,string userId)

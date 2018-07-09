@@ -52,7 +52,7 @@
             // 
             // inputAuthorName
             // 
-            this.inputAuthorName.Location = new System.Drawing.Point(124, 39);
+            this.inputAuthorName.Location = new System.Drawing.Point(184, 41);
             this.inputAuthorName.Name = "inputAuthorName";
             this.inputAuthorName.Size = new System.Drawing.Size(151, 20);
             this.inputAuthorName.TabIndex = 19;
@@ -60,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 44);
+            this.label2.Location = new System.Drawing.Point(146, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 18;
@@ -70,6 +70,9 @@
             // 
             this.gvBooks.AllowUserToAddRows = false;
             this.gvBooks.AllowUserToDeleteRows = false;
+            this.gvBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -82,7 +85,7 @@
             this.gvBooks.ReadOnly = true;
             this.gvBooks.RowTemplate.Height = 24;
             this.gvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvBooks.Size = new System.Drawing.Size(263, 146);
+            this.gvBooks.Size = new System.Drawing.Size(323, 214);
             this.gvBooks.TabIndex = 17;
             this.gvBooks.Validating += new System.ComponentModel.CancelEventHandler(this.gvBooks_Validating);
             // 
@@ -110,7 +113,7 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(200, 65);
+            this.btnFilter.Location = new System.Drawing.Point(260, 67);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 16;
@@ -120,7 +123,7 @@
             // 
             // inputBookTitle
             // 
-            this.inputBookTitle.Location = new System.Drawing.Point(124, 8);
+            this.inputBookTitle.Location = new System.Drawing.Point(184, 10);
             this.inputBookTitle.Name = "inputBookTitle";
             this.inputBookTitle.Size = new System.Drawing.Size(151, 20);
             this.inputBookTitle.TabIndex = 15;
@@ -128,7 +131,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 10);
+            this.label1.Location = new System.Drawing.Point(138, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 14;
@@ -137,7 +140,7 @@
             // inputPrice
             // 
             this.inputPrice.DecimalPlaces = 2;
-            this.inputPrice.Location = new System.Drawing.Point(124, 103);
+            this.inputPrice.Location = new System.Drawing.Point(184, 105);
             this.inputPrice.Name = "inputPrice";
             this.inputPrice.Size = new System.Drawing.Size(151, 20);
             this.inputPrice.TabIndex = 20;
@@ -146,7 +149,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 167);
+            this.label3.Location = new System.Drawing.Point(12, 157);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 13);
             this.label3.TabIndex = 21;
@@ -155,7 +158,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 105);
+            this.label4.Location = new System.Drawing.Point(120, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 22;
@@ -163,7 +166,7 @@
             // 
             // btnAction
             // 
-            this.btnAction.Location = new System.Drawing.Point(200, 345);
+            this.btnAction.Location = new System.Drawing.Point(260, 403);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(75, 23);
             this.btnAction.TabIndex = 23;
@@ -174,7 +177,7 @@
             // cbIsActive
             // 
             this.cbIsActive.AutoSize = true;
-            this.cbIsActive.Location = new System.Drawing.Point(213, 129);
+            this.cbIsActive.Location = new System.Drawing.Point(273, 131);
             this.cbIsActive.Name = "cbIsActive";
             this.cbIsActive.Size = new System.Drawing.Size(62, 17);
             this.cbIsActive.TabIndex = 24;
@@ -189,7 +192,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 373);
+            this.ClientSize = new System.Drawing.Size(347, 483);
             this.Controls.Add(this.cbIsActive);
             this.Controls.Add(this.btnAction);
             this.Controls.Add(this.label4);

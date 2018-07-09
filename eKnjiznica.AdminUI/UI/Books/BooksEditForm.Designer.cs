@@ -48,9 +48,9 @@ namespace eKnjiznica.AdminUI.UI.Books
             // btnAction
             // 
             this.btnAction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAction.Location = new System.Drawing.Point(254, 352);
+            this.btnAction.Location = new System.Drawing.Point(290, 365);
             this.btnAction.Name = "btnAction";
-            this.btnAction.Size = new System.Drawing.Size(98, 30);
+            this.btnAction.Size = new System.Drawing.Size(104, 30);
             this.btnAction.TabIndex = 70;
             this.btnAction.Text = "Dodaj";
             this.btnAction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -59,16 +59,16 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // inputDescription
             // 
-            this.inputDescription.Location = new System.Drawing.Point(99, 74);
+            this.inputDescription.Location = new System.Drawing.Point(131, 74);
             this.inputDescription.Name = "inputDescription";
-            this.inputDescription.Size = new System.Drawing.Size(253, 20);
+            this.inputDescription.Size = new System.Drawing.Size(259, 20);
             this.inputDescription.TabIndex = 64;
             this.inputDescription.Validating += new System.ComponentModel.CancelEventHandler(this.inputDescription_Validating);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 74);
+            this.label3.Location = new System.Drawing.Point(94, 74);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 66;
@@ -76,16 +76,16 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // inputAuthor
             // 
-            this.inputAuthor.Location = new System.Drawing.Point(99, 48);
+            this.inputAuthor.Location = new System.Drawing.Point(131, 48);
             this.inputAuthor.Name = "inputAuthor";
-            this.inputAuthor.Size = new System.Drawing.Size(253, 20);
+            this.inputAuthor.Size = new System.Drawing.Size(259, 20);
             this.inputAuthor.TabIndex = 62;
             this.inputAuthor.Validating += new System.ComponentModel.CancelEventHandler(this.inputAuthor_Validating);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 48);
+            this.label2.Location = new System.Drawing.Point(65, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 63;
@@ -93,16 +93,16 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // inputBookName
             // 
-            this.inputBookName.Location = new System.Drawing.Point(99, 20);
+            this.inputBookName.Location = new System.Drawing.Point(131, 20);
             this.inputBookName.Name = "inputBookName";
-            this.inputBookName.Size = new System.Drawing.Size(253, 20);
+            this.inputBookName.Size = new System.Drawing.Size(259, 20);
             this.inputBookName.TabIndex = 61;
             this.inputBookName.Validating += new System.ComponentModel.CancelEventHandler(this.inputBookName_Validating);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 20);
+            this.label1.Location = new System.Drawing.Point(51, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 13);
             this.label1.TabIndex = 60;
@@ -114,17 +114,20 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // cbCategories
             // 
+            this.cbCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbCategories.FormattingEnabled = true;
             this.cbCategories.Location = new System.Drawing.Point(12, 226);
             this.cbCategories.Name = "cbCategories";
-            this.cbCategories.Size = new System.Drawing.Size(195, 124);
+            this.cbCategories.Size = new System.Drawing.Size(274, 109);
             this.cbCategories.TabIndex = 71;
             this.cbCategories.Validating += new System.ComponentModel.CancelEventHandler(this.cbCategories_Validating);
             // 
             // cbIsActive
             // 
             this.cbIsActive.AutoSize = true;
-            this.cbIsActive.Location = new System.Drawing.Point(288, 158);
+            this.cbIsActive.Location = new System.Drawing.Point(320, 158);
             this.cbIsActive.Name = "cbIsActive";
             this.cbIsActive.Size = new System.Drawing.Size(64, 17);
             this.cbIsActive.TabIndex = 72;
@@ -133,15 +136,15 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // dtpReleaseDate
             // 
-            this.dtpReleaseDate.Location = new System.Drawing.Point(99, 103);
+            this.dtpReleaseDate.Location = new System.Drawing.Point(131, 103);
             this.dtpReleaseDate.Name = "dtpReleaseDate";
-            this.dtpReleaseDate.Size = new System.Drawing.Size(253, 20);
+            this.dtpReleaseDate.Size = new System.Drawing.Size(259, 20);
             this.dtpReleaseDate.TabIndex = 73;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 103);
+            this.label4.Location = new System.Drawing.Point(39, 103);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 13);
             this.label4.TabIndex = 74;
@@ -149,10 +152,10 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // btnUpload
             // 
-            this.btnUpload.Location = new System.Drawing.Point(266, 180);
+            this.btnUpload.Location = new System.Drawing.Point(302, 180);
             this.btnUpload.Margin = new System.Windows.Forms.Padding(2);
             this.btnUpload.Name = "btnUpload";
-            this.btnUpload.Size = new System.Drawing.Size(86, 41);
+            this.btnUpload.Size = new System.Drawing.Size(92, 41);
             this.btnUpload.TabIndex = 75;
             this.btnUpload.Text = "Upload PDF";
             this.btnUpload.UseVisualStyleBackColor = true;
@@ -161,10 +164,10 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // btnDownload
             // 
-            this.btnDownload.Location = new System.Drawing.Point(160, 180);
+            this.btnDownload.Location = new System.Drawing.Point(196, 180);
             this.btnDownload.Margin = new System.Windows.Forms.Padding(2);
             this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(86, 41);
+            this.btnDownload.Size = new System.Drawing.Size(92, 41);
             this.btnDownload.TabIndex = 76;
             this.btnDownload.Text = "Download";
             this.btnDownload.UseVisualStyleBackColor = true;
@@ -172,28 +175,29 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // pbLoading
             // 
-            this.pbLoading.Location = new System.Drawing.Point(12, 388);
+            this.pbLoading.Location = new System.Drawing.Point(33, 401);
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.pbLoading.Size = new System.Drawing.Size(364, 23);
+            this.pbLoading.Size = new System.Drawing.Size(354, 23);
             this.pbLoading.TabIndex = 77;
             this.pbLoading.Visible = false;
             // 
             // pictureBox
             // 
             this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox.Location = new System.Drawing.Point(232, 226);
+            this.pictureBox.Location = new System.Drawing.Point(293, 226);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox.Size = new System.Drawing.Size(95, 133);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 78;
             this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // dodajSlikuButton
             // 
-            this.dodajSlikuButton.Location = new System.Drawing.Point(301, 129);
+            this.dodajSlikuButton.Location = new System.Drawing.Point(333, 129);
             this.dodajSlikuButton.Name = "dodajSlikuButton";
-            this.dodajSlikuButton.Size = new System.Drawing.Size(51, 23);
+            this.dodajSlikuButton.Size = new System.Drawing.Size(57, 23);
             this.dodajSlikuButton.TabIndex = 79;
             this.dodajSlikuButton.Text = "Dodaj";
             this.dodajSlikuButton.UseVisualStyleBackColor = true;
@@ -201,9 +205,9 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             // inputPicture
             // 
-            this.inputPicture.Location = new System.Drawing.Point(99, 129);
+            this.inputPicture.Location = new System.Drawing.Point(131, 129);
             this.inputPicture.Name = "inputPicture";
-            this.inputPicture.Size = new System.Drawing.Size(194, 20);
+            this.inputPicture.Size = new System.Drawing.Size(200, 20);
             this.inputPicture.TabIndex = 80;
             this.inputPicture.TabStop = false;
             this.inputPicture.Validating += new System.ComponentModel.CancelEventHandler(this.inputPicture_Validating);
@@ -211,7 +215,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(60, 134);
+            this.label6.Location = new System.Drawing.Point(92, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 81;
@@ -225,7 +229,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 419);
+            this.ClientSize = new System.Drawing.Size(412, 448);
             this.Controls.Add(this.dodajSlikuButton);
             this.Controls.Add(this.inputPicture);
             this.Controls.Add(this.label6);

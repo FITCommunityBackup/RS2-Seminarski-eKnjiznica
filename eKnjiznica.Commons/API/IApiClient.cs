@@ -25,6 +25,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> GetAuditLogs();
         Task<HttpResponseMessage> GetMyTransactions();
         Task<HttpResponseMessage> GetClientBooks();
+        Task<HttpResponseMessage> GetRecommendedBooks();
         Task<HttpResponseMessage> GetCategories(string categoryNameFilter,bool includeInactiveCategories);
         Task<HttpResponseMessage> GetAuctions(DateTime dateFrom, DateTime dateTo,bool includeInactive);
         Task<HttpResponseMessage> GetActiveAuctions();
@@ -34,7 +35,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
         Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
         Task<HttpResponseMessage> GetTransactions(string username, string adminUsername);
-        Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName);
+        Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName,bool includeInactive);
         Task<HttpResponseMessage> MakeBid(decimal amount, int id);
         Task<HttpResponseMessage> GetBookOffersByCategory(int categoryId);
         Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive);

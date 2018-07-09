@@ -42,7 +42,7 @@ namespace eKnjiznica.Mobile.Books
                 bookCategories.ItemDisplayBinding = new Binding("CategoryName");
                 if (Categories.Count > 0)
                 {
-                    await BindList(Categories[0].Id);
+                    //await BindList(Categories[0].Id);
                     bookCategories.SelectedIndex = 0;
                 }
             }

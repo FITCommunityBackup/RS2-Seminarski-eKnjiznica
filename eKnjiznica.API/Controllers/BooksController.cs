@@ -1,5 +1,6 @@
 ﻿using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.CORE.Services.Books;
+using eKnjiznica.CORE.Services.Recommender;
 using eKnjiznica.DAL.EF;
 using System;
 using System.Collections.Generic;
@@ -14,29 +15,44 @@ namespace eKnjiznica.API.Controllers
     public class BooksController : BaseController
     {
         private IBookService bookService;
+        private IRecommenderService recommenderService;
 
-        public BooksController(IBookService bookService)
+        public BooksController(IBookService bookService, IRecommenderService recommenderService)
         {
             this.bookService = bookService;
+            this.recommenderService = recommenderService;
         }
         [Authorize(Roles = EntityRoles.AdminRole)]
         [HttpGet]
         [Route("")]
-        public IHttpActionResult GetBooks([FromUri(Name = "title")] string title = null, [FromUri(Name = "author")] string author = null)
+        public IHttpActionResult GetBooks(
+            [FromUri(Name = "title")] string title = null,
+            [FromUri(Name = "author")] string author = null,
+            [FromUri(Name = "includeInactive")] bool includeInactive = false)
         {
-            var result = bookService.GetBooks(title, author);
+            var result = bookService.GetBooks(title, author,includeInactive);
             return Ok(result);
         }
 
         [HttpGet]
         [Route("category/{categoryId}")]
-        [Authorize(Roles =EntityRoles.AdminRole+","+EntityRoles.ClientRole)]
+        [Authorize(Roles = EntityRoles.AdminRole + "," + EntityRoles.ClientRole)]
         public IHttpActionResult GetBooksByCategory(
             int categoryId)
         {
-            var result = bookService.GetBookOfferByCategory(categoryId,GetUserId());
+            var result = bookService.GetBookOfferByCategory(categoryId, GetUserId());
             return Ok(result);
         }
+        [HttpGet]
+        [Route("recommended")]
+        [Authorize(Roles=EntityRoles.ClientRole)]
+        public IHttpActionResult GetRecommendedBooks(
+       )
+        {
+            var result = recommenderService.GetTopSellingRecommendedBooksForUser(GetUserId());
+            return Ok(result);
+        }
+
         [Authorize(Roles = EntityRoles.AdminRole)]
         [HttpPost]
         [Route("")]

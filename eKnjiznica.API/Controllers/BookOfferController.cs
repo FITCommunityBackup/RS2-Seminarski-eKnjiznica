@@ -1,5 +1,6 @@
 ﻿using eKnjiznica.Commons.ViewModels.Books;
 using eKnjiznica.CORE.Services.Books;
+using eKnjiznica.DAL.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Web.Http;
 namespace eKnjiznica.API.Controllers
 {
     [RoutePrefix("api/books/admin/offers")]
+    [Authorize(Roles =EntityRoles.AdminRole)]
     public class BookOfferController : BaseController
     {
         private IBookService bookService;

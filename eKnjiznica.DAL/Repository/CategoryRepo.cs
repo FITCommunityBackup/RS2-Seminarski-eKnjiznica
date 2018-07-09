@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,6 +42,38 @@ namespace eKnjiznica.DAL.Repository
                 IsActive = x.IsActive,
                 NumberOfBooks = x.Books.Count()
             }).ToList();
+        }
+
+        public Dictionary<int, int> GetCategoriesAndBookNumber(string userId)
+        {
+            var userBooks = context
+                .UserBooks
+                .Include(x=>x.BookOffer)
+                .Include(x=>x.BookOffer.Book)
+                .Include(x=>x.BookOffer.Book.Categories)
+                .Where(x => x.UserId == userId)
+                .ToList();
+
+            Dictionary<int, int> result = new Dictionary<int, int>();
+            foreach (var item in userBooks)
+            {
+                foreach (var cat in item.BookOffer.Book.Categories)
+                {
+                    if (!cat.IsActive)
+                        continue;
+                    if (result.ContainsKey(cat.CategoryId))
+                    {
+                        result[cat.CategoryId] += 1;
+                    }
+                    else
+                    {
+                        result.Add(cat.CategoryId, 1);
+                    }
+                }
+              
+            }
+
+            return result;
         }
 
         public CategoryVM GetCategory(int id)

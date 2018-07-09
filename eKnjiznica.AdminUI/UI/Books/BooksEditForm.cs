@@ -279,7 +279,7 @@ namespace eKnjiznica.AdminUI.UI.Books
                 MemoryStream ms = new MemoryStream();
                 imageForUpload.Save(ms, originalImage.RawFormat);
                 uploadImage = ms.ToArray();
-
+                pictureBox.Image = imageForUpload;
                 imageName = dialog.SafeFileName;
             }
             else
@@ -340,6 +340,11 @@ namespace eKnjiznica.AdminUI.UI.Books
                 errorProvider.SetError(btnUpload, null);
                 e.Cancel = false;
             }
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -45,7 +45,7 @@ namespace eKnjiznica.Mobile.Navigation
                 userBasketService.GetUserItems().CollectionChanged += BasketItemChanged;
                 MenuItems = new ObservableCollection<MasterDetailPageMenuItem>(new[]
                 {
-                    new MasterDetailPageMenuItem {  Title = "Preporučeno",TargetType=typeof(MainPage) },
+                    new MasterDetailPageMenuItem {  Title = "Preporučeno",TargetType=typeof(RecommendedPage) },
                     new MasterDetailPageMenuItem {  Title = "Knjige" ,TargetType=typeof(BooksPage)},
                     new MasterDetailPageMenuItem {  Title = "Kupljene knjige" ,TargetType=typeof(MyBooksPage)},
                     myBasketItem,

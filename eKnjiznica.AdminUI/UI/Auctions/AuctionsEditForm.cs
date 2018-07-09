@@ -127,7 +127,7 @@ namespace eKnjiznica.AdminUI.UI.Auctions
 
         private async Task BindBookData()
         {
-            var result = await apiClient.GetBooks(inputBookTitle.Text.Trim(), inputAuthorName.Text.Trim());
+            var result = await apiClient.GetBooks(inputBookTitle.Text.Trim(), inputAuthorName.Text.Trim(),false);
             if (result.IsSuccessStatusCode)
             {
                 Books = await result.Content.ReadAsAsync<IList<BooksVM>>();

@@ -24,6 +24,14 @@ namespace eKnjiznica.Commons.API
             this.httpClient = httpClient;
         }
 
+
+
+        public Task<HttpResponseMessage> GetRecommendedBooks()
+        {
+            return Get("api/books/recommended");
+        }
+
+
         public Task<HttpResponseMessage> BuyBook(IList<BookOfferVM> books)
         {
 
@@ -154,9 +162,9 @@ namespace eKnjiznica.Commons.API
         {
             return Get($"api/books/{id}/files");
         }
-        public Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName)
+        public Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName,bool includeInactive)
         {
-            return Get($"api/books?title={bookTitle}&author={authorName}");
+            return Get($"api/books?title={bookTitle}&author={authorName}&includeInactive={includeInactive}");
         }
 
 
@@ -338,7 +346,7 @@ namespace eKnjiznica.Commons.API
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(newAuth.TokenType, newAuth.AccessToken);
         }
 
-    
+
 
 
 

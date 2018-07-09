@@ -10,6 +10,7 @@ using eKnjiznica.CORE.Services.Clients;
 using eKnjiznica.CORE.Services.Documents;
 using eKnjiznica.CORE.Services.EmailService;
 using eKnjiznica.CORE.Services.Logger;
+using eKnjiznica.CORE.Services.Recommender;
 using eKnjiznica.CORE.Services.Roles;
 using eKnjiznica.CORE.Services.Transaction;
 using eKnjiznica.DAL;
@@ -118,6 +119,7 @@ namespace eKnjiznica.API
             container.RegisterType<IClientBooksService, ClientBooksService>();
             container.RegisterType<IAuctionRepo, AuctionsRepo>();
             container.RegisterType<IAuctionService, AuctionService>();
+            container.RegisterType<IRecommenderService, RecommenderService>();
 
             container.RegisterType<IUserStore<ApplicationUser>,
                 UserStore<ApplicationUser>>();

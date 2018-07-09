@@ -20,7 +20,7 @@ namespace eKnjiznica.Mobile.UWP
         public MainPage()
         {
             this.InitializeComponent();
-
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
             LoadApplication(new eKnjiznica.Mobile.App());
         }
     }

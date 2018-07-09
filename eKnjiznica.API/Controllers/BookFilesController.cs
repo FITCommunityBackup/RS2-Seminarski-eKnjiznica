@@ -26,15 +26,22 @@ namespace eKnjiznica.API.Controllers
         [Route("api/books/{id}/files")]
         public HttpResponseMessage GetFile(int id)
         {
-            string path = documentService.GetFileAbsolutePath(id);
-            HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
-            var stream = new FileStream(path, FileMode.Open);
-            result.Content = new StreamContent(stream);
-            result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
-            result.Content.Headers.ContentDisposition.FileName = Path.GetFileName(path);
-            result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-            result.Content.Headers.ContentLength = stream.Length;
-            return result;
+            try
+            {
+                string path = documentService.GetFileAbsolutePath(id);
+                HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.OK);
+                var stream = new FileStream(path, FileMode.Open);
+                result.Content = new StreamContent(stream);
+                result.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment");
+                result.Content.Headers.ContentDisposition.FileName = Path.GetFileName(path);
+                result.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+                result.Content.Headers.ContentLength = stream.Length;
+                return result;
+            } catch (Exception e)
+            {
+                HttpResponseMessage result = new HttpResponseMessage(HttpStatusCode.InternalServerError);
+                return result;
+            }
         }
         [HttpPost]
         [Route("api/books/{id}/files")]

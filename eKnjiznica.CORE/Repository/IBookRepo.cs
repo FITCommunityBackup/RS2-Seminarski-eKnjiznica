@@ -10,13 +10,16 @@ namespace eKnjiznica.CORE.Repository
 {
     public interface IBookRepo
     {
-        List<BooksVM> GetBooks(string title, string authorName);
+        List<BooksVM> GetBooks(string title, string authorName,bool includeInactive);
         void UpdateBook(UpdateBookVM model, int id);
         void UpdateBookCategories(UpdateBookVM model, int id,string userId);
 
         BooksVM CreateBook(CreateBookVM model, string userId);
         BooksVM GetBookById(int bookId);
         void SaveFilePath(BooksVM book, string relativePath,string fileName);
+        List<BookOfferVM> GetTopSellingBooksInCategories(List<int> categoryId,string userId);
+        List<BookOfferVM> GetTopSellingBooks(List<int> alreadyAddedBooks, string userId, int neededBookNumber);
+
         BookOfferVM CreateAuctionBookOffer(CreateAuctionBookOfferVM createAuctionBookOfferVM);
         List<BookOfferVM> GetBookOffers(string title, string author,bool includeInactive);
         BookOfferVM CreateBookOffer(CreateBookOfferVM model);

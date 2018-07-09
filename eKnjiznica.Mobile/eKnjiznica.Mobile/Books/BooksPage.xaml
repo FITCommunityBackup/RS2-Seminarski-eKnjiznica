@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           
              x:Class="eKnjiznica.Mobile.Books.BooksPage">
 
-    
+
     <ContentPage.Content>
         <StackLayout Padding="30">
             <Picker x:Name="bookCategories" Title="Odaberite kategoriju" SelectedIndexChanged="bookCategories_SelectedIndexChanged"></Picker>
@@ -17,11 +18,14 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
+
                                 <Image Grid.Column="0" Margin="10">
-                                    <Image.Source>
-                                        <UriImageSource Uri="{Binding ImageUri}"></UriImageSource>
+                                    <Image.Source >
+                                        <UriImageSource Uri="{Binding ImageUrl}" CachingEnabled="False" ></UriImageSource>
                                     </Image.Source>
                                 </Image>
+
+
 
                                 <StackLayout Grid.Column="1" Padding="10">
                                     <Label Text="{Binding Title}" FontAttributes="Bold" />

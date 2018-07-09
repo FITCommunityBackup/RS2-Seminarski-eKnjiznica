@@ -71,10 +71,10 @@ namespace eKnjiznica.DAL.Repository
         public BookOfferVM GetBookOfferById(int id)
         {
             return context.BookOffers
-                .Where(x => x.Id==id)
+                .Where(x => x.Id == id)
                 .Include(x => x.Book)
                 .Include(x => x.Book.Categories)
-                .Include(x=>x.PurchasedBooks)
+                .Include(x => x.PurchasedBooks)
                 .Select(bookOffermaper(null))
                 .FirstOrDefault();
 
@@ -100,20 +100,20 @@ namespace eKnjiznica.DAL.Repository
                       Description = x.Description,
                       IsActive = x.IsActive,
                       ReleaseDate = x.ReleaseDate,
-                      FileLocation=  x.FileLocation,
-                      FileName =x.FileName,
-                      ImageLocation=x.ImageLocation
+                      FileLocation = x.FileLocation,
+                      FileName = x.FileName,
+                      ImageLocation = x.ImageLocation
 
                   }).FirstOrDefault();
         }
 
-        public List<BookOfferVM> GetBookOffers(string title, string authorName,bool includeInactive)
+        public List<BookOfferVM> GetBookOffers(string title, string authorName, bool includeInactive)
         {
             return context.BookOffers
                  .Where(x => includeInactive || x.IsActive)
                  .Include(x => x.Book)
                  .Include(x => x.Book.Categories)
-                 .Include(x=>x.PurchasedBooks)
+                 .Include(x => x.PurchasedBooks)
                   .Where(x => string.IsNullOrEmpty(title) || x.Book.Title.Contains(title))
                  .Where(x => string.IsNullOrEmpty(authorName) || x.Book.Autor.Contains(authorName))
                  .OrderBy(x => x.Book.Title)
@@ -143,11 +143,11 @@ namespace eKnjiznica.DAL.Repository
                     IsActive = y.IsActive,
                 }).ToList(),
                 ImageUrl = x.Book.ImageLocation,
-                UserHasBook = userId==null?false:x.PurchasedBooks.Any(y => y.UserId == userId)
+                UserHasBook = userId == null ? false : x.PurchasedBooks.Any(y => y.UserId == userId)
             };
         }
 
-        public List<BookOfferVM> GetBookOffersByCategory(int categoryId,string userId)
+        public List<BookOfferVM> GetBookOffersByCategory(int categoryId, string userId)
         {
             return context.BookOffers
                      .Where(x => x.IsActive)
@@ -160,10 +160,11 @@ namespace eKnjiznica.DAL.Repository
                      .Select(bookOffermaper(userId))
                      .ToList();
         }
-        public List<BooksVM> GetBooks(string title, string authorName)
+        public List<BooksVM> GetBooks(string title, string authorName,bool includeInactive)
         {
             return context
                  .Books
+                 .Where(x=>x.IsActive || includeInactive)
                  .Where(x => string.IsNullOrEmpty(title) || x.Title.Contains(title))
                  .Where(x => string.IsNullOrEmpty(authorName) || x.Autor.Contains(authorName))
                  .Select(x => new BooksVM
@@ -182,11 +183,11 @@ namespace eKnjiznica.DAL.Repository
                      ReleaseDate = x.ReleaseDate,
                      FileLocation = x.FileLocation,
                      FileName = x.FileName,
-                     ImageLocation=x.ImageLocation
+                     ImageLocation = x.ImageLocation
                  }).ToList();
         }
 
-        public void SaveFilePath(BooksVM book, string relativePath,string fileName)
+        public void SaveFilePath(BooksVM book, string relativePath, string fileName)
         {
             var result = context.Books.FirstOrDefault(x => x.Id == book.Id);
             result.FileLocation = relativePath;
@@ -248,7 +249,7 @@ namespace eKnjiznica.DAL.Repository
 
         public void UpdateBookOffer(UpdateBookOfferVM model, int id)
         {
-            var result =context.BookOffers.FirstOrDefault(x => x.Id == id);
+            var result = context.BookOffers.FirstOrDefault(x => x.Id == id);
             if (result == null)
                 return;
             result.BookId = model.BookId;
@@ -278,6 +279,41 @@ namespace eKnjiznica.DAL.Repository
             context.BookOffers.Add(bookOffer);
             context.SaveChanges();
             return GetBookOfferById(bookOffer.Id);
+        }
+
+
+        public List<BookOfferVM> GetTopSellingBooksInCategories(List<int> categoryId, string userId)
+        {
+            var bookOffers = context.BookOffers
+                        .Where(x => x.IsActive)
+                .Include(x => x.Book.Categories)
+                          .Where(x => !x.PurchasedBooks.Any(y => y.UserId == userId && y.BookOfferId == x.Id))
+                          .Where(x => x.Book.Categories.Any(y =>y.IsActive&& categoryId.Contains(y.CategoryId)))
+                          .Include(x => x.Book)
+                          .Include(x => x.PurchasedBooks)
+                          .OrderByDescending(x => x.PurchasedBooks.Count)
+                          .Select(bookOffermaper(userId))
+                          .ToList();
+            return bookOffers;
+        }
+
+        public List<BookOfferVM> GetTopSellingBooks(List<int> alreadyAddedBooks, string userId, int neededBookNumber)
+        {
+
+            var bookOffers = context.BookOffers
+                        .Where(x => x.IsActive)
+                .Where(x => !x.PurchasedBooks.Any(y => y.UserId == userId && y.BookOfferId == x.Id))
+                .Where(x => !alreadyAddedBooks.Contains(x.Id))
+                .Include(x => x.Book)
+                .Include(x => x.PurchasedBooks)
+                .Include(x => x.Book.Categories)
+                .OrderByDescending(x => x.PurchasedBooks.Count)
+                .Take(neededBookNumber - alreadyAddedBooks.Count())
+                .Select(bookOffermaper(userId))
+                .ToList();
+
+
+            return bookOffers;
         }
     }
 }

@@ -40,6 +40,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.inputAuthorName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.cbIncludeInactive = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +48,9 @@
             // 
             this.gvBooks.AllowUserToAddRows = false;
             this.gvBooks.AllowUserToDeleteRows = false;
+            this.gvBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -54,13 +58,13 @@
             this.gvAuthorName,
             this.gvIsActive});
             this.gvBooks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gvBooks.Location = new System.Drawing.Point(12, 72);
+            this.gvBooks.Location = new System.Drawing.Point(12, 158);
             this.gvBooks.MultiSelect = false;
             this.gvBooks.Name = "gvBooks";
             this.gvBooks.ReadOnly = true;
             this.gvBooks.RowTemplate.Height = 24;
             this.gvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvBooks.Size = new System.Drawing.Size(346, 330);
+            this.gvBooks.Size = new System.Drawing.Size(346, 362);
             this.gvBooks.TabIndex = 9;
             // 
             // Id
@@ -94,7 +98,7 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(215, 44);
+            this.btnFilter.Location = new System.Drawing.Point(134, 114);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 8;
@@ -120,7 +124,7 @@
             // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(283, 408);
+            this.btnDetails.Location = new System.Drawing.Point(283, 526);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(75, 23);
             this.btnDetails.TabIndex = 11;
@@ -130,7 +134,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(202, 408);
+            this.button2.Location = new System.Drawing.Point(202, 526);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -140,7 +144,7 @@
             // 
             // inputAuthorName
             // 
-            this.inputAuthorName.Location = new System.Drawing.Point(58, 46);
+            this.inputAuthorName.Location = new System.Drawing.Point(58, 49);
             this.inputAuthorName.Name = "inputAuthorName";
             this.inputAuthorName.Size = new System.Drawing.Size(151, 20);
             this.inputAuthorName.TabIndex = 13;
@@ -154,11 +158,22 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Autor";
             // 
+            // cbIncludeInactive
+            // 
+            this.cbIncludeInactive.AutoSize = true;
+            this.cbIncludeInactive.Location = new System.Drawing.Point(99, 82);
+            this.cbIncludeInactive.Name = "cbIncludeInactive";
+            this.cbIncludeInactive.Size = new System.Drawing.Size(108, 17);
+            this.cbIncludeInactive.TabIndex = 14;
+            this.cbIncludeInactive.Text = "Uključi neaktivne";
+            this.cbIncludeInactive.UseVisualStyleBackColor = true;
+            // 
             // BooksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 458);
+            this.ClientSize = new System.Drawing.Size(390, 561);
+            this.Controls.Add(this.cbIncludeInactive);
             this.Controls.Add(this.inputAuthorName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.gvBooks);
@@ -191,5 +206,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gvBookTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn gvAuthorName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn gvIsActive;
+        private System.Windows.Forms.CheckBox cbIncludeInactive;
     }
 }

@@ -18,6 +18,7 @@ namespace eKnjiznica.Mobile.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
