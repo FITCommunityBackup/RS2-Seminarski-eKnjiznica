@@ -196,7 +196,7 @@
             this.Controls.Add(this.btnDetails);
             this.Controls.Add(this.btnAdd);
             this.Name = "ClientsForm";
-            this.Text = "ClientsForm";
+            this.Text = "Klijenti";
             this.Load += new System.EventHandler(this.ClientsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvClients)).EndInit();
             this.ResumeLayout(false);

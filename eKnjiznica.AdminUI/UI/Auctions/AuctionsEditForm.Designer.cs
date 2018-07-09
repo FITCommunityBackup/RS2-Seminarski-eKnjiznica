@@ -137,6 +137,9 @@
             // 
             this.gvBooks.AllowUserToAddRows = false;
             this.gvBooks.AllowUserToDeleteRows = false;
+            this.gvBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -219,6 +222,7 @@
             // 
             // btnAction
             // 
+            this.btnAction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAction.Location = new System.Drawing.Point(212, 404);
             this.btnAction.Name = "btnAction";
             this.btnAction.Size = new System.Drawing.Size(75, 23);
@@ -253,7 +257,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AuctionsEditForm";
-            this.Text = "AuctionsEditForm";
+            this.Text = "Evidencija aukcija";
             this.Load += new System.EventHandler(this.AuctionsEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.inputStartPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputCurrentPrice)).EndInit();

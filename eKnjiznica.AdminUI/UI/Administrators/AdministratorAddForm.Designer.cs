@@ -49,7 +49,6 @@
             // inputPhone
             // 
             this.inputPhone.Location = new System.Drawing.Point(97, 99);
-            this.inputPhone.Mask = "(999) 000-000";
             this.inputPhone.Name = "inputPhone";
             this.inputPhone.Size = new System.Drawing.Size(195, 20);
             this.inputPhone.TabIndex = 51;
@@ -188,7 +187,6 @@
             this.Name = "AdministratorAddForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Dodaj administratora";
-
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

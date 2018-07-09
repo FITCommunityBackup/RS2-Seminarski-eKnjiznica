@@ -194,7 +194,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDetails);
             this.Name = "TransactionsForm";
-            this.Text = "TransactionsForm";
+            this.Text = "Transakcije";
             this.Load += new System.EventHandler(this.TransactionsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvTransactions)).EndInit();
             this.ResumeLayout(false);

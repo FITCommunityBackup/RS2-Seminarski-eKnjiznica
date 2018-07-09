@@ -148,7 +148,7 @@
             // 
             // Date
             // 
-            this.Date.DataPropertyName = "Date";
+            this.Date.DataPropertyName = "BuyDate";
             this.Date.HeaderText = "Datum kupovine";
             this.Date.Name = "Date";
             this.Date.ReadOnly = true;
@@ -166,7 +166,7 @@
             this.Controls.Add(this.textBuyer);
             this.Controls.Add(this.label1);
             this.Name = "TransactionBooksPurchaseDetails";
-            this.Text = "TransactionBooksPurchaseDetails";
+            this.Text = "Detalji transakcije";
             this.Load += new System.EventHandler(this.TransactionBooksPurchaseDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClientBooks)).EndInit();

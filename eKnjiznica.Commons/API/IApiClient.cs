@@ -35,7 +35,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> CreateCategory(CategoryAddVM model);
         Task<HttpResponseMessage> UpdateCategory(CategoryUpdateVm categoryUpdateVm, int id);
         Task<HttpResponseMessage> GetTransactions(string username, string adminUsername);
-        Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName,bool includeInactive);
+        Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName,bool includeInactive,int categoryId=0);
         Task<HttpResponseMessage> MakeBid(decimal amount, int id);
         Task<HttpResponseMessage> GetBookOffersByCategory(int categoryId);
         Task<HttpResponseMessage> GetBookOffers(string bookTitle, string authorName,bool includeInactive);

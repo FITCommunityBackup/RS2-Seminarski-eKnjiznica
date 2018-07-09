@@ -193,12 +193,6 @@
     <Compile Include="UI\Clients\ClientsForm.Designer.cs">
       <DependentUpon>ClientsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Logs\LogsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Logs\LogsForm.Designer.cs">
-      <DependentUpon>LogsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\Transactions\TransactionBooksPurchaseDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,9 +274,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Clients\ClientsForm.resx">
       <DependentUpon>ClientsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\Logs\LogsForm.resx">
-      <DependentUpon>LogsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Transactions\TransactionBooksPurchaseDetails.resx">
       <DependentUpon>TransactionBooksPurchaseDetails.cs</DependentUpon>

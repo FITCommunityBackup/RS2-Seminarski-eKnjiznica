@@ -34,9 +34,6 @@
             this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.btnFIlter = new System.Windows.Forms.Button();
             this.gvAuctions = new System.Windows.Forms.DataGridView();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDetails = new System.Windows.Forms.Button();
-            this.cbIncludeInactive = new System.Windows.Forms.CheckBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AuthorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +43,9 @@
             this.CurrentPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CurrentWinner = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsActive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDetails = new System.Windows.Forms.Button();
+            this.cbIncludeInactive = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvAuctions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +95,9 @@
             // 
             this.gvAuctions.AllowUserToAddRows = false;
             this.gvAuctions.AllowUserToDeleteRows = false;
+            this.gvAuctions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvAuctions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvAuctions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvAuctions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -114,36 +117,6 @@
             this.gvAuctions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvAuctions.Size = new System.Drawing.Size(646, 194);
             this.gvAuctions.TabIndex = 5;
-            // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(583, 336);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "Dodaj";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // btnDetails
-            // 
-            this.btnDetails.Location = new System.Drawing.Point(502, 336);
-            this.btnDetails.Name = "btnDetails";
-            this.btnDetails.Size = new System.Drawing.Size(75, 23);
-            this.btnDetails.TabIndex = 7;
-            this.btnDetails.Text = "Detalji";
-            this.btnDetails.UseVisualStyleBackColor = true;
-            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
-            // 
-            // cbIncludeInactive
-            // 
-            this.cbIncludeInactive.AutoSize = true;
-            this.cbIncludeInactive.Location = new System.Drawing.Point(175, 84);
-            this.cbIncludeInactive.Name = "cbIncludeInactive";
-            this.cbIncludeInactive.Size = new System.Drawing.Size(108, 17);
-            this.cbIncludeInactive.TabIndex = 8;
-            this.cbIncludeInactive.Text = "Uključi neaktivne";
-            this.cbIncludeInactive.UseVisualStyleBackColor = true;
             // 
             // Id
             // 
@@ -210,6 +183,36 @@
             this.IsActive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.IsActive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(583, 336);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 6;
+            this.btnAdd.Text = "Dodaj";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnDetails
+            // 
+            this.btnDetails.Location = new System.Drawing.Point(502, 336);
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.Size = new System.Drawing.Size(75, 23);
+            this.btnDetails.TabIndex = 7;
+            this.btnDetails.Text = "Detalji";
+            this.btnDetails.UseVisualStyleBackColor = true;
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
+            // 
+            // cbIncludeInactive
+            // 
+            this.cbIncludeInactive.AutoSize = true;
+            this.cbIncludeInactive.Location = new System.Drawing.Point(175, 84);
+            this.cbIncludeInactive.Name = "cbIncludeInactive";
+            this.cbIncludeInactive.Size = new System.Drawing.Size(108, 17);
+            this.cbIncludeInactive.TabIndex = 8;
+            this.cbIncludeInactive.Text = "Uključi neaktivne";
+            this.cbIncludeInactive.UseVisualStyleBackColor = true;
+            // 
             // AuctionsForms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,7 +228,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AuctionsForms";
-            this.Text = "AuctionsForms";
+            this.Text = "Aukcije";
             this.Load += new System.EventHandler(this.AuctionsForms_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvAuctions)).EndInit();
             this.ResumeLayout(false);

@@ -160,13 +160,14 @@ namespace eKnjiznica.DAL.Repository
                      .Select(bookOffermaper(userId))
                      .ToList();
         }
-        public List<BooksVM> GetBooks(string title, string authorName,bool includeInactive)
+        public List<BooksVM> GetBooks(string title, string authorName,bool includeInactive, int categoryId)
         {
             return context
                  .Books
                  .Where(x=>x.IsActive || includeInactive)
                  .Where(x => string.IsNullOrEmpty(title) || x.Title.Contains(title))
                  .Where(x => string.IsNullOrEmpty(authorName) || x.Autor.Contains(authorName))
+                 .Where(x=>categoryId==0 || x.Categories.Any(y=>y.IsActive==true && y.CategoryId==categoryId))
                  .Select(x => new BooksVM
                  {
                      Id = x.Id,

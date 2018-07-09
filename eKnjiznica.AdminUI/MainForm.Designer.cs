@@ -31,7 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.administratoriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administratoriToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.logoviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kategorijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.knjigeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,8 +38,8 @@
             this.korisniciToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transakcijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kupovineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.odjaviSeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aukcijeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.odjaviSeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,8 +64,7 @@
             // administratoriToolStripMenuItem
             // 
             this.administratoriToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.administratoriToolStripMenuItem1,
-            this.logoviToolStripMenuItem});
+            this.administratoriToolStripMenuItem1});
             this.administratoriToolStripMenuItem.Name = "administratoriToolStripMenuItem";
             this.administratoriToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.administratoriToolStripMenuItem.Text = "Administracija";
@@ -77,13 +75,6 @@
             this.administratoriToolStripMenuItem1.Size = new System.Drawing.Size(150, 22);
             this.administratoriToolStripMenuItem1.Text = "Administratori";
             this.administratoriToolStripMenuItem1.Click += new System.EventHandler(this.administratoriToolStripMenuItem1_Click);
-            // 
-            // logoviToolStripMenuItem
-            // 
-            this.logoviToolStripMenuItem.Name = "logoviToolStripMenuItem";
-            this.logoviToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.logoviToolStripMenuItem.Text = "Logovi";
-            this.logoviToolStripMenuItem.Click += new System.EventHandler(this.logoviToolStripMenuItem_Click);
             // 
             // kategorijeToolStripMenuItem
             // 
@@ -136,19 +127,19 @@
             this.kupovineToolStripMenuItem.Text = "Kupovine";
             this.kupovineToolStripMenuItem.Click += new System.EventHandler(this.kupovineToolStripMenuItem_Click);
             // 
-            // odjaviSeToolStripMenuItem
-            // 
-            this.odjaviSeToolStripMenuItem.Name = "odjaviSeToolStripMenuItem";
-            this.odjaviSeToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.odjaviSeToolStripMenuItem.Text = "Odjavi se";
-            this.odjaviSeToolStripMenuItem.Click += new System.EventHandler(this.odjaviSeToolStripMenuItem_Click);
-            // 
             // aukcijeToolStripMenuItem
             // 
             this.aukcijeToolStripMenuItem.Name = "aukcijeToolStripMenuItem";
             this.aukcijeToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.aukcijeToolStripMenuItem.Text = "Aukcije";
             this.aukcijeToolStripMenuItem.Click += new System.EventHandler(this.aukcijeToolStripMenuItem_Click);
+            // 
+            // odjaviSeToolStripMenuItem
+            // 
+            this.odjaviSeToolStripMenuItem.Name = "odjaviSeToolStripMenuItem";
+            this.odjaviSeToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.odjaviSeToolStripMenuItem.Text = "Odjavi se";
+            this.odjaviSeToolStripMenuItem.Click += new System.EventHandler(this.odjaviSeToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -160,7 +151,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MainForm";
+            this.Text = "eKnjiznica";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -174,7 +165,6 @@
         private System.Windows.Forms.ToolStripMenuItem administratoriToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem odjaviSeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem administratoriToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem logoviToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kategorijeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem knjigeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledToolStripMenuItem;

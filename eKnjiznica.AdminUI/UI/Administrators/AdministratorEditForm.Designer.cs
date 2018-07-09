@@ -50,7 +50,6 @@
             // inputPhone
             // 
             this.inputPhone.Location = new System.Drawing.Point(102, 98);
-            this.inputPhone.Mask = "(999) 000-000";
             this.inputPhone.Name = "inputPhone";
             this.inputPhone.Size = new System.Drawing.Size(195, 20);
             this.inputPhone.TabIndex = 65;
@@ -167,7 +166,7 @@
             // 
             this.cbActive.AutoSize = true;
             this.cbActive.Location = new System.Drawing.Point(223, 199);
-            this.cbActive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbActive.Margin = new System.Windows.Forms.Padding(2);
             this.cbActive.Name = "cbActive";
             this.cbActive.Size = new System.Drawing.Size(62, 17);
             this.cbActive.TabIndex = 73;
@@ -197,7 +196,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.inputName);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdministratorEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Izmjeni administratora";

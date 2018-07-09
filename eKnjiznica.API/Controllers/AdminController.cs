@@ -56,7 +56,7 @@ namespace eKnjiznica.API.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            AdminAccount adminAccount = adminService.FindByUsernameOrEmail(model.Username, model.Email);
+            AdminAccount adminAccount = adminService.FindByUsername(model.Username);
             if (adminAccount != null)
             {
                 ModelState.AddModelError("", Commons.Resources.ACCOUNT_WITH_USERNAME_EXISTS);

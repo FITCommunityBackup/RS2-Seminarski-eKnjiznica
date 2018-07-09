@@ -1,6 +1,7 @@
 ﻿using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.Commons.API;
 using eKnjiznica.Commons.ViewModels.Books;
+using eKnjiznica.Commons.ViewModels.Category;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace eKnjiznica.AdminUI.UI.Books
     {
         private IApiClient apiClient;
         private IList<BooksVM> Books;
+        private IList<CategoryVM> Categories;
         private IUnityContainer UnityContainer;
         public BooksForm(IApiClient apiClient,IUnityContainer unityContainer)
         {
@@ -34,10 +36,24 @@ namespace eKnjiznica.AdminUI.UI.Books
 
         private async void BooksForm_Load(object sender, EventArgs e)
         {
+            await BindComboBox();
             await BindData();
         }
 
-     
+        private async Task BindComboBox()
+        {
+            var result = await apiClient.GetCategories(null, false);
+            if (result.IsSuccessStatusCode)
+            {
+                this.Categories = await result.Content.ReadAsAsync<IList<CategoryVM>>();
+                cbCategory.Items.Add("---");
+                foreach (var item in Categories)
+                {
+                    cbCategory.Items.Add(item.CategoryName);
+                }
+            }
+        }
+
         private async void btnFilter_Click(object sender, EventArgs e)
         {
             await BindData();
@@ -46,7 +62,15 @@ namespace eKnjiznica.AdminUI.UI.Books
 
         private async Task BindData()
         {
-            var result = await apiClient.GetBooks(inputBookTitle.Text.Trim(),inputAuthorName.Text.Trim(),cbIncludeInactive.Checked);
+            int categoryId= 0;
+            if (cbCategory.SelectedIndex > 0)
+            {
+                categoryId = Categories[cbCategory.SelectedIndex - 1].Id;
+            }
+            var result = await 
+                apiClient.GetBooks(inputBookTitle.Text.Trim(),
+                inputAuthorName.Text.Trim(),
+                cbIncludeInactive.Checked,categoryId);
             if (result.IsSuccessStatusCode)
             {
                 Books = await result.Content.ReadAsAsync <IList<BooksVM>>();
@@ -77,5 +101,7 @@ namespace eKnjiznica.AdminUI.UI.Books
             }
 
         }
+
+        
     }
 }

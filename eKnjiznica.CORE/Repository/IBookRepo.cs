@@ -10,7 +10,7 @@ namespace eKnjiznica.CORE.Repository
 {
     public interface IBookRepo
     {
-        List<BooksVM> GetBooks(string title, string authorName,bool includeInactive);
+        List<BooksVM> GetBooks(string title, string authorName,bool includeInactive, int categoryId);
         void UpdateBook(UpdateBookVM model, int id);
         void UpdateBookCategories(UpdateBookVM model, int id,string userId);
 

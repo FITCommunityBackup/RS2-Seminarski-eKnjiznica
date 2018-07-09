@@ -18,12 +18,14 @@ namespace eKnjiznica.AdminUI.UI.Administrators
     {
         private IApiClient apiClient;
         private MyRegex myRegex;
-        public AdministratorAddForm(IApiClient apiClient,MyRegex myRegex)
+        private ErrorHandlingUtil errorHandling;
+        public AdministratorAddForm(IApiClient apiClient,MyRegex myRegex,ErrorHandlingUtil errorHandling)
         {
             this.apiClient = apiClient;
-            this.AutoValidate = AutoValidate.Disable;
+            this.errorHandling = errorHandling;
             this.myRegex = myRegex;
 
+            this.AutoValidate = AutoValidate.Disable;
             this.AutoValidate = AutoValidate.EnablePreventFocusChange;
             InitializeComponent();
 
@@ -53,7 +55,8 @@ namespace eKnjiznica.AdminUI.UI.Administrators
             }
             else
             {
-                
+                var error = await errorHandling.GetErrorMessageAsync(result, "");
+                MessageBox.Show( error, Commons.Resources.ERROR);
             }
         }
 

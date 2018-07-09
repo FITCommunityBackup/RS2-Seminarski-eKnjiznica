@@ -10,7 +10,7 @@ namespace eKnjiznica.CORE.Services.Books
 {
     public interface IBookService
     {
-        List<BooksVM> GetBooks(string title, string author,bool includeInactive);
+        List<BooksVM> GetBooks(string title, string author,bool includeInactive,int categoryId);
         void UpdateBook(UpdateBookVM model, int id,string userId);
         BooksVM CreateBook(CreateBookVM model, string userId);
         List<BookOfferVM> GetBookOffers(string title, string author, bool includeInactive);

@@ -6,7 +6,6 @@ using eKnjiznica.AdminUI.UI.Auctions;
 using eKnjiznica.AdminUI.UI.Books;
 using eKnjiznica.AdminUI.UI.Categories;
 using eKnjiznica.AdminUI.UI.Clients;
-using eKnjiznica.AdminUI.UI.Logs;
 using eKnjiznica.AdminUI.UI.Transactions;
 using eKnjiznica.AdminUI.UI.UserBooks;
 using eKnjiznica.Commons.API;
@@ -54,7 +53,6 @@ namespace eKnjiznica.AdminUI
             container.RegisterType<CategoriesEditForm>();
             container.RegisterType<CategoriesAddForm>();
             container.RegisterType<CategoriesForm>();
-            container.RegisterType<LogsForm>();
             container.RegisterType<AdministratorAddForm>();
             container.RegisterType<AdministratorsForm>();
             container.RegisterType<MainForm>();

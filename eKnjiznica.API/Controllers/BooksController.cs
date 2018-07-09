@@ -28,9 +28,10 @@ namespace eKnjiznica.API.Controllers
         public IHttpActionResult GetBooks(
             [FromUri(Name = "title")] string title = null,
             [FromUri(Name = "author")] string author = null,
-            [FromUri(Name = "includeInactive")] bool includeInactive = false)
+            [FromUri(Name = "includeInactive")] bool includeInactive = false,
+            [FromUri(Name = "categoryId")] int categoryId = 0)
         {
-            var result = bookService.GetBooks(title, author,includeInactive);
+            var result = bookService.GetBooks(title, author,includeInactive,categoryId);
             return Ok(result);
         }
 

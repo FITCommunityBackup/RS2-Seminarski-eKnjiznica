@@ -121,7 +121,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "TransactionDetailsForm";
-            this.Text = "TransactionDetailsForm";
+            this.Text = "Detalji transakcije";
             this.Load += new System.EventHandler(this.TransactionDetailsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textAmount)).EndInit();
             this.ResumeLayout(false);

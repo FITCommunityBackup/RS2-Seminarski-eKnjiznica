@@ -162,9 +162,10 @@ namespace eKnjiznica.Commons.API
         {
             return Get($"api/books/{id}/files");
         }
-        public Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName,bool includeInactive)
+        public Task<HttpResponseMessage> GetBooks(string bookTitle, string authorName,bool includeInactive,int categoryId)
         {
-            return Get($"api/books?title={bookTitle}&author={authorName}&includeInactive={includeInactive}");
+            return
+                Get($"api/books?title={bookTitle}&author={authorName}&includeInactive={includeInactive}&categoryId={categoryId}");
         }
 
 

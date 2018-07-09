@@ -5,7 +5,6 @@ using eKnjiznica.AdminUI.UI.Auctions;
 using eKnjiznica.AdminUI.UI.Books;
 using eKnjiznica.AdminUI.UI.Categories;
 using eKnjiznica.AdminUI.UI.Clients;
-using eKnjiznica.AdminUI.UI.Logs;
 using eKnjiznica.AdminUI.UI.Transactions;
 using eKnjiznica.AdminUI.UI.UserBooks;
 using eKnjiznica.Commons.API;
@@ -63,15 +62,7 @@ namespace eKnjiznica.AdminUI
             currentForm.Show();
         }
 
-        private void logoviToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (currentForm != null)
-                currentForm.Close();
-            currentForm = unityContainer.Resolve<LogsForm>();
-            currentForm.MdiParent = this;
-            currentForm.Show();
-        }
-
+      
         private void kategorijeToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

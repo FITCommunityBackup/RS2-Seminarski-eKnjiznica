@@ -41,6 +41,8 @@
             this.inputAuthorName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbIncludeInactive = new System.Windows.Forms.CheckBox();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,13 +60,13 @@
             this.gvAuthorName,
             this.gvIsActive});
             this.gvBooks.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.gvBooks.Location = new System.Drawing.Point(12, 158);
+            this.gvBooks.Location = new System.Drawing.Point(15, 133);
             this.gvBooks.MultiSelect = false;
             this.gvBooks.Name = "gvBooks";
             this.gvBooks.ReadOnly = true;
             this.gvBooks.RowTemplate.Height = 24;
             this.gvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvBooks.Size = new System.Drawing.Size(346, 362);
+            this.gvBooks.Size = new System.Drawing.Size(519, 449);
             this.gvBooks.TabIndex = 9;
             // 
             // Id
@@ -98,7 +100,7 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(134, 114);
+            this.btnFilter.Location = new System.Drawing.Point(459, 87);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 23);
             this.btnFilter.TabIndex = 8;
@@ -124,7 +126,7 @@
             // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(283, 526);
+            this.btnDetails.Location = new System.Drawing.Point(459, 588);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(75, 23);
             this.btnDetails.TabIndex = 11;
@@ -134,7 +136,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(202, 526);
+            this.button2.Location = new System.Drawing.Point(378, 588);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 10;
@@ -161,18 +163,37 @@
             // cbIncludeInactive
             // 
             this.cbIncludeInactive.AutoSize = true;
-            this.cbIncludeInactive.Location = new System.Drawing.Point(99, 82);
+            this.cbIncludeInactive.Location = new System.Drawing.Point(308, 48);
             this.cbIncludeInactive.Name = "cbIncludeInactive";
             this.cbIncludeInactive.Size = new System.Drawing.Size(108, 17);
             this.cbIncludeInactive.TabIndex = 14;
             this.cbIncludeInactive.Text = "Uključi neaktivne";
             this.cbIncludeInactive.UseVisualStyleBackColor = true;
             // 
+            // cbCategory
+            // 
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(295, 11);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(121, 21);
+            this.cbCategory.TabIndex = 15;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(235, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Kategorija";
+            // 
             // BooksForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 561);
+            this.ClientSize = new System.Drawing.Size(563, 648);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.cbIncludeInactive);
             this.Controls.Add(this.inputAuthorName);
             this.Controls.Add(this.label2);
@@ -207,5 +228,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gvAuthorName;
         private System.Windows.Forms.DataGridViewCheckBoxColumn gvIsActive;
         private System.Windows.Forms.CheckBox cbIncludeInactive;
+        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.Label label3;
     }
 }

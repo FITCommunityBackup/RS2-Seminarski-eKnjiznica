@@ -187,7 +187,6 @@
             // 
             this.inputPhoneNumber.Location = new System.Drawing.Point(179, 148);
             this.inputPhoneNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.inputPhoneNumber.Mask = "(999) 000-0000";
             this.inputPhoneNumber.Name = "inputPhoneNumber";
             this.inputPhoneNumber.Size = new System.Drawing.Size(195, 20);
             this.inputPhoneNumber.TabIndex = 96;
@@ -354,7 +353,7 @@
             this.Controls.Add(this.cbIsActive);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ClientEditForm";
-            this.Text = "ClientEditForm";
+            this.Text = "Evidencija klijenata";
             this.Load += new System.EventHandler(this.ClientEditForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.inputPayIn)).EndInit();
