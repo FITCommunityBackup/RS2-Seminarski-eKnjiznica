@@ -80,7 +80,7 @@ namespace eKnjiznica.Mobile.Books
                 var jsonObject = await response.Content.ReadAsStringAsync();
                 List<BookOfferVM> bookOffers = JsonConvert.DeserializeObject<List<BookOfferVM>>(jsonObject);
                 bookOffers.ForEach(x => {
-                    x.ImageUrl = Services.Constants.ServiceBaseUrl + "/" + x.ImageUrl;
+                    x.ImageUrl = Services.Constants.ServiceBaseUrl+"/" + x.ImageUrl;
                     x.ImageUri = new Uri(x.ImageUrl);
                     if (x.UserHasBook)
                     {

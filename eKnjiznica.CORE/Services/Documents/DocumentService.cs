@@ -14,7 +14,7 @@ namespace eKnjiznica.CORE.Services.Documents
     {
         private IBookRepo bookRepo;
         IList<string> AllowedFileExtensions = new List<string> { ".pdf" };
-        IList<string> AllowedImageExtensions = new List<string> { ".img",".jpg",".jpeg" };
+        IList<string> AllowedImageExtensions = new List<string> { ".img",".jpg",".jpeg",".png" };
 
         public DocumentService(IBookRepo bookRepo)
         {
