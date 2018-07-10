@@ -2,7 +2,8 @@ Pristupni podaci:
 
 Desktop dio:
 Username: desktop
-Password: Password!1
+Password: Password!1      
+(test lozinka se ne može postavity radi password policy-a)
 
 Mobile dio:
 Username: mobile
