@@ -98,7 +98,7 @@ namespace eKnjiznica.DAL.Repository
                 .Include(x => x.User)
                 .Include(x => x.User.UserFinancialAccount)
                 .Where(x => x.AuctionId == id)
-                .OrderBy(x => x.Amount)
+                .OrderByDescending(x => x.Amount)
                 .Take(1).FirstOrDefault();
             if (bid == null)
                 return null;

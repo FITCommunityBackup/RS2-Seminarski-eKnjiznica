@@ -1,0 +1,11 @@
+Pristupni podaci:
+
+Desktop dio:
+Username: desktop
+Password: Password!1
+
+Mobile dio:
+Username: mobile
+Password: Password!1
+
+

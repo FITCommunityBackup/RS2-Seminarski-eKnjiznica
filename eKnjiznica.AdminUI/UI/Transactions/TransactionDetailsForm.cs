@@ -40,11 +40,5 @@ namespace eKnjiznica.AdminUI.UI.Transactions
             textBuyer.Text = Transaction.ClientUsername;
         }
 
-        private void btnGenerateReport_Click(object sender, EventArgs e)
-        {
-            var form = unityContainer.Resolve<TransactionReportForm>();
-            form.Transaction = Transaction;
-            form.Show();
-        }
     }
 }

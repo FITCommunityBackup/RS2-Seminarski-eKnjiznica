@@ -130,21 +130,21 @@
             // CategoryName
             // 
             this.CategoryName.DataPropertyName = "CategoryName";
-            this.CategoryName.HeaderText = "CategoryName";
+            this.CategoryName.HeaderText = "Naziv kategorije";
             this.CategoryName.Name = "CategoryName";
             this.CategoryName.ReadOnly = true;
             // 
             // NumberOfBooks
             // 
             this.NumberOfBooks.DataPropertyName = "NumberOfBooks";
-            this.NumberOfBooks.HeaderText = "NumberOfBooks";
+            this.NumberOfBooks.HeaderText = "Broj knjiga";
             this.NumberOfBooks.Name = "NumberOfBooks";
             this.NumberOfBooks.ReadOnly = true;
             // 
             // IsActive
             // 
             this.IsActive.DataPropertyName = "IsActive";
-            this.IsActive.HeaderText = "IsActive";
+            this.IsActive.HeaderText = "Aktivna";
             this.IsActive.Name = "IsActive";
             this.IsActive.ReadOnly = true;
             // 

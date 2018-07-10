@@ -40,7 +40,7 @@ namespace eKnjiznica.DAL.Repository
                 Id = x.Id,
                 CategoryName = x.CategoryName,
                 IsActive = x.IsActive,
-                NumberOfBooks = x.Books.Count()
+                NumberOfBooks = x.Books.Where(y=>y.IsActive).Count()
             }).ToList();
         }
 

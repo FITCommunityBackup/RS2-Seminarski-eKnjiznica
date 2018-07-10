@@ -44,6 +44,8 @@ namespace eKnjiznica.Mobile.Auctions
 
         private void AuctionClient_OnMessageReceived(object sender, AuctionVM e)
         {
+            if (e.Id != Auction.Id)
+                return;
             this.Auction = e;
             Auction.ImageUrl = eKnjiznica.Mobile.Services.Constants.ServiceBaseUrl + "/" + Auction.ImageUrl;
             Device.BeginInvokeOnMainThread(() =>

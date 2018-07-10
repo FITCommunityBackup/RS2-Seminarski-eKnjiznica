@@ -69,7 +69,6 @@
             this.gvTransactions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gvTransactions.Size = new System.Drawing.Size(755, 330);
             this.gvTransactions.TabIndex = 16;
-            this.gvTransactions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvClients_CellContentClick);
             this.gvTransactions.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gvTransactions_CellFormatting);
             // 
             // Id

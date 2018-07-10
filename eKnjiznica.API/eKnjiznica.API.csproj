@@ -375,6 +375,14 @@
     <Content Include="uploads\books\27\blato_znoj_i_suze_autobiografija-ber_grils_v.jpg" />
     <Content Include="uploads\books\28\izum_igoa_kabrea-brajan_selznik_v.jpg" />
     <Content Include="uploads\books\29\za_belim_sokolom-robert_lindon_v.jpg" />
+    <Content Include="uploads\books\30\persi_dzekson_i_bogovi_olimpa_i_kradljivac_munje-rik_riordan_v.jpg" />
+    <Content Include="uploads\books\3\malavita.jpg" />
+    <Content Include="uploads\books\4\li.jpg" />
+    <Content Include="uploads\books\5\plamen.jpg" />
+    <Content Include="uploads\books\6\skoro.jpg" />
+    <Content Include="uploads\books\7\nele_sarajevo.jpg" />
+    <Content Include="uploads\books\8\erik_erik_klepton_v.jpg" />
+    <Content Include="uploads\books\9\pink_panter_moja_zatvorska_ispovest-olivera_cirkovic_v.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -406,6 +414,14 @@
     <Content Include="uploads\books\27\dodatni ispitni termini.pdf" />
     <Content Include="uploads\books\28\dodatni ispitni termini.pdf" />
     <Content Include="uploads\books\29\dodatni ispitni termini.pdf" />
+    <Content Include="uploads\books\30\asd.pdf" />
+    <Content Include="uploads\books\3\asd.pdf" />
+    <Content Include="uploads\books\4\asd.pdf" />
+    <Content Include="uploads\books\5\asd.pdf" />
+    <Content Include="uploads\books\6\asd.pdf" />
+    <Content Include="uploads\books\7\asd.pdf" />
+    <Content Include="uploads\books\8\asd.pdf" />
+    <Content Include="uploads\books\9\asd.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

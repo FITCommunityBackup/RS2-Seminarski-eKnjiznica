@@ -31,10 +31,7 @@ namespace eKnjiznica.AdminUI.UI.Transactions
 
         }
 
-        private void gvClients_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
 
         private async void TransactionsForm_Load(object sender, EventArgs e)
         {

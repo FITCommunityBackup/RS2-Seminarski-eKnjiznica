@@ -1,0 +1,20 @@
+Solution je potrebno otvoriti kao administrator jer su trenutne postavke WebApi-a takve da se deploy radi na lokalni IIS kako bi se API-u moglo pristupiti iz cijele  mreže(radi testiranja na fizièkim android ureðajima)
+
+
+Prije upotrebe potrebno je promijeniti sljedeæe postavke:
+	eKnjiznica.AdminUI.App.config ->appSettings->ApiUrl
+	eKnjiznica.Mobile.Services.Constants.cs->ServiceBaseUrl
+
+
+
+Pristupni podaci:
+
+Desktop dio:
+Username: desktop
+Password: Password!1
+
+Mobile dio:
+Username: mobile
+Password: Password!1
+
+

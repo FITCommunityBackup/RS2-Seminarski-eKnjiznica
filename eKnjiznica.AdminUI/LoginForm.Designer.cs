@@ -84,7 +84,6 @@
             this.txtUsername.TabIndex = 5;
             this.txtUsername.TabStop = false;
             this.txtUsername.UseSystemPasswordChar = false;
-            this.txtUsername.Click += new System.EventHandler(this.materialSingleLineTextField1_Click);
             // 
             // txtPassword
             // 
@@ -204,7 +203,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

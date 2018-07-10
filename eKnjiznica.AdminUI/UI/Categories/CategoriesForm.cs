@@ -45,7 +45,6 @@ namespace eKnjiznica.AdminUI.UI.Categories
                 var re = await result.Content.ReadAsAsync<IList<CategoryVM>>();
                 this.categories = re;
                 gvCategories.DataSource = re;
-                gvCategories.DataSource = re;
             }
            
         }
