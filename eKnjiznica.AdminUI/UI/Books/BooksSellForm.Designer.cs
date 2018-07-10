@@ -43,6 +43,8 @@
             this.btnDetails = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.cbInactive = new System.Windows.Forms.CheckBox();
+            this.btnPrintTopSelling = new System.Windows.Forms.Button();
+            this.btnPrintOffer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gvBookOffers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,7 +160,7 @@
             // 
             // btnDetails
             // 
-            this.btnDetails.Location = new System.Drawing.Point(481, 419);
+            this.btnDetails.Location = new System.Drawing.Point(481, 448);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(75, 23);
             this.btnDetails.TabIndex = 18;
@@ -168,7 +170,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(400, 419);
+            this.button2.Location = new System.Drawing.Point(481, 419);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 17;
@@ -186,11 +188,33 @@
             this.cbInactive.Text = "Uključi neaktivne";
             this.cbInactive.UseVisualStyleBackColor = true;
             // 
+            // btnPrintTopSelling
+            // 
+            this.btnPrintTopSelling.Location = new System.Drawing.Point(15, 448);
+            this.btnPrintTopSelling.Name = "btnPrintTopSelling";
+            this.btnPrintTopSelling.Size = new System.Drawing.Size(144, 23);
+            this.btnPrintTopSelling.TabIndex = 22;
+            this.btnPrintTopSelling.Text = "Printaj najprodavanije";
+            this.btnPrintTopSelling.UseVisualStyleBackColor = true;
+            this.btnPrintTopSelling.Click += new System.EventHandler(this.btnPrintTopSelling_Click);
+            // 
+            // btnPrintOffer
+            // 
+            this.btnPrintOffer.Location = new System.Drawing.Point(15, 419);
+            this.btnPrintOffer.Name = "btnPrintOffer";
+            this.btnPrintOffer.Size = new System.Drawing.Size(144, 23);
+            this.btnPrintOffer.TabIndex = 23;
+            this.btnPrintOffer.Text = "Printaj ponudu";
+            this.btnPrintOffer.UseVisualStyleBackColor = true;
+            this.btnPrintOffer.Click += new System.EventHandler(this.btnPrintOffer_Click);
+            // 
             // BooksSellForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 468);
+            this.ClientSize = new System.Drawing.Size(603, 481);
+            this.Controls.Add(this.btnPrintOffer);
+            this.Controls.Add(this.btnPrintTopSelling);
             this.Controls.Add(this.cbInactive);
             this.Controls.Add(this.inputAuthorName);
             this.Controls.Add(this.label2);
@@ -227,5 +251,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gvOfferCreatedDate;
         private System.Windows.Forms.DataGridViewCheckBoxColumn gvIsActive;
         private System.Windows.Forms.CheckBox cbInactive;
+        private System.Windows.Forms.Button btnPrintTopSelling;
+        private System.Windows.Forms.Button btnPrintOffer;
     }
 }

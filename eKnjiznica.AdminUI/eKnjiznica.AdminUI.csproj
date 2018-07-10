@@ -47,6 +47,24 @@
     <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
       <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -90,8 +108,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Reports\ClientBooksReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\ClientBooksReportForm.Designer.cs">
+      <DependentUpon>ClientBooksReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OfferReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\OfferReportForm.Designer.cs">
+      <DependentUpon>OfferReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\TransactionReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\TransactionReportForm.Designer.cs">
+      <DependentUpon>TransactionReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\API\TokenHandler.cs" />
     <Compile Include="Services\ImageHelper.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="UI\Administrators\AdministratorAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,7 +159,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="model\LoginVM.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\User\IUserService.cs" />
@@ -217,6 +253,18 @@
     <Compile Include="UI\UserBooks\UserBooksForm.Designer.cs">
       <DependentUpon>UserBooksForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Reports\ClientBooksReport.rdlc" />
+    <EmbeddedResource Include="Reports\ClientBooksReportForm.resx">
+      <DependentUpon>ClientBooksReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\OfferReport.rdlc" />
+    <EmbeddedResource Include="Reports\OfferReportForm.resx">
+      <DependentUpon>OfferReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionReportForm.resx">
+      <DependentUpon>TransactionReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\TransactionsReport.rdlc" />
     <EmbeddedResource Include="UI\Administrators\AdministratorAddForm.resx">
       <DependentUpon>AdministratorAddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +336,9 @@
       <DependentUpon>UserBooksForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\eKnjiznica.Commons.ViewModels.Books.BookOfferVM.datasource" />
+    <None Include="Properties\DataSources\eKnjiznica.Commons.ViewModels.ClientBook.ClientBookVM.datasource" />
+    <None Include="Properties\DataSources\eKnjiznica.Commons.ViewModels.TransactionVM.TransactionVM.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -305,6 +356,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\avatar.png" />
+    <Content Include="assets\logo.jpg" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\eKnjiznica.Commons\eKnjiznica.Commons.csproj">
@@ -312,5 +377,6 @@
       <Name>eKnjiznica.Commons</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

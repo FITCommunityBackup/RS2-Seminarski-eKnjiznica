@@ -1,4 +1,5 @@
-﻿using eKnjiznica.Commons.ViewModels.TransactionVM;
+﻿using eKnjiznica.AdminUI.Reports;
+using eKnjiznica.Commons.ViewModels.TransactionVM;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,14 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace eKnjiznica.AdminUI.UI.Transactions
 {
     public partial class TransactionBooksPurchaseDetails : Form
     {
         public TransactionVM Transaction { get; set; }
-        public TransactionBooksPurchaseDetails()
+        IUnityContainer unityContainer;
+        public TransactionBooksPurchaseDetails(IUnityContainer unityContainer)
         {
+            this.unityContainer = unityContainer;
             InitializeComponent();
             gvClientBooks.AutoGenerateColumns = false;
         }
@@ -30,6 +34,15 @@ namespace eKnjiznica.AdminUI.UI.Transactions
             dtpDate.Value = Transaction.Date;
             textBuyer.Text = Transaction.ClientUsername;
             gvClientBooks.DataSource = Transaction.BuyedBooks;
+        }
+
+     
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            var form = unityContainer.Resolve<TransactionReportForm>();
+            form.Transaction = Transaction;
+            form.Show();
         }
     }
 }

@@ -26,12 +26,13 @@ namespace eKnjiznica.API.Controllers
         public IHttpActionResult GetCurrentOffers(
             [FromUri(Name = "title")] string title = null,
             [FromUri(Name = "author")] string author = null,
-            [FromUri(Name = "includeInactive")] bool includeInactive=false
+            [FromUri(Name = "includeInactive")] bool includeInactive = false
             )
         {
-            var result = bookService.GetBookOffers(title, author,includeInactive);
+            var result = bookService.GetBookOffers(title, author, includeInactive);
             return Ok(result);
         }
+
 
         [HttpPost]
         [Route("")]

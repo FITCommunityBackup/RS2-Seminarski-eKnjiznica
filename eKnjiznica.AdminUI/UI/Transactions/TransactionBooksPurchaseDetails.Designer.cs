@@ -40,6 +40,7 @@
             this.AuthorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.textAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvClientBooks)).BeginInit();
             this.SuspendLayout();
@@ -110,11 +111,11 @@
             this.AuthorName,
             this.Price,
             this.Date});
-            this.gvClientBooks.Location = new System.Drawing.Point(18, 147);
+            this.gvClientBooks.Location = new System.Drawing.Point(18, 180);
             this.gvClientBooks.Name = "gvClientBooks";
             this.gvClientBooks.ReadOnly = true;
             this.gvClientBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gvClientBooks.Size = new System.Drawing.Size(486, 189);
+            this.gvClientBooks.Size = new System.Drawing.Size(486, 195);
             this.gvClientBooks.TabIndex = 106;
             // 
             // Id
@@ -153,11 +154,22 @@
             this.Date.Name = "Date";
             this.Date.ReadOnly = true;
             // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.Location = new System.Drawing.Point(198, 135);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(122, 23);
+            this.btnGenerateReport.TabIndex = 107;
+            this.btnGenerateReport.Text = "Generiraj izvještaj";
+            this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
+            // 
             // TransactionBooksPurchaseDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 348);
+            this.ClientSize = new System.Drawing.Size(516, 387);
+            this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.gvClientBooks);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.label4);
@@ -189,5 +201,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn AuthorName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.Button btnGenerateReport;
     }
 }

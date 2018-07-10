@@ -1,4 +1,5 @@
-﻿using eKnjiznica.AdminUI.Services;
+﻿using eKnjiznica.AdminUI.Reports;
+using eKnjiznica.AdminUI.Services;
 using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.AdminUI.Services.User;
 using eKnjiznica.AdminUI.UI.Administrators;
@@ -30,6 +31,7 @@ namespace eKnjiznica.AdminUI
         [STAThread]
         static void Main()
         {
+            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
 
             IUnityContainer container = new UnityContainer();
             container.RegisterType<HttpClient>(new ContainerControlledLifetimeManager(),new InjectionFactory(x => getHttpClient(container)));
@@ -40,6 +42,9 @@ namespace eKnjiznica.AdminUI
             container.RegisterType<ImageHelper>();
 
 
+            container.RegisterType<ClientBooksReportForm>();
+            container.RegisterType<OfferReportForm>();
+            container.RegisterType<TransactionsForm>();
             container.RegisterType<AuctionsEditForm>();
             container.RegisterType<AuctionsForms>();
             container.RegisterType<UserBooksForm>();

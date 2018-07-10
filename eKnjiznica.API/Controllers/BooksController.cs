@@ -35,6 +35,15 @@ namespace eKnjiznica.API.Controllers
             return Ok(result);
         }
 
+
+        [HttpGet]
+        [Route("topselling")]
+        public IHttpActionResult GetTopSellingOffer()
+        {
+            var result = bookService.GetTopSellingBooks();
+            return Ok(result);
+        }
+
         [HttpGet]
         [Route("category/{categoryId}")]
         [Authorize(Roles = EntityRoles.AdminRole + "," + EntityRoles.ClientRole)]
@@ -44,15 +53,16 @@ namespace eKnjiznica.API.Controllers
             var result = bookService.GetBookOfferByCategory(categoryId, GetUserId());
             return Ok(result);
         }
+
         [HttpGet]
         [Route("recommended")]
         [Authorize(Roles=EntityRoles.ClientRole)]
-        public IHttpActionResult GetRecommendedBooks(
-       )
+        public IHttpActionResult GetRecommendedBooks()
         {
             var result = recommenderService.GetTopSellingRecommendedBooksForUser(GetUserId());
             return Ok(result);
         }
+
 
         [Authorize(Roles = EntityRoles.AdminRole)]
         [HttpPost]

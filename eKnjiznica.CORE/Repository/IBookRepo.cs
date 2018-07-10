@@ -27,5 +27,6 @@ namespace eKnjiznica.CORE.Repository
         void UpdateBookOffer(UpdateBookOfferVM model, int id);
         List<BookOfferVM> GetBookOffersByCategory(int categoryId,string userId);
         void SaveImageFilePath(BooksVM book, string relativePath, string uploadedFileName);
+        List<BookOfferVM> GetTopSellingBooks();
     }
 }

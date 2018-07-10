@@ -49,6 +49,12 @@ namespace eKnjiznica.CORE.Services.Books
            return bookRepo.GetBooks(title, author,includeInactive, categoryId);
         }
 
+        public List<BookOfferVM> GetTopSellingBooks()
+        {
+            return bookRepo.GetTopSellingBooks();
+
+        }
+
         public void UpdateBook(UpdateBookVM model, int id,string userId)
         {
 

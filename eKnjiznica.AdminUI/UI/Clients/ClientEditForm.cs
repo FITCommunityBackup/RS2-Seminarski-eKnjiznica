@@ -1,4 +1,5 @@
-﻿using eKnjiznica.AdminUI.Services.API;
+﻿using eKnjiznica.AdminUI.Reports;
+using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.Commons.API;
 using eKnjiznica.Commons.Util;
 using eKnjiznica.Commons.ViewModels.ClientBook;
@@ -13,6 +14,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace eKnjiznica.AdminUI.UI.Clients
 {
@@ -22,8 +24,11 @@ namespace eKnjiznica.AdminUI.UI.Clients
         private MyRegex myRegex;
         private ErrorHandlingUtil errorHandlingUtil;
         public ClientVM Client { get; set; }
-        public ClientEditForm(IApiClient apiClient, ErrorHandlingUtil errorHandlingUtil, MyRegex myRegex)
+        public List<ClientBookVM> ClientBooks { get; private set; }
+        private IUnityContainer unityContainer;
+        public ClientEditForm(IUnityContainer unityContainer, IApiClient apiClient, ErrorHandlingUtil errorHandlingUtil, MyRegex myRegex)
         {
+            this.unityContainer = unityContainer;
             this.myRegex = myRegex;
             this.errorHandlingUtil = errorHandlingUtil;
             this.apiClient = apiClient;
@@ -65,7 +70,7 @@ namespace eKnjiznica.AdminUI.UI.Clients
                 inputPayIn.Visible = true;
                 lblPayIn.Visible = true;
                 btnPayIn.Visible = true;
-
+                btnPrintBooks.Visible = true;
                 await BindBookData();
             }
             else
@@ -78,6 +83,7 @@ namespace eKnjiznica.AdminUI.UI.Clients
                 inputPayIn.Visible = false;
                 lblPayIn.Visible = false;
                 btnPayIn.Visible = false;
+                btnPrintBooks.Visible = false;
             }
         }
 
@@ -88,7 +94,8 @@ namespace eKnjiznica.AdminUI.UI.Clients
                 return;
 
             gvClientBooks.Visible = true;
-            gvClientBooks.DataSource = await result.Content.ReadAsAsync<List<ClientBookVM>>();
+            ClientBooks = await result.Content.ReadAsAsync<List<ClientBookVM>>();
+            gvClientBooks.DataSource = ClientBooks;
         }
 
         private async void btnAction_Click(object sender, EventArgs e)
@@ -265,6 +272,14 @@ namespace eKnjiznica.AdminUI.UI.Clients
             }
         }
 
-
+        private void btnPrintBooks_Click(object sender, EventArgs e)
+        {
+            if (this.Client == null || this.ClientBooks == null)
+                return;
+            var form = unityContainer.Resolve<ClientBooksReportForm>();
+            form.Client = this.Client; ;
+            form.ClientBooks = this.ClientBooks;
+            form.Show();
+        }
     }
 }

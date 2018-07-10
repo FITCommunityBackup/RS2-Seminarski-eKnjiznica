@@ -53,6 +53,7 @@
             this.labelAccountBalance = new System.Windows.Forms.Label();
             this.inputAccountBalance = new System.Windows.Forms.NumericUpDown();
             this.gvClientBooks = new System.Windows.Forms.DataGridView();
+            this.btnPrintBooks = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BookTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AuthorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -287,6 +288,18 @@
             this.gvClientBooks.Size = new System.Drawing.Size(479, 215);
             this.gvClientBooks.TabIndex = 105;
             // 
+            // btnPrintBooks
+            // 
+            this.btnPrintBooks.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnPrintBooks.Location = new System.Drawing.Point(801, 80);
+            this.btnPrintBooks.Name = "btnPrintBooks";
+            this.btnPrintBooks.Size = new System.Drawing.Size(98, 30);
+            this.btnPrintBooks.TabIndex = 106;
+            this.btnPrintBooks.Text = "Generiraj izvješće";
+            this.btnPrintBooks.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnPrintBooks.UseVisualStyleBackColor = true;
+            this.btnPrintBooks.Click += new System.EventHandler(this.btnPrintBooks_Click);
+            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
@@ -318,7 +331,7 @@
             // 
             // Date
             // 
-            this.Date.DataPropertyName = "Date";
+            this.Date.DataPropertyName = "BuyDate";
             this.Date.HeaderText = "Datum kupovine";
             this.Date.Name = "Date";
             this.Date.ReadOnly = true;
@@ -328,6 +341,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 347);
+            this.Controls.Add(this.btnPrintBooks);
             this.Controls.Add(this.gvClientBooks);
             this.Controls.Add(this.inputAccountBalance);
             this.Controls.Add(this.labelAccountBalance);
@@ -390,6 +404,7 @@
         private System.Windows.Forms.NumericUpDown inputAccountBalance;
         private System.Windows.Forms.Label labelAccountBalance;
         private System.Windows.Forms.DataGridView gvClientBooks;
+        private System.Windows.Forms.Button btnPrintBooks;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn BookTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn AuthorName;

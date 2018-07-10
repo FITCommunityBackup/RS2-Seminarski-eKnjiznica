@@ -369,15 +369,12 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="uploads\books\12\harry.jpg" />
-    <Content Include="uploads\books\13\harry.jpg" />
-    <Content Include="uploads\books\1\IMG_1392.jpg" />
-    <Content Include="uploads\books\6\harry.jpg" />
-    <Content Include="uploads\books\Knjiga_Autor\android-desktop-wallpapers-18.jpg" />
-    <Content Include="uploads\books\Naslov knjige_Ime Autora\51HSkTKlauL._SX346_BO1,204,203,200_.jpg" />
-    <Content Include="uploads\books\Naslov knjige_Ime Autora\android-desktop-wallpapers-18.jpg" />
-    <Content Include="uploads\books\Test_Test\android-desktop-wallpapers-18.jpg" />
-    <Content Include="uploads\books\Tvrđava_Meša Selimovič\1058611.jpg" />
+    <Content Include="uploads\books\24\bio_sam_titov_spijun-dragisa_ivelja_v.jpg" />
+    <Content Include="uploads\books\25\39_tragova_lavirint_od_kostiju_prva_knjig-rik_riordan_v.jpg" />
+    <Content Include="uploads\books\26\pijev_zivot-jan_martel_v.jpg" />
+    <Content Include="uploads\books\27\blato_znoj_i_suze_autobiografija-ber_grils_v.jpg" />
+    <Content Include="uploads\books\28\izum_igoa_kabrea-brajan_selznik_v.jpg" />
+    <Content Include="uploads\books\29\za_belim_sokolom-robert_lindon_v.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -403,15 +400,12 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="uploads\books\12\DF-Predavanje6- Forenzika Linux OS-a.pdf" />
-    <Content Include="uploads\books\13\DF-Predavanje6- Forenzika Linux OS-a.pdf" />
-    <Content Include="uploads\books\1\cv.pdf" />
-    <Content Include="uploads\books\6\DF-Predavanje6- Forenzika Linux OS-a.pdf" />
-    <Content Include="uploads\books\Knjiga_Autor\zadaci za kvaternione.pdf" />
-    <Content Include="uploads\books\Knjiga_Autor\zadaci za kvaternione.pdf863c6225-ce1f-487a-b845-d86c228cd43b" />
-    <Content Include="uploads\books\Moja nova knjiga_Petar\zadaci za kvaternione.pdf" />
-    <Content Include="uploads\books\Naslov knjige_Ime Autora\DF-Predavanje6- Forenzika Linux OS-a.pdf" />
-    <Content Include="uploads\books\Tvrđava_Meša Selimovič\cv.pdf" />
+    <Content Include="uploads\books\24\dodatni ispitni termini.pdf" />
+    <Content Include="uploads\books\25\dodatni ispitni termini.pdf" />
+    <Content Include="uploads\books\26\dodatni ispitni termini.pdf" />
+    <Content Include="uploads\books\27\dodatni ispitni termini.pdf" />
+    <Content Include="uploads\books\28\dodatni ispitni termini.pdf" />
+    <Content Include="uploads\books\29\dodatni ispitni termini.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

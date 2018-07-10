@@ -1,4 +1,5 @@
-﻿using eKnjiznica.AdminUI.Services.API;
+﻿using eKnjiznica.AdminUI.Reports;
+using eKnjiznica.AdminUI.Services.API;
 using eKnjiznica.Commons.API;
 using eKnjiznica.Commons.ViewModels.Books;
 using System;
@@ -70,6 +71,29 @@ namespace eKnjiznica.AdminUI.UI.Books
             if (form.ShowDialog() == DialogResult.OK)
             {
                 await BindData();
+            }
+        }
+
+        private void btnPrintOffer_Click(object sender, EventArgs e)
+        {
+            var form = unityContainer.Resolve<OfferReportForm>();
+            form.BookOffers = this.BookOffers;
+            form.Show();
+        }
+
+        private async void btnPrintTopSelling_Click(object sender, EventArgs e)
+        {
+
+            var result = await apiClient.GetTopSellingBooks();
+            if (result.IsSuccessStatusCode)
+            {
+                var books = await result.Content.ReadAsAsync<IList<BookOfferVM>>();
+                var form = unityContainer.Resolve<OfferReportForm>();
+
+                form.BookOffers = books;
+                form.Show();
+
+
             }
         }
     }

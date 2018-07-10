@@ -64,6 +64,10 @@ namespace eKnjiznica.Commons.API
             return Get($"api/auctions/{auctionId}");
         }
 
+        public Task<HttpResponseMessage> GetTopSellingBooks()
+        {
+            return Get($"api/books/topselling");
+        }
 
 
         public Task<HttpResponseMessage> GetPurchaces(string title, string author, string user)
@@ -346,6 +350,7 @@ namespace eKnjiznica.Commons.API
                 return;
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(newAuth.TokenType, newAuth.AccessToken);
         }
+
 
 
 

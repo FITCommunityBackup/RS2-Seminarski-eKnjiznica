@@ -48,6 +48,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> GetAuctionDetail(int auctionId);
         Task<HttpResponseMessage> GetTransaction(int transactionId);
         Task<HttpResponseMessage> CreateBookOffer(CreateBookOfferVM bookOfferCreate);
+        Task<HttpResponseMessage> GetTopSellingBooks();
         Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM);
         Task<HttpResponseMessage> UpdateClientAccount(ClientUpdateVM clientUpdateVM, string id);
         Task<HttpResponseMessage> CreateClientAccount(ClientAddVM clientAddVM);

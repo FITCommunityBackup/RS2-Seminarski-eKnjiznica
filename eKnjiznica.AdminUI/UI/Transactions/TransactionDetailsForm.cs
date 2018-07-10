@@ -1,4 +1,5 @@
-﻿using eKnjiznica.Commons.ViewModels.TransactionVM;
+﻿using eKnjiznica.AdminUI.Reports;
+using eKnjiznica.Commons.ViewModels.TransactionVM;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,14 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Unity;
 
 namespace eKnjiznica.AdminUI.UI.Transactions
 {
     public partial class TransactionDetailsForm : Form
     {
         public TransactionVM Transaction { get; set; }
-        public TransactionDetailsForm()
+        private IUnityContainer unityContainer;
+        public TransactionDetailsForm(IUnityContainer unityContainer)
         {
+            this.unityContainer = unityContainer;
             InitializeComponent();
             
         }
@@ -36,5 +40,11 @@ namespace eKnjiznica.AdminUI.UI.Transactions
             textBuyer.Text = Transaction.ClientUsername;
         }
 
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            var form = unityContainer.Resolve<TransactionReportForm>();
+            form.Transaction = Transaction;
+            form.Show();
+        }
     }
 }

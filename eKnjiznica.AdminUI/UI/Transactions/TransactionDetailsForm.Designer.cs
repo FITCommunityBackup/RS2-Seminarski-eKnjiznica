@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.btnGenerateReport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.textAmount)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,11 +108,22 @@
             this.dtpDate.Size = new System.Drawing.Size(212, 20);
             this.dtpDate.TabIndex = 9;
             // 
+            // btnGenerateReport
+            // 
+            this.btnGenerateReport.Location = new System.Drawing.Point(203, 136);
+            this.btnGenerateReport.Name = "btnGenerateReport";
+            this.btnGenerateReport.Size = new System.Drawing.Size(122, 23);
+            this.btnGenerateReport.TabIndex = 10;
+            this.btnGenerateReport.Text = "Generiraj izvještaj";
+            this.btnGenerateReport.UseVisualStyleBackColor = true;
+            this.btnGenerateReport.Click += new System.EventHandler(this.btnGenerateReport_Click);
+            // 
             // TransactionDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 153);
+            this.ClientSize = new System.Drawing.Size(364, 171);
+            this.Controls.Add(this.btnGenerateReport);
             this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -139,5 +151,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.Button btnGenerateReport;
     }
 }

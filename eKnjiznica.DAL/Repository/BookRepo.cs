@@ -160,14 +160,14 @@ namespace eKnjiznica.DAL.Repository
                      .Select(bookOffermaper(userId))
                      .ToList();
         }
-        public List<BooksVM> GetBooks(string title, string authorName,bool includeInactive, int categoryId)
+        public List<BooksVM> GetBooks(string title, string authorName, bool includeInactive, int categoryId)
         {
             return context
                  .Books
-                 .Where(x=>x.IsActive || includeInactive)
+                 .Where(x => x.IsActive || includeInactive)
                  .Where(x => string.IsNullOrEmpty(title) || x.Title.Contains(title))
                  .Where(x => string.IsNullOrEmpty(authorName) || x.Autor.Contains(authorName))
-                 .Where(x=>categoryId==0 || x.Categories.Any(y=>y.IsActive==true && y.CategoryId==categoryId))
+                 .Where(x => categoryId == 0 || x.Categories.Any(y => y.IsActive == true && y.CategoryId == categoryId))
                  .Select(x => new BooksVM
                  {
                      Id = x.Id,
@@ -289,7 +289,7 @@ namespace eKnjiznica.DAL.Repository
                         .Where(x => x.IsActive)
                 .Include(x => x.Book.Categories)
                           .Where(x => !x.PurchasedBooks.Any(y => y.UserId == userId && y.BookOfferId == x.Id))
-                          .Where(x => x.Book.Categories.Any(y =>y.IsActive&& categoryId.Contains(y.CategoryId)))
+                          .Where(x => x.Book.Categories.Any(y => y.IsActive && categoryId.Contains(y.CategoryId)))
                           .Include(x => x.Book)
                           .Include(x => x.PurchasedBooks)
                           .OrderByDescending(x => x.PurchasedBooks.Count)
@@ -300,18 +300,35 @@ namespace eKnjiznica.DAL.Repository
 
         public List<BookOfferVM> GetTopSellingBooks(List<int> alreadyAddedBooks, string userId, int neededBookNumber)
         {
+            var bookOffers =
+                context.BookOffers
+                       .Where(x => x.IsActive)
+                       .Where(x => !x.PurchasedBooks.Any(y => y.UserId == userId && y.BookOfferId == x.Id))
+                       .Where(x => !alreadyAddedBooks.Contains(x.Id))
+                       .Include(x => x.Book)
+                       .Include(x => x.PurchasedBooks)
+                       .Include(x => x.Book.Categories)
+                       .OrderByDescending(x => x.PurchasedBooks.Count)
+                       .Take(neededBookNumber - alreadyAddedBooks.Count())
+                       .Select(bookOffermaper(userId))
+                       .ToList();
 
-            var bookOffers = context.BookOffers
-                        .Where(x => x.IsActive)
-                .Where(x => !x.PurchasedBooks.Any(y => y.UserId == userId && y.BookOfferId == x.Id))
-                .Where(x => !alreadyAddedBooks.Contains(x.Id))
-                .Include(x => x.Book)
-                .Include(x => x.PurchasedBooks)
-                .Include(x => x.Book.Categories)
-                .OrderByDescending(x => x.PurchasedBooks.Count)
-                .Take(neededBookNumber - alreadyAddedBooks.Count())
-                .Select(bookOffermaper(userId))
-                .ToList();
+            return bookOffers;
+        }
+
+        public List<BookOfferVM> GetTopSellingBooks()
+        {
+
+            var bookOffers =
+                context.BookOffers
+                       .Where(x => x.IsActive)
+                       .Include(x => x.Book)
+                       .Include(x => x.PurchasedBooks)
+                       .Include(x => x.Book.Categories)
+                       .OrderByDescending(x => x.PurchasedBooks.Count)
+                       .Take(100)
+                       .Select(bookOffermaper(null))
+                       .ToList();
 
 
             return bookOffers;
