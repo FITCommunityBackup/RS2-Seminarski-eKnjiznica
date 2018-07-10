@@ -31,7 +31,7 @@ namespace eKnjiznica.AdminUI
         [STAThread]
         static void Main()
         {
-            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
+            //SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
 
             IUnityContainer container = new UnityContainer();
             container.RegisterType<HttpClient>(new ContainerControlledLifetimeManager(),new InjectionFactory(x => getHttpClient(container)));

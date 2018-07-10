@@ -20,7 +20,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44361</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -369,13 +370,22 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="uploads\books\10\kosturi_okruga_medison-vedrana_rudan_v.jpg" />
+    <Content Include="uploads\books\11\vodic_kroz_ljubavnu_istoriju_beograda-nenad_novak_stefanovic_v.jpg" />
+    <Content Include="uploads\books\12\biserna_sestra-lusinda_rajli_v.jpg" />
+    <Content Include="uploads\books\13\ja_sam_akiko-stefan_mitic_v.jpg" />
+    <Content Include="uploads\books\14\maratonci_trce_pocasni_krug-dusan_kovacevic_v.jpg" />
+    <Content Include="uploads\books\15\biser_koji_je_slomio_skoljku-nadija_hasimi_v.jpg" />
+    <Content Include="uploads\books\1\solunska_28-dr_nele_karajlic_v.jpg" />
     <Content Include="uploads\books\24\bio_sam_titov_spijun-dragisa_ivelja_v.jpg" />
     <Content Include="uploads\books\25\39_tragova_lavirint_od_kostiju_prva_knjig-rik_riordan_v.jpg" />
     <Content Include="uploads\books\26\pijev_zivot-jan_martel_v.jpg" />
     <Content Include="uploads\books\27\blato_znoj_i_suze_autobiografija-ber_grils_v.jpg" />
     <Content Include="uploads\books\28\izum_igoa_kabrea-brajan_selznik_v.jpg" />
     <Content Include="uploads\books\29\za_belim_sokolom-robert_lindon_v.jpg" />
+    <Content Include="uploads\books\2\dusanova_kletva-vanja_bulic_v.jpg" />
     <Content Include="uploads\books\30\persi_dzekson_i_bogovi_olimpa_i_kradljivac_munje-rik_riordan_v.jpg" />
+    <Content Include="uploads\books\31\dobri_vuk-aleksander_sederberj_v.jpg" />
     <Content Include="uploads\books\3\malavita.jpg" />
     <Content Include="uploads\books\4\li.jpg" />
     <Content Include="uploads\books\5\plamen.jpg" />
@@ -422,6 +432,15 @@
     <Content Include="uploads\books\7\asd.pdf" />
     <Content Include="uploads\books\8\asd.pdf" />
     <Content Include="uploads\books\9\asd.pdf" />
+    <Content Include="uploads\books\10\OfferReport.pdf" />
+    <Content Include="uploads\books\11\OfferReport.pdf" />
+    <Content Include="uploads\books\12\OfferReport.pdf" />
+    <Content Include="uploads\books\13\OfferReport.pdf" />
+    <Content Include="uploads\books\14\OfferReport.pdf" />
+    <Content Include="uploads\books\15\OfferReport.pdf" />
+    <Content Include="uploads\books\1\OOP - V2.1 - Zadaci.pdf" />
+    <Content Include="uploads\books\2\OfferReport.pdf" />
+    <Content Include="uploads\books\31\TransactionsReport.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -468,7 +487,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61508</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://192.168.88.151/ek</IISUrl>
+          <IISUrl>http://192.168.0.14/ek</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
