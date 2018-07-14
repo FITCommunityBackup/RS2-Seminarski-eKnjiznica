@@ -296,7 +296,7 @@ namespace eKnjiznica.Commons {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unesite ispravan broj telefona.
+        ///   Looks up a localized string similar to Unesite broj telefona u ispravnom formatu(npr +3876xxxxxx, 06xxxxxxx).
         /// </summary>
         public static string ERR_FIELD_PHONE_INVALID {
             get {

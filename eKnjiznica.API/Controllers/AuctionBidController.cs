@@ -44,11 +44,11 @@ namespace eKnjiznica.API.Controllers
                 ModelState.AddModelError("auction_bid", $"Vaša ponuda treba biti veća od {auction.StartPrice} KM!");
                 return BadRequest(ModelState);
             }
-            if (auctionService.IsUserLatestBidder(auctionId, userId))
-            {
-                ModelState.AddModelError("auction_bid", "Zadnja ponuda je vaša!");
-                return BadRequest(ModelState);
-            }
+            //if (auctionService.IsUserLatestBidder(auctionId, userId))
+            //{
+            //    ModelState.AddModelError("auction_bid", "Zadnja ponuda je vaša!");
+            //    return BadRequest(ModelState);
+            //}
 
             if(auction.CurrentPrice>=amount)
             {

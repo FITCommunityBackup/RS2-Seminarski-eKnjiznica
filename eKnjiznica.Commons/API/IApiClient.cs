@@ -59,6 +59,7 @@ namespace eKnjiznica.Commons.API
         Task<HttpResponseMessage> CreateAuction(AuctionCreateVM auctionCreateVM);
         Task<HttpResponseMessage> UploadBookPicture(byte[] uploadImage, string imageName, int id);
         Task<HttpResponseMessage> BuyBook(IList<BookOfferVM> books);
+        Task<HttpResponseMessage> RateBook(int bookId, int rating);
         
     }
 }

@@ -36,7 +36,15 @@ namespace eKnjiznica.Commons.ViewModels.ClientBook
         [DataMember]
         public int OfferId { get; set; }
 
+        [DataMember]
+        public int UserRating { get; set; }
+        [DataMember]
+        public int BookId { get; set; }
+        [DataMember]
+        public double? AverageRating { get; set; }
+
+
         [IgnoreDataMember]
         public Uri ImageUri { get; set; }
-    }
+        }
 }

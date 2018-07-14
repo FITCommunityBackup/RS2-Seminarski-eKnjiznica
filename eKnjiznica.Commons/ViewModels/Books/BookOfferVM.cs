@@ -26,6 +26,8 @@ namespace eKnjiznica.Commons.ViewModels.Books
 
         [DataMember]
         public bool UserHasBook { get; set; }
+        [DataMember]
+        public int UserRating{ get; set; }
 
 
         [DataMember]
@@ -38,6 +40,9 @@ namespace eKnjiznica.Commons.ViewModels.Books
         public bool IsActive { get; set; }
         [DataMember]
         public string ImageUrl { get; set; }
+
+        [DataMember]
+        public double? AverageRating { get; set; }
 
         [IgnoreDataMember]
         public string BookState { get; set; }

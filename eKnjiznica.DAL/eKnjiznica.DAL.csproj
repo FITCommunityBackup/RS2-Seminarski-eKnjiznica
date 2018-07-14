@@ -149,6 +149,10 @@
     <Compile Include="Migrations\201807060656415_AuctionEmailSentFlag.Designer.cs">
       <DependentUpon>201807060656415_AuctionEmailSentFlag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807141101059_BookRatings.cs" />
+    <Compile Include="Migrations\201807141101059_BookRatings.Designer.cs">
+      <DependentUpon>201807141101059_BookRatings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\Auction.cs" />
@@ -156,6 +160,7 @@
     <Compile Include="Model\Book.cs" />
     <Compile Include="Model\BookCategories.cs" />
     <Compile Include="Model\BookOffer.cs" />
+    <Compile Include="Model\BookRating.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\UserAudit.cs" />
@@ -164,6 +169,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminRepo.cs" />
     <Compile Include="Repository\AuctionsRepo.cs" />
+    <Compile Include="Repository\BookRatingRepo.cs" />
     <Compile Include="Repository\BookRepo.cs" />
     <Compile Include="Repository\CategoryRepo.cs" />
     <Compile Include="Repository\ClientBooksRepo.cs" />
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807060656415_AuctionEmailSentFlag.resx">
       <DependentUpon>201807060656415_AuctionEmailSentFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807141101059_BookRatings.resx">
+      <DependentUpon>201807141101059_BookRatings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -68,14 +68,14 @@ namespace eKnjiznica.DAL.Repository
             return GetBookOfferById(bookOffer.Id);
         }
 
-        public BookOfferVM GetBookOfferById(int id)
+        public BookOfferVM GetBookOfferById(int id,string userId=null)
         {
             return context.BookOffers
                 .Where(x => x.Id == id)
                 .Include(x => x.Book)
                 .Include(x => x.Book.Categories)
                 .Include(x => x.PurchasedBooks)
-                .Select(bookOffermaper(null))
+                .Select(bookOffermaper(userId))
                 .FirstOrDefault();
 
         }
@@ -143,7 +143,10 @@ namespace eKnjiznica.DAL.Repository
                     IsActive = y.IsActive,
                 }).ToList(),
                 ImageUrl = x.Book.ImageLocation,
-                UserHasBook = userId == null ? false : x.PurchasedBooks.Any(y => y.UserId == userId)
+                AverageRating=x.Book.BookRatings.Where(y=>y.IsActive).Average(y=>y.Rating),
+                UserHasBook = userId == null ? false : x.PurchasedBooks.Any(y => y.UserId == userId),
+                UserRating=userId==null || x.Book.BookRatings.Where(y=>y.IsActive && y.UserId==userId).Count()==0?
+                0:x.Book.BookRatings.Where(y=>y.IsActive && y.UserId==userId).FirstOrDefault().Rating
             };
         }
 
@@ -332,6 +335,25 @@ namespace eKnjiznica.DAL.Repository
 
 
             return bookOffers;
+        }
+
+        public List<BookOfferVM> GetUserRatedBooks(string userId)
+        {
+
+            return context.BookOffers
+                .Where(x => x.IsActive)
+                .Where(x => x.Book.BookRatings.Any(y => y.IsActive && y.UserId == userId))
+                .Select(bookOffermaper(userId))
+                .ToList();
+        }
+
+        public List<BookOfferVM> GetUserMissingBookOffers(string userId)
+        {
+            return context.BookOffers
+               .Where(x => x.IsActive)
+               .Where(x=>!x.PurchasedBooks.Any(y=>y.UserId==userId))
+               .Select(bookOffermaper(userId))
+               .ToList();
         }
     }
 }

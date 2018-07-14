@@ -25,6 +25,10 @@ namespace eKnjiznica.Commons.API
         }
 
 
+        public Task<HttpResponseMessage> RateBook(int bookId, int rating)
+        {
+            return Post(rating,$"api/books/{bookId}/ratings");
+        }
 
         public Task<HttpResponseMessage> GetRecommendedBooks()
         {
@@ -350,6 +354,8 @@ namespace eKnjiznica.Commons.API
                 return;
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(newAuth.TokenType, newAuth.AccessToken);
         }
+
+     
 
 
 

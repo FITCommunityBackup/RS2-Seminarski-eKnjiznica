@@ -23,6 +23,7 @@ namespace eKnjiznica.DAL.EF
         public DbSet<UserBook> UserBooks { get; set; }
         public DbSet<Auction> Auctions { get; set; }
         public DbSet<AuctionBid> AuctionBids { get; set; }
+        public DbSet<BookRating> BookRatings { get; set; }
 
         public EKnjiznicaDB()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -46,6 +46,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\IAdminRepo.cs" />
     <Compile Include="Repository\IAuctionRepo.cs" />
+    <Compile Include="Repository\IBookRatingRepo.cs" />
     <Compile Include="Repository\IBookRepo.cs" />
     <Compile Include="Repository\ICategoriesRepo.cs" />
     <Compile Include="Repository\IClientBooksRepo.cs" />
@@ -58,6 +59,8 @@
     <Compile Include="Services\Admin\IAdminService.cs" />
     <Compile Include="Services\Auctions\AuctionService.cs" />
     <Compile Include="Services\Auctions\IAuctionService.cs" />
+    <Compile Include="Services\BooksRating\BookRatingService.cs" />
+    <Compile Include="Services\BooksRating\IBooksRatingService.cs" />
     <Compile Include="Services\Books\BookService.cs" />
     <Compile Include="Services\Books\IBookService.cs" />
     <Compile Include="Services\Categories\CategoriesService.cs" />

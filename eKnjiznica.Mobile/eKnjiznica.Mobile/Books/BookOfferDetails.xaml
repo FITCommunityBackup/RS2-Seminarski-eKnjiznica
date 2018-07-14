@@ -13,7 +13,7 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <StackLayout Margin="10" Grid.Column="0" Grid.Row="0">            
+            <StackLayout Margin="10" Grid.Column="0" Grid.Row="0">
                 <Image   x:Name="image" ></Image>
                 <Button x:Name="action" Clicked="action_Clicked"></Button>
             </StackLayout>
@@ -23,10 +23,15 @@
                 <Label x:Name="author"></Label>
                 <Label x:Name="categories"></Label>
                 <Label x:Name="price" FontAttributes="Bold" ></Label>
+                <Label x:Name="averageRating" FontAttributes="Bold" ></Label>
                 <Label  x:Name="createdDate"></Label>
             </StackLayout>
 
             <StackLayout Margin="10" Grid.Row="1" Grid.ColumnSpan="2">
+                <StackLayout Orientation="Horizontal">
+                    <Picker x:Name="bookRatings" Title="Odaberite ocjenu"  SelectedIndexChanged="bookRatings_SelectedIndexChanged"></Picker>
+                    <Button x:Name="btnRate" Text="Ocijeni" Clicked="btnRate_Clicked"></Button>
+                </StackLayout>
                 <Label Text="Opis: " FontAttributes="Bold" ></Label>
                 <Label x:Name="description" ></Label>
             </StackLayout>

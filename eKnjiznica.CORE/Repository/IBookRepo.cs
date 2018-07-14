@@ -18,15 +18,17 @@ namespace eKnjiznica.CORE.Repository
         BooksVM GetBookById(int bookId);
         void SaveFilePath(BooksVM book, string relativePath,string fileName);
         List<BookOfferVM> GetTopSellingBooksInCategories(List<int> categoryId,string userId);
+        List<BookOfferVM> GetUserRatedBooks(string userId);
         List<BookOfferVM> GetTopSellingBooks(List<int> alreadyAddedBooks, string userId, int neededBookNumber);
 
         BookOfferVM CreateAuctionBookOffer(CreateAuctionBookOfferVM createAuctionBookOfferVM);
         List<BookOfferVM> GetBookOffers(string title, string author,bool includeInactive);
         BookOfferVM CreateBookOffer(CreateBookOfferVM model);
-        BookOfferVM GetBookOfferById(int id);
+        BookOfferVM GetBookOfferById(int id,string userId=null);
         void UpdateBookOffer(UpdateBookOfferVM model, int id);
         List<BookOfferVM> GetBookOffersByCategory(int categoryId,string userId);
         void SaveImageFilePath(BooksVM book, string relativePath, string uploadedFileName);
         List<BookOfferVM> GetTopSellingBooks();
+        List<BookOfferVM> GetUserMissingBookOffers(string userId);
     }
 }

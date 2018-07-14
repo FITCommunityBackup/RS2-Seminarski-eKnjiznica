@@ -30,6 +30,8 @@ namespace eKnjiznica.DAL.Model
         public string UserId { get; set; }
         public ApplicationUser AddedBy { get; set; }
 
+
+        public ICollection<BookRating> BookRatings { get; set; }
         public ICollection<BookCategories> Categories { get; set; }
         public ICollection<BookOffer> BookOffers { get; internal set; }
         public ICollection<Auction> BookAuctions { get; internal set; }

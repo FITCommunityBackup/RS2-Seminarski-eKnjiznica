@@ -9,6 +9,6 @@ namespace eKnjiznica.CORE.Services.Recommender
 {
     public interface IRecommenderService
     {
-        List<BookOfferVM> GetTopSellingRecommendedBooksForUser(string userId);
+        List<BookOfferVM> GetRecommendedBooksForUserBasedOnUserRatings(string userId);
     }
 }

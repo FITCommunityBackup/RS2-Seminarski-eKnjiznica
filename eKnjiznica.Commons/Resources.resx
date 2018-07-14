@@ -199,7 +199,7 @@
     <value>Lozinka se mora sastojati od najmanje 6 karaktera uključujući mala, velika slova i brojeve.</value>
   </data>
   <data name="ERR_FIELD_PHONE_INVALID" xml:space="preserve">
-    <value>Unesite ispravan broj telefona</value>
+    <value>Unesite broj telefona u ispravnom formatu(npr +3876xxxxxx, 06xxxxxxx)</value>
   </data>
   <data name="ERR_FIELD_USERNAME_INVALID" xml:space="preserve">
     <value>Korisničko ime mora biti duže od 5 karaktera</value>

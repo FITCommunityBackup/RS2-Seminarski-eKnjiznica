@@ -4,6 +4,7 @@ using eKnjiznica.CORE.Repository;
 using eKnjiznica.CORE.Services.Admin;
 using eKnjiznica.CORE.Services.Auctions;
 using eKnjiznica.CORE.Services.Books;
+using eKnjiznica.CORE.Services.BooksRating;
 using eKnjiznica.CORE.Services.Categories;
 using eKnjiznica.CORE.Services.ClientBooks;
 using eKnjiznica.CORE.Services.Clients;
@@ -120,6 +121,8 @@ namespace eKnjiznica.API
             container.RegisterType<IAuctionRepo, AuctionsRepo>();
             container.RegisterType<IAuctionService, AuctionService>();
             container.RegisterType<IRecommenderService, RecommenderService>();
+            container.RegisterType<IBookRatingRepo, BookRatingRepo>();
+            container.RegisterType<IBooksRatingService, BookRatingService>();
 
             container.RegisterType<IUserStore<ApplicationUser>,
                 UserStore<ApplicationUser>>();

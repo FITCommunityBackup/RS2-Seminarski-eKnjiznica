@@ -69,7 +69,7 @@ namespace eKnjiznica.DAL.Repository
                 .Include(x => x.BookOffer.Book)
                 .Include(x => x.BookOffer.Book.Categories)
                 .Include(x => x.User)
-                .Select(ClientVmMapper())
+                .Select(ClientVmMapper(userId))
               .FirstOrDefault();
         }
 
@@ -81,13 +81,13 @@ namespace eKnjiznica.DAL.Repository
                 .Include(x => x.BookOffer.Book)
                 .Include(x => x.BookOffer.Book.Categories)
                 .Include(x => x.User)
-                .Select(ClientVmMapper())
+                .Select(ClientVmMapper(userId))
                 .ToList();
         }
 
-        private Expression<Func<UserBook, ClientBookVM>> ClientVmMapper()
+        private Expression<Func<UserBook, ClientBookVM>> ClientVmMapper(string userId)
         {
-            return  x => new ClientBookVM
+            return x => new ClientBookVM
             {
                 AuthorName = x.BookOffer.Book.Autor,
                 BookTitle = x.BookOffer.Book.Title,
@@ -105,7 +105,12 @@ namespace eKnjiznica.DAL.Repository
                 ClientName = x.User.UserName,
                 ImageUrl = x.BookOffer.Book.ImageLocation,
                 OfferId = x.BookOfferId,
-                BookDescription = x.BookOffer.Book.Description
+                BookDescription = x.BookOffer.Book.Description,
+                BookId = x.BookOffer.BookId,
+                AverageRating = x.BookOffer.Book.BookRatings.Where(y => y.IsActive).Average(y => y.Rating),
+                UserRating=
+                x.BookOffer.Book.BookRatings.FirstOrDefault(y=>y.IsActive&&y.UserId==userId)!=null?
+                x.BookOffer.Book.BookRatings.FirstOrDefault(y=>y.IsActive &&y.UserId==userId).Rating:0
             };
         }
 
@@ -119,7 +124,7 @@ namespace eKnjiznica.DAL.Repository
                 .Where(x => string.IsNullOrEmpty(title) || x.BookOffer.Book.Title.Contains(title))
                 .Where(x => string.IsNullOrEmpty(author) || x.BookOffer.Book.Autor.Contains(author))
                 .Where(x => string.IsNullOrEmpty(user) || x.User.UserName.Contains(user))
-                .Select(ClientVmMapper()).ToList();
+                .Select(ClientVmMapper(user)).ToList();
         }
       
     }

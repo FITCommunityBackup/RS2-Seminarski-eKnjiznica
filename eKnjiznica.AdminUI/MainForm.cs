@@ -45,10 +45,17 @@ namespace eKnjiznica.AdminUI
             {
                 this.Close();
             }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void odjaviSeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            if (currentForm != null)
+                currentForm.Close();
             userService.LogoutUser();
             loginUser();
         }
