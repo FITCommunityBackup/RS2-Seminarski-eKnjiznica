@@ -59,7 +59,7 @@ namespace eKnjiznica.API.Controllers
         [Authorize(Roles=EntityRoles.ClientRole)]
         public IHttpActionResult GetRecommendedBooks()
         {
-            var result = recommenderService.GetRecommendedBooksForUserBasedOnUserRatings(GetUserId());
+            var result = recommenderService.GetRecommendedBooksForUser(GetUserId());
             return Ok(result);
         }
 
