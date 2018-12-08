@@ -10,6 +10,7 @@ namespace eKnjiznica.CORE.Services.Categories
     {
         IList<CategoryVM> GetCategories(string nameFilter,bool includeInactive);
         CategoryVM GetCategoryById(int id);
+        IList<CategoryVM> GetCategoryTopSellingCategories();
         CategoryVM GetCategoryByName(string categoryName);
         void CreateCategory(CategoryAddVM model,string userId);
         void UpdateCategory(CategoryUpdateVm model, int id);

@@ -14,5 +14,6 @@ namespace eKnjiznica.CORE.Repository
         void CreateCategory(CategoryAddVM model, string userId);
         Dictionary<int,int> GetCategoriesAndBookNumber(string userId);
         void UpdateCategory(CategoryVM result);
+        IList<CategoryVM> GetCategoryTopSellingCategories(int take=4);
     }
 }

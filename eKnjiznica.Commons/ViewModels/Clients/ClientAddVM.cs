@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -24,6 +25,6 @@ namespace eKnjiznica.Commons.ViewModels.Clients
         [DataMember]
         public string Email{ get; set; }
         [DataMember]
-        public DateTime DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; } = DateTime.UtcNow;
     }
 }

@@ -31,9 +31,9 @@ namespace eKnjiznica.CORE.Services.ClientBooks
             clientBooksRepo.AddBooksToUser(userId, books);
         }
 
-        public List<ClientBookVM> GetClientBooks(string userId)
+        public List<ClientBookVM> GetClientBooks(string userId,string bookName=null)
         {
-            return clientBooksRepo.GetClientBooks(userId);
+            return clientBooksRepo.GetClientBooks(userId,bookName);
         }
 
 

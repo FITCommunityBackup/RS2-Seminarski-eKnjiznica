@@ -148,7 +148,6 @@ namespace eKnjiznica.DAL.Repository
             user.LastName = model.LastName;
             user.PhoneNumber = model.PhoneNumber;
             user.Email = model.Email;
-            user.BirthDate = model.DateOfBirth;
             user.IsActive = model.IsActive;
             if (!string.IsNullOrEmpty(model.Password))
                 user.PasswordHash = applicationUserManager.PasswordHasher.HashPassword(model.Password);

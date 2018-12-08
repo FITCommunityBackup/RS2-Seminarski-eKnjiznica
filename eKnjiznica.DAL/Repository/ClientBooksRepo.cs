@@ -73,7 +73,7 @@ namespace eKnjiznica.DAL.Repository
               .FirstOrDefault();
         }
 
-        public List<ClientBookVM> GetClientBooks(string userId)
+        public List<ClientBookVM> GetClientBooks(string userId,string bookname=null)
         {
             return context.UserBooks
                 .Where(x => x.UserId == userId)
@@ -81,6 +81,7 @@ namespace eKnjiznica.DAL.Repository
                 .Include(x => x.BookOffer.Book)
                 .Include(x => x.BookOffer.Book.Categories)
                 .Include(x => x.User)
+                .Where(x=> string.IsNullOrEmpty(bookname) ||  x.BookOffer.Book.Title.Contains(bookname))
                 .Select(ClientVmMapper(userId))
                 .ToList();
         }

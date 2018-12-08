@@ -150,13 +150,14 @@ namespace eKnjiznica.DAL.Repository
             };
         }
 
-        public List<BookOfferVM> GetBookOffersByCategory(int categoryId, string userId)
+        public List<BookOfferVM> GetBookOffersByCategory(int categoryId, string userId,string title=null)
         {
             return context.BookOffers
                      .Where(x => x.IsActive)
                      .Include(x => x.Book)
                      .Include(x => x.Book.Categories)
                      .Include(x => x.PurchasedBooks)
+                     .Where(x=>string.IsNullOrEmpty(title) || x.Book.Title.Contains(title))
                      .Where(x => x.Book.Categories.Any(y => y.CategoryId == categoryId))
                      .OrderBy(x => x.Book.Title)
                      .ThenByDescending(x => x.OfferCreatedTime)
@@ -319,7 +320,7 @@ namespace eKnjiznica.DAL.Repository
             return bookOffers;
         }
 
-        public List<BookOfferVM> GetTopSellingBooks()
+        public List<BookOfferVM> GetTopSellingBooks(string userId = null)
         {
 
             var bookOffers =
@@ -330,7 +331,7 @@ namespace eKnjiznica.DAL.Repository
                        .Include(x => x.Book.Categories)
                        .OrderByDescending(x => x.PurchasedBooks.Count)
                        .Take(100)
-                       .Select(bookOffermaper(null))
+                       .Select(bookOffermaper(userId))
                        .ToList();
 
 

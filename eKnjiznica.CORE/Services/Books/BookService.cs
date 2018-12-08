@@ -33,9 +33,9 @@ namespace eKnjiznica.CORE.Services.Books
             return bookRepo.CreateBookOffer(model);
         }
 
-        public List<BookOfferVM> GetBookOfferByCategory(int categoryId,string userId)
+        public List<BookOfferVM> GetBookOfferByCategory(int categoryId,string userId,string title=null)
         {
-            return bookRepo.GetBookOffersByCategory(categoryId, userId);
+            return bookRepo.GetBookOffersByCategory(categoryId, userId,title);
 
         }
 
@@ -49,9 +49,9 @@ namespace eKnjiznica.CORE.Services.Books
            return bookRepo.GetBooks(title, author,includeInactive, categoryId);
         }
 
-        public List<BookOfferVM> GetTopSellingBooks()
+        public List<BookOfferVM> GetTopSellingBooks(string userId = null)
         {
-            return bookRepo.GetTopSellingBooks();
+            return bookRepo.GetTopSellingBooks(userId);
 
         }
 

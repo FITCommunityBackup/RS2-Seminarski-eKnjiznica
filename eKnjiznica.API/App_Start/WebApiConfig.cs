@@ -7,6 +7,7 @@ using eKnjiznica.API.App_Start;
 using eKnjiznica.Commons.ViewModels;
 using eKnjiznica.CORE.Model.Admin;
 using Microsoft.Owin.Security.OAuth;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
 namespace eKnjiznica.API
@@ -34,6 +35,12 @@ namespace eKnjiznica.API
             {
                 cfg.CreateMap<AdminAddVM, AdminAccount>();
             });
+            var jsonFormater = config.Formatters.JsonFormatter;
+
+            jsonFormater.SerializerSettings.Converters.Add(new IsoDateTimeConverter { DateTimeFormat = "yyyy-MM-dd'T'HH:mm:ss" });
+            jsonFormater.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("multipart/form-data"));
+
+            config.Formatters.Add(jsonFormater);
         }
     }
 }

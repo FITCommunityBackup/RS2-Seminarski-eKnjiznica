@@ -101,6 +101,42 @@ namespace eKnjiznica.DAL.Repository
              }).FirstOrDefault();
         }
 
+        public IList<CategoryVM> GetCategoryTopSellingCategories(int take=4)
+        {
+
+            Dictionary<int, int> catNumberDict = new Dictionary<int, int>();
+
+            var selledBooks = context.UserBooks.Include(x => x.BookOffer.Book.Categories);
+
+            foreach (var book in selledBooks)
+            {
+                foreach (var cat in book.BookOffer.Book.Categories)
+                {
+                    if (catNumberDict.ContainsKey(cat.CategoryId))
+                    {
+                        catNumberDict[cat.CategoryId] += 1;
+                    }
+                    else
+                    {
+                        catNumberDict.Add(cat.CategoryId, 1);
+                    }
+                }
+            }
+
+            var bookCategories = catNumberDict.OrderByDescending(x => x.Value).Select(x => x.Key).Take(take);
+            var result = context.Categories.Where(x => bookCategories.Any(y => y == x.Id))
+                .Include(x=>x.Books)
+                .Select(x => new CategoryVM
+                {
+                    CategoryName = x.CategoryName,
+                    Id = x.Id,
+                    IsActive = x.IsActive,
+                    NumberOfBooks = x.Books.Count()
+                }).ToList();
+
+            return result;
+
+        }
 
         public void UpdateCategory(CategoryVM category)
         {

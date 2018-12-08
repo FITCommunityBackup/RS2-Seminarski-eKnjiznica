@@ -44,11 +44,11 @@ namespace eKnjiznica.API.Controllers
         }
 
         [HttpGet]
-        [Route("my")]
-        public IHttpActionResult GetClientsBooks()
+        [Route("my/books")]
+        public IHttpActionResult GetClientBuyedBooks(string bookName=null)
         {
             var clientId = GetUserId();
-            var result = clientBooksService.GetClientBooks(clientId);
+            var result = clientBooksService.GetClientBooks(clientId, bookName);
             return Ok(result);
         }
 

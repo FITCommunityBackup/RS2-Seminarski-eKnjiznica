@@ -39,7 +39,7 @@ namespace eKnjiznica.API.Controllers
         [HttpPost]
         [Route("")]
         [AllowAnonymous]
-        public IHttpActionResult CreateClientAccount(ClientAddVM model)
+        public IHttpActionResult CreateClientAccount(ClientAddVM  model)
         {
             if (model == null || !ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -96,5 +96,7 @@ namespace eKnjiznica.API.Controllers
             clientService.UpdateClientAccount(vm, GetUserId());
             return Ok();
         }
+
+  
     }
 }

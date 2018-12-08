@@ -11,7 +11,6 @@ using System.Web.Http;
 namespace eKnjiznica.API.Controllers
 {
     [RoutePrefix("api/books/admin/offers")]
-    [Authorize(Roles =EntityRoles.AdminRole)]
     public class BookOfferController : BaseController
     {
         private IBookService bookService;
@@ -23,6 +22,7 @@ namespace eKnjiznica.API.Controllers
 
         [HttpGet]
         [Route("")]
+        [Authorize(Roles = EntityRoles.AdminRole +","+EntityRoles.ClientRole)]
         public IHttpActionResult GetCurrentOffers(
             [FromUri(Name = "title")] string title = null,
             [FromUri(Name = "author")] string author = null,
@@ -36,6 +36,7 @@ namespace eKnjiznica.API.Controllers
 
         [HttpPost]
         [Route("")]
+        [Authorize(Roles = EntityRoles.AdminRole)]
         public IHttpActionResult CreateBookOfffer([FromBody]CreateBookOfferVM model)
         {
             if (!ModelState.IsValid)
@@ -45,6 +46,7 @@ namespace eKnjiznica.API.Controllers
         }
         [HttpPut]
         [Route("{id}")]
+        [Authorize(Roles = EntityRoles.AdminRole)]
         public IHttpActionResult UpdateBookOffer([FromBody]UpdateBookOfferVM model,[FromUri(Name ="id")] int id)
         {
             if (!ModelState.IsValid)

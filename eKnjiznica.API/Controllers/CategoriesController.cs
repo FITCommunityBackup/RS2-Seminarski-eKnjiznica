@@ -36,6 +36,14 @@ namespace eKnjiznica.API.Controllers
                 return NotFound();
             return Ok(result);
         }
+        [HttpGet]
+        [Route("topselling")]
+        [AllowAnonymous]
+        public IHttpActionResult GetTopSellingCategories()
+        {
+            var result = categoriesService.GetCategoryTopSellingCategories();
+            return Ok(result);
+        }
 
         [HttpPost]
         [Route("")]

@@ -10,7 +10,7 @@ namespace eKnjiznica.CORE.Repository
 {
     public interface IClientBooksRepo
     {
-        List<ClientBookVM> GetClientBooks(string userId);
+        List<ClientBookVM> GetClientBooks(string userId,string bookName=null);
         List<ClientBookVM> GetClientBooks(string title, string author, string user);
         void AddBooksToUser(string userId, IList<BookOfferVM> books);
         List<string> GetBookLocations(List<int> bookId);

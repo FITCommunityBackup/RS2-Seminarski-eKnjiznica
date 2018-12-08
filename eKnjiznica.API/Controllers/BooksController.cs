@@ -2,6 +2,7 @@
 using eKnjiznica.CORE.Services.Books;
 using eKnjiznica.CORE.Services.Recommender;
 using eKnjiznica.DAL.EF;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,9 +39,10 @@ namespace eKnjiznica.API.Controllers
 
         [HttpGet]
         [Route("topselling")]
+        [Authorize(Roles = EntityRoles.AdminRole + "," + EntityRoles.ClientRole)]
         public IHttpActionResult GetTopSellingOffer()
         {
-            var result = bookService.GetTopSellingBooks();
+            var result = bookService.GetTopSellingBooks(User.Identity.GetUserId());
             return Ok(result);
         }
 
@@ -48,9 +50,9 @@ namespace eKnjiznica.API.Controllers
         [Route("category/{categoryId}")]
         [Authorize(Roles = EntityRoles.AdminRole + "," + EntityRoles.ClientRole)]
         public IHttpActionResult GetBooksByCategory(
-            int categoryId)
+            int categoryId=0,string title=null)
         {
-            var result = bookService.GetBookOfferByCategory(categoryId, GetUserId());
+            var result = bookService.GetBookOfferByCategory(categoryId, GetUserId(),title);
             return Ok(result);
         }
 

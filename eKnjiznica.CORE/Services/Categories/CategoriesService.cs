@@ -39,6 +39,12 @@ namespace eKnjiznica.CORE.Services.Categories
 
         }
 
+        public IList<CategoryVM> GetCategoryTopSellingCategories()
+        {
+            return categoriesRepo.GetCategoryTopSellingCategories();
+
+        }
+
         public void UpdateCategory(CategoryUpdateVm model, int id)
         {
             var result = categoriesRepo.GetCategory(id);

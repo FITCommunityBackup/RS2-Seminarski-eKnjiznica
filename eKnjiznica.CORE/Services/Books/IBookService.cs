@@ -16,8 +16,8 @@ namespace eKnjiznica.CORE.Services.Books
         List<BookOfferVM> GetBookOffers(string title, string author, bool includeInactive);
         BookOfferVM CreateBookOffer(CreateBookOfferVM model);
         void UpdateBookOffer(UpdateBookOfferVM model, int id);
-        List<BookOfferVM> GetBookOfferByCategory(int categoryId,string userId);
+        List<BookOfferVM> GetBookOfferByCategory(int categoryId,string userId,string title);
         BookOfferVM CreateAuctionBookOffer(CreateAuctionBookOfferVM createAuctionBookOfferVM);
-        List<BookOfferVM> GetTopSellingBooks();
+        List<BookOfferVM> GetTopSellingBooks(string userId=null);
     }
 }
